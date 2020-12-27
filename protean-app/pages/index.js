@@ -1,17 +1,17 @@
-import Nav from '../components/nav'
-import Page from '../components/page'
-import Sheet from '../components/sheet'
+import Nav from '../components/navigation/Nav'
+import Book from '../components/book/Book'
+import Sheet from '../components/sheets/Sheet'
 
 export default function IndexPage() {
   return (
-    <div class="flex flex-row divide-x divide-gray-300">
-      <div class="flex-1 p-4">
+    <div className="flex flex-row divide-x divide-gray-300">
+      <div className="flex-1 p-8">
         <Nav></Nav>
       </div>
-      <div class="flex-1 p-4">
-        <Page></Page>
+      <div className="flex-1 p-8">
+        <Book></Book>
       </div>
-      <div class="flex-1 p-4">
+      <div className="flex-1 p-8">
         <Sheet></Sheet>
       </div>
     </div>

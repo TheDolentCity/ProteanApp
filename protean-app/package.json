@@ -1,22 +1,21 @@
 {
-  "name": "with-tailwindcss",
-  "version": "1.0.0",
+  "name": "protean-app",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
-    "@mdx-js/loader": "^1.6.21",
-    "@next/mdx": "^10.0.3",
-    "next": "latest",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "autoprefixer": "^10.1.0",
+    "next": "10.0.4",
+    "postcss": "^8.2.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tailwindcss": "^2.0.2"
   },
   "devDependencies": {
-    "autoprefixer": "10.0.2",
-    "postcss": "8.1.7",
-    "tailwindcss": "^2.0.1"
-  },
-  "license": "MIT"
+    "@tailwindcss/typography": "^0.3.1"
+  }
 }
