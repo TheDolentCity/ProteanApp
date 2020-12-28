@@ -1,9 +1,13 @@
+import { Component } from 'react'
 
-
-export default function Nav() {
-  return (
-    <div>
-
-    </div>
-  )
+class Sheet extends Component {
+  render() {
+    return (
+      <div className="">
+        
+      </div>
+    );
+  }
 }
+
+export default Sheet;

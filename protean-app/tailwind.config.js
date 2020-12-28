@@ -45,7 +45,7 @@ module.exports = {
       }
     },
     fontFamily: {
-      sans: ['Rubik', 'sans-serif'],
+      sans: ['Inter', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
     },
   },

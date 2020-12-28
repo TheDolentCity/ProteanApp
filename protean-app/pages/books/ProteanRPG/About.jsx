@@ -1,5 +1,5 @@
 import { Component } from "react";
-import SidebarNote from "../../../components/generic/sidebars/sidebar-note";
+import SidebarNote from "../../../components/generic/book/sidebars/sidebar-note";
 
 class About extends Component {
   render() {

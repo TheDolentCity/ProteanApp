@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://rsms.me/inter/inter.css');
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
 
 /* purgecss start ignore */
 @tailwind  base;
@@ -9,12 +13,15 @@
 
 /* custom styles */
 h1 {
-  @apply text-4xl font-bold;
+  @apply text-5xl font-bold;
 }
 h2 {
-  @apply text-2xl font-semibold;
+  @apply text-3xl font-semibold;
 }
 h3 {
+  @apply text-xl font-semibold;
+}
+h4 {
   @apply text-lg font-semibold;
 }
 p {
