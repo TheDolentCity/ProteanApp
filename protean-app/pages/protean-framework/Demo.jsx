@@ -1,8 +1,8 @@
 import { Component } from "react";
-import SidebarImportant from "../../components/generic/sidebar-important";
-import SidebarNote from "../../components/generic/sidebar-note";
-import SidebarTip from "../../components/generic/sidebar-tip";
-import SidebarWarning from "../../components/generic/sidebar-warning";
+import SidebarImportant from "../../components/generic/sidebars/sidebar-important";
+import SidebarNote from "../../components/generic/sidebars/sidebar-note";
+import SidebarTip from "../../components/generic/sidebars/sidebar-tip";
+import SidebarWarning from "../../components/generic/sidebars/sidebar-warning";
 
 class Demo extends Component {
   render() {
