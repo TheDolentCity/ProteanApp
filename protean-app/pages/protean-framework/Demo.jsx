@@ -7,7 +7,7 @@ import SidebarWarning from "../../components/generic/book/sidebars/sidebar-warni
 class Demo extends Component {
   render() {
     return (
-      <article className="space-y-4 divide-y divide-gray-300">
+      <article className="space-y-4 divide-y divide-gray-300 dark:divide-gray-700">
         <div>
           <h1>Header 1</h1>
           <h2>Header 2</h2>

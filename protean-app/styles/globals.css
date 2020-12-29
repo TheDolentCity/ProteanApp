@@ -13,17 +13,17 @@
 
 /* custom styles */
 h1 {
-  @apply text-5xl font-bold;
+  @apply text-5xl font-bold text-gray-900 dark:text-gray-100;
 }
 h2 {
-  @apply text-3xl font-semibold;
+  @apply text-3xl font-semibold text-gray-900 dark:text-gray-100;
 }
 h3 {
-  @apply text-xl font-semibold;
+  @apply text-xl font-semibold text-gray-900 dark:text-gray-100;
 }
 h4 {
-  @apply text-lg font-semibold;
+  @apply text-lg font-semibold text-gray-900 dark:text-gray-100;
 }
 p {
-  @apply mt-4 mb-8 text-base text-gray-900 font-normal;
+  @apply mt-4 mb-8 text-base font-normal text-gray-900 dark:text-gray-100;
 }

@@ -15,7 +15,7 @@ class About extends Component {
         </SidebarNote>
         <h2>Enter Protean RPG</h2>
         <p>
-          Protean RPG is not just a simple universal system. It is an open-source, narrative focused system that anyone can contribute to through simple markdown files. There are five core aspects to the Protean RPG system that makes it a great choice for your next tabletop game.
+          Protean RPG is not just a simple universal system. It is an open source, narrative focused system that anyone can contribute to through simple markdown files. There are five core aspects to the Protean RPG system that makes it a great choice for your next tabletop game.
         </p>
         <h3>1. Open Source Roleplaying</h3>
         <p>
