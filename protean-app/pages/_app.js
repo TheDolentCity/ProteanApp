@@ -10,14 +10,14 @@ function MyApp({ Component, pageProps }) {
         <Header
           title="Protean RPG">
         </Header>
-        <div className="flex flex-row max-h-screen divide-x divide-gray-300 dark:divide-gray-700">
-          <div className="flex-initial mt-14 overflow-y-auto p-8">
+        <div className="max-h-screen whitespace-nowrap divide-x divide-gray-300 dark:divide-gray-700">
+          <div className="inline-block w-2/12 mt-14 max-h-full whitespace-normal overflow-y-auto p-8">
             <BookNavigation></BookNavigation>
           </div>
-          <div className="flex-1 mt-14 max-h-full overflow-y-auto p-8">
+          <div className="inline-block w-4/12 mt-14 max-h-full whitespace-normal overflow-y-auto p-8">
             <Component {...pageProps} />
           </div>
-          <div className="flex-1 mt-14 max-h-full overflow-y-auto">
+          <div className="inline-block w-4/12 mt-14 max-h-full whitespace-normal overflow-y-auto">
             <Sheet></Sheet>
           </div>
         </div>
