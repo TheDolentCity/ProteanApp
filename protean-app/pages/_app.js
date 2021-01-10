@@ -1,28 +1,62 @@
 import '../styles/globals.css'
-import Header from '../components/header/header'
-import Sheet from '../components/sheets/sheet'
+import AppContainer from '../components/layout/app-container'
+import Header from '../components/layout/header'
+import Body from '../components/layout/body'
+import Panel, { PanelHeader, PanelHeaderIcon, PanelHeaderText, PanelBody } from '../components/layout/panel';
 import BookNavigation from '../components/navigation/book-navigation';
-import Panel from '../components/generic/panels/panel';
+import Sheet from '../components/sheets/sheet'
 
-function MyApp({ Component, pageProps }) {
+import { FiMenu } from 'react-icons/fi'
+import { FiBook } from 'react-icons/fi'
+import { GiStabbedNote } from 'react-icons/gi'
+
+export default function MyApp({ Component, pageProps }) {
   return (
-    <div className="">
-      <div className="w-screen h-screen max-h-screen text-gray-900 bg-white font-sans dark:text-gray-100 dark:bg-gray-900">
-        <Header css="h-s05 max-h-s05">Protean RPG</Header>
-        <div className="flex whitespace-nowrap divide-x divide-gray-300 dark:divide-gray-700">
-          <Panel title="Table Of Contents" css="min-w-2/12">
+    <AppContainer>
+      <Header>Protean RPG</Header>
+      <Body>
+        <Panel css="min-w-2/12">
+          <PanelHeader>
+            <PanelHeaderIcon>
+              <FiMenu></FiMenu>
+            </PanelHeaderIcon>
+            <PanelHeaderText>
+              Table Of Contents
+            </PanelHeaderText>
+          </PanelHeader>
+          <PanelBody>
             <BookNavigation></BookNavigation>
-          </Panel>
-          <Panel title="Protean RPG Book" css="min-w-6/12">
+          </PanelBody>
+        </Panel>
+
+        <Panel>
+          <PanelHeader>
+            <PanelHeaderIcon>
+              <FiBook size="20"></FiBook>
+            </PanelHeaderIcon>
+            <PanelHeaderText>
+              Protean RPG Book
+            </PanelHeaderText>
+          </PanelHeader>
+          <PanelBody>
             <Component {...pageProps} />
-          </Panel>
-          <Panel title="Character Sheet" css="min-w-4/12">
+          </PanelBody>
+        </Panel>
+
+        <Panel>
+          <PanelHeader>
+            <PanelHeaderIcon>
+              <GiStabbedNote size="20"></GiStabbedNote>
+            </PanelHeaderIcon>
+            <PanelHeaderText>
+              Character Sheet
+            </PanelHeaderText>
+          </PanelHeader>
+          <PanelBody>
             <Sheet></Sheet>
-          </Panel>
-        </div>
-      </div>
-    </div>
+          </PanelBody>
+        </Panel>
+      </Body>
+    </AppContainer>
   );
 }
-
-export default MyApp

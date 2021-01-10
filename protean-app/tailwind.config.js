@@ -184,6 +184,17 @@ module.exports = {
       's90': '90vh',
       's95': '95vh',
     },
+    boxShadow: {
+      sm: '0 0.8px 1.8px 0 rgba(0, 0, 0, 0.1)',
+      DEFAULT: '0 1.6px 3.6px 0 rgba(0, 0, 0, 0.13), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+      md: '0 3.2px 7.2px 0px rgba(0, 0, 0, 0.13), 0 2px 4px 0px rgba(0, 0, 0, 0.1)',
+      lg: '0 6.4px 14.4px 0px rgba(0, 0, 0, 0.13), 0 4px 6px 0px rgba(0, 0, 0, 0.1)',
+      xl: '0 12.8px 28.8px 0px rgba(0, 0, 0, 0.13), 0 10px 10px 0px rgba(0, 0, 0, 0.1)',
+      '2xl': '0 25.6px 57.6px 0px rgba(0, 0, 0, 0.25)',
+      '3xl': '0 51.2px 105.2px 0px rgba(0, 0, 0, 0.3)',
+      inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+      none: 'none',
+    },
     extend: {
       width: {
         's05': '5vw',
