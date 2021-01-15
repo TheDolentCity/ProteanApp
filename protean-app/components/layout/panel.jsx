@@ -7,12 +7,11 @@ export default class Panel extends Component {
     this.state = {isOpen: true};
   }
 
-  // static propTypes = {
-  //   children: PropTypes.instanceOf(Object).isRequired,
-  //   icon: PropTypes.instanceOf(Object).isRequired,
-  //   label: PropTypes.string.isRequired,
-  //   isOpen: PropTypes.bool.isRequired,
-  // };
+  static propTypes = {
+    children: PropTypes.instanceOf(Object).isRequired,
+    icon: PropTypes.instanceOf(Object).isRequired,
+    label: PropTypes.string.isRequired
+  };
 
   toggleOpen = () => {
     this.setState((state) => {
@@ -22,12 +21,12 @@ export default class Panel extends Component {
 
   render() {
     return (
-      <div className={"flex-auto h-screen whitespace-normal overflow-y-auto " + this.props.css}>
+      <div className={"flex-auto h-screen min-w-1/12 whitespace-normal overflow-y-auto " + this.props.css}>
         <PanelHeader>
-          <PanelHeaderIcon onClick={this.toggleOpen}>
+          <PanelIcon onClick={this.toggleOpen}>
             {this.props.icon}
-          </PanelHeaderIcon>
-          <PanelHeaderLabel>
+          </PanelIcon>
+          <PanelHeaderLabel isOpen={this.state.isOpen}>
             {this.props.label}
           </PanelHeaderLabel>
         </PanelHeader>
@@ -47,6 +46,40 @@ export function PanelHeader(props) {
   );
 }
 
+export function PanelIcon(props) {
+  return (
+    <button onClick={props.onClick} className="inline-block p-2 my-auto mr-2 items-center hover:bg-gray-200 focus:outline-none">
+      {props.children}
+    </button>
+  );
+}
+
+export function PanelController(props) {
+  if (props.isOpen) {
+    return (
+      <div className="inline-block">
+        {props.children}
+      </div>
+    )
+  }
+  else return (
+    <div></div>
+  );
+}
+
+export function PanelHeaderLabel(props) {
+  if (props.isOpen) {
+    return (
+      <h3>
+        {props.children}
+      </h3>
+    );
+  }
+  else return (
+    <span></span>
+  );
+}
+
 export function PanelBody(props) {
   if (props.isOpen) {
     return (
@@ -55,21 +88,7 @@ export function PanelBody(props) {
       </div>
     );
   }
-  else return <div></div>;
-}
-
-export function PanelHeaderIcon(props) {
-  return (
-    <button onClick={props.onClick} className="p-2 my-auto mr-2 items-center hover:bg-gray-200 focus:outline-none">
-      {props.children}
-    </button>
-  );
-}
-
-export function PanelHeaderLabel(props) {
-  return (
-    <h3>
-      {props.children}
-    </h3>
+  else return (
+    <div></div>
   );
 }

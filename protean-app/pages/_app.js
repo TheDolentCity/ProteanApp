@@ -17,50 +17,19 @@ export default function MyApp({ Component, pageProps }) {
       <Body>
         <Panel
           icon={<FiMenu></FiMenu>}
-          label="Table Of Contents"
-          isOpen>
+          label="Table Of Contents">
+          <BookNavigation></BookNavigation>
+        </Panel>
+        <Panel
+          icon={<FiBook size="20"></FiBook>}
+          label="Protean RPG">
           <Component {...pageProps} />
         </Panel>
-
-        {/* <Panel css="min-w-2/12">
-          <PanelHeader>
-            <PanelHeaderIcon>
-              <FiMenu></FiMenu>
-            </PanelHeaderIcon>
-            <PanelHeaderLabel>
-              Table Of Contents
-            </PanelHeaderLabel>
-          </PanelHeader>
-          <PanelBody>
-            <BookNavigation></BookNavigation>
-          </PanelBody>
+        <Panel
+          icon={<GiStabbedNote size="20"></GiStabbedNote>}
+          label="Character Sheet">
+          <Sheet></Sheet>
         </Panel>
-
-        <Panel>
-          <PanelHeader>
-            <PanelHeaderIcon>
-              <FiBook size="20"></FiBook>
-            </PanelHeaderIcon>
-            <PanelHeaderLabel>Protean RPG Book</PanelHeaderLabel>
-          </PanelHeader>
-          <PanelBody>
-            <Component {...pageProps} />
-          </PanelBody>
-        </Panel>
-
-        <Panel>
-          <PanelHeader>
-            <PanelHeaderIcon>
-              <GiStabbedNote size="20"></GiStabbedNote>
-            </PanelHeaderIcon>
-            <PanelHeaderLabel>
-              Character Sheet
-            </PanelHeaderLabel>
-          </PanelHeader>
-          <PanelBody>
-            <Sheet></Sheet>
-          </PanelBody>
-        </Panel> */}
       </Body>
     </AppContainer>
   );
