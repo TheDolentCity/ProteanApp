@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import AppContainer from '../components/layout/app-container'
 import Header from '../components/layout/header'
 import Body from '../components/layout/body'
-import Panel, { PanelHeader, PanelHeaderIcon, PanelHeaderText, PanelBody } from '../components/layout/panel';
+import Panel, { PanelHeader, PanelHeaderIcon, PanelHeaderLabel, PanelBody } from '../components/layout/panel';
 import BookNavigation from '../components/navigation/book-navigation';
 import Sheet from '../components/sheets/sheet'
 
@@ -15,14 +15,21 @@ export default function MyApp({ Component, pageProps }) {
     <AppContainer>
       <Header>Protean RPG</Header>
       <Body>
-        <Panel css="min-w-2/12">
+        <Panel
+          icon={<FiMenu></FiMenu>}
+          label="Table Of Contents"
+          isOpen>
+          <Component {...pageProps} />
+        </Panel>
+
+        {/* <Panel css="min-w-2/12">
           <PanelHeader>
             <PanelHeaderIcon>
               <FiMenu></FiMenu>
             </PanelHeaderIcon>
-            <PanelHeaderText>
+            <PanelHeaderLabel>
               Table Of Contents
-            </PanelHeaderText>
+            </PanelHeaderLabel>
           </PanelHeader>
           <PanelBody>
             <BookNavigation></BookNavigation>
@@ -34,9 +41,7 @@ export default function MyApp({ Component, pageProps }) {
             <PanelHeaderIcon>
               <FiBook size="20"></FiBook>
             </PanelHeaderIcon>
-            <PanelHeaderText>
-              Protean RPG Book
-            </PanelHeaderText>
+            <PanelHeaderLabel>Protean RPG Book</PanelHeaderLabel>
           </PanelHeader>
           <PanelBody>
             <Component {...pageProps} />
@@ -48,14 +53,14 @@ export default function MyApp({ Component, pageProps }) {
             <PanelHeaderIcon>
               <GiStabbedNote size="20"></GiStabbedNote>
             </PanelHeaderIcon>
-            <PanelHeaderText>
+            <PanelHeaderLabel>
               Character Sheet
-            </PanelHeaderText>
+            </PanelHeaderLabel>
           </PanelHeader>
           <PanelBody>
             <Sheet></Sheet>
           </PanelBody>
-        </Panel>
+        </Panel> */}
       </Body>
     </AppContainer>
   );
