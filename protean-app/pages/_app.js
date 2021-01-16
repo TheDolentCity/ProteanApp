@@ -18,7 +18,7 @@ export default function MyApp({ Component, pageProps }) {
         <Panel
           icon={<FiMenu></FiMenu>}
           label="Table Of Contents"
-          openCss="min-w-72">
+          openCss="min-w-72 max-w-72">
           <BookNavigation></BookNavigation>
         </Panel>
         <Panel
@@ -31,6 +31,7 @@ export default function MyApp({ Component, pageProps }) {
           label="Character Sheet">
           <Sheet></Sheet>
         </Panel>
+        <span></span>
       </Body>
     </AppContainer>
   );

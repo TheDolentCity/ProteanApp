@@ -22,7 +22,7 @@ export default class Panel extends Component {
   render() {
     if (this.state.isOpen) {
       return (
-        <div className={"flex-auto h-screen whitespace-normal overflow-y-auto " + this.props.openCss}>
+        <div className={"flex-auto h-full whitespace-normal " + this.props.openCss}>
           <PanelHeader>
             <PanelIcon onClick={this.toggleOpen}>
               {this.props.icon}
@@ -39,18 +39,12 @@ export default class Panel extends Component {
     }
     else {
       return (
-        <div className={"flex-none w-16 h-screen whitespace-normal overflow-y-auto " + this.props.closedCss}>
-          <PanelHeader>
+        <div className={"flex-none w-16 h-full " + this.props.closedCss}>
+          <PanelHeader css="items-center">
             <PanelIcon onClick={this.toggleOpen}>
               {this.props.icon}
             </PanelIcon>
-            <PanelHeaderLabel isOpen={this.state.isOpen}>
-              {this.props.label}
-            </PanelHeaderLabel>
           </PanelHeader>
-          <PanelBody isOpen={this.state.isOpen}>
-            {this.props.children}
-          </PanelBody>
         </div>
       );
     }
@@ -59,7 +53,7 @@ export default class Panel extends Component {
 
 export function PanelHeader(props) {
   return (
-    <div className="flex w-full h-12 px-4 my-auto items-center border-b border-gray-300 dark:border-gray-700">
+    <div className={"flex w-full h-12 px-4 my-auto items-center border-b border-gray-300 dark:border-gray-700" + props.css}>
       {props.children}
     </div>
   );
@@ -67,47 +61,24 @@ export function PanelHeader(props) {
 
 export function PanelIcon(props) {
   return (
-    <button onClick={props.onClick} className="inline-block p-2 my-auto mr-2 items-center hover:bg-gray-200 focus:outline-none">
+    <button onClick={props.onClick} className="inline-block p-2 my-auto justify-center hover:bg-gray-200 focus:outline-none">
       {props.children}
     </button>
   );
 }
 
-export function PanelController(props) {
-  if (props.isOpen) {
-    return (
-      <div className="inline-block">
-        {props.children}
-      </div>
-    )
-  }
-  else return (
-    <div></div>
-  );
-}
-
 export function PanelHeaderLabel(props) {
-  if (props.isOpen) {
-    return (
-      <h3 className="truncate">
-        {props.children}
-      </h3>
-    );
-  }
-  else return (
-    <span></span>
+  return (
+    <h3 className="ml-2 truncate">
+      {props.children}
+    </h3>
   );
 }
 
 export function PanelBody(props) {
-  if (props.isOpen) {
-    return (
-      <div className="w-full h-auto p-6 whitespace-normal overflow-y-auto">
-        {props.children}
-      </div>
-    );
-  }
-  else return (
-    <div></div>
+  return (
+    <div className="w-full h-full p-6 whitespace-normal overflow-y-auto">
+      {props.children}
+    </div>
   );
 }

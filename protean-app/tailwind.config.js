@@ -76,6 +76,7 @@ module.exports = {
       '10/12': '83%',
       '11/12': '92%',
       'full': '100%',
+      'screen': '100vw'
     },
     minHeight: {
       '0': '0',
@@ -105,6 +106,7 @@ module.exports = {
       '10/12': '83%',
       '11/12': '92%',
       'full': '100%',
+      'screen': '100vh'
     },
     maxWidth: {
       '0': '0',
@@ -134,6 +136,7 @@ module.exports = {
       '10/12': '83%',
       '11/12': '92%',
       'full': '100%',
+      'screen': '100vw'
     },
     maxHeight: {
       '0': '0',
@@ -163,6 +166,7 @@ module.exports = {
       '10/12': '83%',
       '11/12': '92%',
       'full': '100%',
+      'screen': '100vh'
     },
     boxShadow: {
       sm: '0 0.8px 1.8px 0 rgba(0, 0, 0, 0.1)',
