@@ -17,7 +17,8 @@ export default function MyApp({ Component, pageProps }) {
       <Body>
         <Panel
           icon={<FiMenu></FiMenu>}
-          label="Table Of Contents">
+          label="Table Of Contents"
+          openCss="min-w-72">
           <BookNavigation></BookNavigation>
         </Panel>
         <Panel

@@ -10,7 +10,7 @@ export default class Panel extends Component {
   static propTypes = {
     children: PropTypes.instanceOf(Object).isRequired,
     icon: PropTypes.instanceOf(Object).isRequired,
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
   };
 
   toggleOpen = () => {
@@ -20,27 +20,46 @@ export default class Panel extends Component {
   };
 
   render() {
-    return (
-      <div className={"flex-auto h-screen min-w-1/12 whitespace-normal overflow-y-auto " + this.props.css}>
-        <PanelHeader>
-          <PanelIcon onClick={this.toggleOpen}>
-            {this.props.icon}
-          </PanelIcon>
-          <PanelHeaderLabel isOpen={this.state.isOpen}>
-            {this.props.label}
-          </PanelHeaderLabel>
-        </PanelHeader>
-        <PanelBody isOpen={this.state.isOpen}>
-          {this.props.children}
-        </PanelBody>
-      </div>
-    );
+    if (this.state.isOpen) {
+      return (
+        <div className={"flex-auto h-screen whitespace-normal overflow-y-auto " + this.props.openCss}>
+          <PanelHeader>
+            <PanelIcon onClick={this.toggleOpen}>
+              {this.props.icon}
+            </PanelIcon>
+            <PanelHeaderLabel isOpen={this.state.isOpen}>
+              {this.props.label}
+            </PanelHeaderLabel>
+          </PanelHeader>
+          <PanelBody isOpen={this.state.isOpen}>
+            {this.props.children}
+          </PanelBody>
+        </div>
+      );
+    }
+    else {
+      return (
+        <div className={"flex-none w-16 h-screen whitespace-normal overflow-y-auto " + this.props.closedCss}>
+          <PanelHeader>
+            <PanelIcon onClick={this.toggleOpen}>
+              {this.props.icon}
+            </PanelIcon>
+            <PanelHeaderLabel isOpen={this.state.isOpen}>
+              {this.props.label}
+            </PanelHeaderLabel>
+          </PanelHeader>
+          <PanelBody isOpen={this.state.isOpen}>
+            {this.props.children}
+          </PanelBody>
+        </div>
+      );
+    }
   }
 }
 
 export function PanelHeader(props) {
   return (
-    <div className="flex w-full h-12 px-6 my-auto items-center border-b border-gray-300 dark:border-gray-700">
+    <div className="flex w-full h-12 px-4 my-auto items-center border-b border-gray-300 dark:border-gray-700">
       {props.children}
     </div>
   );
@@ -70,7 +89,7 @@ export function PanelController(props) {
 export function PanelHeaderLabel(props) {
   if (props.isOpen) {
     return (
-      <h3>
+      <h3 className="truncate">
         {props.children}
       </h3>
     );
