@@ -22,7 +22,7 @@ export default class Panel extends Component {
   render() {
     if (this.state.isOpen) {
       return (
-        <div className={"flex-auto h-full whitespace-normal " + this.props.openCss}>
+        <div className={"flex-1 h-full whitespace-normal " + this.props.openCss}>
           <PanelHeader>
             <PanelIcon onClick={this.toggleOpen}>
               {this.props.icon}
