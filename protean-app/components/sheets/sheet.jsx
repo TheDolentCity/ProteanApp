@@ -1,6 +1,5 @@
 import { Component } from 'react';
-import ActionBlock from "../protean-rpg/action-blocks/action-block";
-import Dice from "../generic/game/dice"
+import ActionBlockPanel from '../protean-rpg/action-block';
 
 class Sheet extends Component {
   render() {
@@ -11,7 +10,43 @@ class Sheet extends Component {
           This is an example of the action blocks on a Protean character sheet.
         </p>
         <div className="w-full space-y-6">
-          <ActionBlock
+          <ActionBlockPanel 
+            actionBlocks={[
+              {
+                "header": "Strength",
+                "body": "The tabletop roleplaying game community has been growing rapidly over the past few years. Developers are pushing the boundaries of RPG design philosophy and consumers are looking for new ways to play and create the games they want. What if there were an open-source game that helps players create the game they want to play?",
+                "dice": {
+                  "count": 1,
+                  "size": 4
+                }
+              },
+              {
+                "header": "Dexterity",
+                "body": "The tabletop roleplaying game community has been growing rapidly over the past few years. Developers are pushing the boundaries of RPG design philosophy and consumers are looking for new ways to play and create the games they want. What if there were an open-source game that helps players create the game they want to play?",
+                "dice": {
+                  "count": 3,
+                  "size": 8
+                }
+              },
+              {
+                "header": "Wisdom",
+                "body": "The tabletop roleplaying game community has been growing rapidly over the past few years. Developers are pushing the boundaries of RPG design philosophy and consumers are looking for new ways to play and create the games they want. What if there were an open-source game that helps players create the game they want to play?",
+                "dice": {
+                  "count": 5,
+                  "size": 12
+                }
+              },
+              {
+                "header": "Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple Apple",
+                "body": "The tabletop roleplaying game community has been growing rapidly over the past few years. Developers are pushing the boundaries of RPG design philosophy and consumers are looking for new ways to play and create the games they want. What if there were an open-source game that helps players create the game they want to play?",
+                "dice": {
+                  "count": 5,
+                  "size": 12
+                }
+              }
+            ]}>
+          </ActionBlockPanel>
+          {/* <ActionBlock
             dice={<Dice count="1" size="4"></Dice>}
             header="Dexterity"
             body="The tabletop roleplaying game community has been growing rapidly over the past few years. Developers are pushing the boundaries of RPG design philosophy and consumers are looking for new ways to play and create the games they want. What if there were an open-source game that helps players create the game they want to play?">
@@ -45,7 +80,7 @@ class Sheet extends Component {
             dice={<Dice count="13" size="100"></Dice>}
             header="And the Red Dawn!"
             body="The tabletop roleplaying game community has been growing rapidly over the past few years. Developers are pushing the boundaries of RPG design philosophy and consumers are looking for new ways to play and create the games they want. What if there were an open-source game that helps players create the game they want to play?">
-          </ActionBlock>
+          </ActionBlock> */}
         </div>
       </div>
     );
