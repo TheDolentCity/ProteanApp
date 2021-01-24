@@ -81,7 +81,7 @@ function ActionBlockContainer(props) {
 
 function ActionBlockSection(props) {
   return(
-    <div className={"flex w-full min-h-12 align-text-top text-left border-b border-gray-300 bg-white " + props.css}>
+    <div className={"flex w-full min-h-12 align-text-top text-left border-b border-gray-400 bg-white " + props.css}>
       {props.children}
     </div>
   );
@@ -106,8 +106,8 @@ function ActionBlockRollButton(props) {
 
 function ActionBlockHeader(props) {
   return(
-    <div className="flex-grow ml-2 py-2 text-2xl text-left dark:bg-gray-800">
-      <span className="font-bold">
+    <div className="flex-grow ml-2 py-2 text-xl text-left dark:bg-gray-800">
+      <span className="font-semibold">
         {props.children}
       </span>
     </div>

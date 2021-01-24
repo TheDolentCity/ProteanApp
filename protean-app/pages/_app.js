@@ -33,7 +33,7 @@ export default function MyApp({ Component, pageProps }) {
         </Panel>
         <span></span>
       </AppBody>
-      <AppFooter>This is a footer that will have content</AppFooter>
+      {/* <AppFooter>This is a footer that will have content</AppFooter> */}
     </AppContainer>
   );
 }
