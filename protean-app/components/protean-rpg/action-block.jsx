@@ -10,12 +10,14 @@ export default class ActionBlockPanel extends Component {
     return (
       <Surface>
         <SurfaceSection>
-          {this.props.actionBlocks.map(function(actionBlock) {
-            return <ActionBlock
-              dice={actionBlock.dice}
-              header={actionBlock.header}
-              body={actionBlock.body}>
-            </ActionBlock>
+          {this.props.actionBlocks.map(function (actionBlock) {
+            return (
+              <ActionBlock
+                dice={actionBlock.dice}
+                header={actionBlock.header}
+                body={actionBlock.body}>
+              </ActionBlock>
+            );
           })}
         </SurfaceSection>
       </Surface>
@@ -46,10 +48,10 @@ class ActionBlock extends Component {
               {this.props.header}
             </ActionBlockHeader>
           </ActionBlockSection>
-          <ActionBlockSection css="items-center font-semibold bg-cyan-200">
+          <ActionBlockSection css="items-center font-semibold">
             <ActionBlockDice dice={this.props.dice}></ActionBlockDice>
           </ActionBlockSection>
-          <ActionBlockSection css="px-4 pt-2 pb-4 bg-cyan-200">
+          <ActionBlockSection css="px-4 pt-2 pb-4">
             {this.props.body}
           </ActionBlockSection>
         </ActionBlockContainer>
@@ -80,7 +82,7 @@ function ActionBlockContainer(props) {
 }
 
 function ActionBlockSection(props) {
-  return(
+  return (
     <div className={"flex w-full min-h-12 align-text-top text-left border-b border-gray-400 bg-white " + props.css}>
       {props.children}
     </div>
@@ -89,23 +91,23 @@ function ActionBlockSection(props) {
 
 function ActionBlockExpandButton(props) {
   return (
-    <ExpandButton 
-      onClick={props.onClick} 
-      css="flex-none p-2 hover:bg-cyan-300 dark:hover:bg-gray-700">
+    <ExpandButton
+      onClick={props.onClick}
+      css="flex-none p-2 hover:bg-gray-200 dark:hover:bg-gray-700">
     </ExpandButton>
   );
 }
 
 function ActionBlockRollButton(props) {
   return (
-    <button onClick={props.onClick} className="flex-none p-2 hover:bg-cyan-300 dark:hover:bg-gray-700 focus:outline-none">
+    <button onClick={props.onClick} className="flex-none p-2 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
       <GiRollingDices size="20"></GiRollingDices>
     </button>
   );
 }
 
 function ActionBlockHeader(props) {
-  return(
+  return (
     <div className="flex-grow ml-2 py-2 text-xl text-left dark:bg-gray-800">
       <span className="font-semibold">
         {props.children}

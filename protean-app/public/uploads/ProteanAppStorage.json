@@ -1,0 +1,48 @@
+{
+  "app-version": "0.0.1",
+  "files": [
+    {
+      "filename": "user.config",
+      "filetype": "CONFIG",
+      "filedata": ""
+    },
+    {
+      "filename": "protean-core.json",
+      "filetype": "BOOK",
+      "filedata": ""
+    },
+    {
+      "filename": "carter-guyus.json",
+      "filetype": "SHEET",
+      "filedata": {
+        "name": "Carter Guyus",
+        "actionBlocks": [
+          {
+            "header": "Strength",
+            "body": "The tabletop roleplaying game community has been growing rapidly over the past few years. Developers are pushing the boundaries of RPG design philosophy and consumers are looking for new ways to play and create the games they want. What if there were an open-source game that helps players create the game they want to play?",
+            "dice": {
+              "count": 1,
+              "size": 4
+            }
+          },
+          {
+            "header": "Dexterity",
+            "body": "The tabletop roleplaying game community has been growing rapidly over the past few years. Developers are pushing the boundaries of RPG design philosophy and consumers are looking for new ways to play and create the games they want. What if there were an open-source game that helps players create the game they want to play?",
+            "dice": {
+              "count": 3,
+              "size": 8
+            }
+          },
+          {
+            "header": "Wisdom",
+            "body": "The tabletop roleplaying game community has been growing rapidly over the past few years. Developers are pushing the boundaries of RPG design philosophy and consumers are looking for new ways to play and create the games they want. What if there were an open-source game that helps players create the game they want to play?",
+            "dice": {
+              "count": 5,
+              "size": 12
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

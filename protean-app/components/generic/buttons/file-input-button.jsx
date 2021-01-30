@@ -26,7 +26,7 @@ export default function FileInputButton(props) {
 
   return (
     <form ref = { formRef } >
-      <button type="button" onClick={onClickHandler}>
+      <button type="button" onClick={onClickHandler} className="px-2 py-1 text-sm font-semibold bg-yellow-600 hover:bg-yellow-700 focus:outline-none">
         {props.children}
       </button>
       <input
