@@ -16,6 +16,7 @@
       "filetype": "SHEET",
       "filedata": {
         "name": "Carter Guyus",
+        "description": "This is an example of a character description.",
         "actionBlocks": [
           {
             "header": "Strength",

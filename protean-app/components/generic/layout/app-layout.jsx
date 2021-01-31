@@ -1,4 +1,4 @@
-import FileUploader from '../storage/upload-files';
+import FileUploader from '../storage/file-uploader';
 
 export default function AppContainer(props) {
   return (

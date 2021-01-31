@@ -7,21 +7,25 @@ import { GiRollingDices } from 'react-icons/gi'
 
 export default class ActionBlockPanel extends Component {
   render() {
-    return (
-      <Surface>
-        <SurfaceSection>
-          {this.props.actionBlocks.map(function (actionBlock) {
-            return (
-              <ActionBlock
-                dice={actionBlock.dice}
-                header={actionBlock.header}
-                body={actionBlock.body}>
-              </ActionBlock>
-            );
-          })}
-        </SurfaceSection>
-      </Surface>
-    );
+    console.log("ActionBlocks: " + this.props.actionBlocks);
+    if (this.props.actionBlocks !== undefined) {
+      return (
+        <Surface>
+          <SurfaceSection>
+            {this.props.actionBlocks.map(function (actionBlock) {
+              return (
+                <ActionBlock
+                  dice={actionBlock.dice}
+                  header={actionBlock.header}
+                  body={actionBlock.body}>
+                </ActionBlock>
+              );
+            })}
+          </SurfaceSection>
+        </Surface>
+      );
+    }
+    else return null;
   }
 }
 

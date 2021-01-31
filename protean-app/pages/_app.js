@@ -11,7 +11,7 @@ import { GiStabbedNote } from 'react-icons/gi'
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    // <GlobalContextProvider>
+    <GlobalContextProvider>
       <AppContainer>
         <AppHeader>
           Protean RPG
@@ -38,6 +38,6 @@ export default function MyApp({ Component, pageProps }) {
           <span></span>
         </AppBody>
       </AppContainer>
-    // </GlobalContextProvider>
+    </GlobalContextProvider>
   );
 }
