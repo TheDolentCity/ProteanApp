@@ -1,13 +1,9 @@
 import '../styles/globals.css'
 import GlobalContextProvider from '../components/context/global-context'
 import AppContainer, { AppHeader, AppBody, AppFooter } from '../components/generic/layout/app-layout'
-import Panel from '../components/generic/layout/panel';
-import BookNavigation from '../components/generic/navigation/book-navigation';
-import Sheet from '../components/sheets/sheet'
-
-import { FiMenu } from 'react-icons/fi'
-import { FiBook } from 'react-icons/fi'
-import { GiStabbedNote } from 'react-icons/gi'
+import BookNavigationPanel from '../components/panels/book-navigation-panel'
+import PagePanel from '../components/panels/page-panel'
+import SheetPanel from '../components/panels/sheet-panel'
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -17,24 +13,13 @@ export default function MyApp({ Component, pageProps }) {
           Protean RPG
         </AppHeader>
         <AppBody>
-          <Panel
-            icon={<FiMenu></FiMenu>}
-            label="Table Of Contents"
-            openCss="min-w-72 max-w-72">
-            <BookNavigation></BookNavigation>
-          </Panel>
-          <Panel
-            icon={<FiBook size="20"></FiBook>}
-            label="Protean RPG"
-            openCss="">
+          <BookNavigationPanel></BookNavigationPanel>
+          <PagePanel>
             <Component {...pageProps} />
-          </Panel>
-          <Panel
-            icon={<GiStabbedNote size="20"></GiStabbedNote>}
-            label="Character Sheet"
-            openCss="min-w-72">
-            <Sheet></Sheet>
-          </Panel>
+          </PagePanel>
+          <SheetPanel></SheetPanel>
+
+          {/* This is specifically to add a divide border when far right panel is collapsed */}
           <span></span>
         </AppBody>
       </AppContainer>

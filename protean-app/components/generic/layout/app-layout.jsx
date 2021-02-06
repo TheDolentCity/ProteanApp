@@ -1,8 +1,6 @@
-import FileUploader from '../storage/file-uploader';
-
 export default function AppContainer(props) {
   return (
-    <div className="flex flex-col w-screen h-screen max-w-screen max-h-screen text-gray-900 bg-gray-50 font-sans divide-y divide-gray-300 dark:text-gray-100 dark:bg-gray-900 dark:divide-gray-700">
+    <div className="flex flex-col w-screen h-screen max-w-screen max-h-screen text-gray-900 bg-gray-50 font-sans divide-y divide-gray-300 dark:text-gray-100 dark:bg-black dark:divide-gray-700">
       {props.children}
     </div>
   );
@@ -10,18 +8,17 @@ export default function AppContainer(props) {
 
 export function AppHeader(props) {
   return (
-    <div className="flex-none flex flex-nowrap h-12 px-4 my-auto items-center">
+    <div className="flex-none flex flex-nowrap h-12 px-4 my-auto items-center bg-white dark:bg-gray-900">
       <h3 className="flex-grow">
         {props.children}
       </h3>
-      <FileUploader></FileUploader>
     </div>
   );
 }
 
 export function AppBody(props) {
   return (
-    <div className="flex-grow flex flex-nowrap w-full h-full whitespace-nowrap overflow-hidden divide-x divide-gray-300 dark:divide-gray-700">
+    <div className="flex-grow flex flex-nowrap w-full whitespace-nowrap overflow-hidden divide-x divide-gray-300 dark:divide-gray-700">
       {props.children}
     </div>
   );

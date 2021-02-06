@@ -7,6 +7,7 @@ export const uploadFileRequest = async (formData, progressCallback) => {
     validateStatus: (status) => true,
   };
   var response = await axios.post('/api/uploads', formData, config);
+  console.log("AxiosResponse: " + JSON.stringify(response));
 
   return response.data;
 };

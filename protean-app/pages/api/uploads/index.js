@@ -11,10 +11,6 @@ const upload = multer({
     destination: './public/uploads',
     filename: (req, file, cb) => cb(null, file.originalname),
   }),
-  /*fileFilter: (req, file, cb) => {
-    const acceptFile: boolean = ['image/jpeg', 'image/png'].includes(file.mimetype);
-    cb(null, acceptFile);
-  },*/
 });
 
 const apiRoute = nextConnect({
@@ -30,9 +26,9 @@ apiRoute.use(upload.array('theFiles'));
 
 apiRoute.post((req, res) => {
   const filenames = fs.readdirSync(outputFolderName);
-  const images = filenames.map((name) => name);
+  const files = filenames.map((name) => name);
 
-  res.status(200).json({ data: images });
+  res.status(200).json(files);
 });
 
 export const config = {

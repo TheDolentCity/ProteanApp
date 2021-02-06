@@ -19,9 +19,9 @@ export default function FileInputButton(props) {
       formData.append(event.target.name, file);
     });
 
-    props.onChange(formData);
-
     formRef.current?.reset();
+
+    props.onChange(formData);
   };
 
   return (
