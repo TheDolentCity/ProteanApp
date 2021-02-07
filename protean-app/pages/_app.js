@@ -8,10 +8,10 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <ProteanApp>
       <ProteanAppHeader>
-        Protean RPG
+        Protean
       </ProteanAppHeader>
       <ProteanAppCommandBar>
-
+        
       </ProteanAppCommandBar>
       <ProteanAppBody>
         <BookNavigationPanel bookName="Protean RPG"></BookNavigationPanel>
