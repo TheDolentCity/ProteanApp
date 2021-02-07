@@ -3,9 +3,6 @@ import ActionBlockPanel from '../protean-rpg/action-block'
 
 export default class Sheet extends Component {
   render() {
-    console.log("File: " + JSON.stringify(this.props?.file));
-    console.log("Filedata: " + this.props?.file?.filedata);
-    console.log("ActionBlocks: " + this.props?.file?.filedata?.actionBlocks);
     return (
       <div className="">
         <h1>

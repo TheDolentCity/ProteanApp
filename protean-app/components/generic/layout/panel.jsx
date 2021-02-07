@@ -1,90 +1,45 @@
-import { Component } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react';
+import { VscChevronDown, VscChevronUp } from 'react-icons/vsc'
 
-export default class PanelContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {isOpen: true};
-  }
+export default function Panel(props) {
+  const [isOpen, setIsOpen] = useState(true);
 
-  static propTypes = {
-    children: PropTypes.instanceOf(Object).isRequired,
-    icon: PropTypes.instanceOf(Object).isRequired,
-    label: PropTypes.string.isRequired,
+  function toggleOpen() {
+    setIsOpen(!isOpen);
   };
 
-  toggleOpen = () => {
-    this.setState((state) => {
-      return {isOpen: !state.isOpen}
-    });
-  };
-
-  render() {
-    if (this.state.isOpen) {
-      return (
-        <div className={"flex-1 flex flex-col whitespace-normal " + this.props.openCss}>
-          <PanelHeader>
-            <PanelIcon onClick={this.toggleOpen}>
-              {this.props.icon}
-            </PanelIcon>
-            <PanelHeaderLabel>
-              {this.props.label}
-            </PanelHeaderLabel>
-          </PanelHeader>
-          {this.props.children}
+  if (isOpen) {
+    return (
+      <div className={"flex-1 flex flex-col whitespace-normal " + props.openCss}>
+        <div className="flex-none flex w-full h-8 my-auto items-center border-b border-gray-300 dark:border-gray-700">
+          <button onClick={toggleOpen} className="flex-none p-2 my-auto justify-center float-right hover:bg-gray-200 focus:outline-none">
+            <VscChevronUp></VscChevronUp>
+          </button>
+          <h4 className="flex-grow ml-2 truncate">
+            {props.label}
+          </h4>
         </div>
-      );
-    }
-    else {
-      return (
-        <div className={"flex-none w-16 " + this.props.closedCss}>
-          <PanelHeader>
-            <PanelIcon onClick={this.toggleOpen}>
-              {this.props.icon}
-            </PanelIcon>
-          </PanelHeader>
+        <div className="flex-grow w-full p-6 whitespace-normal overflow-y-auto">
+          {props.children}
         </div>
-      );
-    }
+      </div>
+    );
   }
-}
-
-function PanelHeader(props) {
-  return (
-    <div className={"flex-none flex w-full h-12 px-4 my-auto items-center border-b border-gray-300 dark:border-gray-700" + props.css}>
-      {props.children}
-    </div>
-  );
-}
-
-function PanelIcon(props) {
-  return (
-    <button onClick={props.onClick} className="inline-block p-2 my-auto justify-center hover:bg-gray-200 focus:outline-none">
-      {props.children}
-    </button>
-  );
-}
-
-function PanelHeaderLabel(props) {
-  return (
-    <h3 className="ml-2 truncate">
-      {props.children}
-    </h3>
-  );
-}
-
-export function PanelCommands(props) {
-  return (
-    <div className={"flex-none flex w-full h-12 px-6 my-auto items-center border-b border-gray-300 dark:border-gray-700" + props.css}>
-      {props.children}
-    </div>
-  );
-}
-
-export function PanelBody(props) {
-  return (
-    <div className="flex-grow w-full p-6 whitespace-normal overflow-y-auto">
-      {props.children}
-    </div>
-  );
+  else {
+    return (
+      <div className={"flex-1 flex flex-col w-16 whitespace-normal " + props.closedCss}>
+        <div className={"flex-none flex w-full h-8 my-auto align-top items-center border-b border-gray-300 dark:border-gray-700" + props.css}>
+          <button onClick={toggleOpen} className="flex-none p-2 my-auto justify-center float-right hover:bg-gray-200 focus:outline-none">
+            <VscChevronDown></VscChevronDown>
+          </button>
+          <h4 className="flex-grow ml-2 truncate">
+            {props.label}
+          </h4>
+        </div>
+        <div className="flex-grow w-full p-6 whitespace-normal overflow-y-auto">
+          <div></div>
+        </div>
+      </div>
+    );
+  }
 }
