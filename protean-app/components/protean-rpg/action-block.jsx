@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import Dice from '../generic/game/dice';
 import Surface, { SurfaceSection } from '../generic/layout/surface';
-import ExpandButton from '../generic/buttons/expand-button';
+import ExpandButton from '../generic/basic-inputs/expand-button';
 
 import { GiRollingDices } from 'react-icons/gi'
 

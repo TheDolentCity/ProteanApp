@@ -26,7 +26,7 @@ export default function Grip() {
       </Paragraph>
 
       <h3>Grip Exhaustion</h3>
-      <Paragraph>
+      <Paragraph spaceAfter="0">
         This occurs when your grip is equal to or falls below zero. At this point you must immediately leave the scene. How you leave the scene is up to the Advocate. The Advocate should determine this based on whoever or whatever caused you to lose grip. Consider the following examples: 
       </Paragraph>
       <BulletedList>
@@ -44,7 +44,7 @@ export default function Grip() {
       <h2>
         Grip Exhaustion and Consent
       </h2>
-      <Paragraph>
+      <Paragraph spaceAfter="0">
         While the grip exhaustion mechanic is a moment where the Advocate determines the outcome, ultimately the actor needs to consent to this outcome. The role of the Advocate is to understand the supporting cast and create realistic or interesting grip exhaustion outcomes based on the relevant cast members. The actor's responsibility is to be fair and try to recognize whether or not they accept this outcome.
       </Paragraph>
     </Page>
