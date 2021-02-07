@@ -1,12 +1,23 @@
 import { useState } from 'react';
 import { VscChevronDown, VscChevronRight } from 'react-icons/vsc'
 
-export default function DocumentManager(props) {
-  const [documents, setDocuments] = useState([]);
+export default function DocumentTabs(props) {
+  const [currentTab, SetCurrentTab] = useState("");
+  const [documentTabs, setDocumentTabs] = useState([]);
+  const testingDocumentTabs = [
+    {
+      label: "BOOK - Protean RPG",
+      fileName: "protean-core.json",
+    },
+    {
+      label: "SHEET - Carter Guyus",
+      fileName: "carter-guyus.json",
+    }
+  ]
 
-  function toggleOpen() {
-    setIsOpen(!isOpen);
-  };
+  function addDocument(document) {
+    setDocumentTabs([...documentTabs, document]);
+  }
 
   if (isOpen) {
     return (

@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import ProteanApp, { ProteanAppHeader, ProteanAppCommandBar, ProteanAppBody } from '../components/generic/layout/app-layout'
+import ProteanApp, { ProteanAppHeader, ProteanAppCommandBar, ProteanAppBody, CommandRead, CommandAdmin, CommandWrite } from '../components/generic/layout/app-layout'
 import BookNavigationPanel from '../components/panels/book-navigation-panel'
 import PagePanel from '../components/panels/page-panel'
 import SheetPanel from '../components/panels/sheet-panel'
@@ -11,7 +11,6 @@ export default function MyApp({ Component, pageProps }) {
         Protean
       </ProteanAppHeader>
       <ProteanAppCommandBar>
-        
       </ProteanAppCommandBar>
       <ProteanAppBody>
         <BookNavigationPanel bookName="Protean RPG"></BookNavigationPanel>
