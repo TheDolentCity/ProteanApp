@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { VscChevronDown, VscChevronRight } from 'react-icons/vsc'
 
-export default function Panel(props) {
+export default function ProteanPanel(props) {
   const [isOpen, setIsOpen] = useState(true);
 
   function toggleOpen() {
@@ -10,8 +10,8 @@ export default function Panel(props) {
 
   return (
     <div className={"flex-1 flex flex-col whitespace-normal " + props.openCss}>
-      <div className="flex-none flex w-full h-8 my-auto items-center border-b border-gray-300 dark:border-gray-700">
-        <button onClick={toggleOpen} className="flex-none m-1 p-1 my-auto justify-center float-right hover:bg-gray-200 focus:outline-none">
+      <div className="flex-none flex w-full h-6 my-auto items-center border-b border-gray-400 bg-gray-200 dark:border-gray-800">
+        <button onClick={toggleOpen} className="flex-none m-2 my-auto justify-center float-right hover:bg-gray-300 dark:hover:bg-gray-700 focus:outline-none">
           {isOpen ?
             <VscChevronDown></VscChevronDown>
             :

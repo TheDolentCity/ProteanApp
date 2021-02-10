@@ -1,12 +1,12 @@
-import Panel from '../generic/layout/panel';
+import ProteanPanel from '../generic/layout/protean-panel';
 import BookNavigation from '../generic/navigation/book-navigation'
 
 export default function BookNavigationPanel(props) {
   return (
-    <Panel
+    <ProteanPanel
       label={"Navigate " + props.bookName }
-      openCss="min-w-72 max-w-72">
+      openCss="">
       <BookNavigation></BookNavigation>
-    </Panel>
+    </ProteanPanel>
   );
 }

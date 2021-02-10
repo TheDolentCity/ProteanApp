@@ -3,14 +3,14 @@ import { VscBook, VscEdit, VscTerminal } from "react-icons/vsc";
 export default function ProteanAppCommandBar(props) {
   return (
     <div className="flex-none flex flex-nowrap h-12 px-2 my-auto items-center">
-      <div className="flex-none flex h-full my-auto pr-2 items-center border-r border-gray-300">
+      <div className="flex-none flex h-full my-auto pr-2 items-center border-r border-gray-400">
         <div className="space-x-1">
           <CommandAdmin></CommandAdmin>
           <CommandRead></CommandRead>
           <CommandWrite></CommandWrite>
         </div>
       </div>
-      <div className="flex-none flex h-full my-auto px-2 items-center border-r border-gray-300">
+      <div className="flex-none flex h-full my-auto px-2 items-center border-r border-gray-400">
         <div className="space-x-1">
           <CommandAdmin></CommandAdmin>
           <CommandRead></CommandRead>

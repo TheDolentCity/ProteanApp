@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Surface, { SurfaceSection } from '../layout/surface';
 
 export default function Dropdown(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +9,7 @@ export default function Dropdown(props) {
 
   return (
     <div className="h-full">
-      <button onClick={toggleOpen} className={"h-full my-auto px-2 justify-center hover:bg-gray-300 focus:outline-none " + props.css}>
+      <button onClick={toggleOpen} className={"h-full my-auto px-2 justify-center hover:bg-gray-400 focus:outline-none " + props.css}>
         <h5 className="">
           {props.label}
         </h5>

@@ -1,11 +1,11 @@
-import Panel from '../generic/layout/panel';
+import ProteanPanel from '../generic/layout/protean-panel';
 
 export default function PagePanel(props) {
   return (
-    <Panel
+    <ProteanPanel
       label="Protean RPG"
       openCss="">
       {props.children}
-    </Panel>
+    </ProteanPanel>
   );
 }
