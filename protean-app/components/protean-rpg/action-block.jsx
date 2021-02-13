@@ -97,14 +97,14 @@ function ActionBlockExpandButton(props) {
   return (
     <ExpandButton
       onClick={props.onClick}
-      css="flex-none p-2 hover:bg-gray-200 dark:hover:bg-gray-700">
+      css="flex-none p-2 hover:bg-black hover:bg-opacity-10 dark:hover:bg-white dark:hover:bg-white">
     </ExpandButton>
   );
 }
 
 function ActionBlockRollButton(props) {
   return (
-    <button onClick={props.onClick} className="flex-none p-2 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
+    <button onClick={props.onClick} className="flex-none p-2 hover:bg-black hover:bg-opacity-10 dark:hover:bg-white focus:outline-none">
       <GiRollingDices size="20"></GiRollingDices>
     </button>
   );

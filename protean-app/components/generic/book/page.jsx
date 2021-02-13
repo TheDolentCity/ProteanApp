@@ -1,13 +1,9 @@
-import Surface, { SurfaceSection } from '../layout/surface'
+
 
 export default function Page(props) {
   return (
-    <Surface>
-      <SurfaceSection>
-        <article className="p-6 text-base font-normal">
-          {props.children}
-        </article>
-      </SurfaceSection>
-    </Surface>
+    <article className="p-8 text-base font-normal bg-white dark:bg-black">
+      {props.children}
+    </article>
   );
 }

@@ -51,7 +51,7 @@ export default function ProteanDocumentViewer(props) {
 
   // Toggle currently active tab
   function handleTabClick(tabIndex) {
-    setActiveTab(tabIndex === activeTab ? props.defaultActiveTab : tabIndex);
+    setActiveTab(tabIndex);
   }
   handleTabClick = handleTabClick.bind(this);
 
@@ -80,7 +80,7 @@ export default function ProteanDocumentViewer(props) {
       <ul className="flex-none flex divide-x divide-gray-400 dark:divide-gray-600">
         {renderChildrenWithTabsApiAsProps()}
       </ul>
-      <div className="flex-grow w-full p-6 whitespace-normal overflow-y-auto">
+      <div className="flex-grow w-full whitespace-normal overflow-y-auto">
         {renderActiveTabContent()}
       </div>
     </div>
@@ -99,7 +99,7 @@ export function ProteanDocumentTab(props) {
           {props.label}
         </h6>
       </button>
-      <button className="flex-none m-2 my-auto justify-center float-right hover:bg-gray-300 dark:hover:bg-700 focus:outline-none">
+      <button className="flex-none m-2 my-auto justify-center float-right hover:bg-black hover:bg-opacity-10 dark:hover:bg-white focus:outline-none">
         <VscClose></VscClose>
       </button>
     </li>

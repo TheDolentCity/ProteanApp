@@ -24,10 +24,10 @@ export default function MyApp({ Component, pageProps }) {
           <BookNavigationPanel bookName="Protean RPG"></BookNavigationPanel>
         </ProteanToolPanel>
         <ProteanDocumentViewer>
-          <ProteanDocumentTab label="BOOK - Protean RPG">
+          <ProteanDocumentTab label="BOOK // Protean RPG">
             <Component {...pageProps} />
           </ProteanDocumentTab>
-          <ProteanDocumentTab label="SHEET - Carter Guyus">
+          <ProteanDocumentTab label="SHEET // Carter Guyus">
             <Sheet file={null}></Sheet>
           </ProteanDocumentTab>
         </ProteanDocumentViewer>

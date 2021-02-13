@@ -9,7 +9,7 @@ export default function Dropdown(props) {
 
   return (
     <div className="h-full">
-      <button onClick={toggleOpen} className={"h-full my-auto px-2 justify-center hover:bg-gray-400 focus:outline-none " + props.css}>
+      <button onClick={toggleOpen} className={"h-full my-auto px-2 justify-center hover:bg-black hover:bg-opacity-10 dark:hover:bg-white focus:outline-none " + props.css}>
         <h5 className="">
           {props.label}
         </h5>

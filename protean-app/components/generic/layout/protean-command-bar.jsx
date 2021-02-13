@@ -1,46 +1,75 @@
-import { VscBook, VscEdit, VscTerminal } from "react-icons/vsc";
+import { VscBook, VscCloudDownload, VscCloudUpload, VscEdit, VscTerminal } from "react-icons/vsc";
 
 export default function ProteanAppCommandBar(props) {
   return (
     <div className="flex-none flex flex-nowrap h-12 px-2 my-auto items-center">
-      <div className="flex-none flex h-full my-auto pr-2 items-center border-r border-gray-400">
-        <div className="space-x-1">
-          <CommandAdmin></CommandAdmin>
-          <CommandRead></CommandRead>
-          <CommandWrite></CommandWrite>
-        </div>
-      </div>
-      <div className="flex-none flex h-full my-auto px-2 items-center border-r border-gray-400">
-        <div className="space-x-1">
-          <CommandAdmin></CommandAdmin>
-          <CommandRead></CommandRead>
-          <CommandWrite></CommandWrite>
-        </div>
+      <CommandGroup>
+        <CommandAdmin></CommandAdmin>
+        <CommandRead></CommandRead>
+        <CommandWrite></CommandWrite>
+      </CommandGroup>
+      <CommandGroup>
+        <CommandUpload></CommandUpload>
+        <CommandDownload></CommandDownload>
+      </CommandGroup>
+    </div>
+  );
+}
+
+function CommandGroup(props) {
+  return (
+    <div className="flex-none flex h-full my-auto px-2 items-center border-r border-gray-400">
+      <div className="space-x-1">
+        {props.children}
       </div>
     </div>
   );
 }
 
-export function CommandAdmin(props) {
+function Command(props) {
   return (
-    <button className="flex-none p-2 my-auto justify-center hover:bg-gray-200 focus:outline-none">
+    <button onClick={props.onClick} className="flex-none p-2 my-auto justify-center hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none">
+      {props.children}
+    </button>
+  );
+}
+
+function CommandAdmin(props) {
+  return (
+    <Command>
       <VscTerminal size="20"></VscTerminal>
-    </button>
+    </Command>
   );
 }
 
-export function CommandRead(props) {
+function CommandRead(props) {
   return (
-    <button className="flex-none p-2 my-auto justify-center hover:bg-gray-200 focus:outline-none">
+    <Command>
       <VscBook size="20"></VscBook>
-    </button>
+    </Command>
   );
 }
 
-export function CommandWrite(props) {
+function CommandWrite(props) {
   return (
-    <button className="flex-none p-2 my-auto justify-center hover:bg-gray-200 focus:outline-none">
+    <Command>
       <VscEdit size="20"></VscEdit>
-    </button>
+    </Command>
+  );
+}
+
+function CommandUpload(props) {
+  return (
+    <Command>
+      <VscCloudUpload size="20"></VscCloudUpload>
+    </Command>
+  );
+}
+
+function CommandDownload(props) {
+  return (
+    <Command>
+      <VscCloudDownload size="20"></VscCloudDownload>
+    </Command>
   );
 }
