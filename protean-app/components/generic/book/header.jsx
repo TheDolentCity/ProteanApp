@@ -8,7 +8,7 @@ export function Header1(props) {
         "text-" + props.fontSize + " " +
         "font-" + props.fontStyle
       }>
-      {props.block.text}
+      {props.children}
     </h1>
   );
 }
@@ -23,7 +23,7 @@ export function Header2(props) {
         "text-" + props.fontSize + " " +
         "font-" + props.fontStyle
       }>
-      {props.block.text}
+      {props.children}
     </h2>
   );
 }
@@ -38,7 +38,7 @@ export function Header3(props) {
         "text-" + props.fontSize + " " +
         "font-" + props.fontStyle
       }>
-      {props.block.text}
+      {props.children}
     </h3>
   );
 }
@@ -53,7 +53,7 @@ export function Header4(props) {
         "text-" + props.fontSize + " " +
         "font-" + props.fontStyle
       }>
-      {props.block.text}
+      {props.children}
     </h4>
   );
 }
@@ -68,7 +68,7 @@ export function Header5(props) {
         "text-" + props.fontSize + " " +
         "font-" + props.fontStyle
       }>
-      {props.block.text}
+      {props.children}
     </h5>
   );
 }
@@ -83,7 +83,7 @@ export function Header6(props) {
         "text-" + props.fontSize + " " +
         "font-" + props.fontStyle
       }>
-      {props.block.text}
+      {props.children}
     </h6>
   );
 }

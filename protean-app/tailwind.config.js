@@ -26,7 +26,8 @@ module.exports = {
       },
       cyan: colors.cyan,
       magenta: colors.fuchsia,
-      yellow: colors.yellow
+      yellow: colors.yellow,
+      red: colors.red
     },
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
