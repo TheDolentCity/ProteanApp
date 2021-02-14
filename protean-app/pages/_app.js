@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import ProteanApp from '../components/generic/layout/protean-app'
 import ProteanAppHeader from '../components/generic/layout/protean-header'
-import ProteanAppCommandBar from '../components/generic/layout/protean-command-bar'
+import ProteanAppCommandBar, { CommandGroup, CommandAdmin, CommandRead, CommandWrite, CommandUpload, CommandDownload } from '../components/generic/layout/protean-command-bar'
 import ProteanAppBody from '../components/generic/layout/protean-body'
 import ProteanDocumentViewer, { ProteanDocumentTab } from '../components/generic/layout/protean-document-viewer'
 import BookNavigationPanel from '../components/panels/book-navigation-panel'
@@ -16,8 +16,19 @@ export default function MyApp({ Component, pageProps }) {
       <ProteanAppHeader>
         Protean
       </ProteanAppHeader>
-      <ProteanAppCommandBar>
-      </ProteanAppCommandBar>
+
+      {/* <ProteanAppCommandBar>
+        <CommandGroup>
+          <CommandAdmin></CommandAdmin>
+          <CommandRead></CommandRead>
+          <CommandWrite></CommandWrite>
+        </CommandGroup>
+        <CommandGroup>
+          <CommandUpload></CommandUpload>
+          <CommandDownload></CommandDownload>
+        </CommandGroup>
+      </ProteanAppCommandBar> */}
+
       <ProteanAppBody>
         <ProteanToolPanel>
           <BookNavigationPanel bookName="Protean RPG"></BookNavigationPanel>
@@ -31,10 +42,6 @@ export default function MyApp({ Component, pageProps }) {
             <Sheet file={null}></Sheet>
           </ProteanDocumentTab>
         </ProteanDocumentViewer>
-        <ProteanToolPanel>
-          <BookNavigationPanel bookName="Protean RPG"></BookNavigationPanel>
-          <BookNavigationPanel bookName="Protean RPG"></BookNavigationPanel>
-        </ProteanToolPanel>
       </ProteanAppBody>
     </ProteanApp>
   );

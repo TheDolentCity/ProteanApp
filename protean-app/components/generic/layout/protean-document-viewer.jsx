@@ -77,7 +77,7 @@ export default function ProteanDocumentViewer(props) {
   // Render Document Viewer component
   return (
     <div className="flex flex-col w-full h-full">
-      <ul className="flex-none flex divide-x divide-gray-400 dark:divide-gray-600">
+      <ul className="flex-none flex">
         {renderChildrenWithTabsApiAsProps()}
       </ul>
       <div className="flex-grow w-full whitespace-normal overflow-y-auto">
@@ -89,7 +89,7 @@ export default function ProteanDocumentViewer(props) {
 
 export function ProteanDocumentTab(props) {
   return (
-    <li className={`flex-1 flex h-6 my-auto items-center border-b border-gray-400 ${props.isActive ? 'bg-gray-200 dark:border-gray-800' : 'bg-gray-100 dark:border-gray-900'} `}>
+    <li className={`flex-1 flex h-8 my-auto items-center ${props.isActive ? 'bg-protean-light dark:bg-protean-dark' : 'bg-protean-tab-light dark:bg-protean-tab-dark'} `}>
       <button className={`w-full h-full ${props.isActive ? 'active' : ''} focus:outline-none`}
         onClick={(event) => {
           event.preventDefault();
@@ -99,7 +99,7 @@ export function ProteanDocumentTab(props) {
           {props.label}
         </h6>
       </button>
-      <button className="flex-none m-2 my-auto justify-center float-right hover:bg-black hover:bg-opacity-10 dark:hover:bg-white focus:outline-none">
+      <button className="flex-none m-2 my-auto justify-center float-right focus:outline-none">
         <VscClose></VscClose>
       </button>
     </li>
