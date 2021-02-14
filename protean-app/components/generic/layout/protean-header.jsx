@@ -8,9 +8,9 @@ export default function ProteanAppHeader(props) {
       <button className="flex-none h-full my-auto pr-2 justify-center focus:outline-none">
         <VscTerminal size="16"></VscTerminal>
       </button>
-      <h4 className="flex-none ml-1 mr-4">
+      <h5 className="flex-none ml-1 mr-4 font-semibold">
         {props.children}
-      </h4>
+      </h5>
       <ProteanFileDropdown></ProteanFileDropdown>
       <ProteanViewDropdown></ProteanViewDropdown>
       <ProteanDocumentDropdown></ProteanDocumentDropdown>

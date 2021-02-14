@@ -6,7 +6,7 @@ export default function Paragraph(props) {
         "mb-" + props.spaceAfter + " " +
         "leading-" + props.leading
       }>
-      {props.children}
+      {props.block.text}
     </p>
   );
 }

@@ -1,5 +1,5 @@
 import Page from '../../../../components/generic/book/page'
-import { BulletedList, ListItem } from '../../../../components/generic/book/lists'
+import { ListBulleted, ListItem } from '../../../../components/generic/book/lists'
 import Paragraph from '../../../../components/generic/book/paragraph'
 
 export default function Grip() {
@@ -29,7 +29,7 @@ export default function Grip() {
       <Paragraph spaceAfter="0">
         This occurs when your grip is equal to or falls below zero. At this point you must immediately leave the scene. How you leave the scene is up to the Advocate. The Advocate should determine this based on whoever or whatever caused you to lose grip. Consider the following examples: 
       </Paragraph>
-      <BulletedList>
+      <ListBulleted>
         <ListItem>
           If a young, fire-breathing dragon engulfs you in flame and your grip is exhausted as a result, then your armor could become ruined, your skin scarred, and you could fall unconscious.
         </ListItem>
@@ -39,7 +39,7 @@ export default function Grip() {
         <ListItem>
           If Gorgomund, the King of Evil and the first fire-breathing dragon engulfs you in flame and your grip is exhausted as a result, then you could be killed instantly.
         </ListItem>
-      </BulletedList>
+      </ListBulleted>
 
       <h2>
         Grip Exhaustion and Consent

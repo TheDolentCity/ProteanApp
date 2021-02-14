@@ -9,6 +9,7 @@ import Sheet from '../components/sheets/sheet'
 import PagePanel from '../components/panels/page-panel'
 import SheetPanel from '../components/panels/sheet-panel'
 import ProteanToolPanel from '../components/generic/layout/protean-toolpanel'
+import Page from '../components/generic/book/page'
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -36,7 +37,8 @@ export default function MyApp({ Component, pageProps }) {
         </ProteanToolPanel>
         <ProteanDocumentViewer>
           <ProteanDocumentTab label="BOOK // Protean RPG">
-            <Component {...pageProps} />
+            <Page></Page>
+            {/* <Component {...pageProps} /> */}
           </ProteanDocumentTab>
           <ProteanDocumentTab label="SHEET // Carter Guyus">
             <Sheet file={null}></Sheet>
