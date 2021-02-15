@@ -1,6 +1,6 @@
 import { VscArrowDown, VscArrowUp, VscCloudDownload, VscCloudUpload, VscTerminal } from "react-icons/vsc";
-import Dropdown from "../basic-inputs/dropdown";
-import Elevation from "./elevation"
+import Dropdown from "../generic/basic-inputs/dropdown";
+import Elevation from "../generic/layout/elevation"
 
 export default function ProteanAppHeader(props) {
   return (

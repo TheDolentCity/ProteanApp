@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import ProteanPanel from '../generic/layout/protean-panel';
+import ProteanPanel from '../protean-framework/protean-panel';
 import Sheet from '../sheets/sheet'
 
 export default class SheetPanel extends Component {

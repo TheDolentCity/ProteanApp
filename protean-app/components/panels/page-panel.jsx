@@ -1,4 +1,4 @@
-import ProteanPanel from '../generic/layout/protean-panel';
+import ProteanPanel from '../protean-framework/protean-panel';
 
 export default function PagePanel(props) {
   return (
