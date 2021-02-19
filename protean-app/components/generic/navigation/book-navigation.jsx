@@ -1,25 +1,28 @@
-import Link from 'next/link'
-import { Component } from 'react'
+import { useGlobalStore } from '../../stores/global-store';
+import NavigationList from './navigation-list';
+import NavigationListItem from './navigation-list-item';
 
-const links = [
-  { href: 'https://github.com/vercel/next.js', label: 'GitHub' },
-  { href: 'https://nextjs.org/docs', label: 'Docs' },
-]
+export default function BookNavigation(props) {
+  const { globalState, dispatch } = useGlobalStore();
 
-class BookNavigation extends Component {
-  render() {
-    return (
-      <nav className="flex-none min-w-2/12 mt-14 max-h-full whitespace-normal overflow-y-auto p-8">
-        {links.map(({ href, label }) => (
-          <div key={`${href}${label}`} className="">
-            <a href={href} className="no-underline btn-blue">
-              {label}
-            </a>
-          </div>
-        ))}
-      </nav>
-    );
+  function activeBookDispatch(book) {
+    return {
+      type: "setActiveBook",
+      payload: {
+        activeBook: book
+      }
+    }
   }
-}
 
-export default BookNavigation;
+  return (
+    <NavigationList>
+      {
+        globalState.books?.map(book => (
+          <NavigationListItem key={book.uuid} onClick={() => dispatch(activeBookDispatch(book))} >
+            {book.title}
+          </NavigationListItem>
+        ))
+      }
+    </NavigationList>
+  );
+}

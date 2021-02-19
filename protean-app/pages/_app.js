@@ -11,6 +11,7 @@ import BookNavigationPanel from '../components/panels/book-navigation-panel'
 
 import Page from '../components/generic/book/page'
 import Sheet from '../components/sheets/sheet'
+import PageNavigationPanel from '../components/panels/page-navigation-panel'
 
 // If I wish to access NextJS's page
 /* <Component {...pageProps} /> */
@@ -37,8 +38,8 @@ export default function MyApp({ Component, pageProps }) {
 
         <ProteanAppBody>
           <ProteanToolPanel>
-            <BookNavigationPanel bookName="Protean RPG"></BookNavigationPanel>
-            <BookNavigationPanel bookName="Protean RPG"></BookNavigationPanel>
+            <BookNavigationPanel label="Book Navigation"></BookNavigationPanel>
+            <PageNavigationPanel label="Page Navigation"></PageNavigationPanel>
           </ProteanToolPanel>
           <ProteanDocumentViewer>
             <ProteanDocumentTab label="BOOK // Protean RPG">

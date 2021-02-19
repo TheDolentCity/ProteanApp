@@ -7,6 +7,14 @@ import Paragraph from './paragraph'
 export default function Page(props) {
   const { globalState, dispatch } = useGlobalStore();
 
+  // function GetActiveBook() {
+  //   return globalState.books.find(book => book.uuid === globalState.activeBookId);
+  // }
+
+  // function GetActivePage() {
+  //   return GetActiveBook().pages.find(page => page.uuid === globalState.activePageId);
+  // }
+
   return (
     <article className=
       {
@@ -15,7 +23,7 @@ export default function Page(props) {
         "text-" + props.fontSize + " " +
         "font-" + props.fontStyle
       }>
-      {GeneratePageBlocks(globalState.books[globalState.activeBookIndex].pages[globalState.activePageIndex].content)}
+      {GeneratePageBlocks(globalState.activePage.content)}
     </article>
   );
 }

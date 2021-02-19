@@ -1,25 +1,28 @@
-import Link from 'next/link'
-import { Component } from 'react'
+import { useGlobalStore } from '../../stores/global-store';
+import NavigationList from './navigation-list';
+import NavigationListItem from './navigation-list-item';
 
-const links = [
-  { href: 'https://github.com/vercel/next.js', label: 'GitHub' },
-  { href: 'https://nextjs.org/docs', label: 'Docs' },
-]
+export default function PageNavigation(props) {
+  const { globalState, dispatch } = useGlobalStore();
 
-class PageNavigation extends Component {
-  render() {
-    return (
-      <nav>
-        {links.map(({ href, label }) => (
-          <div key={`${href}${label}`} className="">
-            <a href={href} className="no-underline btn-blue">
-              {label}
-            </a>
-          </div>
-        ))}
-      </nav>
-    );
+  function activePageDispatch(page) {
+    return {
+      type: "setActivePage",
+      payload: {
+        activePage: page
+      }
+    }
   }
-}
 
-export default PageNavigation;
+  return (
+    <NavigationList>
+      {
+        globalState.activeBook?.pages?.map(page => (
+          <NavigationListItem key={page.uuid} onClick={() => dispatch(activePageDispatch(page))} >
+            {page.title}
+          </NavigationListItem>
+        ))
+      }
+    </NavigationList>
+  );
+}

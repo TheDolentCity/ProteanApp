@@ -1,12 +1,12 @@
 import ProteanPanel from '../protean-framework/protean-panel';
-import BookNavigation from '../generic/navigation/book-navigation'
+import PageNavigation from '../generic/navigation/page-navigation'
 
-export default function BookNavigationPanel(props) {
+export default function PageNavigationPanel(props) {
   return (
     <ProteanPanel
       label={props.label}
       openCss="">
-      <BookNavigation></BookNavigation>
+      <PageNavigation></PageNavigation>
     </ProteanPanel>
   );
 }

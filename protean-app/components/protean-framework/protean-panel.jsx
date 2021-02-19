@@ -23,7 +23,7 @@ export default function ProteanPanel(props) {
         </h6>
       </div>
       {isOpen ?
-        <div className="flex-grow w-full p-6 whitespace-normal overflow-y-auto">
+        <div className="flex-grow w-full whitespace-normal overflow-y-auto">
           {props.children}
         </div>
         :
