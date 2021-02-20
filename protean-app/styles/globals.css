@@ -11,6 +11,9 @@
 
 @tailwind utilities;
 
+/* fabric icons */
+@import url('./fabric-icons/css/fabric-icons.css');
+
 /* custom styles */
 h1 {
   @apply text-5xl font-bold;

@@ -2,11 +2,11 @@ import React, { createContext, useContext, useReducer } from 'react';
 
 const TEST_PAGE_1 = {
   uuid: "01",
+  type: "PAGE",
   title: "PAGE 1 - Health System",
-  padding: "8",
-  leading: "",
-  fontSize: "base",
-  fontStyle: "normal",
+  props: {
+    
+  },
   content: [
     {
       uuid: "01",
@@ -95,11 +95,11 @@ const TEST_PAGE_1 = {
 
 const TEST_PAGE_2 = {
   uuid: "02",
+  type: "PAGE",
   title: "PAGE 2 - Luck System",
-  padding: "8",
-  leading: "",
-  fontSize: "base",
-  fontStyle: "normal",
+  props: {
+    
+  },
   content: [
     {
       uuid: "01",
@@ -188,11 +188,11 @@ const TEST_PAGE_2 = {
 
 const TEST_PAGE_3 = {
   uuid: "03",
+  type: "PAGE",
   title: "PAGE 3 - Weapon System",
-  padding: "8",
-  leading: "",
-  fontSize: "base",
-  fontStyle: "normal",
+  props: {
+    
+  },
   content: [
     {
       uuid: "01",
@@ -281,11 +281,12 @@ const TEST_PAGE_3 = {
 
 const TEST_PAGE_4 = {
   uuid: "04",
+  type: "PAGE",
+  type: "PAGE",
   title: "PAGE 4 - Luck System",
-  padding: "8",
-  leading: "",
-  fontSize: "base",
-  fontStyle: "normal",
+  props: {
+    
+  },
   content: [
     {
       uuid: "01",
@@ -376,7 +377,6 @@ const TEST_BOOK_1 = {
   uuid: "01",
   type: "BOOK",
   title: "Protean RPG // 1",
-  version: "0.0.1",
   content: [
     {
       uuid: "01",
@@ -403,7 +403,6 @@ const TEST_BOOK_2 = {
   uuid: "02",
   type: "BOOK",
   title: "Protean RPG // 2",
-  version: "0.0.1",
   content: [
     {
       uuid: "01",
