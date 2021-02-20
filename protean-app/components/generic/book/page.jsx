@@ -7,14 +7,6 @@ import Paragraph from './paragraph'
 export default function Page(props) {
   const { globalState, dispatch } = useGlobalStore();
 
-  // function GetActiveBook() {
-  //   return globalState.books.find(book => book.uuid === globalState.activeBookId);
-  // }
-
-  // function GetActivePage() {
-  //   return GetActiveBook().pages.find(page => page.uuid === globalState.activePageId);
-  // }
-
   return (
     <article className=
       {
@@ -23,7 +15,7 @@ export default function Page(props) {
         "text-" + props.fontSize + " " +
         "font-" + props.fontStyle
       }>
-      {GeneratePageBlocks(globalState.activePage.content)}
+      {GeneratePageBlocks(globalState.activePage?.content)}
     </article>
   );
 }
@@ -42,7 +34,7 @@ const Components = {
 }
 
 function GeneratePageBlocks(blocks) {
-  return blocks.map(block => PageBlock(block));
+  return blocks?.map(block => PageBlock(block));
 }
 
 function PageBlock(block) {

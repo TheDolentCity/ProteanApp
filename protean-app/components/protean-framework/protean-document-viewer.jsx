@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { VscChevronDown, VscChevronRight, VscClose } from 'react-icons/vsc'
 
 export default function ProteanDocumentViewer(props) {
-  const [activeTab, setActiveTab] = useState(props.defaultActiveTab);
+  const [activeTab, setActiveTab] = useState(0);
   const [documents, setDocuments] = useState([]);
   const testingDocumentTabs = 
   [

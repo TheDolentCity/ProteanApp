@@ -374,21 +374,87 @@ const TEST_PAGE_4 = {
 
 const TEST_BOOK_1 = {
   uuid: "01",
+  type: "BOOK",
   title: "Protean RPG // 1",
   version: "0.0.1",
-  pages: [
-    TEST_PAGE_1,
-    TEST_PAGE_2
+  content: [
+    {
+      uuid: "01",
+      type: "PAGES",
+      title: "Chapter 1",
+      content: [
+        TEST_PAGE_1,
+        TEST_PAGE_2
+      ]
+    },
+    {
+      uuid: "02",
+      type: "PAGES",
+      title: "Chapter 2",
+      content: [
+        TEST_PAGE_3,
+        TEST_PAGE_4
+      ]
+    },
   ]
 }
 
 const TEST_BOOK_2 = {
   uuid: "02",
+  type: "BOOK",
   title: "Protean RPG // 2",
   version: "0.0.1",
-  pages: [
-    TEST_PAGE_3,
-    TEST_PAGE_4
+  content: [
+    {
+      uuid: "01",
+      type: "SECTION",
+      title: "Section 1: Actors",
+      content: [
+        {
+          uuid: "01",
+          type: "PAGES",
+          title: "Chapter 1",
+          content: [
+            TEST_PAGE_1,
+            TEST_PAGE_2
+          ]
+        },
+        {
+          uuid: "02",
+          type: "PAGES",
+          title: "Chapter 2",
+          content: [
+            TEST_PAGE_3,
+            TEST_PAGE_4
+          ]
+        },
+      ]
+    },
+    {
+      uuid: "02",
+      type: "SECTION",
+      title: "Secton 2: Advocates",
+      content: [
+        {
+          uuid: "01",
+          type: "PAGES",
+          title: "Chapter 1",
+          content: [
+            TEST_PAGE_1,
+            TEST_PAGE_2
+          ]
+        },
+        {
+          uuid: "02",
+          type: "PAGES",
+          title: "Chapter 2",
+          content: [
+            TEST_PAGE_3,
+            TEST_PAGE_4
+          ]
+        },
+      ]
+    },
   ]
 }
 
@@ -398,7 +464,7 @@ const initialGlobalState = {
     TEST_BOOK_1,
     TEST_BOOK_2
   ],
-  activeBook: null,
+  activeBook: TEST_BOOK_1,
   activePage: null,
 };
 
@@ -412,8 +478,7 @@ const reducer = (globalState, action) => {
     case "setActiveBook":
       return {
         ...globalState,
-        activeBook: action.payload.activeBook,
-        activePage: action.payload.activeBook.pages[0]
+        activeBook: action.payload.activeBook
       }
     case "setActivePage":
       return {

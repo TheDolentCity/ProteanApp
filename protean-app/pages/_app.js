@@ -7,11 +7,9 @@ import ProteanAppBody from '../components/protean-framework/protean-body'
 import ProteanDocumentViewer, { ProteanDocumentTab } from '../components/protean-framework/protean-document-viewer'
 import ProteanToolPanel from '../components/protean-framework/protean-toolpanel'
 
-import BookNavigationPanel from '../components/panels/book-navigation-panel'
-
+import FileExplorerPanel from '../components/panels/file-explorer-panel'
 import Page from '../components/generic/book/page'
 import Sheet from '../components/sheets/sheet'
-import PageNavigationPanel from '../components/panels/page-navigation-panel'
 
 // If I wish to access NextJS's page
 /* <Component {...pageProps} /> */
@@ -38,8 +36,8 @@ export default function MyApp({ Component, pageProps }) {
 
         <ProteanAppBody>
           <ProteanToolPanel>
-            <BookNavigationPanel label="Book Navigation"></BookNavigationPanel>
-            <PageNavigationPanel label="Page Navigation"></PageNavigationPanel>
+            {/* <BookNavigationPanel label="Book Navigation"></BookNavigationPanel> */}
+            <FileExplorerPanel label="Protean App Explorer"></FileExplorerPanel>
           </ProteanToolPanel>
           <ProteanDocumentViewer>
             <ProteanDocumentTab label="BOOK // Protean RPG">
@@ -49,6 +47,11 @@ export default function MyApp({ Component, pageProps }) {
               <Sheet file={null}></Sheet>
             </ProteanDocumentTab>
           </ProteanDocumentViewer>
+          {/* <ProteanDocumentViewer>
+            <ProteanDocumentTab label="SHEET // Carter Guyus">
+              <Sheet file={null}></Sheet>
+            </ProteanDocumentTab>
+          </ProteanDocumentViewer> */}
         </ProteanAppBody>
       </ProteanApp>
     </GlobalStoreProvider>
