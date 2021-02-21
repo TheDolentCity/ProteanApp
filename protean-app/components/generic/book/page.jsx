@@ -15,7 +15,7 @@ export default function Page(props) {
         "text-" + props.fontSize + " " +
         "font-" + props.fontStyle
       }>
-      {GeneratePageBlocks(globalState.activePage?.content)}
+      {GeneratePageBlocks(globalState.activeFile?.content)}
     </article>
   );
 }

@@ -10,6 +10,7 @@ import ProteanToolPanel from '../components/protean-framework/protean-toolpanel'
 import FileExplorerPanel from '../components/panels/file-explorer-panel'
 import Page from '../components/generic/book/page'
 import Sheet from '../components/sheets/sheet'
+import ProteanDocumentEditor from '../components/protean-framework/protean-document-editor'
 
 // If I wish to access NextJS's page
 /* <Component {...pageProps} /> */
@@ -39,6 +40,9 @@ export default function MyApp({ Component, pageProps }) {
             {/* <BookNavigationPanel label="Book Navigation"></BookNavigationPanel> */}
             <FileExplorerPanel label="Protean App Explorer"></FileExplorerPanel>
           </ProteanToolPanel>
+          <ProteanDocumentEditor>
+            
+          </ProteanDocumentEditor>
           <ProteanDocumentViewer>
             <ProteanDocumentTab label="BOOK // Protean RPG">
               <Page></Page>

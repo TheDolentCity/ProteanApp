@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { VscChevronDown, VscChevronRight, VscClose } from 'react-icons/vsc'
+import FabricIcon from '../generic/icons/fabric-icon';
 
 export default function ProteanDocumentViewer(props) {
   const [activeTab, setActiveTab] = useState(0);
@@ -100,7 +100,7 @@ export function ProteanDocumentTab(props) {
         </h6>
       </button>
       <button className="flex-none m-2 my-auto justify-center float-right focus:outline-none">
-        <VscClose></VscClose>
+        <FabricIcon name="Cancel"></FabricIcon>
       </button>
     </li>
   )

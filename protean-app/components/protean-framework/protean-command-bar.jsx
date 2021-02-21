@@ -1,4 +1,4 @@
-import { VscBook, VscCloudDownload, VscCloudUpload, VscEdit, VscTerminal } from "react-icons/vsc";
+import FabricIcon from "../generic/icons/fabric-icon";
 
 export default function ProteanAppCommandBar(props) {
   return (
@@ -29,7 +29,7 @@ export function Command(props) {
 export function CommandAdmin(props) {
   return (
     <Command>
-      <VscTerminal size="20"></VscTerminal>
+      <FabricIcon size="20"></FabricIcon>
     </Command>
   );
 }
@@ -37,7 +37,7 @@ export function CommandAdmin(props) {
 export function CommandRead(props) {
   return (
     <Command>
-      <VscBook size="20"></VscBook>
+      <FabricIcon size="20"></FabricIcon>
     </Command>
   );
 }
@@ -45,7 +45,7 @@ export function CommandRead(props) {
 export function CommandWrite(props) {
   return (
     <Command>
-      <VscEdit size="20"></VscEdit>
+      <FabricIcon size="20"></FabricIcon>
     </Command>
   );
 }
@@ -53,7 +53,7 @@ export function CommandWrite(props) {
 export function CommandUpload(props) {
   return (
     <Command>
-      <VscCloudUpload size="20"></VscCloudUpload>
+      <FabricIcon size="20"></FabricIcon>
     </Command>
   );
 }
@@ -61,7 +61,7 @@ export function CommandUpload(props) {
 export function CommandDownload(props) {
   return (
     <Command>
-      <VscCloudDownload size="20"></VscCloudDownload>
+      <FabricIcon size="20"></FabricIcon>
     </Command>
   );
 }

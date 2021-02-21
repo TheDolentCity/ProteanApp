@@ -459,30 +459,24 @@ const TEST_BOOK_2 = {
 
 const GlobalStoreContext = createContext();
 const initialGlobalState = {
-  books: [
+  files: [
     TEST_BOOK_1,
     TEST_BOOK_2
   ],
-  activeBook: TEST_BOOK_1,
-  activePage: null,
+  activeFile: TEST_PAGE_1,
 };
 
 const reducer = (globalState, action) => {
   switch (action.type) {
-    case "addBook": 
+    case "addFile": 
       return {
         ...globalState,
-        books: globalState.books.push(action.payload.book)
+        files: globalState.files.push(action.payload.file)
       }
-    case "setActiveBook":
+    case "setActiveFile":
       return {
         ...globalState,
-        activeBook: action.payload.activeBook
-      }
-    case "setActivePage":
-      return {
-        ...globalState,
-        activePage: action.payload.activePage
+        activeFile: action.payload.activeFile
       }
     default:
       throw new Error(`Unhandled action type: ${action.type}`);

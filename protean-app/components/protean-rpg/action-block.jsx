@@ -1,9 +1,6 @@
 import { Component } from 'react';
 import Dice from '../generic/game/dice';
 import Surface, { SurfaceSection } from '../generic/layout/surface';
-import ExpandButton from '../generic/basic-inputs/expand-button';
-
-import { GiRollingDices } from 'react-icons/gi'
 
 export default class ActionBlockPanel extends Component {
   render() {
@@ -46,7 +43,6 @@ class ActionBlock extends Component {
       return (
         <ActionBlockContainer>
           <ActionBlockSection css="">
-            <ActionBlockExpandButton onClick={this.toggleOpen}></ActionBlockExpandButton>
             <ActionBlockRollButton></ActionBlockRollButton>
             <ActionBlockHeader>
               {this.props.header}
@@ -65,7 +61,6 @@ class ActionBlock extends Component {
       return (
         <ActionBlockContainer>
           <ActionBlockSection css="">
-            <ActionBlockExpandButton onClick={this.toggleOpen}></ActionBlockExpandButton>
             <ActionBlockRollButton></ActionBlockRollButton>
             <ActionBlockHeader>
               {this.props.header}
@@ -105,7 +100,7 @@ function ActionBlockExpandButton(props) {
 function ActionBlockRollButton(props) {
   return (
     <button onClick={props.onClick} className="flex-none p-2 hover:bg-black hover:bg-opacity-10 dark:hover:bg-white focus:outline-none">
-      <GiRollingDices size="20"></GiRollingDices>
+      
     </button>
   );
 }

@@ -172,15 +172,18 @@ module.exports = {
         '4xs': '.375rem',
         '3xs': '.5rem',
         '2xs': '.625rem',
+      },
+      outline: {
+        cyan: '2px solid #22D3EE',
+        magenta: '2px solid #D946EF',
+        yellow: '2px solid #FDE047',
       }
     },
   },
   variants: {
     extend: {
-      
     },
   },
   plugins: [
-    
   ],
 }

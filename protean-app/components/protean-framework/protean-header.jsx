@@ -1,16 +1,16 @@
-import { VscArrowDown, VscArrowUp, VscCloudDownload, VscCloudUpload, VscTerminal } from "react-icons/vsc";
 import Dropdown from "../generic/basic-inputs/dropdown";
-import Elevation from "../generic/layout/elevation"
+import Elevation from "../generic/layout/elevation";
+import FabricIcon from "../generic/icons/fabric-icon";
 
 export default function ProteanAppHeader(props) {
   return (
     <div className="flex-none flex flex-nowrap h-8 px-2 my-auto items-center bg-protean-appBar-light dark:bg-protean-appBar-dark">
-      <button className="flex-none h-full my-auto pr-2 justify-center focus:outline-none">
-        <VscTerminal size="16"></VscTerminal>
+      <button className="flex-none flex h-full my-auto pr-2 items-center focus:outline-none">
+        <h5 className="flex items-center font-semibold">
+          <FabricIcon name="Code" css="pr-1"></FabricIcon>
+          {props.children}
+        </h5>
       </button>
-      <h5 className="flex-none ml-1 mr-4 font-semibold">
-        {props.children}
-      </h5>
       <ProteanFileDropdown></ProteanFileDropdown>
       <ProteanViewDropdown></ProteanViewDropdown>
       <ProteanDocumentDropdown></ProteanDocumentDropdown>
@@ -24,13 +24,13 @@ export function ProteanFileDropdown(props) {
       <Elevation>
         <div className="flex flex-col flex-nowrap bg-protean-light dark:bg-protean-dark">
           <button className="flex-grow flex my-auto p-2 text-left items-center hover:bg-black hover:bg-opacity-10 dark:hover:bg-gray-700 focus:outline-none">
-            <VscCloudUpload size="20"></VscCloudUpload>
+            <FabricIcon name="Upload"></FabricIcon>
             <h6 className="pl-2">
               Upload Files
             </h6>
           </button>
           <button className="flex-grow flex my-auto p-2 text-left items-center hover:bg-black hover:bg-opacity-10 dark:hover:bg-gray-700 focus:outline-none">
-            <VscCloudDownload size="20"></VscCloudDownload>
+            <FabricIcon name="Download"></FabricIcon>
             <h6 className="pl-2">
               Download Files
             </h6>
