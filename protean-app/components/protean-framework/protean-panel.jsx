@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { VscChevronDown, VscChevronRight } from 'react-icons/vsc'
+import FabricIcon from '../generic/icons/fabric-icon';
 
 export default function ProteanPanel(props) {
   const [isOpen, setIsOpen] = useState(true);
@@ -13,9 +13,9 @@ export default function ProteanPanel(props) {
       <div className="flex-none flex w-full h-6 my-auto items-center bg-protean-panel-light text-protean-panel-dark dark:bg-protean-panel-dark dark:text-protean-panel-light">
         <button onClick={toggleOpen} className="flex-none m-1 ml-2 my-auto justify-center float-right focus:outline-none">
           {isOpen ?
-            <VscChevronDown></VscChevronDown>
+            <FabricIcon name="ChevronDownSmall" css="text-2xs pr-1"></FabricIcon>
             :
-            <VscChevronRight></VscChevronRight>
+            <FabricIcon name="ChevronRightSmall" css="text-2xs pr-1"></FabricIcon>
           }
         </button>
         <h6 className="flex-grow font-semibold uppercase truncate">

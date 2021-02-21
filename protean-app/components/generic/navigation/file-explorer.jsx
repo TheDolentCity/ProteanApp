@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useGlobalStore } from '../../stores/global-store';
-import { VscBook, VscChevronDown, VscChevronRight, VscFile, VscFolder, VscFolderOpened } from 'react-icons/vsc';
 import FabricIcon from '../icons/fabric-icon';
 
 export default function FileExplorer(props) {
@@ -30,20 +29,18 @@ function FileExplorerSection(props) {
   };
 
   return (
-    <div className={isOpen ? " " : " h-6 " + "flex flex-col w-full whitespace-normal overflow-y-auto"}>
-      <div className="flex-none flex w-full h-6 my-auto items-center">
-        <button onClick={toggleOpen} className="flex-none m-1 ml-2 my-auto justify-center float-right focus:outline-none">
+    <div className="flex flex-col w-full whitespace-normal overflow-x-hidden overflow-y-auto">
+      <button onClick={toggleOpen} className="flex-none h-6 m-1 ml-2 my-auto items-center hover:bg-protean-toolPanel-light-hoverBackground dark:hover:bg-protean-toolPanel-dark-hoverBackground focus:outline-none">
+        <h6 className="flex truncate">
           {isOpen ?
-            <VscChevronDown></VscChevronDown>
+            <FabricIcon name="ChevronDownSmall" css="text-3xs"></FabricIcon>
             :
-            <VscChevronRight></VscChevronRight>
+            <FabricIcon name="ChevronRightSmall" css="text-3xs"></FabricIcon>
           }
-        </button>
-        <FileExplorerIcon type={props.section.type} isOpen={isOpen}></FileExplorerIcon>
-        <h6 className="flex-grow truncate">
+          <FileExplorerIcon type={props.section.type} isOpen={isOpen}></FileExplorerIcon>
           {props.section.title}
         </h6>
-      </div>
+      </button>
       {isOpen ?
         <div className="flex-grow w-full pl-3 whitespace-normal overflow-y-auto">
           <FileExplorerSectionItems section={props.section} onClick={props.onItemClick}></FileExplorerSectionItems>
@@ -59,33 +56,33 @@ function FileExplorerIcon(props) {
   switch (props.type) {
     case "BOOK":
       return (
-        <FabricIcon name="BookAnswers" css="px-2"></FabricIcon>
+        <FabricIcon name="BookAnswers" css="px-2 text-yellow-600"></FabricIcon>
       );
     case "SECTION":
       if (props.isOpen) {
         return (
-          <FabricIcon name="FabricOpenFolderHorizontal" css="px-2"></FabricIcon>
+          <FabricIcon name="FabricOpenFolderHorizontal" css="px-2 text-gray-600"></FabricIcon>
         );
       }
       else {
         return (
-          <FabricIcon name="FabricFolder" css="px-2"></FabricIcon>
+          <FabricIcon name="FabricFolder" css="px-2 text-gray-600"></FabricIcon>
         );
       }
     case "PAGES":
       if (props.isOpen) {
         return (
-          <FabricIcon name="FabricOpenFolderHorizontal" css="px-2"></FabricIcon>
+          <FabricIcon name="FabricOpenFolderHorizontal" css="px-2 text-gray-600"></FabricIcon>
         );
       }
       else {
         return (
-          <FabricIcon name="FabricFolder" css="px-2"></FabricIcon>
+          <FabricIcon name="FabricFolder" css="px-2 text-gray-600"></FabricIcon>
         );
       }
     case "PAGE":
       return (
-        <FabricIcon name="TextDocument" css="px-2"></FabricIcon>
+        <FabricIcon name="TextDocument" css="px-2 text-cyan-600"></FabricIcon>
       );
   }
 
@@ -120,7 +117,7 @@ function FileExplorerSectionItems(props) {
 function FileExplorerItem(props) {
   return (
     <button onClick={props.onItemClick} className="flex-none w-full h-6 my-auto px-2 items-center whitespace-nowrap hover:bg-protean-toolPanel-light-hoverBackground dark:hover:bg-protean-toolPanel-dark-hoverBackground focus:outline-none">
-      <h6 className="flex h-4 pl-6 text-left truncate">
+      <h6 className="flex h-4 pl-3 text-left truncate">
         <FileExplorerIcon type={props.item.type}></FileExplorerIcon>
         {props.item.title}
       </h6>

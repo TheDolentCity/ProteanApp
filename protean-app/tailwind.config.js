@@ -167,7 +167,12 @@ module.exports = {
       none: 'none',
     },
     extend: {
-      
+      fontSize: {
+        '5xs': '.25rem',
+        '4xs': '.375rem',
+        '3xs': '.5rem',
+        '2xs': '.625rem',
+      }
     },
   },
   variants: {
