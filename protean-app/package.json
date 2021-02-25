@@ -15,10 +15,8 @@
     "next-connect": "^0.9.1",
     "postcss": "^8.2.1",
     "react": "17.0.1",
+    "react-contexify": "^5.0.0",
     "react-dom": "17.0.1",
     "tailwindcss": "^2.0.2"
-  },
-  "devDependencies": {
-    "@tailwindcss/typography": "^0.3.1"
   }
 }

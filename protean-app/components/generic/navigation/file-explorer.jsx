@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useGlobalStore } from '../../stores/global-store';
+import { useContextMenu, Menu, Item, Separator } from "react-contexify";
 import FabricIcon from '../icons/fabric-icon';
+
+const MENU_ID = "FileExplorerMenuId";
 
 export default function FileExplorer(props) {
   const { globalState, dispatch } = useGlobalStore();
@@ -33,7 +36,7 @@ function FileExplorerSection(props) {
         </h6>
       </button>
       {isOpen ?
-        <div className="flex-grow w-full pl-3 whitespace-normal overflow-y-auto">
+        <div className="flex-grow w-full pl-3 whitespace-normal overflow-y-auto border-l border-dashed border-gray-300">
           <FileExplorerSectionItems section={props.section}></FileExplorerSectionItems>
         </div>
         :
