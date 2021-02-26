@@ -1,22 +1,35 @@
 {
-  "name": "protean-app",
-  "version": "0.1.0",
+  "name": "react-static-example-blank",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "start": "react-static start",
+    "stage": "react-static build --staging",
+    "build": "react-static build",
+    "analyze": "react-static build --analyze",
+    "serve": "serve dist -p 3000"
   },
   "dependencies": {
-    "autoprefixer": "^10.1.0",
-    "axios": "^0.21.1",
-    "multer": "^1.4.2",
-    "next": "10.0.4",
-    "next-connect": "^0.9.1",
-    "postcss": "^8.2.1",
-    "react": "17.0.1",
-    "react-contexify": "^5.0.0",
-    "react-dom": "17.0.1",
-    "tailwindcss": "^2.0.2"
+    "postcss": "^7.0.35",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-hot-loader": "^4.13.0",
+    "react-static": "^7.5.1",
+    "react-static-plugin-reach-router": "^7.5.1",
+    "react-static-plugin-sitemap": "^7.5.1",
+    "react-static-plugin-source-filesystem": "^7.5.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss7-compat": "^2.0.3",
+    "autoprefixer": "^9.8.6",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.20.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-config-react-tools": "^1.1.7",
+    "eslint-plugin-flowtype": "^5.2.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "serve": "^11.3.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3"
   }
 }
