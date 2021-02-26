@@ -14,7 +14,7 @@
 */cordova/platforms
 */cordova/plugins
 */cordova/www
-coverage
+coverage 
 dist
 docs-dist
 examples/*/gitignore

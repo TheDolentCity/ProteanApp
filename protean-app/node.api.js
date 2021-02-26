@@ -15,6 +15,7 @@ const defaultOptions = {
 
 export default (options = {}) => ({
   webpack: config => {
+    // Load TailwindCsss
     const opts = { ...defaultOptions, ...options };
     const { rules } = config.module;
     const { oneOf } = rules.find(getOneOf);
@@ -50,6 +51,18 @@ export default (options = {}) => ({
         fs: 'empty'
       }
     }
+
+    // Load MDX
+    config.module.rules.map(rule => {
+      if (typeof rule.test !== 'undefined' || typeof rule.oneOf === 'undefined') {
+        return rule
+      }
+      rule.oneOf.unshift({
+        test: /.mdx$/,
+        use: ['babel-loader', '@mdx-js/loader']
+      })
+      return rule
+    });
 
     return config;
   }
