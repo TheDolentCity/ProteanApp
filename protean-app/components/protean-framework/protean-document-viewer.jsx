@@ -3,52 +3,7 @@ import FabricIcon from '../generic/icons/fabric-icon';
 
 export default function ProteanDocumentViewer(props) {
   const [activeTab, setActiveTab] = useState(0);
-  const [documents, setDocuments] = useState([]);
-  const testingDocumentTabs = 
-  [
-    {
-      label: "Protean RPG",
-      type: "BOOK",
-      document: "",
-    },
-    {
-      label: "Carter Guyus",
-      type: "SHEET",
-      document: 
-      {
-        "name": "Carter Guyus",
-        "description": "This is an example of a character description.",
-        "actionBlocks": 
-        [
-          {
-            "header": "Strength",
-            "body": "The tabletop roleplaying game community has been growing rapidly over the past few years. Developers are pushing the boundaries of RPG design philosophy and consumers are looking for new ways to play and create the games they want. What if there were an open-source game that helps players create the game they want to play?",
-            "dice": {
-              "count": 1,
-              "size": 4
-            }
-          },
-          {
-            "header": "Dexterity",
-            "body": "The tabletop roleplaying game community has been growing rapidly over the past few years. Developers are pushing the boundaries of RPG design philosophy and consumers are looking for new ways to play and create the games they want. What if there were an open-source game that helps players create the game they want to play?",
-            "dice": {
-              "count": 3,
-              "size": 8
-            }
-          },
-          {
-            "header": "Wisdom",
-            "body": "The tabletop roleplaying game community has been growing rapidly over the past few years. Developers are pushing the boundaries of RPG design philosophy and consumers are looking for new ways to play and create the games they want. What if there were an open-source game that helps players create the game they want to play?",
-            "dice": {
-              "count": 5,
-              "size": 12
-            }
-          }
-        ]
-      },
-    },
-  ]
-
+  
   // Toggle currently active tab
   function handleTabClick(tabIndex) {
     setActiveTab(tabIndex);
@@ -89,7 +44,7 @@ export default function ProteanDocumentViewer(props) {
 
 export function ProteanDocumentTab(props) {
   return (
-    <li className={`flex-1 flex h-8 my-auto items-center ${props.isActive ? 'bg-protean-light dark:bg-protean-dark' : 'bg-protean-tab-light dark:bg-protean-tab-dark'} `}>
+    <li className={`flex-1 flex h-8 my-auto items-center ${props.isActive ? 'bg-protean-light dark:bg-protean-dark dark:text-protean-light' : 'bg-protean-tab-light dark:bg-protean-tab-dark dark:text-protean-tab-light'} `}>
       <button className={`w-full h-full ${props.isActive ? 'active' : ''} focus:outline-none`}
         onClick={(event) => {
           event.preventDefault();
@@ -104,8 +59,4 @@ export function ProteanDocumentTab(props) {
       </button>
     </li>
   )
-}
-
-export function ProteanDocument(props) {
-
 }

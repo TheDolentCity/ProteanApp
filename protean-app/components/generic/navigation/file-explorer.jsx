@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import { useGlobalStore } from '../../stores/global-store';
-import { useContextMenu, Menu, Item, Separator } from "react-contexify";
 import FabricIcon from '../icons/fabric-icon';
-
-const MENU_ID = "FileExplorerMenuId";
 
 export default function FileExplorer(props) {
   const { globalState, dispatch } = useGlobalStore();
 
   return (
     globalState.files.map(file => (
-      <FileExplorerSection section={file}></FileExplorerSection>
+      <FileExplorerSection key={file.uuid} section={file}></FileExplorerSection>
     ))
   );
 }
@@ -50,33 +47,33 @@ function FileExplorerIcon(props) {
   switch (props.type) {
     case "BOOK":
       return (
-        <FabricIcon name="BookAnswers" css="px-2 text-yellow-600"></FabricIcon>
+        <FabricIcon name="BookAnswers" css="px-2 text-yellow-600 dark:text-yellow-400"></FabricIcon>
       );
     case "SECTION":
       if (props.isOpen) {
         return (
-          <FabricIcon name="FabricOpenFolderHorizontal" css="px-2 text-gray-600"></FabricIcon>
+          <FabricIcon name="FabricOpenFolderHorizontal" css="px-2 text-gray-600 dark:text-gray-300"></FabricIcon>
         );
       }
       else {
         return (
-          <FabricIcon name="FabricFolder" css="px-2 text-gray-600"></FabricIcon>
+          <FabricIcon name="FabricFolder" css="px-2 text-gray-600 dark:text-gray-300"></FabricIcon>
         );
       }
     case "PAGES":
       if (props.isOpen) {
         return (
-          <FabricIcon name="FabricOpenFolderHorizontal" css="px-2 text-gray-600"></FabricIcon>
+          <FabricIcon name="FabricOpenFolderHorizontal" css="px-2 text-gray-600 dark:text-gray-300"></FabricIcon>
         );
       }
       else {
         return (
-          <FabricIcon name="FabricFolder" css="px-2 text-gray-600"></FabricIcon>
+          <FabricIcon name="FabricFolder" css="px-2 text-gray-600 dark:text-gray-300"></FabricIcon>
         );
       }
     case "PAGE":
       return (
-        <FabricIcon name="TextDocument" css="px-2 text-cyan-600"></FabricIcon>
+        <FabricIcon name="TextDocument" css="px-2 text-cyan-600 dark:text-cyan-300"></FabricIcon>
       );
   }
 

@@ -11,6 +11,7 @@ import FileExplorerPanel from '../components/panels/file-explorer-panel'
 import Page from '../components/generic/book/page'
 import Sheet from '../components/sheets/sheet'
 import ProteanDocumentEditor from '../components/protean-framework/protean-document-editor'
+import MdxDocument from '../components/generic/book/mdx-document'
 
 // If I wish to access NextJS's page
 /* <Component {...pageProps} /> */
@@ -37,25 +38,16 @@ export default function MyApp({ Component, pageProps }) {
 
         <ProteanAppBody>
           <ProteanToolPanel>
-            {/* <BookNavigationPanel label="Book Navigation"></BookNavigationPanel> */}
             <FileExplorerPanel label="Protean App Explorer"></FileExplorerPanel>
           </ProteanToolPanel>
-          <ProteanDocumentEditor>
-            
-          </ProteanDocumentEditor>
           <ProteanDocumentViewer>
             <ProteanDocumentTab label="BOOK // Protean RPG">
-              <Page></Page>
+              <MdxDocument css="p-8 bg-yellow-400"></MdxDocument>
             </ProteanDocumentTab>
             <ProteanDocumentTab label="SHEET // Carter Guyus">
               <Sheet file={null}></Sheet>
             </ProteanDocumentTab>
           </ProteanDocumentViewer>
-          {/* <ProteanDocumentViewer>
-            <ProteanDocumentTab label="SHEET // Carter Guyus">
-              <Sheet file={null}></Sheet>
-            </ProteanDocumentTab>
-          </ProteanDocumentViewer> */}
         </ProteanAppBody>
       </ProteanApp>
     </GlobalStoreProvider>

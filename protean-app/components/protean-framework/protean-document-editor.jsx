@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import FabricIcon from '../generic/icons/fabric-icon';
+import MdxDocument from '../generic/book/mdx-document';
 import Surface, { SurfaceSection } from '../generic/layout/surface';
+import FabricIcon from '../generic/icons/fabric-icon';
 
 const TEST_STARTING_BLOCKS = [
   {
@@ -22,17 +23,23 @@ export default function ProteanDocumentEditor(props) {
   const [blocks, setBlocks] = useState(TEST_STARTING_BLOCKS);
   
   return (
-    <div className="flex flex-col w-full h-full py-8 space-y-6">
-      <ProteanDocumentCommandBar></ProteanDocumentCommandBar>
-      <ProteanDocument></ProteanDocument>
+    <div className="flex flex-col w-full h-full p-12">
+      <Surface>
+        <SurfaceSection>
+          <ProteanDocumentCommandBar></ProteanDocumentCommandBar>
+        </SurfaceSection>
+        <SurfaceSection>
+          <MdxDocument></MdxDocument>
+        </SurfaceSection>
+      </Surface>
     </div>
   );
 }
 
 function ProteanDocumentCommandBar(props) {
   return (
-    <div className="flex-none px-8 text-left">
-      <div className="flex w-full py-2 rounded shadow-md bg-white dark:bg-black">
+    <div className="flex-none text-left">
+      <div className="flex w-full py-2">
         <div className="px-2 border-r border-gray-300">
           <CommandPageAdd></CommandPageAdd>
           <CommandPageEdit></CommandPageEdit>
