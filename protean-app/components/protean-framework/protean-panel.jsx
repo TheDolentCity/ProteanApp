@@ -10,7 +10,7 @@ export default function ProteanPanel(props) {
 
   return (
     <div className={isOpen ? " " : " h-6 " + "flex flex-col whitespace-normal  " + props.openCss}>
-      <div className="flex-none flex w-full h-6 my-auto items-center bg-protean-panel-light text-protean-panel-dark dark:bg-protean-panel-dark dark:text-protean-panel-light">
+      <div className="flex-none flex w-full h-6 my-auto items-center bg-gray-400 dark:bg-gray-600">
         <button onClick={toggleOpen} className="flex-none m-1 ml-2 my-auto justify-center float-right focus:outline-none">
           {isOpen ?
             <FabricIcon name="ChevronDownSmall" css="text-2xs pr-1"></FabricIcon>

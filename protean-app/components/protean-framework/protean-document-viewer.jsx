@@ -44,7 +44,7 @@ export default function ProteanDocumentViewer(props) {
 
 export function ProteanDocumentTab(props) {
   return (
-    <li className={`flex-1 flex h-8 my-auto items-center ${props.isActive ? 'bg-protean-light dark:bg-protean-dark dark:text-protean-light' : 'bg-protean-tab-light dark:bg-protean-tab-dark dark:text-protean-tab-light'} `}>
+    <li className={`flex-1 flex h-8 my-auto items-center ${props.isActive ? 'bg-gray-100 dark:bg-gray-1000' : 'bg-gray-200 dark:bg-gray-800'} `}>
       <button className={`w-full h-full ${props.isActive ? 'active' : ''} focus:outline-none`}
         onClick={(event) => {
           event.preventDefault();

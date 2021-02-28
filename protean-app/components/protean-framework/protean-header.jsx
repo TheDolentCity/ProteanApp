@@ -4,7 +4,7 @@ import FabricIcon from "../generic/icons/fabric-icon";
 
 export default function ProteanAppHeader(props) {
   return (
-    <div className="flex-none flex flex-nowrap h-8 px-2 my-auto items-center bg-protean-appBar-light dark:bg-protean-appBar-dark">
+    <div className="flex-none flex flex-nowrap h-8 px-2 my-auto items-center bg-gray-300 dark:bg-gray-700">
       <button className="flex-none flex h-full my-auto pr-2 items-center focus:outline-none">
         <h5 className="flex items-center font-semibold">
           <FabricIcon name="Code" css="pr-1"></FabricIcon>
@@ -20,16 +20,16 @@ export default function ProteanAppHeader(props) {
 
 export function ProteanFileDropdown(props) {
   return (
-    <Dropdown label="File">
+    <Dropdown label="File" css="hover:bg-gray-350 dark:hover:bg-gray-650">
       <Elevation>
-        <div className="flex flex-col flex-nowrap bg-protean-light dark:bg-protean-dark">
-          <button className="flex-grow flex my-auto p-2 text-left items-center hover:bg-black hover:bg-opacity-10 dark:hover:bg-gray-700 focus:outline-none">
+        <div className="flex flex-col flex-nowrap bg-gray-100 dark:bg-gray-900">
+          <button className="flex-grow flex my-auto p-2 text-left items-center hover:bg-cyan-300 focus:outline-none">
             <FabricIcon name="Upload"></FabricIcon>
             <h6 className="pl-2">
               Upload Files
             </h6>
           </button>
-          <button className="flex-grow flex my-auto p-2 text-left items-center hover:bg-black hover:bg-opacity-10 dark:hover:bg-gray-700 focus:outline-none">
+          <button className="flex-grow flex my-auto p-2 text-left items-center hover:bg-cyan-300 focus:outline-none">
             <FabricIcon name="Download"></FabricIcon>
             <h6 className="pl-2">
               Download Files
@@ -43,7 +43,7 @@ export function ProteanFileDropdown(props) {
 
 export function ProteanViewDropdown(props) {
   return (
-    <button className="flex-none h-full my-auto px-2 justify-center hover:bg-black hover:bg-opacity-10 dark:hover:bg-gray-700 focus:outline-none">
+    <button className="flex-none h-full my-auto px-2 justify-center hover:bg-cyan-300 focus:outline-none">
       <h6>
         View
       </h6>
@@ -53,7 +53,7 @@ export function ProteanViewDropdown(props) {
 
 export function ProteanDocumentDropdown(props) {
   return (
-    <button className="flex-none h-full my-auto px-2 justify-center hover:bg-black hover:bg-opacity-10 dark:hover:bg-gray-700 focus:outline-none">
+    <button className="flex-none h-full my-auto px-2 justify-center hover:bg-cyan-300 focus:outline-none">
       <h6>
         Document
       </h6>
