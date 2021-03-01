@@ -22,8 +22,15 @@ export default function ProteanDocumentViewer(props) {
   }
 
   // Render current active tab content
-  function renderActiveTabContent() {
+  function renderActiveTabContent() { 
     const { children } = props;
+
+    // Check if there is only one tab
+    if (Array.isArray(children) == false) {
+      return children.props.children;
+    }
+
+    // Determine active tab when there are multiple
     if (children[activeTab]) {
       return children[activeTab].props.children;
     }
@@ -31,7 +38,7 @@ export default function ProteanDocumentViewer(props) {
 
   // Render Document Viewer component
   return (
-    <div className="flex flex-col w-full h-full">
+    <div className="flex flex-col w-full h-full border-r-2 border-gray-300 dark:border-gray-700">
       <ul className="flex-none flex">
         {renderChildrenWithTabsApiAsProps()}
       </ul>
@@ -42,9 +49,17 @@ export default function ProteanDocumentViewer(props) {
   );
 }
 
+function ProteanView(props) {
+  return (
+    <div className=" divide-x-2 divide-gray-300 dark:divide-gray-700">
+
+    </div>
+  );
+}
+
 export function ProteanDocumentTab(props) {
   return (
-    <li className={`flex-1 flex h-8 my-auto items-center ${props.isActive ? 'bg-gray-100 dark:bg-gray-1000' : 'bg-gray-200 dark:bg-gray-800'} `}>
+    <li className={`flex-1 flex h-8 my-auto items-center ${props.isActive ? '' : 'bg-gray-200 dark:bg-gray-800'} `}>
       <button className={`w-full h-full ${props.isActive ? 'active' : ''} focus:outline-none`}
         onClick={(event) => {
           event.preventDefault();

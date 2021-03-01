@@ -38,14 +38,22 @@ export default function MyApp({ Component, pageProps }) {
           <ProteanToolPanel>
             <FileExplorerPanel label="Protean App Explorer"></FileExplorerPanel>
           </ProteanToolPanel>
+
           <ProteanDocumentViewer>
             <ProteanDocumentTab label="BOOK // Protean RPG">
               <MdxDocument css="w-full h-full p-8"></MdxDocument>
             </ProteanDocumentTab>
-            <ProteanDocumentTab label="SHEET // Carter Guyus">
+            {/* <ProteanDocumentTab label="SHEET // Carter Guyus">
               <Sheet file={null}></Sheet>
+            </ProteanDocumentTab> */}
+          </ProteanDocumentViewer>
+
+          <ProteanDocumentViewer>
+            <ProteanDocumentTab label="SHEET // Carter Guyus">
+              <Sheet></Sheet>
             </ProteanDocumentTab>
           </ProteanDocumentViewer>
+
         </ProteanAppBody>
       </ProteanApp>
     </GlobalStoreProvider>

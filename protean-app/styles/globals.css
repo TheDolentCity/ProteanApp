@@ -13,50 +13,6 @@
 @tailwind utilities;
 
 /* Custom Styles */
-@layer components {
-  @variants hover, focus {
-    .appBar-light {
-      @apply bg-gray-200 text-gray-800;
-    }
-    .commandBar-light {
-      @apply bg-gray-200 text-gray-800;
-    }
-    .documentTab-light {
-      @apply bg-gray-200 text-gray-800;
-    }
-    .panel-light {
-      @apply bg-gray-200 text-gray-800;
-    }
-    .toolPanel-light {
-      @apply bg-gray-200 text-gray-800;
-    }
-    .toolPanelItem-light {
-      @apply bg-gray-200 text-gray-800;
-    }
-  }
-  /* @variants dark, hover, focus {
-    .appBar-dark {
-      @apply bg-gray-800 text-gray-200;
-    }
-    .commandBar-dark {
-      @apply bg-gray-800 text-gray-200;
-    }
-    .documentTab-dark {
-      @apply bg-gray-800 text-gray-200;
-    }
-    .panel-dark {
-      @apply bg-gray-800 text-gray-200;
-    }
-    .toolPanel-dark {
-      @apply bg-gray-800 text-gray-200;
-    }
-    .toolPanelItem-dark {
-      @apply bg-gray-800 text-gray-200;
-    }
-  } */
-}
-
-
 h1 {
   @apply text-5xl font-bold;
 }

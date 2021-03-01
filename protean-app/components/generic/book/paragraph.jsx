@@ -1,18 +1,11 @@
-export default function Paragraph(props) {
+export function Paragraph({ css, children }) {
   return (
-    <p className=
-      {
-        "mt-" + props.spaceBefore + " " +
-        "mb-" + props.spaceAfter + " " +
-        "leading-" + props.leading
-      }>
-      {props.children}
+    <p className={css}>
+      {children}
     </p>
   );
 }
 
 Paragraph.defaultProps = {
-  spaceBefore: "4",
-  spaceAfter: "8",
-  leading: "6"
+  css: "my-4 mb-8 leading-6 text-gray-700 dark:text-gray-300",
 }

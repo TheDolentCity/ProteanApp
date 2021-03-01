@@ -10,11 +10,21 @@ const TEST_PAGE_1 = {
   },
   content: 
 `
-<Button>Presss Me</Button>
-
 # Paragraph
+<H1 css="text-cyan-400">Paragraph</H1>
+<H1 css="text-magenta-400">Paragraph</H1>
+<H1 css="text-yellow-400">Paragraph</H1>
 
 That is a paragraph. A paragraph (from the [Ancient Greek](https://en.wikipedia.org/wiki/Ancient_Greek) παράγραφος, parágraphos, "to write beside") is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language,paragraphs are usually an expected part of formal writing, used to organize longer prose.
+<P css="text-cyan-400">
+That is a paragraph. A paragraph (from the [Ancient Greek](https://en.wikipedia.org/wiki/Ancient_Greek) παράγραφος, parágraphos, "to write beside") is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language,paragraphs are usually an expected part of formal writing, used to organize longer prose.
+</P>
+<P css="text-magenta-400">
+That is a paragraph. A paragraph (from the [Ancient Greek](https://en.wikipedia.org/wiki/Ancient_Greek) παράγραφος, parágraphos, "to write beside") is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language,paragraphs are usually an expected part of formal writing, used to organize longer prose.
+</P>
+<P css="text-yellow-400">
+That is a paragraph. A paragraph (from the [Ancient Greek](https://en.wikipedia.org/wiki/Ancient_Greek) παράγραφος, parágraphos, "to write beside") is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language,paragraphs are usually an expected part of formal writing, used to organize longer prose.
+</P>
 
 # Paragraph
 `
@@ -29,8 +39,6 @@ const TEST_PAGE_2 = {
   },
   content: 
 `
-<Button>Presss Me</Button>
-
 ### The Paragraph element
 
 The HTML \`<p>\` element represents a paragraph. Paragraphs are usually represented in visual media as blocks of text separated from adjacent blocks by blank lines and/or first-line indentation, but HTML paragraphs can be any structural grouping of related content, such as images or form fields.
@@ -329,7 +337,6 @@ const initialGlobalState = {
     },
     content:
 `
-<Button>Presss Me</Button>
 # Paragraph
 
 That is a paragraph. A paragraph (from the [Ancient Greek](https://en.wikipedia.org/wiki/Ancient_Greek) παράγραφος, parágraphos, "to write beside") is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language,paragraphs are usually an expected part of formal writing, used to organize longer prose.

@@ -1,74 +1,61 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import Dice from '../generic/game/dice';
 import Surface, { SurfaceSection } from '../generic/layout/surface';
 
-export default class ActionBlockPanel extends Component {
-  render() {
-    console.log("ActionBlocks: " + this.props.actionBlocks);
-    if (this.props.actionBlocks !== undefined) {
-      return (
-        <Surface>
-          <SurfaceSection>
-            {this.props.actionBlocks.map(function (actionBlock) {
-              return (
-                <ActionBlock
-                  dice={actionBlock.dice}
-                  header={actionBlock.header}
-                  body={actionBlock.body}>
-                </ActionBlock>
-              );
-            })}
-          </SurfaceSection>
-        </Surface>
-      );
-    }
-    else return null;
-  }
+export default function ActionBlockPanel(props) {
+  return (
+    <Surface>
+      <SurfaceSection>
+        {props?.actionBlocks.map(function (actionBlock) {
+          return (
+            <ActionBlock
+              dice={actionBlock.dice}
+              header={actionBlock.header}
+              body={actionBlock.body}>
+            </ActionBlock>
+          );
+        })}
+      </SurfaceSection>
+    </Surface>
+  );
 }
 
-class ActionBlock extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { isOpen: false };
-  }
+function ActionBlock(props) {
+  const [isOpen, setIsOpen] = useState(true);
 
-  toggleOpen = () => {
-    this.setState((state) => {
-      return { isOpen: !state.isOpen }
-    });
+  function toggleOpen() {
+    setIsOpen(!isOpen);
   };
-
-  render() {
-    if (this.state.isOpen) {
-      return (
-        <ActionBlockContainer>
-          <ActionBlockSection css="">
-            <ActionBlockRollButton></ActionBlockRollButton>
-            <ActionBlockHeader>
-              {this.props.header}
-            </ActionBlockHeader>
-          </ActionBlockSection>
-          <ActionBlockSection css="items-center font-semibold">
-            <ActionBlockDice dice={this.props.dice}></ActionBlockDice>
-          </ActionBlockSection>
-          <ActionBlockSection css="px-4 pt-2 pb-4">
-            {this.props.body}
-          </ActionBlockSection>
-        </ActionBlockContainer>
-      );
-    }
-    else {
-      return (
-        <ActionBlockContainer>
-          <ActionBlockSection css="">
-            <ActionBlockRollButton></ActionBlockRollButton>
-            <ActionBlockHeader>
-              {this.props.header}
-            </ActionBlockHeader>
-          </ActionBlockSection>
-        </ActionBlockContainer>
-      );
-    }
+  
+  if (isOpen) {
+    return (
+      <ActionBlockContainer>
+        <ActionBlockSection css="">
+          <ActionBlockRollButton></ActionBlockRollButton>
+          <ActionBlockHeader>
+            {props.header}
+          </ActionBlockHeader>
+        </ActionBlockSection>
+        <ActionBlockSection css="items-center font-semibold">
+          <ActionBlockDice dice={props.dice}></ActionBlockDice>
+        </ActionBlockSection>
+        <ActionBlockSection css="px-4 pt-2 pb-4">
+          {props.body}
+        </ActionBlockSection>
+      </ActionBlockContainer>
+    );
+  }
+  else {
+    return (
+      <ActionBlockContainer>
+        <ActionBlockSection css="">
+          <ActionBlockRollButton></ActionBlockRollButton>
+          <ActionBlockHeader>
+            {props.header}
+          </ActionBlockHeader>
+        </ActionBlockSection>
+      </ActionBlockContainer>
+    );
   }
 }
 
