@@ -45,7 +45,7 @@ Protean's dice system can be separated into two core mechanics: dynamic dice and
 ## Dynamic Dice
 Most RPGs that use dice use one of two ways to determine an outcome from rolled dice: numerical results or symbolic results. A numerical outcome might be rolling a 14 on a d20 and then adding an attack modifier of +5 for a total of 19 and then comparing that to some target value to determine a success or failure result.
 
-### Symbolic vs. Numeric
+### Symbolic vs Numeric
 Most RPGs that use dice use one of two ways to determine an outcome from rolled dice: numerical results or symbolic results. A numerical outcome might be rolling a 14 on a d20 and then adding an attack modifier of +5 for a total of 19 and then comparing that to some target value to determine a success or failure result. 
 
 A symbolic result might be a custom-made d6 that has a sword icon on four sides and a skull icon on two. In these systems it is common for there to be many sub-systems (damage, critical success, narrative fortune, etc.) that rely on the different kinds of symbols. Distinct iconography can be easier to interpret than numeric values when it comes to those sub-systems.
@@ -55,20 +55,18 @@ Protean RPG uses a combination of the two. Most dice faces have a numerical resu
 Here is the default d12 configuration from Protean RPG:
 <ConfiguredDie
   die="12" 
-  dieTags={["Risky", "Powerful"]}
+  dieTags={["Risky", "Forceful", "Powerful"]}
   dieResults={["Failure", "-3 flux", "-2 flux", "-2 flux", "-1 flux", "-1 flux", "+1 flux", "+2 flux", "+3 flux", "+4 flux", "+5 flux", "+6 flux"]}
 >
 </ConfiguredDie>
 
 ### Dice Configuration
-<P>
-  Now that you understand how the dice faces work, you must also understand how they change. Protean RPG Core has a default dice configuration, but different settings and modules can (and are encouraged to) implement unique dice configurations. This means that the symbols and numeric values on these dice values change. For example, the configuration for a d12 in a Victorian Horror game might look like this (note how it is distinct from the configuration above):
-  <ConfiguredDie
-    die="12"
-    dieTags={["Dangerous", "Powerful"]}
-    dieResults={["Disaster", "Failure", "Failure", "-3 flux", "-2 flux", "-1 flux", "+4 flux", "+4 flux", "+4 flux", "+6 flux", "+6 flux", "+6 flux"]}>
-  </ConfiguredDie>
-</P>
+Now that you understand how the dice faces work, you must also understand how they change. Protean RPG Core has a default dice configuration, but different settings and modules can (and are encouraged to) implement unique dice configurations. This means that the symbols and numeric values on these dice values change. For example, the configuration for a d12 in a Victorian Horror game might look like this (note how it is distinct from the configuration above):
+<ConfiguredDie
+  die="12"
+  dieTags={["Dangerous", "Unreliable", "Hail Mary"]}
+  dieResults={["Disaster", "Failure", "Failure", "-3 flux", "-2 flux", "-1 flux", "+4 flux", "+4 flux", "+4 flux", "+6 flux", "+6 flux", "+6 flux"]}>
+</ConfiguredDie>
 
 #### Physical Dice Disclaimer
 Unfortunately, the fluctuations in dice faces means I cannot easily produce physical dice for the game as it may change based on the module or system run that day, but I have provided the ability to upload editable dice configurations to the Protean App and simulate rolling them there.
