@@ -5,6 +5,7 @@ import ProteanPanel from '../../protean-framework/protean-panel';
 import Button from '../basic-inputs/button';
 import { Header1, Header2, Header3, Header4, Header5, Header6 } from './header';
 import { Paragraph } from './paragraph';
+import ConfiguredDie from '../game/configured-die';
 
 const TEST_PAGE_1 = {
   uuid: "01",
@@ -23,7 +24,7 @@ That is a paragraph. A paragraph (from the [Ancient Greek](https://en.wikipedia.
 }
 
 const mdxComponents = {
-  // Style base components here
+  // Base Components
   a: (props) => <a className="">{props.children}</a>,
   blockquote: (props) => <blockquote className="">{props.children}</blockquote>,
   code: (props) => <code className="">{props.children}</code>,
@@ -49,7 +50,7 @@ const mdxComponents = {
   tr: (props) => <tr className="">{props.children}</tr>,
   ul: (props) => <ul className="">{props.children}</ul>,
 
-  // Add custom components here
+  // Customizable Base Components
   H1: (props) => <Header1 css={props.css}>{props.children}</Header1>,
   H2: (props) => <Header2 css={props.css}>{props.children}</Header2>,
   H3: (props) => <Header3 css={props.css}>{props.children}</Header3>,
@@ -57,6 +58,9 @@ const mdxComponents = {
   H5: (props) => <Header5 css={props.css}>{props.children}</Header5>,
   H6: (props) => <Header6 css={props.css}>{props.children}</Header6>,
   P: (props) => <Paragraph css={props.css}>{props.children}</Paragraph>,
+
+  // Protean RPG Components
+  ConfiguredDie: (props) => <ConfiguredDie die={props.die} dieTags={props.dieTags} dieResults={props.dieResults}></ConfiguredDie>,
 };
 
 const scope = {

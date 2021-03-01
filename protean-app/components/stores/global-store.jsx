@@ -39,15 +39,42 @@ const TEST_PAGE_2 = {
   },
   content: 
 `
-### The Paragraph element
+# Protean Dice
+Protean's dice system can be separated into two core mechanics: dynamic dice and dice outcomes. Dynamic dice are a method for changing the tone of dice rolls based on setting or genre. Dice outcomes are a spectrum of narrative success and failure to drive your story forward.
 
-The HTML \`<p>\` element represents a paragraph. Paragraphs are usually represented in visual media as blocks of text separated from adjacent blocks by blank lines and/or first-line indentation, but HTML paragraphs can be any structural grouping of related content, such as images or form fields.
-Paragraphs are block-level elements, and notably will automatically close if another block-level element is parsed before the closing \`</p> \` tag.
-\`\`\`
-< p > An example for the paragraph element </p >
-\`\`\`
+## Dynamic Dice
+Most RPGs that use dice use one of two ways to determine an outcome from rolled dice: numerical results or symbolic results. A numerical outcome might be rolling a 14 on a d20 and then adding an attack modifier of +5 for a total of 19 and then comparing that to some target value to determine a success or failure result.
 
-### The Paragraph element
+### Symbolic vs. Numeric
+Most RPGs that use dice use one of two ways to determine an outcome from rolled dice: numerical results or symbolic results. A numerical outcome might be rolling a 14 on a d20 and then adding an attack modifier of +5 for a total of 19 and then comparing that to some target value to determine a success or failure result. 
+
+A symbolic result might be a custom-made d6 that has a sword icon on four sides and a skull icon on two. In these systems it is common for there to be many sub-systems (damage, critical success, narrative fortune, etc.) that rely on the different kinds of symbols. Distinct iconography can be easier to interpret than numeric values when it comes to those sub-systems.
+
+Protean RPG uses a combination of the two. Most dice faces have a numerical result (-2, +1, +4) that you add together when making a check, but some dice will also have unique symbols with equally unique narrative effects.
+
+Here is the default d12 configuration from Protean RPG:
+<ConfiguredDie
+  die="12" 
+  dieTags={["Risky", "Powerful"]}
+  dieResults={["Failure", "-3 flux", "-2 flux", "-2 flux", "-1 flux", "-1 flux", "+1 flux", "+2 flux", "+3 flux", "+4 flux", "+5 flux", "+6 flux"]}
+>
+</ConfiguredDie>
+
+### Dice Configuration
+<P>
+  Now that you understand how the dice faces work, you must also understand how they change. Protean RPG Core has a default dice configuration, but different settings and modules can (and are encouraged to) implement unique dice configurations. This means that the symbols and numeric values on these dice values change. For example, the configuration for a d12 in a Victorian Horror game might look like this (note how it is distinct from the configuration above):
+  <ConfiguredDie
+    die="12"
+    dieTags={["Dangerous", "Powerful"]}
+    dieResults={["Disaster", "Failure", "Failure", "-3 flux", "-2 flux", "-1 flux", "+4 flux", "+4 flux", "+4 flux", "+6 flux", "+6 flux", "+6 flux"]}>
+  </ConfiguredDie>
+</P>
+
+#### Physical Dice Disclaimer
+Unfortunately, the fluctuations in dice faces means I cannot easily produce physical dice for the game as it may change based on the module or system run that day, but I have provided the ability to upload editable dice configurations to the Protean App and simulate rolling them there.
+
+### Dice Sizes and Representations
+Protean uses seven different polyhedral dice. The most common is the six-sided die or 'd6'. This format is used to represent dice the vast majority of the time. For example, the seven polyhedral dice are commonly called d4, d6, d8, d10, d12, and d20. They are represented this way in both the Protean App and the Protean RPG. Other sizes of dice, such as d3, d66, or d100, can be rolled using a combination of the above dice.
 `
 }
 
