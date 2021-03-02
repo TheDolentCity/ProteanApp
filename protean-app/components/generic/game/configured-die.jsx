@@ -2,35 +2,35 @@ import { Header1 } from "../book/header";
 
 export default function ConfiguredDie(props) {
   return (
-    <div className="flex w-full mt-4 mb-8 border-2 border-gray-600 dark:border-gray-500">
-      <div className="flex-none flex flex-col h-full p-4 pr-6 justify-center">
+    <div className={"inline-flex w-72 min-w-72 mx-4 border-2 border-gray-600 dark:border-gray-500 " + props.css}>
+      <div className="flex-none flex flex-col h-full p-4 justify-center">
         <p className="text-6xl font-bold">
           {"d" + props.die}
         </p>
         <ul className="ml-4 pt-2 list-disc list-outside text-left">
           <li className="">
-            <code className="px-1 bg-cyan-400 font-medium">
+            <span className="px-1 bg-cyan-400 font-medium">
               {props.dieTags[0]}
-            </code>
+            </span>
           </li>
           <li className="">
-            <code className="px-1 bg-magenta-400 font-medium">
+            <span className="px-1 bg-magenta-400 font-medium">
               {props.dieTags[1]}
-            </code>
+            </span>
           </li>
           <li className="">
-            <code className="px-1 bg-yellow-400 font-medium">
+            <span className="px-1 bg-yellow-400 font-medium">
               {props.dieTags[2]}
-            </code>
+            </span>
           </li>
         </ul>
       </div>
-      <div className="flex-grow my-auto items-center">
-        <ol className="flex flex-col flex-wrap max-h-40 gap-x-8 gap-y-2 ml-4 p-4 list-decimal list-outside text-left">
+      <div className="flex-shrink my-auto items-center">
+        <ol className="p-4 list-decimal list-inside text-left">
           {
-            props.dieResults.map(result => (
-              <li key={result} className="font-semibold">
-                <code className="px-1 font-normal">
+            props.dieResults.map((result, i) => (
+              <li key={i} className="font-semibold font-mono text-right">
+                <code className="font-normal whitespace-nowrap text-left">
                   {result}
                 </code>
               </li>

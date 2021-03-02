@@ -61,6 +61,7 @@ module.exports = {
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
+      mono: ['Consolas', 'serif'],
     },
     minWidth: {
       '0': '0',

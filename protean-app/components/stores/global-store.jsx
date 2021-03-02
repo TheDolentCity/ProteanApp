@@ -54,18 +54,25 @@ Protean RPG uses a combination of the two. Most dice faces have a numerical resu
 
 Here is the default d12 configuration from Protean RPG:
 <ConfiguredDie
+  css="mb-8"
   die="12" 
   dieTags={["Risky", "Forceful", "Powerful"]}
-  dieResults={["Failure", "-3 flux", "-2 flux", "-2 flux", "-1 flux", "-1 flux", "+1 flux", "+2 flux", "+3 flux", "+4 flux", "+5 flux", "+6 flux"]}
->
+  dieResults={["Failure", "-3 flux", "-2 flux", "-2 flux", "-1 flux", "-1 flux", "+1 flux", "+2 flux", "+3 flux", "+4 flux", "+5 flux", "+6 flux"]}>
 </ConfiguredDie>
 
 ### Dice Configuration
-Now that you understand how the dice faces work, you must also understand how they change. Protean RPG Core has a default dice configuration, but different settings and modules can (and are encouraged to) implement unique dice configurations. This means that the symbols and numeric values on these dice values change. For example, the configuration for a d12 in a Victorian Horror game might look like this (note how it is distinct from the configuration above):
+Now that you understand how the dice faces work, you must also understand how they change. Protean RPG Core has a default dice configuration, but different settings and modules can (and are encouraged to) implement unique dice configurations. This means that the symbols and numeric values on these dice values change. For example, the configuration for a d12 in a Victorian Horror game might look like this (compare the Victorian one to the core):
 <ConfiguredDie
+  css="mb-8"
   die="12"
-  dieTags={["Dangerous", "Unreliable", "Hail Mary"]}
+  dieTags={["Victorian", "Dangerous", "Hail Mary"]}
   dieResults={["Disaster", "Failure", "Failure", "-3 flux", "-2 flux", "-1 flux", "+4 flux", "+4 flux", "+4 flux", "+6 flux", "+6 flux", "+6 flux"]}>
+</ConfiguredDie>
+<ConfiguredDie
+  css="mb-8"
+  die="12" 
+  dieTags={["Core", "Risky", "Powerful"]}
+  dieResults={["Failure", "-3 flux", "-2 flux", "-2 flux", "-1 flux", "-1 flux", "+1 flux", "+2 flux", "+3 flux", "+4 flux", "+5 flux", "+6 flux"]}>
 </ConfiguredDie>
 
 #### Physical Dice Disclaimer

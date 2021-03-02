@@ -60,7 +60,7 @@ const mdxComponents = {
   P: (props) => <Paragraph css={props.css}>{props.children}</Paragraph>,
 
   // Protean RPG Components
-  ConfiguredDie: (props) => <ConfiguredDie die={props.die} dieTags={props.dieTags} dieResults={props.dieResults}></ConfiguredDie>,
+  ConfiguredDie: ConfiguredDie,
 };
 
 const scope = {
@@ -73,7 +73,7 @@ export default function MdxDocument(props) {
   const { globalState, dispatch } = useGlobalStore();
 
   return (
-    <div className={props.css}>
+    <div className={"w-full h-full p-8 overflow-y-auto " + props.css}>
       <MdxContent>
         {globalState.activeFile?.content}
       </MdxContent>
@@ -88,21 +88,3 @@ function MdxContent(props) {
     </MDX>
   );
 }
-
-// export default function MdxDocument({ source }) {
-//   // const { globalState, dispatch } = useGlobalStore();
-//   // const content = hydrate(source, globalState.mdxComponents);
-//   const content = hydrate(source, { ProteanCommandBar });
-
-//   return (
-//     <div className="">
-//       {content}
-//     </div>
-//   );
-// };
-
-// export async function getStaticProps() {
-//   const source = '<ProteanCommandBar></ProteanCommandBar>';
-//   const mdxSource = await renderToString(source, { ProteanCommandBar });
-//   return { props: { source: mdxSource } };
-// }

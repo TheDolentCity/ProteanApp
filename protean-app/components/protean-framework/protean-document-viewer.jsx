@@ -38,21 +38,13 @@ export default function ProteanDocumentViewer(props) {
 
   // Render Document Viewer component
   return (
-    <div className="flex flex-col w-full h-full border-r-2 border-gray-300 dark:border-gray-700">
+    <div className="flex flex-col w-full h-full">
       <ul className="flex-none flex">
         {renderChildrenWithTabsApiAsProps()}
       </ul>
-      <div className="flex-grow w-full whitespace-normal overflow-y-auto">
+      <div className="flex-grow w-full h-full whitespace-normal">
         {renderActiveTabContent()}
       </div>
-    </div>
-  );
-}
-
-function ProteanView(props) {
-  return (
-    <div className=" divide-x-2 divide-gray-300 dark:divide-gray-700">
-
     </div>
   );
 }

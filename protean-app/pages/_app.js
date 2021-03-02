@@ -7,6 +7,7 @@ import ProteanDocumentViewer, { ProteanDocumentTab } from '../components/protean
 import ProteanToolPanel from '../components/protean-framework/protean-toolpanel'
 
 import FileExplorerPanel from '../components/panels/file-explorer-panel'
+import DiceRollerPanel from '../components/panels/dice-roller-panel'
 import Sheet from '../components/sheets/sheet'
 import ProteanDocumentEditor from '../components/protean-framework/protean-document-editor'
 import MdxDocument from '../components/generic/book/mdx-document'
@@ -35,24 +36,22 @@ export default function MyApp({ Component, pageProps }) {
         </ProteanAppCommandBar> */}
 
         <ProteanAppBody>
-          <ProteanToolPanel>
+          <ProteanToolPanel label="Tool Panel">
             <FileExplorerPanel label="Protean App Explorer"></FileExplorerPanel>
           </ProteanToolPanel>
 
           <ProteanDocumentViewer>
             <ProteanDocumentTab label="BOOK // Protean RPG">
-              <MdxDocument css="w-full h-full p-8"></MdxDocument>
+              <MdxDocument></MdxDocument>
             </ProteanDocumentTab>
-            {/* <ProteanDocumentTab label="SHEET // Carter Guyus">
-              <Sheet file={null}></Sheet>
-            </ProteanDocumentTab> */}
-          </ProteanDocumentViewer>
-
-          <ProteanDocumentViewer>
             <ProteanDocumentTab label="SHEET // Carter Guyus">
               <Sheet></Sheet>
             </ProteanDocumentTab>
           </ProteanDocumentViewer>
+
+          <ProteanToolPanel label="Tool Panel">
+            <DiceRollerPanel label="Dice Roller"></DiceRollerPanel>
+          </ProteanToolPanel>
 
         </ProteanAppBody>
       </ProteanApp>
