@@ -1,8 +1,8 @@
 export default function ProteanToolPanel(props) {
   return (
-    <div className="flex-none flex flex-col min-w-72 max-w-72 whitespace-normal overflow-y-auto bg-gray-200 dark:bg-gray-900">
+    <div className="flex-none flex flex-col min-w-72 max-w-72 whitespace-normal overflow-y-auto bg-white dark:bg-black bg-opacity-20 dark:bg-opacity-20">
       <div className="flex-none flex h-8 max-h-8 my-auto px-2 items-center">
-        <h6 className="pl-5 uppercase">
+        <h6 className="pl-4 uppercase">
           {props.label}
         </h6>
       </div>

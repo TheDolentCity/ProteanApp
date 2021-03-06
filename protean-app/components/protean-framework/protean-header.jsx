@@ -4,7 +4,7 @@ import FabricIcon from "../generic/icons/fabric-icon";
 
 export default function ProteanAppHeader(props) {
   return (
-    <div className="flex-none flex flex-nowrap h-8 px-2 my-auto items-center bg-gray-300 dark:bg-gray-800">
+    <div className="flex-none flex flex-nowrap h-8 px-2 my-auto items-center bg-white dark:bg-black bg-opacity-50 dark:bg-opacity-50">
       <button className="flex-none flex h-full my-auto pr-2 items-center focus:outline-none">
         <h5 className="flex items-center font-semibold">
           <FabricIcon name="Code" css="pr-1"></FabricIcon>

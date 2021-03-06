@@ -39,7 +39,12 @@ const TEST_PAGE_2 = {
   },
   content: 
 `
-# Protean Dice
+<H1>
+  <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-magenta-500">
+    Protean Dice System
+  </span>
+</H1>
+
 Protean's dice system can be separated into two core mechanics: dynamic dice and dice outcomes. Dynamic dice are a method for changing the tone of dice rolls based on setting or genre. Dice outcomes are a spectrum of narrative success and failure to drive your story forward.
 
 ## Dynamic Dice
