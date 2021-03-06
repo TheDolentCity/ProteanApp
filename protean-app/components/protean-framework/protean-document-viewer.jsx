@@ -51,7 +51,7 @@ export default function ProteanDocumentViewer(props) {
 
 export function ProteanDocumentTab(props) {
   return (
-    <li className={`flex-1 flex h-8 my-auto items-center ${props.isActive ? '' : 'bg-gray-200 dark:bg-gray-800'} `}>
+    <li className={`flex-1 flex h-8 my-auto items-center ${props.isActive ? '' : 'bg-white dark:bg-black bg-opacity-20 dark:bg-opacity-20'} `}>
       <button className={`w-full h-full ${props.isActive ? 'active' : ''} focus:outline-none`}
         onClick={(event) => {
           event.preventDefault();

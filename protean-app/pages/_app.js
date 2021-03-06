@@ -1,4 +1,4 @@
-import '../styles/globals.css'
+import '../styles/main.css'
 import { GlobalStoreProvider } from '../components/stores/global-store'
 import ProteanApp from '../components/protean-framework/protean-app'
 import ProteanAppHeader from '../components/protean-framework/protean-header'
@@ -22,19 +22,7 @@ export default function MyApp({ Component, pageProps }) {
         <ProteanAppHeader>
           Protean
         </ProteanAppHeader>
-
-        {/* <ProteanAppCommandBar>
-          <CommandGroup>
-            <CommandAdmin></CommandAdmin>
-            <CommandRead></CommandRead>
-            <CommandWrite></CommandWrite>
-          </CommandGroup>
-          <CommandGroup>
-            <CommandUpload></CommandUpload>
-            <CommandDownload></CommandDownload>
-          </CommandGroup>
-        </ProteanAppCommandBar> */}
-
+        
         <ProteanAppBody>
           <ProteanToolPanel label="Tool Panel">
             <FileExplorerPanel label="Protean App Explorer"></FileExplorerPanel>
@@ -52,7 +40,6 @@ export default function MyApp({ Component, pageProps }) {
           <ProteanToolPanel label="Tool Panel">
             <DiceRollerPanel label="Dice Roller"></DiceRollerPanel>
           </ProteanToolPanel>
-
         </ProteanAppBody>
       </ProteanApp>
     </GlobalStoreProvider>
