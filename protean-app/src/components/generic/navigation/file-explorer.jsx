@@ -7,7 +7,7 @@ export default function FileExplorer(props) {
 
   return (
     globalState.files.map(file => (
-      <FileExplorerSection section={file}></FileExplorerSection>
+      <FileExplorerSection key={file.uuid} section={file}></FileExplorerSection>
     ))
   );
 }

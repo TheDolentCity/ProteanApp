@@ -11,7 +11,7 @@ import FileExplorerPanel from './components/panels/file-explorer-panel'
 import Page from './components/generic/book/page'
 import Sheet from './components/sheets/sheet'
 import ProteanDocumentEditor from './components/protean-framework/protean-document-editor'
-import MdxDocument from './components/generic/book/mdx-document'
+import MarkdownParser from './components/generic/book/mdx-document'
 
 // If I wish to access NextJS's page
 /* <Component {..pageProps} /> */
@@ -27,7 +27,7 @@ export default function App(props) {
           <ProteanToolPanel>
             <FileExplorerPanel label="Protean App Explorer"></FileExplorerPanel>
           </ProteanToolPanel>
-          <MdxDocument></MdxDocument>
+          <MarkdownParser></MarkdownParser>
         </ProteanAppBody>
 
         {/* <ProteanAppCommandBar>

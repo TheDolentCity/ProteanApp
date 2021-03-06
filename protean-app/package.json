@@ -9,9 +9,7 @@
     "serve": "serve dist -p 3000"
   },
   "dependencies": {
-    "@mdx-js/loader": "^2.0.0-next.8",
-    "@mdx-js/react": "^1.6.22",
-    "@mdx-js/runtime": "^1.6.22",
+    "markdown-to-jsx": "^7.1.1",
     "postcss": "^7.0.35",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
