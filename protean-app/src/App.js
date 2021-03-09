@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './styles/globals.css';
 
+import React from 'react';
 import { GlobalStoreProvider } from './components/stores/global-store'
 import ProteanApp from './components/protean-framework/protean-app'
 import ProteanAppHeader from './components/protean-framework/protean-header'
@@ -11,11 +12,10 @@ import ProteanToolPanel from './components/protean-framework/protean-toolpanel'
 import ActiveFilesExplorer from './components/generic/tools/active-file-explorer';
 import AllFilesExplorer from './components/generic/tools/all-files-explorer';
 import Sheet from './components/sheets/sheet'
-import MarkdownRenderer from './components/generic/book/markdown-renderer'
+import MarkdownRenderer from './components/generic/book/mdx-document'
 import Page from './components/generic/book/page';
 import ProteanPanel from './components/protean-framework/protean-panel';
 import ProteanAppCommandBar, { CommandAdmin, CommandDownload, CommandGroup, CommandRead, CommandUpload, CommandWrite } from './components/protean-framework/protean-command-bar';
-import ProteanDocument from './components/protean-framework/protean-document';
 import ProteanDocumentController from './components/protean-framework/protean-document-controller';
 
 export default function App() {
@@ -36,7 +36,7 @@ export default function App() {
         <ProteanAppBody>
           <ProteanToolPanel label="Tool Panel">
             <ProteanPanel label="Active Files">
-              <ActiveFilesExplorer></ActiveFilesExplorer>
+              {/* <ActiveFilesExplorer></ActiveFilesExplorer> */}
             </ProteanPanel>
             <ProteanPanel label="All Files">
               <AllFilesExplorer></AllFilesExplorer>

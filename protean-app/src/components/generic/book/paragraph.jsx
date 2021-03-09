@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function Paragraph({ css, children }) {
   return (
     <p className={css}>

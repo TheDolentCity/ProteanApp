@@ -1,3 +1,4 @@
+import React from 'react';
 import FabricIcon from "../generic/icons/fabric-icon";
 
 export default function ProteanAppCommandBar(props) {

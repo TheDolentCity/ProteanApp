@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useGlobalStore } from '../../stores/global-store';
 import FabricIcon from '../icons/fabric-icon';
 
@@ -100,7 +100,7 @@ function FileExplorerItem(props) {
 
   function activeFileDispatch(file) {
     return {
-      type: "setActiveFile",
+      type: "addActiveFile",
       payload: {
         activeFile: file
       }

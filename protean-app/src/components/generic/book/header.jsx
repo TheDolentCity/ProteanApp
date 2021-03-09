@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function Header1({css, children}) {
   return (
     <h1 className={css}>

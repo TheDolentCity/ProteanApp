@@ -1,3 +1,4 @@
+import React from 'react';
 import { Header1 } from '../generic/book/header';
 import { Paragraph } from '../generic/book/paragraph';
 import ActionBlockPanel from '../protean-rpg/action-block'

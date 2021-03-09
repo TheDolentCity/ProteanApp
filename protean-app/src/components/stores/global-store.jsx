@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useReducer } from 'react';
-import Button from '../generic/basic-inputs/button';
 
 const TEST_PAGE_1 = {
   uuid: "01",
@@ -39,7 +38,7 @@ const ProteanDiceSystemPage = {
   content: 
 `
 <H1>
-  <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-magenta-500">
+  <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-magenta-500">
     Protean Dice System
   </span>
 </H1>
@@ -329,10 +328,10 @@ const reducer = (globalState, action) => {
         ...globalState,
         files: globalState.files.push(action.payload.file)
       }
-    case "setActiveFile":
+    case "addActiveFile":
       return {
         ...globalState,
-        activeFile: action.payload.activeFile
+        activeFiles: [...globalState.activeFiles, action.payload.activeFile]
       }
     default:
       throw new Error(`Unhandled action type: ${action.type}`);

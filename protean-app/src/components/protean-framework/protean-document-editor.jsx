@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MdxDocument from '../generic/book/markdown-renderer';
+import MdxDocument from '../generic/book/mdx-document';
 import Surface, { SurfaceSection } from '../generic/layout/surface';
 import FabricIcon from '../generic/icons/fabric-icon';
 

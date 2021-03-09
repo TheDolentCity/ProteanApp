@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function Surface(props) {
   return (
     <div className={"rounded shadow-md text-left bg-white dark:bg-gray-700" + props.css}>
