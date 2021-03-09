@@ -1,12 +1,13 @@
+import React from 'react';
 import { useGlobalStore } from '../stores/global-store';
 import Page from '../generic/book/page';
-import MarkdownRenderer from '../generic/book/markdown-renderer';
+import MdxDocument from '../generic/book/mdx-document';
 
 export default function ProteanDocumentController(props) {
   const { globalState, dispatch } = useGlobalStore();
 
   return (
-    <div className="flex w-full h-full p-12">
+    <div className="flex w-full h-full p-12 space-x-12">
       {
         globalState.activeFiles.map(file => (
           <ProteanDocument key={file.uuid} file={file}></ProteanDocument>
@@ -18,11 +19,14 @@ export default function ProteanDocumentController(props) {
 
 function ProteanDocument({file}) {
   return (
-    <div class="flex-auto max-w-full">
+    <div className="flex-auto max-w-9/12">
       <Page title={file.title} parentTitle={file.parentTitle}>
-        <MarkdownRenderer>
+        <MdxDocument>
+          {file.content}
+        </MdxDocument>
+        {/* <MarkdownRenderer>
           {file?.content}
-        </MarkdownRenderer>
+        </MarkdownRenderer> */}
       </Page>
     </div>
   );

@@ -1,3 +1,4 @@
+import React from 'react';
 import Dropdown from "../generic/basic-inputs/dropdown";
 import Elevation from "../generic/layout/elevation";
 import FabricIcon from "../generic/icons/fabric-icon";

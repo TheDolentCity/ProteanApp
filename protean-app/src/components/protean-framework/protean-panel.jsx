@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import FabricIcon from '../generic/icons/fabric-icon';
 
 export default function ProteanPanel(props) {

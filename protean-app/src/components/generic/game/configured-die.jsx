@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function ConfiguredDie(props) {
   return (
     <div className={"inline-flex w-72 min-w-72 mx-4 border-2 border-gray-600 dark:border-gray-500 " + props.css}>
@@ -25,21 +27,21 @@ export default function ConfiguredDie(props) {
       </div>
       <div className="flex-shrink my-auto items-center">
         <ol className="p-4 list-decimal list-inside text-left">
-          {/* <DiceResults dieResults={props.dieResults}></DiceResults> */}
+          <DiceResults dieResults={props.dieResults}></DiceResults>
         </ol>
       </div>
     </div>
   );
 }
 
-// function DiceResults({dieResults}) {
-//   return (
-//     dieResults?.map((result, i) => (
-//       <li key={i} className="font-semibold font-mono text-right">
-//         <code className="font-normal whitespace-nowrap text-left">
-//           {result}
-//         </code>
-//       </li>
-//     ))
-//   );
-// }
+function DiceResults({dieResults}) {
+  return (
+    dieResults?.map((result, i) => (
+      <li key={i} className="font-semibold font-mono text-right">
+        <code className="font-normal whitespace-nowrap text-left">
+          {result}
+        </code>
+      </li>
+    ))
+  );
+}

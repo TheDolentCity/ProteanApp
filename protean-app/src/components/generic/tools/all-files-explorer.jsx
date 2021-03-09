@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useGlobalStore } from '../../stores/global-store';
 import { FileExplorerSection } from './file-explorer';
 import FabricIcon from '../icons/fabric-icon';

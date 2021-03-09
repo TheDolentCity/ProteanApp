@@ -3,7 +3,7 @@ import FabricIcon from '../icons/fabric-icon';
 
 export default function Page(props) {
   return (
-    <div className="flex flex-col w-full h-full pb-8 rounded-md shadow-md bg-white dark:bg-black">
+    <div className="flex flex-col w-full h-full pb-12 rounded-md shadow-md bg-white dark:bg-black">
       <div className="flex w-full p-4 text-2xl">
         <FabricIcon name="TextDocument" css="flex-none"></FabricIcon>
         <div className="flex-grow flex flex-col pl-4">
@@ -14,11 +14,11 @@ export default function Page(props) {
             {props.parentTitle}
           </span>
         </div>
-        <button className="flex-none">
+        <button className="flex-none hover:bg-black hover:bg-opacity-10">
           <FabricIcon name="MoreVertical" css=""></FabricIcon>
         </button>
       </div>
-      <div className="flex-grow px-8 pt-4 pb-8 overflow-y-auto">
+      <div className="flex-grow px-12 pt-4 overflow-y-auto">
         {props.children}
       </div>
     </div>
