@@ -3,8 +3,7 @@ import MDX from '@mdx-js/runtime';
 import { Header1, Header2, Header3, Header4, Header5, Header6 } from './header';
 import { Paragraph } from './paragraph';
 import ConfiguredDie from '../game/configured-die';
-
-const TEST_MDX = "# Header 1\nThis is a paragraph";
+import DiceBlock from '../game/dice-block';
 
 const mdxComponents = {
   // Base wrapper for every mdx document
@@ -47,6 +46,7 @@ const mdxComponents = {
 
   // Protean RPG Components
   ConfiguredDie: ConfiguredDie,
+  DiceBlock: DiceBlock
 };
 
 // Customize Document:

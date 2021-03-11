@@ -28,9 +28,9 @@ That is a paragraph. A paragraph (from the [Ancient Greek](https://en.wikipedia.
 }
 
 const ProteanDiceSystemPage = {
-  uuid: "02",
+  uuid: "ProteanDiceSystemPage",
   type: "PAGE",
-  title: "Protean Dice System",
+  title: "Dice System",
   parentTitle: "Chapter 1: Core Rules",
   props: {
     
@@ -83,6 +83,21 @@ Unfortunately, the fluctuations in dice faces means I cannot easily produce phys
 
 ### Dice Sizes and Representations
 Protean uses seven different polyhedral dice. The most common is the six-sided die or 'd6'. This format is used to represent dice the vast majority of the time. For example, the seven polyhedral dice are commonly called d4, d6, d8, d10, d12, and d20. They are represented this way in both the Protean App and the Protean RPG. Other sizes of dice, such as d3, d66, or d100, can be rolled using a combination of the above dice.
+`
+}
+
+const ProteanBreakersPage = {
+  uuid: "ProteanBreakersPage",
+  type: "PAGE",
+  title: "Breakers",
+  parentTitle: "Chapter 1: Core Rules",
+  props: {
+
+  },
+  content:
+`
+# Breakers
+A breaker represents a vital aspect of a character that can temporarily, or permanently, be broken. It is a tracker-based mechanic that can be used to mimic behaviors like hit points. Every breaker has a name, description, and initial value. The Advocate and Actors must work together to interpret what happens when a character's breaker reaches the breaking point (normally 0). 
 `
 }
 
@@ -273,65 +288,60 @@ const TEST_PAGE_4 = {
   ]
 }
 
+const CarterGuyusSheet = {
+  uuid: "CarterGuyusSheet",
+  type: "SHEET",
+  title: "Carter Guyus",
+  parentTitle: "Character Sheet",
+  props: {
+
+  },
+  content:
+`
+<DiceBlock></DiceBlock>
+`
+}
+
 const TEST_BOOK_1 = {
   uuid: "01",
   type: "BOOK",
   title: "Protean RPG",
   content: [
-    {
-      uuid: "01",
-      type: "PAGES",
-      title: "Chapter 1: Core Rules",
-      parentTitle: "Protean RPG",
-      content: [
-        TEST_PAGE_1,
-        ProteanDiceSystemPage
-      ]
-    },
-    {
-      uuid: "02",
-      type: "PAGES",
-      title: "Chapter 2: The Advocate",
-      parentTitle: "Protean RPG",
-      content: [
-        TEST_PAGE_3,
-        TEST_PAGE_4
-      ]
-    },
-    {
-      uuid: "03",
-      type: "PAGES",
-      title: "Chapter 3: The Actors",
-      parentTitle: "Protean RPG",
-      content: [
-        TEST_PAGE_3,
-        TEST_PAGE_4
-      ]
-    },
+    ProteanDiceSystemPage,
+    ProteanBreakersPage
   ]
 }
 
 const GlobalStoreContext = createContext();
 const initialGlobalState = {
   files: [
-    TEST_BOOK_1
+    TEST_BOOK_1,
+    CarterGuyusSheet
   ],
-  activeFiles: [
-    ProteanDiceSystemPage
+  activeFile: [
+    CarterGuyusSheet
+  ],
+  activePage: [
+
   ]
 };
 
 const reducer = (globalState, action) => {
   switch (action.type) {
-    case "addFile": 
+    case "uploadFile": 
       return {
         ...globalState,
         files: globalState.files.push(action.payload.file)
       }
-    case "addActiveFile":
+    case "setActiveFile":
       return {
         ...globalState,
-        activeFiles: [...globalState.activeFiles, action.payload.activeFile]
+        activeFile: action.payload.activeFile
+      }
+    case "setActivePage":
+      return {
+        ...globalState,
+        activePage: action.payload.activePage
       }
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
