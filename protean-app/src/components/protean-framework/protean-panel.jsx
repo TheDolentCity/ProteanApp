@@ -9,19 +9,17 @@ export default function ProteanPanel(props) {
   };
 
   return (
-    <div className={isOpen ? " " : " h-6 " + "flex flex-col whitespace-normal  " + props.openCss}>
-      <div className="flex-none flex w-full h-6 my-auto items-center bg-black dark:bg-white bg-opacity-10 dark:bg-opacity-50">
-        <button onClick={toggleOpen} className="flex-none m-1 ml-2 my-auto justify-center float-right focus:outline-none">
-          {isOpen ?
-            <FabricIcon name="ChevronDownSmall" css="text-2xs pr-1"></FabricIcon>
-            :
-            <FabricIcon name="ChevronRightSmall" css="text-2xs pr-1"></FabricIcon>
-          }
-        </button>
-        <h6 className="flex-grow font-semibold uppercase truncate">
+    <div className={isOpen ? " " : "" + "flex flex-col whitespace-normal  " + props.openCss}>
+      <button onClick={toggleOpen} className="acc-btn flex w-full mx-auto px-6 py-2 space-x-2 items-center text-base text-left elevation-10 hover:elevation-15">
+        {isOpen ?
+          <FabricIcon name="ChevronDownSmall" css="text-2xs pr-1"></FabricIcon>
+          :
+          <FabricIcon name="ChevronRightSmall" css="text-2xs pr-1"></FabricIcon>
+        }
+        <h6 className="flex-grow font-semibold truncate">
           {props.label}
         </h6>
-      </div>
+      </button>
       {isOpen ?
         <div className="flex-grow w-full whitespace-normal overflow-y-auto">
           {props.children}

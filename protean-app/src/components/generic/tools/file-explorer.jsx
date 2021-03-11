@@ -11,7 +11,7 @@ export function FileExplorerSection(props) {
 
   return (
     <div className="flex flex-col w-full whitespace-normal overflow-x-hidden overflow-y-auto">
-      <button onClick={toggleOpen} className="flex-none h-6 pl-2 my-auto items-center hover:bg-gray-250 dark:hover:bg-gray-750 focus:outline-none">
+      <button onClick={toggleOpen} className="acc-btn flex-none h-6 pl-2 my-auto items-center hover:bg-gray-250 dark:hover:bg-gray-750">
         <h6 className="flex truncate">
           {isOpen ?
             <FabricIcon name="ChevronDownSmall" css="text-3xs"></FabricIcon>
@@ -108,7 +108,7 @@ function FileExplorerItem(props) {
   }
 
   return (
-    <button onClick={() => dispatch(activeFileDispatch(props.item))} className="flex-none w-full h-6 my-auto px-2 rounded-none items-center whitespace-nowrap hover:bg-gray-250 dark:hover:bg-gray-750 focus:outline-none">
+    <button onClick={() => dispatch(activeFileDispatch(props.item))} className="acc-btn flex-none w-full h-6 my-auto px-2 rounded-none items-center whitespace-nowrap hover:bg-gray-250 dark:hover:bg-gray-750">
       <h6 className="flex h-4 pl-3 text-left truncate">
         <FileExplorerIcon type={props.item.type}></FileExplorerIcon>
         {props.item.title}

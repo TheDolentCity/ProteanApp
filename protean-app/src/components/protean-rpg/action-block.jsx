@@ -77,7 +77,7 @@ function ActionBlockSection(props) {
 
 function ActionBlockRollButton(props) {
   return (
-    <button onClick={props.onClick} className="flex-none p-2 hover:bg-black hover:bg-opacity-10 dark:hover:bg-white focus:outline-none">
+    <button onClick={props.onClick} className="acc-btn flex-none p-2 hover:bg-black hover:bg-opacity-10 dark:hover:bg-white">
       
     </button>
   );

@@ -14,7 +14,7 @@ export default function Page(props) {
             {props.parentTitle}
           </span>
         </div>
-        <button className="flex-none hover:bg-black hover:bg-opacity-10">
+        <button className="acc-btn flex-none hover:elevation-10">
           <FabricIcon name="MoreVertical" css=""></FabricIcon>
         </button>
       </div>
