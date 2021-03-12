@@ -86,18 +86,52 @@ Protean uses seven different polyhedral dice. The most common is the six-sided d
 `
 }
 
-const ProteanBreakersPage = {
-  uuid: "ProteanBreakersPage",
+const ProteanSkeletonsAndFramesPage = {
+  uuid: "ProteanSkeletonsAndFramesPage",
   type: "PAGE",
-  title: "Breakers",
-  parentTitle: "Chapter 1: Core Rules",
+  title: "Skeletons & Frames",
   props: {
 
   },
   content:
 `
-# Breakers
-A breaker represents a vital aspect of a character that can temporarily, or permanently, be broken. It is a tracker-based mechanic that can be used to mimic behaviors like hit points. Every breaker has a name, description, and initial value. The Advocate and Actors must work together to interpret what happens when a character's breaker reaches the breaking point (normally 0). 
+# Skeletons
+Every character in Protean has a skeleton made up of frames. The skeleton is the basic building blocks for your character's representation. If rolling dice is a verb then the skeleton frames are the nouns. They communicate to the player what state their character is in at any point in time. Most RPGs have frames in some form. With a few small differences, traditional hit points are frames. Frames are designed to be abstract to support all sorts of content, from hydration to mutation mechanics.
+
+## Frames
+A frame represents a vital aspect of your character that can temporarily, or permanently, be broken. Every frame has a name, description, numerical score, repair method, and defense. Injuries, misfortune, and emotions cause fractures that lower your frame's score as you play, but defenses can mitigate a fracture. When your frame reaches a score of 0 or lower it creates a **shatter**. The Advocate and Actors must work together to interpret shatters. The maximum frame score is 10.
+
+### Fractures
+Fractures are an abstract concept, but incuring one is always negative for a character. It can represent anything from emotional harm, to dishonor, to a biting insult. A fracture always has a targeted frame and a numerical value you subtract from your current frame's score. The maximum fracture score is 5.
+
+### Defenses
+When the Advocate declares a fracture to one of your frames you reduce it by your frame's associated defense. A defense can reduce a fracture to zero, but it can never increase your frame's score. The maximum defense score is 3.
+
+Consider the following examples:
+- Frame Score: 2 &rarr; Defense: 0 &rarr; Fracture: 2 &rarr; Final Frame Score: 0
+- Frame Score: 2 &rarr; Defense: 1 &rarr; Fracture: 2 &rarr; Final Frame Score: 1
+- Frame Score: 2 &rarr; Defense: 3 &rarr; Fracture: 2 &rarr; Final Frame Score: 2
+
+### Shatters
+A frame shatters once it has reached a score of 0 or lower. This is always negative, or at least mostly negative, for your character. TODO. The rest of this explanation needs to happen but it's long and difficult and I don't want to do it right now so I'll do it after the first playtest. Dante will explain this on the fly when they happen.
+
+## Protean Core Frames
+These frames are suggestions but they function as a good starting point for any game. Use these as a baseline and add or subtract to fit your game's setting and themes.
+
+### Body
+This frame represents health, pain, blood, and energy. Example fractures include cuts, bruises, marathons, falls, lack of sleep, diseases, and poisons.
+
+### Mind
+This frame represents judgements, focus, and perception. Example fractures include concussions, isolation, horrible images, fear, and dark magics.
+
+### Presence
+This frame represents social acuity and how people treat you. Example fractures include poor appearance, dishonorable offense, uncouth behavior, and meltdowns.
+
+### Luck
+This frame represents fortune, opportunities, and blessings. Example fractures include going down a wrong path, making a loud noise, reckless decisions, and upsetting a god.
+
+### Supplies
+This frame represents physical resources, equipment, and money. Example fractures include using torches, eating rations, tying off rope, and getting pickpocketed.
 `
 }
 
@@ -308,7 +342,7 @@ const TEST_BOOK_1 = {
   title: "Protean RPG",
   content: [
     ProteanDiceSystemPage,
-    ProteanBreakersPage
+    ProteanSkeletonsAndFramesPage
   ]
 }
 

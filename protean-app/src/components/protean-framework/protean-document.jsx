@@ -13,7 +13,7 @@ export default function ProteanDocument() {
       return (
         <Document
           title={globalState?.activePage.title}
-          parentTitle={globalState?.activePage.parentTitle}>
+          subtitle={globalState?.activeFile.title}>
           {globalState?.activePage.content}
         </Document>
       );
@@ -22,7 +22,7 @@ export default function ProteanDocument() {
       return (
         <Document
           title={globalState?.activeFile.title}
-          parentTitle={globalState?.activeFile.parentTitle}>
+          subtitle={globalState?.activeFile.parentTitle}>
           {globalState?.activeFile.content}
         </Document>
       );
@@ -34,7 +34,7 @@ export default function ProteanDocument() {
 function Document(props) {
   return (
     <div className="flex-grow max-w-9/12 px-20 py-10">
-      <Page title={props.title} parentTitle={props.parentTitle}>
+      <Page title={props.title} subtitle={props.subtitle}>
         <MdxDocument>
           {props.children}
         </MdxDocument>
