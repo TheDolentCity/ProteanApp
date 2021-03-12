@@ -2,6 +2,7 @@ import React from 'react';
 import MDX from '@mdx-js/runtime';
 import { Header1, Header2, Header3, Header4, Header5, Header6 } from './header';
 import { Paragraph } from './paragraph';
+import { ListBulleted, ListNumbered } from './lists';
 import ConfiguredDie from '../game/configured-die';
 import DiceBlock from '../game/dice-block';
 
@@ -33,7 +34,7 @@ const mdxComponents = {
   td: (props) => <td className="">{props.children}</td>,
   thematicBreak: (props) => <thematicBreak className="">{props.children}</thematicBreak>,
   tr: (props) => <tr className="">{props.children}</tr>,
-  ul: (props) => <ul className="">{props.children}</ul>,
+  ul: ListBulleted,
 
   // Customizable Base Components
   H1: (props) => <Header1 css={props.css}>{props.children}</Header1>,

@@ -1,57 +1,33 @@
 import React from 'react';
 
-export function ListBulleted(props) {
+export function ListBulleted({ css, children }) {
   return (
-    <ul className=
-      {
-        "mt-" + props.spaceBefore + " " +
-        "mb-" + props.spaceAfter + " " +
-        "leading-" + props.leading + " " +
-        "text-" + props.fontSize + " " +
-        "font-" + props.fontStyle + " " +
-        "ml-4 list-disc list-outside"
-      }>
-      {props.children}
+    <ul className={"ml-4 list-disc list-outside " + css}>
+      {children}
     </ul>
   );
 }
 
-export function ListNumbered(props) {
+export function ListNumbered({ css, children }) {
   return (
-    <ol className=
-      {
-        "mt-" + props.spaceBefore + " " +
-        "mb-" + props.spaceAfter + " " +
-        "leading-" + props.leading + " " +
-        "text-" + props.fontSize + " " +
-        "font-" + props.fontStyle + " " +
-        "ml-4 list-decimal list-outside"
-      }>
-      {props.children}
-    </ol>
+    <ul className={"ml-4 list-decimal list-outside " + css}>
+      {children}
+    </ul>
   );
 }
 
-export function ListItem(props) {
+export function ListItem({ children }) {
   return (
     <li className="my-2">
-      {props.children}
+      {children}
     </li>
   );
 }
 
 ListBulleted.defaultProps = {
-  spaceBefore: "0",
-  spaceAfter: "0",
-  leading: "",
-  fontSize: "base",
-  fontStyle: "normal"
+  css: "mb-8 text-base font-normal text-gray-700 dark:text-gray-400",
 }
 
 ListNumbered.defaultProps = {
-  spaceBefore: "0",
-  spaceAfter: "0",
-  leading: "",
-  fontSize: "base",
-  fontStyle: "normal"
+  css: "mb-8 text-base font-normal text-gray-700 dark:text-gray-400",
 }

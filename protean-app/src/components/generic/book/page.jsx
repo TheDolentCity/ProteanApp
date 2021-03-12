@@ -11,7 +11,7 @@ export default function Page(props) {
             {props.title}
           </span>
           <span className="flex-auto text-xs">
-            {props.parentTitle}
+            {props.subtitle}
           </span>
         </div>
         <button className="acc-btn flex-none hover:elevation-10">

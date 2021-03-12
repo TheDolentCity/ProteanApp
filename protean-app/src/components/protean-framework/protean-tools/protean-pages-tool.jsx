@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useGlobalStore } from "../../stores/global-store";
 import ProteanTool, { ProteanToolButton } from "./protean-tool";
 import FabricIcon from "../../generic/icons/fabric-icon";
@@ -17,26 +17,57 @@ export default function ProteanPagesTool(props) {
 
   return (
     <ProteanTool toolName="Pages">
-      {
-        globalState?.activeFile?.type == "BOOK" 
-        ?
-        globalState?.activeFile?.content.map(page => (
-          <ProteanPageButton key={page.uuid} onClick={() => dispatch(activePageDispatch(page))}>
-            {page.title}
-          </ProteanPageButton>
-        ))
-        :
-        <span></span>
-      }
+      <ProteanPagesContainer>
+        {
+          globalState?.activeFile?.type == "BOOK"
+            ?
+            globalState?.activeFile?.content.map((page, i) => (
+              <ProteanPageButton
+                key={page.uuid}
+                icon="TextDocument"
+                number={i}
+                onClick={() => dispatch(activePageDispatch(page))}
+                activePage={globalState?.activePage?.uuid === page.uuid}>
+                {page.title}
+              </ProteanPageButton>
+            ))
+            :
+            <span></span>
+        }
+      </ProteanPagesContainer>
     </ProteanTool>
   );
 }
 
-function ProteanPageButton(props) {
+function ProteanPagesContainer(props) {
   return (
-    <button onClick={props.onClick} className="acc-btn flex w-full mx-auto px-4 py-1 space-x-2 items-center rounded text-base hover:elevation-10">
-      <FabricIcon name={props.icon}></FabricIcon>
-      <span className="text-xs">{props.children}</span>
+    <div className="grid grid-cols-2 grid-flow-row px-2 overflow-y-auto">
+      {props.children}
+    </div>
+  );
+}
+
+function ProteanPageButton(props) {
+  if (props.activePage) {
+    return (
+      <button onClick={props.onClick} className="acc-btn flex flex-col col-span-2 px-4 pt-2 pb-4 rounded text-base hover:elevation-10">
+        <p className="max-w-full pb-2 text-sm truncate">{props.children}</p>
+        <div className="flex w-full h-36 justify-center items-center rounded shadow-md ring-4 ring-cyan-500 ring-opacity-100 bg-white dark:bg-black">
+          <span className="text-7xl font-semibold">
+            {props.number}
+          </span>
+        </div>
+      </button>
+    );
+  }
+  else return (
+    <button onClick={props.onClick} className="acc-btn flex flex-col col-span-2 px-4 pt-2 pb-4 rounded text-base hover:elevation-10">
+      <p className="max-w-full pb-2 text-sm truncate">{props.children}</p>
+      <div className="flex w-full h-36 justify-center items-center rounded shadow-md bg-white dark:bg-black">
+        <span className="text-7xl font-semibold">
+          {props.number}
+        </span>
+      </div>
     </button>
   );
 }
