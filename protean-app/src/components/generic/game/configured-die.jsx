@@ -9,17 +9,17 @@ export default function ConfiguredDie(props) {
         </p>
         <ul className="ml-4 pt-2 list-disc list-outside text-left">
           <li className="">
-            <span className="px-1 bg-cyan-400 font-medium">
+            <span className="px-1 bg-accent-400 font-medium">
               {props.dieTags[0]}
             </span>
           </li>
           <li className="">
-            <span className="px-1 bg-magenta-400 font-medium">
+            <span className="px-1 bg-accent-400 font-medium">
               {props.dieTags[1]}
             </span>
           </li>
           <li className="">
-            <span className="px-1 bg-yellow-400 font-medium">
+            <span className="px-1 bg-accent-400 font-medium">
               {props.dieTags[2]}
             </span>
           </li>

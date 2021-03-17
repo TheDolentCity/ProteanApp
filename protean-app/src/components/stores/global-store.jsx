@@ -1,29 +1,32 @@
 import React, { createContext, useContext, useReducer } from 'react';
 
-const TEST_PAGE_1 = {
-  uuid: "01",
+const ProteanIs = {
+  uuid: "ProteanIs",
   type: "PAGE",
-  title: "PAGE 1 - Health System",
-  parentTitle: "Chapter 1: Core Rules",
-  content: 
+  title: "Protean Is...",
+  format: {
+
+  },
+  content:
 `
-# Paragraph
-<H1 css="text-cyan-400">Paragraph</H1>
-<H1 css="text-magenta-400">Paragraph</H1>
-<H1 css="text-yellow-400">Paragraph</H1>
+# Protean Is...
 
-That is a paragraph. A paragraph (from the [Ancient Greek](https://en.wikipedia.org/wiki/Ancient_Greek) παράγραφος, parágraphos, "to write beside") is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language,paragraphs are usually an expected part of formal writing, used to organize longer prose.
-<P css="text-cyan-400">
-That is a paragraph. A paragraph (from the [Ancient Greek](https://en.wikipedia.org/wiki/Ancient_Greek) παράγραφος, parágraphos, "to write beside") is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language,paragraphs are usually an expected part of formal writing, used to organize longer prose.
-</P>
-<P css="text-magenta-400">
-That is a paragraph. A paragraph (from the [Ancient Greek](https://en.wikipedia.org/wiki/Ancient_Greek) παράγραφος, parágraphos, "to write beside") is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language,paragraphs are usually an expected part of formal writing, used to organize longer prose.
-</P>
-<P css="text-yellow-400">
-That is a paragraph. A paragraph (from the [Ancient Greek](https://en.wikipedia.org/wiki/Ancient_Greek) παράγραφος, parágraphos, "to write beside") is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language,paragraphs are usually an expected part of formal writing, used to organize longer prose.
-</P>
+---
 
-# Paragraph
+## ... For Roleplaying With Friends
+TODO
+
+## ... A Story Game
+TODO
+
+## ... Cooperative
+TODO
+
+## ... Modular
+TODO
+
+## ... Accessible
+TODO
 `
 }
 
@@ -32,13 +35,13 @@ const ProteanDiceSystemPage = {
   type: "PAGE",
   title: "Dice System",
   parentTitle: "Chapter 1: Core Rules",
-  props: {
-    
+  format: {
+
   },
   content: 
 `
 <H1>
-  <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-magenta-500">
+  <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent-400 to-accent-600">
     Protean Dice System
   </span>
 </H1>
@@ -90,7 +93,7 @@ const ProteanSkeletonsAndFramesPage = {
   uuid: "ProteanSkeletonsAndFramesPage",
   type: "PAGE",
   title: "Skeletons & Frames",
-  props: {
+  format: {
 
   },
   content:
@@ -99,7 +102,7 @@ const ProteanSkeletonsAndFramesPage = {
 Every character in Protean has a skeleton made up of frames. The skeleton is the basic building blocks for your character's representation. If rolling dice is a verb then the skeleton frames are the nouns. They communicate to the player what state their character is in at any point in time. Most RPGs have frames in some form. With a few small differences, traditional hit points are frames. Frames are designed to be abstract to support all sorts of content, from hydration to mutation mechanics.
 
 ## Frames
-A frame represents a vital aspect of your character that can temporarily, or permanently, be broken. Every frame has a name, description, numerical score, repair method, and defense. Injuries, misfortune, and emotions cause fractures that lower your frame's score as you play, but defenses can mitigate a fracture. When your frame reaches a score of 0 or lower it creates a **shatter**. The Advocate and Actors must work together to interpret shatters. The maximum frame score is 10.
+A frame represents a vital aspect of your character that can temporarily, or permanently, be broken. Every frame has a name, description, numerical score, repair method, and defense. Injuries, misfortune, and emotions cause fractures that lower your frame's score as you play, but defenses can mitigate a fracture. When your frame reaches a score of 0 or lower it creates a shatter. The Advocate and Actors must work together to interpret shatters. The maximum frame score is 10.
 
 ### Fractures
 Fractures are an abstract concept, but incuring one is always negative for a character. It can represent anything from emotional harm, to dishonor, to a biting insult. A fracture always has a targeted frame and a numerical value you subtract from your current frame's score. The maximum fracture score is 5.
@@ -114,12 +117,26 @@ Consider the following examples:
 
 ### Shatters
 A frame shatters once it has reached a score of 0 or lower. This is always negative, or at least mostly negative, for your character. TODO. The rest of this explanation needs to happen but it's long and difficult and I don't want to do it right now so I'll do it after the first playtest. Dante will explain this on the fly when they happen.
+`
+}
 
-## Protean Core Frames
+const ProteanModuleBasicFrames = {
+  uuid: "ProteanModuleBasicFrames",
+  type: "PAGE",
+  title: "MODULE: Basic Frames",
+  format: {
+
+  },
+  content:
+`
+# MODULE: Basic Frames
 These frames are suggestions but they function as a good starting point for any game. Use these as a baseline and add or subtract to fit your game's setting and themes.
 
+## Frames List
+This module includes five basic frames. They cover most of the basic aspects of characters in stories. They have physical, emotional, and mental needs. They have tools and equipment to help them. And there is always an element of chance at play. As always, the most interesting thing is what happens when a frame's score reaches 0 and it shatters.
+
 ### Body
-This frame represents health, pain, blood, and energy. Example fractures include cuts, bruises, marathons, falls, lack of sleep, diseases, and poisons.
+This frame represents health, pain, blood, and energy. Example Fractures: cuts, bruises, marathons, falls, lack of sleep, diseases, and poisons.
 
 ### Mind
 This frame represents judgements, focus, and perception. Example fractures include concussions, isolation, horrible images, fear, and dark magics.
@@ -132,194 +149,54 @@ This frame represents fortune, opportunities, and blessings. Example fractures i
 
 ### Supplies
 This frame represents physical resources, equipment, and money. Example fractures include using torches, eating rations, tying off rope, and getting pickpocketed.
+
+## Shatters
+TODO
+
+### Body
+TODO
+
+**Battered:** is a body shatter type. TODO.
+
+**Bleeding:** is a body shatter type. TODO.
+
+**Exhausted:** is a body shatter type. TODO.
+
+**Broken:** is a body shatter type. TODO.
+
+### Mind
+TODO
+
+**Fuzzy:** is a mind shatter type. TODO.
+
+**Obsession:** is a mind shatter type. TODO.
+
+**Shock:** is a mind shatter type. TODO.
+
+**Memory Loss:** is a mind shatter type. TODO.
+
+### Presence
+TODO
+
+**Ignored:** is a presence shatter type. TODO.
+
+**Insecure:** is a presence shatter type. TODO.
+
+**Uncharacteristic:** is a presence shatter type. TODO.
+
+**Disrespected:** is a presence shatter type. TODO.
+
+### Luck
+TODO
+
+**Ignored:** is a luck shatter type. TODO.
+
+**Insecure:** is a luck shatter type. TODO.
+
+**Uncharacteristic:** is a luck shatter type. TODO.
+
+**Disrespected:** is a luck shatter type. TODO.
 `
-}
-
-const TEST_PAGE_3 = {
-  uuid: "03",
-  type: "PAGE",
-  title: "PAGE 3 - Weapon System",
-  parentTitle: "Chapter 2: The Advocate",
-  props: {
-    
-  },
-  content: [
-    {
-      uuid: "01",
-      nested: false,
-      component: "Header1",
-      children: "PAGE 3"
-    },
-    {
-      uuid: "02",
-      nested: false,
-      component: "Paragraph",
-      children: "Every scene must start and end and grip is the mechanic that controls this. Every actor in a scene has a unique grip value. As your grip declines, so to does your control over the scene. When you run out of grip, you fall out of the scene entirely."
-    },
-    {
-      uuid: "03",
-      nested: false,
-      component: "Header2",
-      children: "Grip System"
-    },
-    {
-      uuid: "04",
-      nested: false,
-      component: "Paragraph",
-      children: "TODO"
-    },
-    {
-      uuid: "05",
-      nested: false,
-      component: "Header3",
-      children: "Grip Dice"
-    },
-    {
-      uuid: "06",
-      nested: false,
-      component: "Paragraph",
-      children: "These are the dice that you roll at the start of a scene. The sum of the dice is your grip for that scene. This means that your starting grip fluctuates from scene to scene. The Advocate may grant bonus grip (up to your maximum) based on your character's actions, planning, or other circumstances."
-    },
-    {
-      uuid: "07",
-      nested: false,
-      component: "Header3",
-      children: "Grip Risk"
-    },
-    {
-      uuid: "08",
-      nested: false,
-      component: "Paragraph",
-      children: "If at any point you are below half of your maximum grip then you are considered at risk. In this state you may choose to leave the scene. How you leave the scene is up to you, but your character is unable to affect the scene or other actors in this scene after leaving.",
-      props: {
-        spaceAfter: "0"
-      }
-    },
-    {
-      uuid: "10",
-      nested: true,
-      component: "ListBulleted",
-      children: [
-        {
-          uuid: "11",
-          nested: false,
-          component: "ListItem",
-          children: "If a young, fire-breathing dragon engulfs you in flame and your grip is exhausted as a result, then your armor could become ruined, your skin scarred, and you could fall unconscious."
-        },
-        {
-          uuid: "12",
-          nested: false,
-          component: "ListItem",
-          children: "If an elder, fire-breathing dragon engulfs you in flame and your grip is exhausted as a result, then your possessions could be destroyed and you could be on the brink of death without lifesaving medicine or magic."
-        },
-        {
-          uuid: "13",
-          nested: false,
-          component: "ListItem",
-          children: "If Gorgomund, the King of Evil and the first fire-breathing dragon engulfs you in flame and your grip is exhausted as a result, then you could be killed instantly."
-        },
-      ]
-    },
-    {
-      uuid: "09",
-      nested: false,
-      component: "Dragon",
-      children: "This component does not exist"
-    },
-  ]
-}
-
-const TEST_PAGE_4 = {
-  uuid: "04",
-  type: "PAGE",
-  title: "Chapter 2: The Advocate",
-  props: {
-    
-  },
-  content: [
-    {
-      uuid: "01",
-      nested: false,
-      component: "Header1",
-      children: "PAGE 4"
-    },
-    {
-      uuid: "02",
-      nested: false,
-      component: "Paragraph",
-      children: "Every scene must start and end and grip is the mechanic that controls this. Every actor in a scene has a unique grip value. As your grip declines, so to does your control over the scene. When you run out of grip, you fall out of the scene entirely."
-    },
-    {
-      uuid: "03",
-      nested: false,
-      component: "Header2",
-      children: "Grip System"
-    },
-    {
-      uuid: "04",
-      nested: false,
-      component: "Paragraph",
-      children: "TODO"
-    },
-    {
-      uuid: "05",
-      nested: false,
-      component: "Header3",
-      children: "Grip Dice"
-    },
-    {
-      uuid: "06",
-      nested: false,
-      component: "Paragraph",
-      children: "These are the dice that you roll at the start of a scene. The sum of the dice is your grip for that scene. This means that your starting grip fluctuates from scene to scene. The Advocate may grant bonus grip (up to your maximum) based on your character's actions, planning, or other circumstances."
-    },
-    {
-      uuid: "07",
-      nested: false,
-      component: "Header3",
-      children: "Grip Risk"
-    },
-    {
-      uuid: "08",
-      nested: false,
-      component: "Paragraph",
-      children: "If at any point you are below half of your maximum grip then you are considered at risk. In this state you may choose to leave the scene. How you leave the scene is up to you, but your character is unable to affect the scene or other actors in this scene after leaving.",
-      props: {
-        spaceAfter: "0"
-      }
-    },
-    {
-      uuid: "10",
-      nested: true,
-      component: "ListBulleted",
-      children: [
-        {
-          uuid: "11",
-          nested: false,
-          component: "ListItem",
-          children: "If a young, fire-breathing dragon engulfs you in flame and your grip is exhausted as a result, then your armor could become ruined, your skin scarred, and you could fall unconscious."
-        },
-        {
-          uuid: "12",
-          nested: false,
-          component: "ListItem",
-          children: "If an elder, fire-breathing dragon engulfs you in flame and your grip is exhausted as a result, then your possessions could be destroyed and you could be on the brink of death without lifesaving medicine or magic."
-        },
-        {
-          uuid: "13",
-          nested: false,
-          component: "ListItem",
-          children: "If Gorgomund, the King of Evil and the first fire-breathing dragon engulfs you in flame and your grip is exhausted as a result, then you could be killed instantly."
-        },
-      ]
-    },
-    {
-      uuid: "09",
-      nested: false,
-      component: "Dragon",
-      children: "This component does not exist"
-    },
-  ]
 }
 
 const CarterGuyusSheet = {
@@ -327,9 +204,6 @@ const CarterGuyusSheet = {
   type: "SHEET",
   title: "Carter Guyus",
   parentTitle: "Character Sheet",
-  props: {
-
-  },
   content:
 `
 <DiceBlock></DiceBlock>
@@ -341,13 +215,16 @@ const TEST_BOOK_1 = {
   type: "BOOK",
   title: "Protean RPG",
   content: [
+    ProteanIs,
     ProteanDiceSystemPage,
-    ProteanSkeletonsAndFramesPage
+    ProteanSkeletonsAndFramesPage,
+    ProteanModuleBasicFrames
   ]
 }
 
 const GlobalStoreContext = createContext();
 const initialGlobalState = {
+  darkMode: false,
   files: [
     TEST_BOOK_1,
     CarterGuyusSheet
@@ -357,11 +234,21 @@ const initialGlobalState = {
   ],
   activePage: [
 
-  ]
+  ],
+  fileIcons: {
+    "BOOK": "ReadingMode",
+    "SHEET": "TextDocumentShared",
+    "PAGE": "TextDocument",
+  }
 };
 
 const reducer = (globalState, action) => {
   switch (action.type) {
+    case "setDarkMode":
+      return {
+        ...globalState,
+        darkMode: action.payload.darkMode
+      }
     case "uploadFile": 
       return {
         ...globalState,

@@ -5,6 +5,7 @@ import { Paragraph } from './paragraph';
 import { ListBulleted, ListNumbered } from './lists';
 import ConfiguredDie from '../game/configured-die';
 import DiceBlock from '../game/dice-block';
+import { ThematicBreak } from './thematic-break';
 
 const mdxComponents = {
   // Base wrapper for every mdx document
@@ -22,7 +23,7 @@ const mdxComponents = {
   h4: Header4,
   h5: Header5,
   h6: Header6,
-  hr: (props) => <hr className="">{props.children}</hr>,
+  hr: ThematicBreak,
   img: (props) => <img className="">{props.children}</img>,
   li: (props) => <li className="">{props.children}</li>,
   ol: (props) => <ol className="">{props.children}</ol>,
@@ -54,7 +55,7 @@ const mdxComponents = {
 // Pass a 'wrapper' object in the props. The wrapper should be a styled div.
 // For example: (<div className="bg-red-500">{props.children}</div>)
 
-export default function MdxDocument(props) {
+export default function MdxRender(props) {
   return (
     <MDX components={mdxComponents} scope={props.scope} wrapper={props.wrapper}>
       {props.children}

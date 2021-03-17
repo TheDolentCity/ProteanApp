@@ -25,9 +25,9 @@ export function ListItem({ children }) {
 }
 
 ListBulleted.defaultProps = {
-  css: "mb-8 text-base font-normal text-gray-700 dark:text-gray-400",
+  css: "my-4 mb-4 leading-7 text-base font-normal text-gray-700 dark:text-gray-400",
 }
 
 ListNumbered.defaultProps = {
-  css: "mb-8 text-base font-normal text-gray-700 dark:text-gray-400",
+  css: "my-4 mb-4 leading-7 text-base font-normal text-gray-700 dark:text-gray-400",
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import ProteanControlsTool from './protean-tools/protean-controls-tool';
+import ProteanDarkToggle from './protean-tools/protean-dark-toggle';
 import ProteanFilesTool from "./protean-tools/protean-files-tool";
 import ProteanPagesTool from './protean-tools/protean-pages-tool';
 
@@ -22,7 +23,7 @@ export function ProteanRightSidebar() {
 
 function ProteanSidebar(props) {
   return (
-    <div className="flex-none flex flex-col w-72 h-full shadow-md elevation-5">
+    <div className="flex-none flex flex-col w-72 h-full shadow-md raise-10">
       {props.children}
     </div>
   );
