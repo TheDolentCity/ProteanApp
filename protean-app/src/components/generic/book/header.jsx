@@ -2,7 +2,7 @@ import React from 'react';
 
 export function Header1({css, children}) {
   return (
-    <h1 className={css}>
+    <h1 className={css} id={children}>
       {children}
     </h1>
   );
@@ -10,7 +10,7 @@ export function Header1({css, children}) {
 
 export function Header2({ css, children }) {
   return (
-    <h2 className={css}>
+    <h2 className={css} id={children}>
       {children}
     </h2>
   );
@@ -18,7 +18,7 @@ export function Header2({ css, children }) {
 
 export function Header3({ css, children }) {
   return (
-    <h3 className={css}>
+    <h3 className={css} id={children}>
       {children}
     </h3>
   );
@@ -49,25 +49,25 @@ export function Header6({ css, children }) {
 }
 
 Header1.defaultProps = {
-  css: "leading-10 text-5xl font-bold",
+  css: "mt-8 mb-3 leading-12 text-5xl font-bold",
 }
 
 Header2.defaultProps = {
-  css: "leading-9 text-3xl font-semibold",
+  css: "mt-8 mb-3 leading-10 text-3xl font-semibold",
 }
 
 Header3.defaultProps = {
-  css: "leading-7 text-xl font-semibold",
+  css: "mt-8 mb-3 leading-7 text-xl font-semibold",
 }
 
 Header4.defaultProps = {
-  css: "leading-6 text-base font-semibold",
+  css: "mb-3 leading-6 text-base font-semibold",
 }
 
 Header5.defaultProps = {
-  css: "leading-5 text-sm font-medium",
+  css: "mb-3 leading-5 text-sm font-medium",
 }
 
 Header6.defaultProps = {
-  css: "leading-4 text-xs font-medium",
+  css: "mb-3 leading-4 text-xs font-medium",
 }

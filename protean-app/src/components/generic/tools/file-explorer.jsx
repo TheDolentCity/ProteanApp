@@ -11,7 +11,7 @@ export function FileExplorerSection(props) {
 
   return (
     <div className="flex flex-col w-full whitespace-normal overflow-x-hidden overflow-y-auto">
-      <button onClick={toggleOpen} className="acc-btn flex-none h-6 pl-2 my-auto items-center hover:bg-gray-250 dark:hover:bg-gray-750">
+      <button onClick={toggleOpen} className="acc-focus flex-none h-6 pl-2 my-auto items-center hover:bg-gray-250 dark:hover:bg-gray-750">
         <h6 className="flex truncate">
           {isOpen ?
             <FabricIcon name="ChevronDownSmall" css="text-3xs"></FabricIcon>
@@ -37,7 +37,7 @@ function FileExplorerIcon(props) {
   switch (props.type) {
     case "BOOK":
       return (
-        <FabricIcon name="BookAnswers" css="px-2 text-yellow-600 dark:text-yellow-400"></FabricIcon>
+        <FabricIcon name="BookAnswers" css="px-2 text-accent-600 dark:text-accent-300"></FabricIcon>
       );
     case "SECTION":
       if (props.isOpen) {
@@ -63,7 +63,7 @@ function FileExplorerIcon(props) {
       }
     case "PAGE":
       return (
-        <FabricIcon name="TextDocument" css="px-2 text-cyan-600 dark:text-cyan-300"></FabricIcon>
+        <FabricIcon name="TextDocument" css="px-2 text-accent-600 dark:text-accent-300"></FabricIcon>
       );
   }
 
@@ -108,7 +108,7 @@ function FileExplorerItem(props) {
   }
 
   return (
-    <button onClick={() => dispatch(activeFileDispatch(props.item))} className="acc-btn flex-none w-full h-6 my-auto px-2 rounded-none items-center whitespace-nowrap hover:bg-gray-250 dark:hover:bg-gray-750">
+    <button onClick={() => dispatch(activeFileDispatch(props.item))} className="acc-focus flex-none w-full h-6 my-auto px-2 rounded-none items-center whitespace-nowrap hover:bg-gray-250 dark:hover:bg-gray-750">
       <h6 className="flex h-4 pl-3 text-left truncate">
         <FileExplorerIcon type={props.item.type}></FileExplorerIcon>
         {props.item.title}

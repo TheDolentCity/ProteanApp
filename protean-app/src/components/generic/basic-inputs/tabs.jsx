@@ -21,7 +21,7 @@ export default function Tabs(props) {
                 {tab.label}
               </h6>
             </button>
-            <button key={i} onClick={closeTab(tab.label)} className="acc-btn flex-none m-1 p-1 my-auto justify-center float-right hover:bg-black hover:bg-opacity-10 dark:hover:bg-white">
+            <button key={i} onClick={closeTab(tab.label)} className="acc-focus flex-none m-1 p-1 my-auto justify-center float-right hover:bg-black hover:bg-opacity-10 dark:hover:bg-white">
               <VscClose></VscClose>
             </button>
           </div>
