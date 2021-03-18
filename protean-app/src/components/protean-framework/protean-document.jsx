@@ -56,7 +56,7 @@ export default function ProteanDocument() {
 
 function MdxDocument(props) {
   return (
-    <div className="flex-grow flex justify-center px-20 py-10">
+    <div className="flex-grow flex justify-center px-12 py-6 lg:px-20 lg:py-10">
       <Page title={props.title} subtitle={props.subtitle} icon={props.icon}>
         <MdxRender>
           {props.children}
@@ -68,7 +68,7 @@ function MdxDocument(props) {
 
 function SheetDocument(props) {
   return (
-    <div className="flex-grow flex justify-center px-20 py-10">
+    <div className="flex-grow flex justify-center px-12 py-6 lg:px-20 lg:py-10">
       <Page title={props.title} subtitle={props.subtitle} icon={props.icon}>
         <Sheet>
           {props.children}

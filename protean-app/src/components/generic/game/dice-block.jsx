@@ -13,17 +13,17 @@ export default function DiceBlock(props) {
         <div className="flex w-full pb-1 text-2xl">
           <input
             type="text"
-            className="acc-input flex-none w-2/12 p-1 elevation-0 font-bold text-white text-opacity-80"
-            placeholder="Dice"
-            value={dice}
-            onChange={(e) => setDice(e.target.value)}>
-          </input>
-          <input
-            type="text"
             className="acc-input flex-none w-10/12 p-1 elevation-0 font-bold"
             placeholder="Dice Block Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}>
+          </input>
+          <input
+            type="text"
+            className="acc-input flex-none w-2/12 p-1 elevation-0 font-bold text-white text-opacity-80"
+            placeholder="Dice"
+            value={dice}
+            onChange={(e) => setDice(e.target.value)}>
           </input>
         </div>
         <TextareaAutosize
