@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+import TextareaAutosize from 'react-textarea-autosize';
 import Frame from './frame-block';
 import DiceBlock from '../game/dice-block';
-import { Header1 } from '../book/header';
-import { Paragraph } from '../book/paragraph';
+import NoteBlock from './note-block';
 
 export default function Sheet(props) {
+  const [title, setTitle] = useState(props?.file?.content.name);
+
   return (
-    <div className=" space-y-6">
-      <Header1>
-        {props?.file?.content.name}
-      </Header1>
-      <Paragraph>
-        {props?.file?.content.description}
-      </Paragraph>
+    <div className="space-y-6">
+      <TextareaAutosize
+        value={title}
+        rows={1}
+        maxRows={100}
+        className="acc-input max-w-full elevation-0 mt-8 mb-3 leading-tight text-5xl font-bold"
+        placeholder="Character Title"
+        onChange={(e) => setTitle(e.target.value)} />
       <div className="w-full space-y-6">
         {
           props?.file?.content.frames.map(frame => (
@@ -24,6 +27,13 @@ export default function Sheet(props) {
         {
           props?.file?.content.diceBlocks.map(diceBlock => (
             <DiceBlock key={diceBlock.title} diceBlock={diceBlock}></DiceBlock>
+          ))
+        }
+      </div>
+      <div className="w-full space-y-6">
+        {
+          props?.file?.content.noteBlocks.map(noteBlock => (
+            <NoteBlock key={noteBlock.title} noteBlock={noteBlock}></NoteBlock>
           ))
         }
       </div>
@@ -39,7 +49,6 @@ Sheet.defaultProps = {
     parentTitle: "Character Sheet",
     content: {
       name: "Default Name",
-      description: "description description description description description description description description description description description description description description description description description description description description description description description description description",
       frames: [
         {
           title: "Body",
@@ -87,7 +96,17 @@ Sheet.defaultProps = {
           title: "Bloodbending",
           description: "description description description description description description description description description description description description description description description description description description description description description description description description description"
         },
-      ]
+      ],
+      noteBlocks: [
+        {
+          title: "asdf",
+          description: "asdf",
+        },
+        {
+          title: "jkl;",
+          description: "jkl;",
+        },
+      ],
     }
   }
 }
