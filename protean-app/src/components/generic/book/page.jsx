@@ -3,7 +3,7 @@ import FabricIcon from '../icons/fabric-icon';
 
 export default function Page(props) {
   return (
-    <div className="flex flex-col w-full lg:min-w-9/12 lg:max-w-9/12 h-full pb-12 rounded-md shadow-md lower-50 font-normal">
+    <div className="flex flex-col w-full h-full pb-12 rounded-md shadow-md lower-50 font-normal">
       <div className="flex w-full p-4 text-2xl">
         <FabricIcon name={props.icon} css="flex-none"></FabricIcon>
         <div className="flex-grow flex flex-col pl-4">

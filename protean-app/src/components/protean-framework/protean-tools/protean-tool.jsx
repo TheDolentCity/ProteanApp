@@ -34,7 +34,7 @@ export function ProteanToolButton(props) {
   return (
     <button onClick={props.onClick} className="acc-focus flex w-full mx-auto px-4 py-1 space-x-3 items-center rounded text-lg hover:raise-10">
       <FabricIcon name={props.icon}></FabricIcon>
-      <span className="text-sm font-medium">
+      <span className="text-sm">
         {props.children}
       </span>
     </button>
@@ -45,7 +45,7 @@ export function ProteanToolItem(props) {
   return (
     <div className="acc-focus flex w-full mx-auto px-4 py-1 space-x-3 items-center rounded text-lg">
       <FabricIcon name={props.icon}></FabricIcon>
-      <span className="text-sm font-medium">
+      <span className="text-sm">
         {props.children}
       </span>
     </div>

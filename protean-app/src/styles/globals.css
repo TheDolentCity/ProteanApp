@@ -80,6 +80,36 @@
     .lower-90 {
       @apply bg-white bg-opacity-90 dark:bg-black dark:bg-opacity-90;
     }
+    .text-darken-10 {
+      @apply text-black text-opacity-10;
+    }
+    .text-darken-25 {
+      @apply text-black text-opacity-25;
+    }
+    .text-darken-50 {
+      @apply text-black text-opacity-50;
+    }
+    .text-darken-75 {
+      @apply text-black text-opacity-75;
+    }
+    .text-darken-90 {
+      @apply text-black text-opacity-90;
+    }
+    .text-lighten-10 {
+      @apply text-white text-opacity-10;
+    }
+    .text-lighten-25 {
+      @apply text-white text-opacity-25;
+    }
+    .text-lighten-50 {
+      @apply text-white text-opacity-50;
+    }
+    .text-lighten-75 {
+      @apply text-white text-opacity-75;
+    }
+    .text-lighten-90 {
+      @apply text-white text-opacity-90;
+    }
   }
 }
 
