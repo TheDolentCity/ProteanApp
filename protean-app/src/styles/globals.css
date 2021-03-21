@@ -120,6 +120,12 @@
   .acc-input {
     @apply appearance-none focus:outline-none focus-visible:raise-25;
   }
+  .input-text {
+    @apply px-2 whitespace-nowrap elevation-0 justify-center text-sm xl:text-base font-medium;
+  }
+  .input-text-area {
+    @apply w-full px-2 elevation-0 justify-center text-sm xl:text-base font-medium;
+  }
 }
 
 /* fabric icons */

@@ -201,13 +201,13 @@ TODO
 `
 }
 
-const CarterGuyusSheet = {
-  uuid: "CarterGuyusSheet",
+const BloodMeridianSheet = {
+  uuid: "Blood Meridian",
   type: "SHEET",
-  title: "Carter Guyus",
+  title: "Blood Meridian",
   parentTitle: "Character Sheet",
   content: {
-    name: "Default Name",
+    title: "MECH:\\\\ Blood Meridian",
     numberBlocks: [
       {
         title: "Hull",
@@ -223,132 +223,96 @@ const CarterGuyusSheet = {
           1,
           1
         ],
-        // fields: [
-        //   {
-        //     title: "Current Score",
-        //     value: 6
-        //   },
-        //   {
-        //     title: "Max Score",
-        //     value: 8
-        //   },
-        //   {
-        //     title: "Current Defense",
-        //     value: 1
-        //   },
-        //   {
-        //     title: "Current Defense",
-        //     value: 1
-        //   },
-        // ]
       },
-      // {
-      //   title: "Evasion",
-      //   fields: [
-      //     {
-      //       title: "Current Score",
-      //       value: 6
-      //     },
-      //     {
-      //       title: "Max Score",
-      //       value: 8
-      //     },
-      //     {
-      //       title: "Current Defense",
-      //       value: 1
-      //     },
-      //     {
-      //       title: "Current Defense",
-      //       value: 1
-      //     },
-      //   ]
-      // },
-      // {
-      //   title: "Systems",
-      //   fields: [
-      //     {
-      //       title: "Current Score",
-      //       value: 5
-      //     },
-      //     {
-      //       title: "Max Score",
-      //       value: 5
-      //     },
-      //     {
-      //       title: "Current Defense",
-      //       value: 0
-      //     },
-      //     {
-      //       title: "Current Defense",
-      //       value: 0
-      //     },
-      //   ]
-      // },
-      // {
-      //   title: "Heat Capacity",
-      //   fields: [
-      //     {
-      //       title: "Current Score",
-      //       value: 3
-      //     },
-      //     {
-      //       title: "Max Score",
-      //       value: 3
-      //     },
-      //     {
-      //       title: "Current Defense",
-      //       value: 0
-      //     },
-      //     {
-      //       title: "Current Defense",
-      //       value: 0
-      //     },
-      //   ]
-      // },
+      {
+        title: "Evasion",
+        fieldTitles: [
+          "Current Score",
+          "Max Score",
+          "Current Defense",
+          "Max Score"
+        ],
+        fieldValues: [
+          4,
+          6,
+          0,
+          0
+        ],
+      },
+      {
+        title: "Systems",
+        fieldTitles: [
+          "Current Score",
+          "Max Score",
+          "Current Defense",
+          "Max Score"
+        ],
+        fieldValues: [
+          5,
+          5,
+          0,
+          0
+        ],
+      },
+      {
+        title: "Heat Capacity",
+        fieldTitles: [
+          "Current Score",
+          "Max Score",
+          "Current Defense",
+          "Max Score"
+        ],
+        fieldValues: [
+          3,
+          3,
+          0,
+          0
+        ],
+      },
+    ],
+    diceBlocks: [
+      {
+        title: "Size",
+        dice: "1d10",
+        description: "A titan's size represents their physical strength and resilience. The larger a titan is the bigger a wall they can run through and the better chance they'll have of wrestling another titan to the ground."
+      },
+      {
+        title: "Speed",
+        dice: "2d6",
+        description: "A titan's speed represents their reaction time and capability for traversing terrain. The faster a titan the easier it will be to reposition and complete critical tasks quickly."
+      },
+      {
+        title: "M35 Mjolnir Cannon",
+        dice: "3d12",
+        description: "Long spin up and reloading time.\n\nThe Mjolnir is a hard-mounted, multi-barrel auxiliary cannon that uses magnetic acceleration to fire stacks of airburst projectiles at its target."
+      },
+      {
+        title: "Hand Cannons",
+        dice: "1d6",
+        description: "Hits hard. Very hard.\n\nThe hand cannon is a licensed version of GMS's Type-I Pistol, adapted for a much heavier caliber."
+      },
+      {
+        title: "Anti-Materiel Rifle",
+        dice: "2d12",
+        description: "description description description description description description description description description description description description description description description description description description description description description description description description description"
+      },
+      {
+        title: "Synthetic Muscle Netting",
+        dice: "5d10",
+        description: "Use this block instead of the size block when ramming or grappling other titans.\n\nYour titan has a modification that improves its catalytic and structural boosting capabilities."
+      },
+    ],
+    noteBlocks: [
+      {
+        title: "Notes",
+        description: "",
+      },
+      {
+        title: "Shatters",
+        description: "This is a list of your current shatters:\n- None yet",
+      },
     ],
   },
-  diceBlocks: [
-    {
-      title: "Brawn",
-      dice: "1d4",
-      description: "description description description description description description description description description description description description description description description description description description description description description description description description description"
-    },
-    {
-      title: "Cunning",
-      dice: "2d6",
-      description: "description description description description description description description description description description description description description description description description description description description description description description description description description"
-    },
-    {
-      title: "Cool",
-      dice: "3d8",
-      description: "description description description description description description description description description description description description description description description description description description description description description description description description description"
-    },
-    {
-      title: "Cog Hammer",
-      dice: "1d10",
-      description: "description description description description description description description description description description description description description description description description description description description description description description description description description"
-    },
-    {
-      title: "Blunderbuss",
-      dice: "2d12",
-      description: "description description description description description description description description description description description description description description description description description description description description description description description description description"
-    },
-    {
-      title: "Bloodbending",
-      dice: "3d20",
-      description: "description description description description description description description description description description description description description description description description description description description description description description description description description"
-    },
-  ],
-  noteBlocks: [
-    {
-      title: "Notes",
-      description: "",
-    },
-    {
-      title: "Shatters",
-      description: "This is a list of your current shatters:\n- None yet",
-    },
-  ],
 }
 
 const TEST_BOOK_1 = {
@@ -368,10 +332,10 @@ const initialGlobalState = {
   darkMode: false,
   files: [
     TEST_BOOK_1,
-    CarterGuyusSheet
+    BloodMeridianSheet
   ],
   activeFile: [
-    CarterGuyusSheet
+    BloodMeridianSheet
   ],
   activePage: [
 
