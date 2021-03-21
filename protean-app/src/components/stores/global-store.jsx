@@ -129,7 +129,9 @@ const ProteanModuleBasicFrames = {
   },
   content:
 `
-# MODULE: Basic Frames
+<Subtitle>MODULE</Subtitle>
+
+# Basic Frames
 These frames are suggestions but they function as a good starting point for any game. Use these as a baseline and add or subtract to fit your game's setting and themes.
 
 ## Frames List
@@ -204,10 +206,149 @@ const CarterGuyusSheet = {
   type: "SHEET",
   title: "Carter Guyus",
   parentTitle: "Character Sheet",
-  content:
-`
-<DiceBlock></DiceBlock>
-`
+  content: {
+    name: "Default Name",
+    numberBlocks: [
+      {
+        title: "Hull",
+        fieldTitles: [
+          "Current Score",
+          "Max Score",
+          "Current Defense",
+          "Max Score"
+        ],
+        fieldValues: [
+          6,
+          8,
+          1,
+          1
+        ],
+        // fields: [
+        //   {
+        //     title: "Current Score",
+        //     value: 6
+        //   },
+        //   {
+        //     title: "Max Score",
+        //     value: 8
+        //   },
+        //   {
+        //     title: "Current Defense",
+        //     value: 1
+        //   },
+        //   {
+        //     title: "Current Defense",
+        //     value: 1
+        //   },
+        // ]
+      },
+      // {
+      //   title: "Evasion",
+      //   fields: [
+      //     {
+      //       title: "Current Score",
+      //       value: 6
+      //     },
+      //     {
+      //       title: "Max Score",
+      //       value: 8
+      //     },
+      //     {
+      //       title: "Current Defense",
+      //       value: 1
+      //     },
+      //     {
+      //       title: "Current Defense",
+      //       value: 1
+      //     },
+      //   ]
+      // },
+      // {
+      //   title: "Systems",
+      //   fields: [
+      //     {
+      //       title: "Current Score",
+      //       value: 5
+      //     },
+      //     {
+      //       title: "Max Score",
+      //       value: 5
+      //     },
+      //     {
+      //       title: "Current Defense",
+      //       value: 0
+      //     },
+      //     {
+      //       title: "Current Defense",
+      //       value: 0
+      //     },
+      //   ]
+      // },
+      // {
+      //   title: "Heat Capacity",
+      //   fields: [
+      //     {
+      //       title: "Current Score",
+      //       value: 3
+      //     },
+      //     {
+      //       title: "Max Score",
+      //       value: 3
+      //     },
+      //     {
+      //       title: "Current Defense",
+      //       value: 0
+      //     },
+      //     {
+      //       title: "Current Defense",
+      //       value: 0
+      //     },
+      //   ]
+      // },
+    ],
+  },
+  diceBlocks: [
+    {
+      title: "Brawn",
+      dice: "1d4",
+      description: "description description description description description description description description description description description description description description description description description description description description description description description description description"
+    },
+    {
+      title: "Cunning",
+      dice: "2d6",
+      description: "description description description description description description description description description description description description description description description description description description description description description description description description description"
+    },
+    {
+      title: "Cool",
+      dice: "3d8",
+      description: "description description description description description description description description description description description description description description description description description description description description description description description description description"
+    },
+    {
+      title: "Cog Hammer",
+      dice: "1d10",
+      description: "description description description description description description description description description description description description description description description description description description description description description description description description description"
+    },
+    {
+      title: "Blunderbuss",
+      dice: "2d12",
+      description: "description description description description description description description description description description description description description description description description description description description description description description description description description"
+    },
+    {
+      title: "Bloodbending",
+      dice: "3d20",
+      description: "description description description description description description description description description description description description description description description description description description description description description description description description description"
+    },
+  ],
+  noteBlocks: [
+    {
+      title: "Notes",
+      description: "",
+    },
+    {
+      title: "Shatters",
+      description: "This is a list of your current shatters:\n- None yet",
+    },
+  ],
 }
 
 const TEST_BOOK_1 = {

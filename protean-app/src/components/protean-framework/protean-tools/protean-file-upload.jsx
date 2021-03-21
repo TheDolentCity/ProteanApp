@@ -36,12 +36,12 @@ export default function ProteanFileUpload() {
     console.log("=============== FORM DATA ===============");
     console.log(JSON.stringify(formData));
     console.log("=========================================");
-    
-    () => dispatch(uploadFileDispatch(formData[0]));
+
+    dispatch(uploadFileDispatch(formData[0]));
   };
 
   return (
-    <form ref = { formRef }>
+    <form ref={formRef}>
       <ProteanToolButton
         icon="Upload"
         onClick={onClickHandler}>

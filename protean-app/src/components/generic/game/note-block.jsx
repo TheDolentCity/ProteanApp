@@ -7,7 +7,7 @@ export default function NoteBlock(props) {
   const [description, setDescription] = useState(props.noteBlock.description);
 
   return (
-    <SheetWidget css="bg-yellow-400 dark:bg-yellow-600 text-black">
+    <SheetWidget css="bg-yellow-300 dark:bg-yellow-600 text-black">
       <div className="flex flex-col">
         <div className="flex w-full pb-1 text-2xl">
           <input

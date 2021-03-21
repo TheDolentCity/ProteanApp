@@ -11,7 +11,7 @@ export default function Toggle(props) {
 
   return (
     <Switch.Group as="div" className="flex w-full space-x-3">
-      <Switch.Label>{props.label}</Switch.Label>
+      <Switch.Label className="font-normal">{props.label}</Switch.Label>
       <Switch
         as="button"
         checked={switchValue}

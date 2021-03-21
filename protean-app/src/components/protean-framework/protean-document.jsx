@@ -54,26 +54,32 @@ export default function ProteanDocument() {
   else return <span></span>;
 }
 
-function MdxDocument(props) {
+function Document(props) {
   return (
     <div className="flex-grow flex justify-center px-12 py-6 lg:px-20 lg:py-10">
       <Page title={props.title} subtitle={props.subtitle} icon={props.icon}>
-        <MdxRender>
-          {props.children}
-        </MdxRender>
+        {props.children}
       </Page>
     </div>
   );
 }
 
+function MdxDocument(props) {
+  return (
+    <Document title={props.title} subtitle={props.subtitle} icon={props.icon}>
+      <MdxRender>
+        {props.children}
+      </MdxRender>
+    </Document>
+  );
+}
+
 function SheetDocument(props) {
   return (
-    <div className="flex-grow flex justify-center px-12 py-6 lg:px-20 lg:py-10">
-      <Page title={props.title} subtitle={props.subtitle} icon={props.icon}>
-        <Sheet>
-          {props.children}
-        </Sheet>
-      </Page>
-    </div>
+    <Document title={props.title} subtitle={props.subtitle} icon={props.icon}>
+      <Sheet>
+        {props.children}
+      </Sheet>
+    </Document>
   );
 }

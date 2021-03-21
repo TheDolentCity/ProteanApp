@@ -52,7 +52,7 @@ function ProteanPageButton(props) {
     return (
       <button onClick={props.onClick} className="acc-focus flex flex-col col-span-2 px-4 pt-2 pb-4 rounded text-base hover:raise-10">
         <p className="max-w-full pb-2 text-sm truncate">{props.children}</p>
-        <div className="flex w-full h-36 justify-center items-center rounded shadow-md ring-inset ring-4 ring-accent-500 bg-white dark:bg-black">
+        <div className="flex w-full h-36 justify-center items-center rounded shadow-md ring-inset ring-4 ring-magenta-500 lower-50">
           <span className="text-7xl font-semibold">
             {props.number}
           </span>
@@ -63,7 +63,7 @@ function ProteanPageButton(props) {
   else return (
     <button onClick={props.onClick} className="acc-focus flex flex-col col-span-2 px-4 pt-2 pb-4 rounded text-base hover:raise-10">
       <p className="max-w-full pb-2 text-sm truncate">{props.children}</p>
-      <div className="flex w-full h-36 justify-center items-center rounded shadow-md bg-white dark:bg-black">
+      <div className="flex w-full h-36 justify-center items-center rounded shadow-md lower-50">
         <span className="text-7xl font-semibold">
           {props.number}
         </span>

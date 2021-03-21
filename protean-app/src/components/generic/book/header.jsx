@@ -48,26 +48,38 @@ export function Header6({ css, children }) {
   );
 }
 
+export function Subtitle({ css, children }) {
+  return (
+    <p className={css}>
+      {children}
+    </p>
+  );
+}
+
 Header1.defaultProps = {
-  css: "mt-8 mb-3 leading-12 text-5xl font-bold",
+  css: "mt-8 mb-3 leading-normal text-5xl font-bold",
 }
 
 Header2.defaultProps = {
-  css: "mt-8 mb-3 leading-10 text-3xl font-semibold",
+  css: "mt-8 mb-3 leading-normal text-3xl font-semibold",
 }
 
 Header3.defaultProps = {
-  css: "mt-8 mb-3 leading-7 text-xl font-semibold",
+  css: "mt-8 mb-3 leading-normal text-xl font-semibold",
 }
 
 Header4.defaultProps = {
-  css: "mb-3 leading-6 text-base font-semibold",
+  css: "mb-3 leading-normal text-base font-semibold",
 }
 
 Header5.defaultProps = {
-  css: "mb-3 leading-5 text-sm font-medium",
+  css: "mb-3 leading-normal text-sm font-medium",
 }
 
 Header6.defaultProps = {
-  css: "mb-3 leading-4 text-xs font-medium",
+  css: "mb-3 leading-normal text-xs font-medium",
+}
+
+Subtitle.defaultProps = {
+  css: "-mb-8 text-base font-extrabold uppercase mono text-darken-50",
 }

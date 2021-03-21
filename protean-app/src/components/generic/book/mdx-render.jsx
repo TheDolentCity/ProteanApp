@@ -1,6 +1,6 @@
 import React from 'react';
 import MDX from '@mdx-js/runtime';
-import { Header1, Header2, Header3, Header4, Header5, Header6 } from './header';
+import { Header1, Header2, Header3, Header4, Header5, Header6, Subtitle } from './header';
 import { Paragraph } from './paragraph';
 import { ListBulleted, ListNumbered } from './lists';
 import ConfiguredDie from '../game/configured-die';
@@ -45,6 +45,7 @@ const mdxComponents = {
   H5: (props) => <Header5 css={props.css}>{props.children}</Header5>,
   H6: (props) => <Header6 css={props.css}>{props.children}</Header6>,
   P: (props) => <Paragraph css={props.css}>{props.children}</Paragraph>,
+  Subtitle: (props) => <Subtitle css={props.css}>{props.children}</Subtitle>,
 
   // Protean RPG Components
   ConfiguredDie: ConfiguredDie,

@@ -13,14 +13,14 @@ export default function DiceBlock(props) {
         <div className="flex w-full pb-1 text-2xl">
           <input
             type="text"
-            className="acc-input flex-none w-10/12 p-1 elevation-0 font-bold"
+            className="acc-input flex-none w-9/12 p-1 elevation-0 font-bold"
             placeholder="Dice Block Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}>
           </input>
           <input
             type="text"
-            className="acc-input flex-none w-2/12 p-1 elevation-0 font-bold text-white text-opacity-80"
+            className="acc-input flex-none w-3/12 p-1 elevation-0 text-right font-bold text-lighten-75"
             placeholder="Dice"
             value={dice}
             onChange={(e) => setDice(e.target.value)}>
@@ -30,7 +30,7 @@ export default function DiceBlock(props) {
           value={description}
           rows={2}
           maxRows={100}
-          className="acc-input flex w-full p-1 elevation-0 font-medium text-white text-opacity-80"
+          className="acc-input flex w-full p-1 elevation-0 font-medium text-lighten-75"
           placeholder="Dice Block Description"
           onChange={(e) => setDescription(e.target.value)}/>
       </div>
