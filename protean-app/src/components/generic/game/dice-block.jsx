@@ -1,38 +1,40 @@
 import React, { useState } from 'react';
+import { useGlobalStore } from '../../stores/global-store';
 import SheetWidget from './sheet-widget';
 import TextareaAutosize from 'react-textarea-autosize';
 
 export default function DiceBlock(props) {
-  const [dice, setDice] = useState(props.diceBlock.dice);
-  const [title, setTitle] = useState(props.diceBlock.title);
-  const [description, setDescription] = useState(props.diceBlock.description);
+  const { globalState, dispatch } = useGlobalStore();
+  const [title, setTitle] = useState(globalState.activeFile?.content.diceBlocks[props.index].title);
+  const [dice, setDice] = useState(globalState.activeFile?.content.diceBlocks[props.index].dice);
+  const [description, setDescription] = useState(globalState.activeFile?.content.diceBlocks[props.index].description);
 
   return (
-    <SheetWidget css="bg-magenta-600 dark:bg-magenta-800 text-white">
+    <SheetWidget css="col-span-12 lg:col-span-6 bg-magenta-600 dark:bg-magenta-900 text-white">
       <div className="flex flex-col">
-        <div className="flex w-full pb-1 text-2xl">
+        <div className="grid grid-cols-12 mb-1 items-center">
           <input
             type="text"
-            className="acc-input flex-none w-9/12 p-1 elevation-0 font-bold"
-            placeholder="Dice Block Title"
+            className="acc-input input-text col-span-9 text-xl xl:text-2xl font-bold"
+            placeholder="enter title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}>
           </input>
           <input
             type="text"
-            className="acc-input flex-none w-3/12 p-1 elevation-0 text-right font-bold text-lighten-75"
-            placeholder="Dice"
+            className="acc-input input-text col-span-3 text-right text-xl xl:text-2xl font-bold text-lighten-75"
+            placeholder="dice"
             value={dice}
             onChange={(e) => setDice(e.target.value)}>
           </input>
         </div>
         <TextareaAutosize
-          value={description}
-          rows={2}
+          rows={3}
           maxRows={100}
-          className="acc-input flex w-full p-1 elevation-0 font-medium text-lighten-75"
-          placeholder="Dice Block Description"
-          onChange={(e) => setDescription(e.target.value)}/>
+          className="acc-input input-text-area font-medium text-lighten-75"
+          placeholder="enter description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)} />
       </div>
     </SheetWidget>
   );

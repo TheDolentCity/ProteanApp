@@ -18,7 +18,7 @@ export default function Page(props) {
           <FabricIcon name="MoreVertical" css=""></FabricIcon>
         </button>
       </div>
-      <div className="flex-grow px-14 pt-4 overflow-y-auto">
+      <div className="flex-grow px-7 xl:px-14 pt-4 overflow-y-auto">
         {props.children}
       </div>
     </div>

@@ -22,13 +22,13 @@ export default function NumberBlock(props) {
   }
 
   return (
-    <SheetWidget css="bg-cyan-600 dark:bg-cyan-700 text-white">
+    <SheetWidget css="col-span-12 lg:col-span-6 bg-cyan-600 dark:bg-cyan-800 text-white">
       <div className="flex flex-col">
         <TextareaAutosize
           value={title}
           rows={1}
           maxRows={3}
-          className="acc-input flex w-full p-1 pb-2 elevation-0 text-2xl font-bold"
+          className="acc-input flex w-full p-1 pl-3 mb-1 elevation-0 text-xl xl:text-2xl font-bold"
           placeholder="Number Block Title"
           onChange={(e) => setTitle(e.target.value)} />
         <div className="w-full p-1 items-center">
@@ -37,14 +37,14 @@ export default function NumberBlock(props) {
               <div key={index} className="grid grid-cols-12 items-center">
                 <input
                   type="text"
-                  className="acc-input col-span-9 px-2 whitespace-nowrap elevation-0 justify-center font-medium text-lighten-75"
-                  placeholder="#"
+                  className="acc-input input-text col-span-9 text-lighten-75"
+                  placeholder="enter title here"
                   value={fieldTitle}
                   onChange={e => updateFieldTitles(index, e)}>
                 </input>
                 <input
                   type="number"
-                  className="acc-input col-span-3 px-2 elevation-0 justify-center font-medium"
+                  className="acc-input input-text col-span-3"
                   placeholder="#"
                   value={fieldValues[index]}
                   onChange={e => updateFieldValues(index, e)}>
