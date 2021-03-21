@@ -207,7 +207,7 @@ const BloodMeridianSheet = {
   title: "Blood Meridian",
   parentTitle: "Character Sheet",
   content: {
-    title: "MECH:\\\\ Blood Meridian",
+    title: `MECH:\\\\ Blood Meridian`,
     numberBlocks: [
       {
         title: "Hull",
@@ -225,7 +225,7 @@ const BloodMeridianSheet = {
         ],
       },
       {
-        title: "Evasion",
+        title: "Heat Capacity",
         fieldTitles: [
           "Current Score",
           "Max Score",
@@ -233,8 +233,23 @@ const BloodMeridianSheet = {
           "Max Score"
         ],
         fieldValues: [
-          4,
-          6,
+          3,
+          3,
+          0,
+          0
+        ],
+      },
+      {
+        title: "Sensors",
+        fieldTitles: [
+          "Current Score",
+          "Max Score",
+          "Current Defense",
+          "Max Score"
+        ],
+        fieldValues: [
+          5,
+          5,
           0,
           0
         ],
@@ -254,21 +269,6 @@ const BloodMeridianSheet = {
           0
         ],
       },
-      {
-        title: "Heat Capacity",
-        fieldTitles: [
-          "Current Score",
-          "Max Score",
-          "Current Defense",
-          "Max Score"
-        ],
-        fieldValues: [
-          3,
-          3,
-          0,
-          0
-        ],
-      },
     ],
     diceBlocks: [
       {
@@ -284,22 +284,22 @@ const BloodMeridianSheet = {
       {
         title: "M35 Mjolnir Cannon",
         dice: "3d12",
-        description: "Long spin up and reloading time.\n\nThe Mjolnir is a hard-mounted, multi-barrel auxiliary cannon that uses magnetic acceleration to fire stacks of airburst projectiles at its target."
+        description: "An interal, multi-barrel, rotary cannon (Spin Up, 4 automatic fracture every turn while spinning)."
       },
       {
         title: "Hand Cannons",
-        dice: "1d6",
-        description: "Hits hard. Very hard.\n\nThe hand cannon is a licensed version of GMS's Type-I Pistol, adapted for a much heavier caliber."
+        dice: "2d8",
+        description: "A pair of heavy caliber pistols (Loading, Reliable)."
       },
       {
         title: "Anti-Materiel Rifle",
-        dice: "2d12",
-        description: "description description description description description description description description description description description description description description description description description description description description description description description description description"
+        dice: "1d12",
+        description: "This weapon is a titan-sized, magnetic railgun (Accurate, Armor Piercing, Loading, Ordnance)."
       },
       {
         title: "Synthetic Muscle Netting",
-        dice: "5d10",
-        description: "Use this block instead of the size block when ramming or grappling other titans.\n\nYour titan has a modification that improves its catalytic and structural boosting capabilities."
+        dice: "3d6",
+        description: "Your titan has a catalytic mod that allows you to ram and grapple almost any titan."
       },
     ],
     noteBlocks: [
@@ -309,7 +309,7 @@ const BloodMeridianSheet = {
       },
       {
         title: "Shatters",
-        description: "This is a list of your current shatters:\n- None yet",
+        description: "- Shatter 1\n- Shatter 2",
       },
     ],
   },
