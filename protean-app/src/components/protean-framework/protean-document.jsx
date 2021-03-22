@@ -56,7 +56,7 @@ export default function ProteanDocument() {
 
 function Document(props) {
   return (
-    <div className="flex-grow flex justify-center px-12 py-6 xl:px-20 xl:py-10">
+    <div className="flex-grow flex justify-center px-12 py-6 md:px-24 md:py-12 xl:px-36 xl:py-12">
       <Page title={props.title} subtitle={props.subtitle} icon={props.icon}>
         {props.children}
       </Page>

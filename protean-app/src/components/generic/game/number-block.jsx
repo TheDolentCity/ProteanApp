@@ -22,13 +22,13 @@ export default function NumberBlock(props) {
   }
 
   return (
-    <SheetWidget css="col-span-12 lg:col-span-6 bg-cyan-600 dark:bg-cyan-800 text-white">
+    <SheetWidget css="col-span-12 2xl:col-span-6 bg-steelBlue-600 dark:bg-steelBlue-700 text-white">
       <div className="flex flex-col">
         <TextareaAutosize
           value={title}
           rows={1}
           maxRows={3}
-          className="acc-input flex w-full p-1 pl-3 mb-1 elevation-0 text-xl xl:text-2xl font-bold"
+          className="acc-input flex w-full p-1 pl-3 elevation-0 text-lg 3xl:text-2xl font-bold"
           placeholder="Number Block Title"
           onChange={(e) => setTitle(e.target.value)} />
         <div className="w-full p-1 items-center">

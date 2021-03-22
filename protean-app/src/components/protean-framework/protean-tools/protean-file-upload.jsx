@@ -5,7 +5,6 @@ import { ProteanToolButton } from '../../protean-framework/protean-tools/protean
 export default function ProteanFileUpload() {
   const { globalState, dispatch } = useGlobalStore();
   const fileInputRef = React.useRef(null);
-  const formRef = React.useRef(null);
 
   function uploadFileDispatch(newFile) {
     return {
@@ -24,29 +23,22 @@ export default function ProteanFileUpload() {
     if (!event.target.files?.length) {
       return;
     }
-
-    var formData = new FormData();
-
-    Array.from(event.target.files).forEach((file) => {
-      formData.append(event.target.name, file);
-    });
-
-    formRef.current?.reset();
-
-    console.log("=============== FORM DATA ===============");
-    console.log(JSON.stringify(formData));
-    console.log("=========================================");
-
-    dispatch(uploadFileDispatch(formData[0]));
+    const file = event.target?.files[0];
+    const reader = new FileReader();
+    reader.onload = e => {
+      const contents = e.target.result;
+      console.log("FILE:\n" + file);
+      console.log("CONTENTS:\n" + contents);
+      dispatch(uploadFileDispatch(JSON.parse(contents)));
+    };
+    reader.readAsText(file);
   };
 
   return (
-    <form ref={formRef}>
-      <ProteanToolButton
-        icon="Upload"
-        onClick={onClickHandler}>
-        Upload
-      </ProteanToolButton>
+    <ProteanToolButton
+      icon="Upload"
+      onClick={onClickHandler}>
+      Upload
       <input
         type="file"
         className="hidden"
@@ -55,6 +47,19 @@ export default function ProteanFileUpload() {
         onChange={onChangeHandler}
         ref={fileInputRef}
       />
-    </form>
+    </ProteanToolButton>
   );
+  // return (
+  //   <form ref={formRef}>
+      
+  //     <input
+  //       type="file"
+  //       className="acc-focus input-text flex w-full mx-auto px-4 py-1 space-x-3 items-center rounded hover:raise-10"
+  //       accept=".json,application/json,"
+  //       multiple={false}
+  //       onChange={onChangeHandler}
+  //       ref={fileInputRef}
+  //     />
+  //   </form>
+  // );
 };

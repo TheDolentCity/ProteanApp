@@ -17,9 +17,9 @@ export default function ProteanFilesTool(props) {
   return (
     <ProteanTool toolName="Files">
       {
-        globalState.files.map(file => (
+        globalState.files.map((file, i) => (
           <ProteanToolButton 
-            key={file.uuid}
+            key={i}
             icon={globalState.fileIcons[file.type]}
             onClick={() => dispatch(activeFileDispatch(file))}>
             {file.title}

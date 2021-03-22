@@ -129,8 +129,6 @@ const ProteanModuleBasicFrames = {
   },
   content:
 `
-<Subtitle>MODULE</Subtitle>
-
 # Basic Frames
 These frames are suggestions but they function as a good starting point for any game. Use these as a baseline and add or subtract to fit your game's setting and themes.
 
@@ -198,6 +196,31 @@ TODO
 **Uncharacteristic:** is a luck shatter type. TODO.
 
 **Disrespected:** is a luck shatter type. TODO.
+`
+}
+
+const TitanfallExpansionTitanGear = {
+  uuid: "TitanfallExpansionTitanGear",
+  type: "PAGE",
+  title: "Titan Gear",
+  format: {
+
+  },
+  content:
+`
+# Titan Gear
+This is a collection of weapons, armor, and modifications that titans can equip.
+
+## TODO
+TODO
+
+<DiceBlock staticData={
+  {
+    title: "Size",
+    dice: "#d#",
+    description: "A titan's size represents their physical strength and resilience. The larger a titan is the bigger a wall they can run through and the better chance they'll have of wrestling another titan to the ground."
+  }
+}></DiceBlock>
 `
 }
 
@@ -323,7 +346,8 @@ const TEST_BOOK_1 = {
     ProteanIs,
     ProteanDiceSystemPage,
     ProteanSkeletonsAndFramesPage,
-    ProteanModuleBasicFrames
+    ProteanModuleBasicFrames,
+    TitanfallExpansionTitanGear
   ]
 }
 
@@ -332,10 +356,10 @@ const initialGlobalState = {
   darkMode: false,
   files: [
     TEST_BOOK_1,
-    BloodMeridianSheet
+    // BloodMeridianSheet
   ],
   activeFile: [
-    BloodMeridianSheet
+    // BloodMeridianSheet
   ],
   activePage: [
 
@@ -354,10 +378,17 @@ const reducer = (globalState, action) => {
         ...globalState,
         darkMode: action.payload.darkMode
       }
-    case "uploadFile": 
+    case "uploadFile":
+      var obj = {
+        ...globalState,
+        files: [...globalState.files, action.payload.file]
+      };
+      console.log("====================");
+      console.log(obj);
+      console.log(JSON.stringify(obj));
       return {
         ...globalState,
-        files: globalState.files.push(action.payload.file)
+        files: [...globalState.files, action.payload.file]
       }
     case "setActiveFile":
       return {
