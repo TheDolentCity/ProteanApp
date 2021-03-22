@@ -223,7 +223,10 @@ module.exports = {
       outline: {
         white: '2px solid #ffffff',
         black: '2px solid #000000',
-      }
+      },
+      screens: {
+        '3xl': '1920px',
+      },
     },
   },
   variants: {

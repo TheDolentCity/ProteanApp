@@ -41,7 +41,7 @@ export default function ProteanPagesTool(props) {
 
 function ProteanPagesContainer(props) {
   return (
-    <div className="grid grid-cols-2 grid-flow-row px-2 overflow-y-auto">
+    <div className="grid grid-cols-2 grid-flow-row px-2">
       {props.children}
     </div>
   );
@@ -52,7 +52,7 @@ function ProteanPageButton(props) {
     return (
       <button onClick={props.onClick} className="acc-focus flex flex-col col-span-2 px-4 pt-2 pb-4 rounded text-base hover:raise-10">
         <p className="max-w-full pb-2 text-sm truncate">{props.children}</p>
-        <div className="flex w-full h-36 justify-center items-center rounded shadow-md ring-inset ring-4 ring-magenta-500 lower-50">
+        <div className="flex w-full h-36 justify-center items-center rounded shadow-md ring-inset ring-4 ring-forestGreen-500 lower-50">
           <span className="text-7xl font-semibold">
             {props.number}
           </span>
