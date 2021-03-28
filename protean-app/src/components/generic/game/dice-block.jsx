@@ -8,26 +8,26 @@ export default function DiceBlock(props) {
 
   // Title data. Override with props if this is supposed to be a static dice block.
   const [title, setTitle] = useState(
-    props.staticData === undefined ? 
+    props.staticTitle === undefined ?
       globalState.activeFile?.content.diceBlocks[props.index].title 
       :
-      props.staticData.title
+      props.staticTitle
   );
 
   // Dice data. Override with props if this is supposed to be a static dice block.
   const [dice, setDice] = useState(
-    props.staticData === undefined ? 
+    props.staticDice === undefined ? 
       globalState.activeFile?.content.diceBlocks[props.index].dice 
       :
-      props.staticData.dice
+      props.staticDice
   );
 
   // Description data. Override with props if this is supposed to be a static dice block.
   const [description, setDescription] = useState(
-    props.staticData === undefined ? 
+    props.staticDescription === undefined ? 
       globalState.activeFile?.content.diceBlocks[props.index].description 
       :
-      props.staticData.description
+      props.staticDescription
   );
 
   return (
@@ -40,7 +40,7 @@ export default function DiceBlock(props) {
             placeholder="enter title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            disabled={props.staticData !== undefined}>
+            disabled={props.staticTitle !== undefined}>
           </input>
           <input
             type="text"
@@ -48,7 +48,7 @@ export default function DiceBlock(props) {
             placeholder="dice"
             value={dice}
             onChange={(e) => setDice(e.target.value)}
-            disabled={props.staticData !== undefined}>
+            disabled={props.staticDice !== undefined}>
           </input>
         </div>
         <TextareaAutosize
@@ -58,7 +58,7 @@ export default function DiceBlock(props) {
           placeholder="enter description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          disabled={props.staticData !== undefined}/>
+          disabled={props.staticDescription !== undefined}/>
       </div>
     </SheetWidget>
   );

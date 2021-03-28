@@ -4,8 +4,11 @@ import { Header1, Header2, Header3, Header4, Header5, Header6, Subtitle } from '
 import { Paragraph } from './paragraph';
 import { ListBulleted, ListNumbered } from './lists';
 import ConfiguredDie from '../game/configured-die';
+import DieTable from '../game/die-table';
+import BlockContainer from '../game/block-container';
 import DiceBlock from '../game/dice-block';
 import { ThematicBreak } from './thematic-break';
+import Spacer from './spacer';
 
 const mdxComponents = {
   // Base wrapper for every mdx document
@@ -46,9 +49,12 @@ const mdxComponents = {
   H6: (props) => <Header6 css={props.css}>{props.children}</Header6>,
   P: (props) => <Paragraph css={props.css}>{props.children}</Paragraph>,
   Subtitle: (props) => <Subtitle css={props.css}>{props.children}</Subtitle>,
+  Spacer: (props) => <Spacer space={props.space}></Spacer>,
 
   // Protean RPG Components
+  BlockContainer: BlockContainer,
   ConfiguredDie: ConfiguredDie,
+  DieTable: DieTable,
   DiceBlock: DiceBlock
 };
 
