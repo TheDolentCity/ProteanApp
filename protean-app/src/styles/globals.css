@@ -92,6 +92,53 @@
     .lower-95 {
       @apply bg-white bg-opacity-95 dark:bg-black dark:bg-opacity-95;
     }
+  }
+  @variants dark, hover, focus-visible {
+    .bg-darken-5 {
+      @apply bg-black bg-opacity-5;
+    }
+    .bg-darken-10 {
+      @apply bg-black bg-opacity-10;
+    }
+    .bg-darken-25 {
+      @apply bg-black bg-opacity-25;
+    }
+    .bg-darken-50 {
+      @apply bg-black bg-opacity-50;
+    }
+    .bg-darken-75 {
+      @apply bg-black bg-opacity-75;
+    }
+    .bg-darken-90 {
+      @apply bg-black bg-opacity-90;
+    }
+    .bg-darken-95 {
+      @apply bg-black bg-opacity-95;
+    }
+    .bg-lighten-5 {
+      @apply bg-white bg-opacity-5;
+    }
+    .bg-lighten-10 {
+      @apply bg-white bg-opacity-10;
+    }
+    .bg-lighten-25 {
+      @apply bg-white bg-opacity-25;
+    }
+    .bg-lighten-50 {
+      @apply bg-white bg-opacity-50;
+    }
+    .bg-lighten-75 {
+      @apply bg-white bg-opacity-75;
+    }
+    .bg-lighten-90 {
+      @apply bg-white bg-opacity-90;
+    }
+    .bg-lighten-95 {
+      @apply bg-white bg-opacity-95;
+    }
+    .text-darken-5 {
+      @apply text-black text-opacity-5;
+    }
     .text-darken-10 {
       @apply text-black text-opacity-10;
     }
@@ -107,6 +154,12 @@
     .text-darken-90 {
       @apply text-black text-opacity-90;
     }
+    .text-darken-95 {
+      @apply text-black text-opacity-95;
+    }
+    .text-lighten-5 {
+      @apply text-white text-opacity-5;
+    }
     .text-lighten-10 {
       @apply text-white text-opacity-10;
     }
@@ -121,6 +174,9 @@
     }
     .text-lighten-90 {
       @apply text-white text-opacity-90;
+    }
+    .text-lighten-95 {
+      @apply text-white text-opacity-95;
     }
   }
 }

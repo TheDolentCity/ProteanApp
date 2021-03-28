@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useGlobalStore } from '../../stores/global-store';
-import TextareaAutosize from 'react-textarea-autosize'; 
+import TextareaAutosize from 'react-textarea-autosize';
+import BlockContainer from './block-container';
 import NumberBlock from './number-block';
 import DiceBlock from '../game/dice-block';
 import NoteBlock from './note-block';
@@ -10,7 +11,7 @@ export default function Sheet(props) {
   const [title, setTitle] = useState(globalState.activeFile?.content.title);
 
   return (
-    <div className="grid grid-cols-12 gap-6 w-full items-start">
+    <BlockContainer>
       <TextareaAutosize
         value={title}
         rows={1}
@@ -33,6 +34,6 @@ export default function Sheet(props) {
           <NoteBlock key={index} index={index}></NoteBlock>
         ))
       }
-    </div>
+    </BlockContainer>
   );
 }

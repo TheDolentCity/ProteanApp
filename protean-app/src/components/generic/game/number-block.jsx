@@ -28,10 +28,10 @@ export default function NumberBlock(props) {
           value={title}
           rows={1}
           maxRows={3}
-          className="acc-input flex w-full p-1 pl-3 elevation-0 text-lg 3xl:text-2xl font-bold"
+          className="acc-input input-text-area text-lg 3xl:text-2xl font-bold"
           placeholder="Number Block Title"
-          onChange={(e) => setTitle(e.target.value)} />
-        <div className="w-full p-1 items-center">
+          onChange={(e) => setTitle(e.target.value)}/>
+        <div className="w-full py-1 items-center">
           {
             fieldTitles.map((fieldTitle, index) => (
               <div key={index} className="grid grid-cols-12 items-center">

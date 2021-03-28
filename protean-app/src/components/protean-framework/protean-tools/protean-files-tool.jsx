@@ -18,10 +18,11 @@ export default function ProteanFilesTool(props) {
     <ProteanTool toolName="Files">
       {
         globalState.files.map((file, i) => (
-          <ProteanToolButton 
+          <ProteanToolButton
             key={i}
             icon={globalState.fileIcons[file.type]}
-            onClick={() => dispatch(activeFileDispatch(file))}>
+            onClick={() => dispatch(activeFileDispatch(file))}
+            active={globalState?.activeFile?.uuid === file.uuid}>
             {file.title}
           </ProteanToolButton>
         ))

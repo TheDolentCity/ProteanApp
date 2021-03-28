@@ -30,6 +30,126 @@ TODO
 `
 }
 
+const ProteanQuickReference = {
+  uuid: "ProteanQuickReference",
+  type: "PAGE",
+  title: "Quick Play Reference",
+  parentTitle: "Chapter 1: Core Rules",
+  format: {
+
+  },
+  content:
+`
+<H1>
+  <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent-400 to-accent-600">
+    Protean Dice System
+  </span>
+</H1>
+
+Protean's dice system can be separated into two core mechanics: dynamic dice and dice outcomes. Dynamic dice are a method for changing the tone of dice rolls based on setting or genre. Dice outcomes are a spectrum of narrative success and failure to drive your story forward.
+
+## Dynamic Dice
+Most RPGs that use dice use one of two ways to determine an outcome from rolled dice: numerical results or symbolic results. A numerical outcome might be rolling a 14 on a d20 and then adding an attack modifier of +5 for a total of 19 and then comparing that to some target value to determine a success or failure result.
+
+### Symbolic vs Numeric
+Most RPGs that use dice use one of two ways to determine an outcome from rolled dice: numerical results or symbolic results. A numerical outcome might be rolling a 14 on a d20 and then adding an attack modifier of +5 for a total of 19 and then comparing that to some target value to determine a success or failure result.
+
+A symbolic result might be a custom-made d6 that has a sword icon on four sides and a skull icon on two. In these systems it is common for there to be many sub-systems (damage, critical success, narrative fortune, etc.) that rely on the different kinds of symbols. Distinct iconography can be easier to interpret than numeric values when it comes to those sub-systems.
+
+Protean RPG uses a combination of the two. Most dice faces have a numerical result (-2, +1, +4) that you add together when making a check, but some dice will also have unique symbols with equally unique narrative effects.
+
+Here is the default d20 configuration from Protean RPG:
+<DieTable
+  die="d20"
+  description="This is the default die. It is very reliable no matter how many dice are rolled and contains all but the chaos dice result."
+  dieData={
+    [
+      {
+        fracture: "-5",
+        result: "Disaster"
+      },
+      {
+        fracture: "-4",
+        result: "Failure"
+      },
+      {
+        fracture: "-4",
+        result: "Failure"
+      },
+      {
+        fracture: "-3",
+        result: "Failure"
+      },
+      {
+        fracture: "-3",
+        result: "Failure"
+      },
+      {
+        fracture: "-3",
+        result: "Failure"
+      },
+      {
+        fracture: "-2",
+        result: "Boon"
+      },
+      {
+        fracture: "-2",
+        result: "Boon"
+      },
+      {
+        fracture: "-2",
+        result: "Boon"
+      },
+      {
+        fracture: "-1",
+        result: "Boon"
+      },
+      {
+        fracture: "-1",
+        result: "Boon"
+      },
+      {
+        fracture: "+1",
+        result: "Threat"
+      },
+      {
+        fracture: "+1",
+        result: "Threat"
+      },
+      {
+        fracture: "+2",
+        result: "Threat"
+      },
+      {
+        fracture: "+2",
+        result: "Threat"
+      },
+      {
+        fracture: "+3",
+        result: "Success"
+      },
+      {
+        fracture: "+3",
+        result: "Success"
+      },
+      {
+        fracture: "+3",
+        result: "Success"
+      },
+      {
+        fracture: "+4",
+        result: "Success"
+      },
+      {
+        fracture: "+5",
+        result: "Triumph"
+      }
+    ]
+  }>
+</DieTable>
+`
+}
+
 const ProteanDiceSystemPage = {
   uuid: "ProteanDiceSystemPage",
   type: "PAGE",
@@ -58,28 +178,368 @@ A symbolic result might be a custom-made d6 that has a sword icon on four sides 
 
 Protean RPG uses a combination of the two. Most dice faces have a numerical result (-2, +1, +4) that you add together when making a check, but some dice will also have unique symbols with equally unique narrative effects.
 
-Here is the default d12 configuration from Protean RPG:
-<ConfiguredDie
-  css="mb-8"
-  die="12" 
-  dieTags={["Risky", "Forceful", "Powerful"]}
-  dieResults={["Failure", "-3 flux", "-2 flux", "-2 flux", "-1 flux", "-1 flux", "+1 flux", "+2 flux", "+3 flux", "+4 flux", "+5 flux", "+6 flux"]}>
-</ConfiguredDie>
+Here is the default d20 configuration from Protean RPG:
+<DieTable
+  die="d20"
+  description="This is the default die. It is very reliable no matter how many dice are rolled and contains all but the chaos dice result."
+  dieData={
+    [
+      {
+        fracture: "-5",
+        result: "Disaster"
+      },
+      {
+        fracture: "-4",
+        result: "Failure"
+      },
+      {
+        fracture: "-4",
+        result: "Failure"
+      },
+      {
+        fracture: "-3",
+        result: "Failure"
+      },
+      {
+        fracture: "-3",
+        result: "Failure"
+      },
+      {
+        fracture: "-3",
+        result: "Failure"
+      },
+      {
+        fracture: "-2",
+        result: "Boon"
+      },
+      {
+        fracture: "-2",
+        result: "Boon"
+      },
+      {
+        fracture: "-2",
+        result: "Boon"
+      },
+      {
+        fracture: "-1",
+        result: "Boon"
+      },
+      {
+        fracture: "-1",
+        result: "Boon"
+      },
+      {
+        fracture: "+1",
+        result: "Threat"
+      },
+      {
+        fracture: "+1",
+        result: "Threat"
+      },
+      {
+        fracture: "+2",
+        result: "Threat"
+      },
+      {
+        fracture: "+2",
+        result: "Threat"
+      },
+      {
+        fracture: "+3",
+        result: "Success"
+      },
+      {
+        fracture: "+3",
+        result: "Success"
+      },
+      {
+        fracture: "+3",
+        result: "Success"
+      },
+      {
+        fracture: "+4",
+        result: "Success"
+      },
+      {
+        fracture: "+5",
+        result: "Triumph"
+      }
+    ]
+  }>
+</DieTable>
 
 ### Dice Configuration
 Now that you understand how the dice faces work, you must also understand how they change. Protean RPG Core has a default dice configuration, but different settings and modules can (and are encouraged to) implement unique dice configurations. This means that the symbols and numeric values on these dice values change. For example, the configuration for a d12 in a Victorian Horror game might look like this (compare the Victorian one to the core):
-<ConfiguredDie
-  css="mb-8"
-  die="12"
-  dieTags={["Victorian", "Dangerous", "Hail Mary"]}
-  dieResults={["Disaster", "Failure", "Failure", "-3 flux", "-2 flux", "-1 flux", "+4 flux", "+4 flux", "+4 flux", "+6 flux", "+6 flux", "+6 flux"]}>
-</ConfiguredDie>
-<ConfiguredDie
-  css="mb-8"
-  die="12" 
-  dieTags={["Core", "Risky", "Powerful"]}
-  dieResults={["Failure", "-3 flux", "-2 flux", "-2 flux", "-1 flux", "-1 flux", "+1 flux", "+2 flux", "+3 flux", "+4 flux", "+5 flux", "+6 flux"]}>
-</ConfiguredDie>
+<DieTable
+  die="d20"
+  description="This is the default die. It is very reliable no matter how many dice are rolled and contains all but the chaos dice result."
+  dieData={
+    [
+      {
+        fracture: "-5",
+        result: "Disaster"
+      },
+      {
+        fracture: "-4",
+        result: "Failure"
+      },
+      {
+        fracture: "-4",
+        result: "Failure"
+      },
+      {
+        fracture: "-3",
+        result: "Failure"
+      },
+      {
+        fracture: "-3",
+        result: "Failure"
+      },
+      {
+        fracture: "-3",
+        result: "Failure"
+      },
+      {
+        fracture: "-2",
+        result: "Boon"
+      },
+      {
+        fracture: "-2",
+        result: "Boon"
+      },
+      {
+        fracture: "-2",
+        result: "Boon"
+      },
+      {
+        fracture: "-1",
+        result: "Boon"
+      },
+      {
+        fracture: "-1",
+        result: "Boon"
+      },
+      {
+        fracture: "+1",
+        result: "Threat"
+      },
+      {
+        fracture: "+1",
+        result: "Threat"
+      },
+      {
+        fracture: "+2",
+        result: "Threat"
+      },
+      {
+        fracture: "+2",
+        result: "Threat"
+      },
+      {
+        fracture: "+3",
+        result: "Success"
+      },
+      {
+        fracture: "+3",
+        result: "Success"
+      },
+      {
+        fracture: "+3",
+        result: "Success"
+      },
+      {
+        fracture: "+4",
+        result: "Success"
+      },
+      {
+        fracture: "+5",
+        result: "Triumph"
+      }
+    ]
+  }>
+</DieTable>
+
+<Spacer space="mx-3"></Spacer>
+
+<DieTable
+  die="d20"
+  description="This is the default die. It is very reliable no matter how many dice are rolled and contains all but the chaos dice result."
+  dieData={
+    [
+      {
+        fracture: "-5",
+        result: "Disaster"
+      },
+      {
+        fracture: "-4",
+        result: "Failure"
+      },
+      {
+        fracture: "-4",
+        result: "Failure"
+      },
+      {
+        fracture: "-3",
+        result: "Failure"
+      },
+      {
+        fracture: "-3",
+        result: "Failure"
+      },
+      {
+        fracture: "-3",
+        result: "Failure"
+      },
+      {
+        fracture: "-2",
+        result: "Boon"
+      },
+      {
+        fracture: "-2",
+        result: "Boon"
+      },
+      {
+        fracture: "-2",
+        result: "Boon"
+      },
+      {
+        fracture: "-1",
+        result: "Boon"
+      },
+      {
+        fracture: "-1",
+        result: "Boon"
+      },
+      {
+        fracture: "+1",
+        result: "Threat"
+      },
+      {
+        fracture: "+1",
+        result: "Threat"
+      },
+      {
+        fracture: "+2",
+        result: "Threat"
+      },
+      {
+        fracture: "+2",
+        result: "Threat"
+      },
+      {
+        fracture: "+3",
+        result: "Success"
+      },
+      {
+        fracture: "+3",
+        result: "Success"
+      },
+      {
+        fracture: "+3",
+        result: "Success"
+      },
+      {
+        fracture: "+4",
+        result: "Success"
+      },
+      {
+        fracture: "+5",
+        result: "Triumph"
+      }
+    ]
+  }>
+</DieTable>
+
+<Spacer space="mx-3"></Spacer>
+
+<DieTable
+  die="d20"
+  description="This is the default die. It is very reliable no matter how many dice are rolled and contains all but the chaos dice result."
+  dieData={
+    [
+      {
+        fracture: "-5",
+        result: "Disaster"
+      },
+      {
+        fracture: "-4",
+        result: "Failure"
+      },
+      {
+        fracture: "-4",
+        result: "Failure"
+      },
+      {
+        fracture: "-3",
+        result: "Failure"
+      },
+      {
+        fracture: "-3",
+        result: "Failure"
+      },
+      {
+        fracture: "-3",
+        result: "Failure"
+      },
+      {
+        fracture: "-2",
+        result: "Boon"
+      },
+      {
+        fracture: "-2",
+        result: "Boon"
+      },
+      {
+        fracture: "-2",
+        result: "Boon"
+      },
+      {
+        fracture: "-1",
+        result: "Boon"
+      },
+      {
+        fracture: "-1",
+        result: "Boon"
+      },
+      {
+        fracture: "+1",
+        result: "Threat"
+      },
+      {
+        fracture: "+1",
+        result: "Threat"
+      },
+      {
+        fracture: "+2",
+        result: "Threat"
+      },
+      {
+        fracture: "+2",
+        result: "Threat"
+      },
+      {
+        fracture: "+3",
+        result: "Success"
+      },
+      {
+        fracture: "+3",
+        result: "Success"
+      },
+      {
+        fracture: "+3",
+        result: "Success"
+      },
+      {
+        fracture: "+4",
+        result: "Success"
+      },
+      {
+        fracture: "+5",
+        result: "Triumph"
+      }
+    ]
+  }>
+</DieTable>
 
 #### Physical Dice Disclaimer
 Unfortunately, the fluctuations in dice faces means I cannot easily produce physical dice for the game as it may change based on the module or system run that day, but I have provided the ability to upload editable dice configurations to the Protean App and simulate rolling them there.
@@ -211,131 +671,53 @@ const TitanfallExpansionTitanGear = {
 # Titan Gear
 This is a collection of weapons, armor, and modifications that titans can equip.
 
-## TODO
+## Titan Weapons
 TODO
 
-<DiceBlock staticData={
-  {
-    title: "Size",
-    dice: "#d#",
-    description: "A titan's size represents their physical strength and resilience. The larger a titan is the bigger a wall they can run through and the better chance they'll have of wrestling another titan to the ground."
-  }
-}></DiceBlock>
-`
-}
+<BlockContainer>
+  <DiceBlock
+    staticTitle="XO-16 Automatic Rifle"
+    staticDice="3d6"
+    staticDescription="Fully automatic ballistic weapon that fires 1.6 inch slugs (Inaccurate, Medium Range).">
+  </DiceBlock>
 
-const BloodMeridianSheet = {
-  uuid: "Blood Meridian",
-  type: "SHEET",
-  title: "Blood Meridian",
-  parentTitle: "Character Sheet",
-  content: {
-    title: `MECH:\\\\ Blood Meridian`,
-    numberBlocks: [
-      {
-        title: "Hull",
-        fieldTitles: [
-          "Current Score",
-          "Max Score",
-          "Current Defense",
-          "Max Score"
-        ],
-        fieldValues: [
-          6,
-          8,
-          1,
-          1
-        ],
-      },
-      {
-        title: "Heat Capacity",
-        fieldTitles: [
-          "Current Score",
-          "Max Score",
-          "Current Defense",
-          "Max Score"
-        ],
-        fieldValues: [
-          3,
-          3,
-          0,
-          0
-        ],
-      },
-      {
-        title: "Sensors",
-        fieldTitles: [
-          "Current Score",
-          "Max Score",
-          "Current Defense",
-          "Max Score"
-        ],
-        fieldValues: [
-          5,
-          5,
-          0,
-          0
-        ],
-      },
-      {
-        title: "Systems",
-        fieldTitles: [
-          "Current Score",
-          "Max Score",
-          "Current Defense",
-          "Max Score"
-        ],
-        fieldValues: [
-          5,
-          5,
-          0,
-          0
-        ],
-      },
-    ],
-    diceBlocks: [
-      {
-        title: "Size",
-        dice: "1d10",
-        description: "A titan's size represents their physical strength and resilience. The larger a titan is the bigger a wall they can run through and the better chance they'll have of wrestling another titan to the ground."
-      },
-      {
-        title: "Speed",
-        dice: "2d6",
-        description: "A titan's speed represents their reaction time and capability for traversing terrain. The faster a titan the easier it will be to reposition and complete critical tasks quickly."
-      },
-      {
-        title: "M35 Mjolnir Cannon",
-        dice: "3d12",
-        description: "An interal, multi-barrel, rotary cannon (Spin Up, 4 automatic fracture every turn while spinning)."
-      },
-      {
-        title: "Hand Cannons",
-        dice: "2d8",
-        description: "A pair of heavy caliber pistols (Loading, Reliable)."
-      },
-      {
-        title: "Anti-Materiel Rifle",
-        dice: "1d12",
-        description: "This weapon is a titan-sized, magnetic railgun (Accurate, Armor Piercing, Loading, Ordnance)."
-      },
-      {
-        title: "Synthetic Muscle Netting",
-        dice: "3d6",
-        description: "Your titan has a catalytic mod that allows you to ram and grapple almost any titan."
-      },
-    ],
-    noteBlocks: [
-      {
-        title: "Notes",
-        description: "",
-      },
-      {
-        title: "Shatters",
-        description: "- Shatter 1\n- Shatter 2",
-      },
-    ],
-  },
+  <DiceBlock
+    staticTitle="40mm Tracker Cannon"
+    staticDice="1d8"
+    staticDescription="A semi-automatic 40mm cannon that fires semi-guided explosive rounds (Tracking, Long Range).">
+  </DiceBlock>
+
+  <DiceBlock
+    staticTitle="T-203 Thermite Launcher"
+    staticDice="1d6"
+    staticDescription="A single shot, fire-based weapon. The rounds burn extremely hot, doing massive damage to anything it touches (Burns, Melts, Medium Range).">
+  </DiceBlock>
+
+  <DiceBlock
+    staticTitle="Leadwall"
+    staticDice="2d10"
+    staticDescription="A powerful shotgun that does massive damage at short range with its many pellets (Close Range).">
+  </DiceBlock>
+
+  <DiceBlock
+    staticTitle="Splitter Rifle"
+    staticDice="1d8"
+    staticDescription="An energy rifle with two modes: rapid fire and regular fire. Rapid fire heats you up quickly.. (Medium Range, you may roll 2d8 instead but take 1 Heat).">
+  </DiceBlock>
+
+  <DiceBlock
+    staticTitle="Plasma Railgun"
+    staticDice="1d12"
+    staticDescription="A sniper rifle that utilizes an electro-magnetic rail to fire kinetic rounds across vast distances (Armor Piercing, Loading, Extreme Range).">
+  </DiceBlock>
+
+  <DiceBlock
+    staticTitle="Predator Cannon"
+    staticDice="1d12"
+    staticDescription="A powerful minigun with a long spin up time (Spin Up, Slowing, Long Range).">
+  </DiceBlock>
+</BlockContainer>
+`
 }
 
 const TEST_BOOK_1 = {
@@ -344,6 +726,7 @@ const TEST_BOOK_1 = {
   title: "Protean RPG",
   content: [
     ProteanIs,
+    ProteanQuickReference,
     ProteanDiceSystemPage,
     ProteanSkeletonsAndFramesPage,
     ProteanModuleBasicFrames,
@@ -355,11 +738,10 @@ const GlobalStoreContext = createContext();
 const initialGlobalState = {
   darkMode: false,
   files: [
-    TEST_BOOK_1,
-    // BloodMeridianSheet
+    TEST_BOOK_1
   ],
   activeFile: [
-    // BloodMeridianSheet
+    
   ],
   activePage: [
 
