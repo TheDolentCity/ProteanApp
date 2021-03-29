@@ -4,7 +4,7 @@ import { Header1, Header2, Header3, Header4, Header5, Header6, Subtitle } from '
 import { Paragraph } from './paragraph';
 import { ListBulleted, ListNumbered } from './lists';
 import ConfiguredDie from '../game/configured-die';
-import DieTable from '../game/die-table';
+import DieTable, { DieTableRow } from '../game/die-table';
 import BlockContainer from '../game/block-container';
 import DiceBlock from '../game/dice-block';
 import { ThematicBreak } from './thematic-break';
@@ -55,6 +55,7 @@ const mdxComponents = {
   BlockContainer: BlockContainer,
   ConfiguredDie: ConfiguredDie,
   DieTable: DieTable,
+  DieTableRow: DieTableRow,
   DiceBlock: DiceBlock
 };
 

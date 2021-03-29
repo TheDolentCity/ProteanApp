@@ -33,119 +33,106 @@ TODO
 const ProteanQuickReference = {
   uuid: "ProteanQuickReference",
   type: "PAGE",
-  title: "Quick Play Reference",
+  title: "Quick Reference",
   parentTitle: "Chapter 1: Core Rules",
   format: {
 
   },
   content:
 `
-<H1>
-  <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent-400 to-accent-600">
-    Protean Dice System
-  </span>
-</H1>
+# Quick Rules Reference
+This page contains the smallest summary possible of all the rules for quick reference during play.
 
-Protean's dice system can be separated into two core mechanics: dynamic dice and dice outcomes. Dynamic dice are a method for changing the tone of dice rolls based on setting or genre. Dice outcomes are a spectrum of narrative success and failure to drive your story forward.
+## Dice Tables
 
-## Dynamic Dice
-Most RPGs that use dice use one of two ways to determine an outcome from rolled dice: numerical results or symbolic results. A numerical outcome might be rolling a 14 on a d20 and then adding an attack modifier of +5 for a total of 19 and then comparing that to some target value to determine a success or failure result.
+<DieTable 
+  die="d4"
+  description="You are always likely to succeed with this die, but if you do there will always be a consequence.">
+  <DieTableRow index={1} fracture="-3" result="Failure"></DieTableRow>
+  <DieTableRow index={2} fracture="+2" result="Threat"></DieTableRow>
+  <DieTableRow index={3} fracture="+2" result="Threat"></DieTableRow>
+  <DieTableRow index={4} fracture="+2" result="Threat"></DieTableRow>
+</DieTable>
 
-### Symbolic vs Numeric
-Most RPGs that use dice use one of two ways to determine an outcome from rolled dice: numerical results or symbolic results. A numerical outcome might be rolling a 14 on a d20 and then adding an attack modifier of +5 for a total of 19 and then comparing that to some target value to determine a success or failure result.
+<DieTable
+  die="d6"
+  description="This die's worst result is boon, but it does occur more often than failure on other dice.">
+  <DieTableRow index={1} fracture="-1" result="Boon"></DieTableRow>
+  <DieTableRow index={2} fracture="-1" result="Boon"></DieTableRow>
+  <DieTableRow index={3} fracture="-1" result="Boon"></DieTableRow>
+  <DieTableRow index={4} fracture="-1" result="Boon"></DieTableRow>
+  <DieTableRow index={5} fracture="-1" result="Boon"></DieTableRow>
+  <DieTableRow index={6} fracture="+3" result="Success"></DieTableRow>
+</DieTable>
 
-A symbolic result might be a custom-made d6 that has a sword icon on four sides and a skull icon on two. In these systems it is common for there to be many sub-systems (damage, critical success, narrative fortune, etc.) that rely on the different kinds of symbols. Distinct iconography can be easier to interpret than numeric values when it comes to those sub-systems.
+<DieTable
+  die="d8"
+  description="This die commonly succeeds with strong results, but if it fails it is always a disaster.">
+  <DieTableRow index={1} fracture="-5" result="Disaster"></DieTableRow>
+  <DieTableRow index={2} fracture="-5" result="Disaster"></DieTableRow>
+  <DieTableRow index={3} fracture="-5" result="Disaster"></DieTableRow>
+  <DieTableRow index={4} fracture=" 0" result="Chaos"></DieTableRow>
+  <DieTableRow index={5} fracture="+1" result="Threat"></DieTableRow>
+  <DieTableRow index={6} fracture="+2" result="Threat"></DieTableRow>
+  <DieTableRow index={7} fracture="+4" result="Success"></DieTableRow>
+  <DieTableRow index={8} fracture="+5" result="Triumph"></DieTableRow>
+</DieTable>
 
-Protean RPG uses a combination of the two. Most dice faces have a numerical result (-2, +1, +4) that you add together when making a check, but some dice will also have unique symbols with equally unique narrative effects.
+<DieTable
+  die="d10"
+  description="This die is unlikely to have a failure result and even if it does it is likely to be a minimally damaging one. The downside is that the die is very chaotic.">
+  <DieTableRow index={1} fracture="-4" result="Failure"></DieTableRow>
+  <DieTableRow index={2} fracture="-3" result="Failure"></DieTableRow>
+  <DieTableRow index={3} fracture="-2" result="Boon"></DieTableRow>
+  <DieTableRow index={4} fracture="-1" result="Boon"></DieTableRow>
+  <DieTableRow index={5} fracture=" 0" result="Chaos"></DieTableRow>
+  <DieTableRow index={6} fracture=" 0" result="Chaos"></DieTableRow>
+  <DieTableRow index={7} fracture=" 0" result="Chaos"></DieTableRow>
+  <DieTableRow index={8} fracture=" 0" result="Chaos"></DieTableRow>
+  <DieTableRow index={9} fracture="+3" result="Success"></DieTableRow>
+  <DieTableRow index={10} fracture="+4" result="Success"></DieTableRow>
+</DieTable>
 
-Here is the default d20 configuration from Protean RPG:
+<DieTable
+  die="d12"
+  description="This die has the highest chance of triumph, but also suffers from a high chance of extreme failure.">
+  <DieTableRow index={1} fracture="-4" result="Failure"></DieTableRow>
+  <DieTableRow index={2} fracture="-4" result="Failure"></DieTableRow>
+  <DieTableRow index={3} fracture="-4" result="Failure"></DieTableRow>
+  <DieTableRow index={4} fracture="-4" result="Failure"></DieTableRow>
+  <DieTableRow index={5} fracture="-4" result="Failure"></DieTableRow>
+  <DieTableRow index={6} fracture="-4" result="Failure"></DieTableRow>
+  <DieTableRow index={7} fracture="-4" result="Failure"></DieTableRow>
+  <DieTableRow index={8} fracture=" 0" result="Chaos"></DieTableRow>
+  <DieTableRow index={9} fracture="+2" result="Threat"></DieTableRow>
+  <DieTableRow index={10} fracture="+5" result="Triumph"></DieTableRow>
+  <DieTableRow index={11} fracture="+5" result="Triumph"></DieTableRow>
+  <DieTableRow index={12} fracture="+5" result="Triumph"></DieTableRow>
+</DieTable>
+
 <DieTable
   die="d20"
-  description="This is the default die. It is very reliable no matter how many dice are rolled and contains all but the chaos dice result."
-  dieData={
-    [
-      {
-        fracture: "-5",
-        result: "Disaster"
-      },
-      {
-        fracture: "-4",
-        result: "Failure"
-      },
-      {
-        fracture: "-4",
-        result: "Failure"
-      },
-      {
-        fracture: "-3",
-        result: "Failure"
-      },
-      {
-        fracture: "-3",
-        result: "Failure"
-      },
-      {
-        fracture: "-3",
-        result: "Failure"
-      },
-      {
-        fracture: "-2",
-        result: "Boon"
-      },
-      {
-        fracture: "-2",
-        result: "Boon"
-      },
-      {
-        fracture: "-2",
-        result: "Boon"
-      },
-      {
-        fracture: "-1",
-        result: "Boon"
-      },
-      {
-        fracture: "-1",
-        result: "Boon"
-      },
-      {
-        fracture: "+1",
-        result: "Threat"
-      },
-      {
-        fracture: "+1",
-        result: "Threat"
-      },
-      {
-        fracture: "+2",
-        result: "Threat"
-      },
-      {
-        fracture: "+2",
-        result: "Threat"
-      },
-      {
-        fracture: "+3",
-        result: "Success"
-      },
-      {
-        fracture: "+3",
-        result: "Success"
-      },
-      {
-        fracture: "+3",
-        result: "Success"
-      },
-      {
-        fracture: "+4",
-        result: "Success"
-      },
-      {
-        fracture: "+5",
-        result: "Triumph"
-      }
-    ]
-  }>
+  description="This die has the most even distribution of results, making it the default die. It excels at nothing.">
+  <DieTableRow index={1} fracture="-5" result="Disaster"></DieTableRow>
+  <DieTableRow index={2} fracture="-4" result="Failure"></DieTableRow>
+  <DieTableRow index={3} fracture="-4" result="Failure"></DieTableRow>
+  <DieTableRow index={4} fracture="-3" result="Failure"></DieTableRow>
+  <DieTableRow index={5} fracture="-3" result="Failure"></DieTableRow>
+  <DieTableRow index={6} fracture="-3" result="Failure"></DieTableRow>
+  <DieTableRow index={7} fracture="-2" result="Boon"></DieTableRow>
+  <DieTableRow index={8} fracture="-2" result="Boon"></DieTableRow>
+  <DieTableRow index={9} fracture="-2" result="Boon"></DieTableRow>
+  <DieTableRow index={10} fracture="-1" result="Boon"></DieTableRow>
+  <DieTableRow index={11} fracture="-1" result="Boon"></DieTableRow>
+  <DieTableRow index={12} fracture="+1" result="Threat"></DieTableRow>
+  <DieTableRow index={13} fracture="+1" result="Threat"></DieTableRow>
+  <DieTableRow index={14} fracture="+2" result="Threat"></DieTableRow>
+  <DieTableRow index={15} fracture="+2" result="Threat"></DieTableRow>
+  <DieTableRow index={16} fracture="+3" result="Success"></DieTableRow>
+  <DieTableRow index={17} fracture="+3" result="Success"></DieTableRow>
+  <DieTableRow index={18} fracture="+3" result="Success"></DieTableRow>
+  <DieTableRow index={19} fracture="+4" result="Success"></DieTableRow>
+  <DieTableRow index={20} fracture="+5" result="Triumph"></DieTableRow>
 </DieTable>
 `
 }
@@ -659,6 +646,72 @@ TODO
 `
 }
 
+const LancerGear = {
+  uuid: "LancerGear",
+  type: "PAGE",
+  title: "Lancer Gear",
+  format: {
+
+  },
+  content:
+`
+# Lancer Gear
+This is a collection of GMS weapons, systems, and modifications that can be installed into lancers.
+
+## GMS Weapons
+
+<BlockContainer>
+  <DiceBlock
+    staticTitle="Anti-Materiel Rifle"
+    staticDice="2d12"
+    staticDescription="A lancer-sized, magnetic railgun (Extreme Range, Accurate, Armor Piercing, Loading, Ordnance).">
+  </DiceBlock>
+  
+  <DiceBlock
+    staticTitle="Charged Blade"
+    staticDice="2d8"
+    staticDescription="An electrified and super-heated sword that can melt through most lancer armor (Melee Range, Armor Piercing).">
+  </DiceBlock>
+
+  <DiceBlock
+    staticTitle="Howitzer"
+    staticDice="2d10"
+    staticDescription="A mounted cannon that turns a lancer into portable artillery (Long Range, Arcing, Blast, Inaccurate, Loading, Ordnance).">
+  </DiceBlock>
+
+  <DiceBlock
+    staticTitle="Machine Gun"
+    staticDice="3d4"
+    staticDescription="A reliable, rapid-fire gun that utilizes a drum magazine (Medium Range, Inaccurate).">
+  </DiceBlock>
+
+  <DiceBlock
+    staticTitle="Missile Racks"
+    staticDice="3d6"
+    staticDescription="Auxiliary launchers with tracking capabilities (Medium Range, Blast, Loading, Tracking).">
+  </DiceBlock>
+
+  <DiceBlock
+    staticTitle="Shotgun"
+    staticDice="3d20"
+    staticDescription="A multi-purpose kinetic and flechette gun with ricochetting rounds (Close Range).">
+  </DiceBlock>
+
+  <DiceBlock
+    staticTitle="Thermal Rifle"
+    staticDice="2d20"
+    staticDescription="A powerful, overheating laser that can burn through multiple lancers in one shot (Long Range, Armor Piercing, Self-Heating).">
+  </DiceBlock>
+
+  <DiceBlock
+    staticTitle="Thermal Pistols"
+    staticDice="2d12"
+    staticDescription="Dual pistols capable of melting a lancer at close range when they strike cracks in the armor (Close Range, Armor Piercing, Self-Heating).">
+  </DiceBlock>
+</BlockContainer>
+`
+}
+
 const TitanfallExpansionTitanGear = {
   uuid: "TitanfallExpansionTitanGear",
   type: "PAGE",
@@ -720,8 +773,8 @@ TODO
 `
 }
 
-const TEST_BOOK_1 = {
-  uuid: "01",
+const ProteanRPG = {
+  uuid: "ProteanRPG.json",
   type: "BOOK",
   title: "Protean RPG",
   content: [
@@ -730,7 +783,15 @@ const TEST_BOOK_1 = {
     ProteanDiceSystemPage,
     ProteanSkeletonsAndFramesPage,
     ProteanModuleBasicFrames,
-    TitanfallExpansionTitanGear
+  ]
+}
+
+const SupplementLancer = {
+  uuid: "Supplement-Lancer.json",
+  type: "BOOK",
+  title: "Supplement - Lancer",
+  content: [
+    LancerGear,
   ]
 }
 
@@ -738,14 +799,14 @@ const GlobalStoreContext = createContext();
 const initialGlobalState = {
   darkMode: false,
   files: [
-    TEST_BOOK_1
+    ProteanRPG
   ],
-  activeFile: [
-    
-  ],
-  activePage: [
+  activeFile: {
 
-  ],
+  },
+  activePage: {
+
+  },
   fileIcons: {
     "BOOK": "ReadingMode",
     "SHEET": "TextDocumentShared",
@@ -761,13 +822,6 @@ const reducer = (globalState, action) => {
         darkMode: action.payload.darkMode
       }
     case "uploadFile":
-      var obj = {
-        ...globalState,
-        files: [...globalState.files, action.payload.file]
-      };
-      console.log("====================");
-      console.log(obj);
-      console.log(JSON.stringify(obj));
       return {
         ...globalState,
         files: [...globalState.files, action.payload.file]
