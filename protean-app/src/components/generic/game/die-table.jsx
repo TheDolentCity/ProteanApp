@@ -21,7 +21,7 @@ export default function DieTable(props) {
           </tr>
         </thead>
         <tbody className="text-left font-normal">
-          {
+          {/* {
             props.dieData.map((data, i) => (
               <tr key={i} className={(i+1) % 2 == 0 ? "raise-5" : ""}>
                 <th className="w-1/3 px-4 font-mono font-medium text-lg">{i+1}</th>
@@ -29,9 +29,20 @@ export default function DieTable(props) {
                 <th className="w-1/3 px-4 font-normal">{data.result}</th>
               </tr>
             ))
-          }
+          } */}
+          {props.children}
         </tbody>
       </table>
     </div>
+  );
+}
+
+export function DieTableRow(props) {
+  return (
+    <tr className={(props.index) % 2 == 0 ? "raise-5" : ""}>
+      <th className="w-1/3 px-4 font-mono font-medium text-lg">{props.index}</th>
+      <th className="w-1/3 px-4 font-mono font-medium text-lg">{props.fracture}</th>
+      <th className="w-1/3 px-4 font-normal">{props.result}</th>
+    </tr>
   );
 }

@@ -49,17 +49,4 @@ export default function ProteanFileUpload() {
       />
     </ProteanToolButton>
   );
-  // return (
-  //   <form ref={formRef}>
-      
-  //     <input
-  //       type="file"
-  //       className="acc-focus input-text flex w-full mx-auto px-4 py-1 space-x-3 items-center rounded hover:raise-10"
-  //       accept=".json,application/json,"
-  //       multiple={false}
-  //       onChange={onChangeHandler}
-  //       ref={fileInputRef}
-  //     />
-  //   </form>
-  // );
 };
