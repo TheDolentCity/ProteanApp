@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useGlobalStore } from "../../stores/global-store";
-import { ProteanToolButton } from '../../protean-framework/protean-tools/protean-tool';
+import { ProteanToolButton } from './protean-tool';
 
 export default function ProteanFileDownload() {
   const { globalState, dispatch } = useGlobalStore();
