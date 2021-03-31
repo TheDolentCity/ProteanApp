@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function DieTable(props) {
   return (
-    <div className="inline-flex flex-col w-72 min-w-72 mt-3 mb-8 mx-auto justify-center rounded-md shadow-md dark:bg-lighten-5">
+    <div className="inline-flex flex-col w-72 min-w-72 mt-3 mb-8 mx-3 justify-center rounded-md shadow-md dark:bg-lighten-5">
       <div className="flex-none p-4">
         <p className="text-6xl font-bold mb-3">
           {props.die}

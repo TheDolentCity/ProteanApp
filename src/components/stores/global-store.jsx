@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useState, useReducer } from 'react';
 
 const ProteanIs = {
   uuid: "ProteanIs",
@@ -795,11 +795,16 @@ const SupplementLancer = {
   ]
 }
 
+function loadLocalStorage(key, defaultValue) {
+  return localStorage.getItem(key) === null ? defaultValue : JSON.parse(localStorage.getItem(key));
+}
+
 const GlobalStoreContext = createContext();
 const initialGlobalState = {
-  darkMode: false,
+  darkMode: loadLocalStorage("darkMode", false),
   files: [
-    ProteanRPG
+    ProteanRPG,
+    SupplementLancer
   ],
   activeFile: {
 
@@ -817,6 +822,7 @@ const initialGlobalState = {
 const reducer = (globalState, action) => {
   switch (action.type) {
     case "setDarkMode":
+      localStorage.setItem("darkMode", action.payload.darkMode);
       return {
         ...globalState,
         darkMode: action.payload.darkMode
@@ -829,7 +835,8 @@ const reducer = (globalState, action) => {
     case "setActiveFile":
       return {
         ...globalState,
-        activeFile: action.payload.activeFile
+        activeFile: action.payload.activeFile,
+        activePage: {}
       }
     case "setActivePage":
       return {
