@@ -1,34 +1,21 @@
 import React, { useState } from 'react';
-import { useGlobalStore } from '../../stores/global-store';
 import SheetWidget from './sheet-widget';
 import TextareaAutosize from 'react-textarea-autosize';
 
 export default function DiceBlock(props) {
-  const { globalState, dispatch } = useGlobalStore();
+  const [diceBlock, setDiceBlock] = useState(props.diceBlock);
 
-  // Title data. Override with props if this is supposed to be a static dice block.
-  const [title, setTitle] = useState(
-    props.staticTitle === undefined ?
-      globalState.activeFile?.content.diceBlocks[props.index].title 
-      :
-      props.staticTitle
-  );
-
-  // Dice data. Override with props if this is supposed to be a static dice block.
-  const [dice, setDice] = useState(
-    props.staticDice === undefined ? 
-      globalState.activeFile?.content.diceBlocks[props.index].dice 
-      :
-      props.staticDice
-  );
-
-  // Description data. Override with props if this is supposed to be a static dice block.
-  const [description, setDescription] = useState(
-    props.staticDescription === undefined ? 
-      globalState.activeFile?.content.diceBlocks[props.index].description 
-      :
-      props.staticDescription
-  );
+  const setDiceBlockData = (value, property) => {
+    if (diceBlock[property] === undefined) {
+      console.log("Property: '" + property + "' is undefined on diceBlock object.");
+    }
+    else {
+      let newDiceBlock = { ...diceBlock };
+      newDiceBlock[property] = value;
+      setDiceBlock(newDiceBlock);
+      props?.onChange(newDiceBlock);
+    }
+  }
 
   return (
     <SheetWidget css="col-span-12 2xl:col-span-6 bg-forestGreen-600 dark:bg-forestGreen-700 text-white">
@@ -38,27 +25,27 @@ export default function DiceBlock(props) {
             type="text"
             className="acc-input input-text col-span-9 text-lg 3xl:text-2xl font-bold"
             placeholder="enter title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            disabled={props.staticTitle !== undefined}>
+            value={diceBlock?.title}
+            onChange={(e) => setDiceBlockData(e.target.value, 'title')}
+            disabled={props.static === true}>
           </input>
           <input
             type="text"
             className="acc-input input-text col-span-3 text-right text-lg 3xl:text-2xl font-bold text-lighten-75"
             placeholder="dice"
-            value={dice}
-            onChange={(e) => setDice(e.target.value)}
-            disabled={props.staticDice !== undefined}>
+            value={diceBlock?.dice}
+            onChange={(e) => setDiceBlockData(e.target.value, 'dice')}
+            disabled={props.static === true}>
           </input>
         </div>
         <TextareaAutosize
-          rows={3}
+          rows={2}
           maxRows={100}
           className="acc-input input-text-area font-medium text-lighten-75"
           placeholder="enter description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          disabled={props.staticDescription !== undefined}/>
+          value={diceBlock?.description}
+          onChange={(e) => setDiceBlockData(e.target.value, 'description')}
+          disabled={props.static === true} />
       </div>
     </SheetWidget>
   );

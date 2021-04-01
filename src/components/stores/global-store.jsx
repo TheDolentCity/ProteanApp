@@ -843,6 +843,11 @@ const reducer = (globalState, action) => {
         ...globalState,
         activePage: action.payload.activePage
       }
+    case "updateActiveFileContent":
+      return {
+        ...globalState,
+        activeFile: action.payload.activeFile
+      }
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
