@@ -6,6 +6,7 @@ import { GlobalStoreProvider } from './components/stores/global-store'
 import ProteanApp from './components/protean-framework/protean-app'
 import { ProteanLeftSidebar, ProteanRightSidebar } from './components/protean-framework/protean-sidebar';
 import ProteanDocument from './components/protean-framework/protean-document';
+import ProteanSettingsModal from './components/protean-framework/protean-settings';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <ProteanApp>
         <ProteanLeftSidebar></ProteanLeftSidebar>
         <ProteanDocument></ProteanDocument>
+        <ProteanSettingsModal></ProteanSettingsModal>
         <ProteanRightSidebar></ProteanRightSidebar>
       </ProteanApp>
     </GlobalStoreProvider>

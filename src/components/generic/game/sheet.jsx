@@ -10,6 +10,13 @@ export default function Sheet(props) {
   const { globalState, dispatch } = useGlobalStore();
   const [sheet, setSheet] = useState(globalState.activeFile?.content);
 
+  const dispatchSheetData = () => dispatch({
+    type: "updateActiveFileContent",
+    payload: {
+      content: sheet
+    }
+  })
+
   const setSheetData = (value, property) => {
     if (sheet[property] === undefined) {
       console.log("Property: '" + property + "' is undefined on sheet object.");
@@ -17,7 +24,7 @@ export default function Sheet(props) {
     else {
       let newSheet = { ...sheet };
       newSheet[property] = value;
-      setSheet(newSheet);
+      setSheet(newSheet, dispatchSheetData());
     }
   }
 
@@ -28,7 +35,7 @@ export default function Sheet(props) {
     else {
       let newSheet = { ...sheet };
       newSheet[property][index] = value;
-      setSheet(newSheet);
+      setSheet(newSheet, dispatchSheetData());
     }
   }
 
@@ -47,6 +54,7 @@ export default function Sheet(props) {
             key={index} 
             index={index}
             dice={numberBlock}
+            static={false}
             onChange={(newNumberBlock) => setBlockData(newNumberBlock, 'numberBlocks', index)}>
           </NumberBlock>
         ))
@@ -57,6 +65,7 @@ export default function Sheet(props) {
             key={index} 
             index={index}
             diceBlock={diceBlock}
+            static={false}
             onChange={(newDiceBlock) => setBlockData(newDiceBlock, 'diceBlocks', index)}>
           </DiceBlock>
         ))
@@ -67,6 +76,7 @@ export default function Sheet(props) {
             key={index} 
             index={index} 
             noteBlock={noteBlock} 
+            static={false}
             onChange={(newNoteBlock) => setBlockData(newNoteBlock, 'noteBlocks', index)}>
           </NoteBlock>
         ))

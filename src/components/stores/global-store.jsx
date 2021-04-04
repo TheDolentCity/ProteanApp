@@ -1,11 +1,10 @@
 import React, { createContext, useContext, useState, useReducer } from 'react';
 
 const ProteanIs = {
-  uuid: "ProteanIs",
-  type: "PAGE",
-  title: "Protean Is...",
-  format: {
-
+  uuid: "ProteanIs.json",
+  metadata: {
+    type: "PAGE",
+    title: "Protean Is...",
   },
   content:
 `
@@ -31,12 +30,10 @@ TODO
 }
 
 const ProteanQuickReference = {
-  uuid: "ProteanQuickReference",
-  type: "PAGE",
-  title: "Quick Reference",
-  parentTitle: "Chapter 1: Core Rules",
-  format: {
-
+  uuid: "QuickReference.json",
+  metadata: {
+    type: "PAGE",
+    title: "Quick Reference",
   },
   content:
 `
@@ -71,7 +68,7 @@ This page contains the smallest summary possible of all the rules for quick refe
   <DieTableRow index={1} fracture="-5" result="Disaster"></DieTableRow>
   <DieTableRow index={2} fracture="-5" result="Disaster"></DieTableRow>
   <DieTableRow index={3} fracture="-5" result="Disaster"></DieTableRow>
-  <DieTableRow index={4} fracture=" 0" result="Chaos"></DieTableRow>
+  <DieTableRow index={4} fracture="÷0" result="Chaos"></DieTableRow>
   <DieTableRow index={5} fracture="+1" result="Threat"></DieTableRow>
   <DieTableRow index={6} fracture="+2" result="Threat"></DieTableRow>
   <DieTableRow index={7} fracture="+4" result="Success"></DieTableRow>
@@ -85,10 +82,10 @@ This page contains the smallest summary possible of all the rules for quick refe
   <DieTableRow index={2} fracture="-3" result="Failure"></DieTableRow>
   <DieTableRow index={3} fracture="-2" result="Boon"></DieTableRow>
   <DieTableRow index={4} fracture="-1" result="Boon"></DieTableRow>
-  <DieTableRow index={5} fracture=" 0" result="Chaos"></DieTableRow>
-  <DieTableRow index={6} fracture=" 0" result="Chaos"></DieTableRow>
-  <DieTableRow index={7} fracture=" 0" result="Chaos"></DieTableRow>
-  <DieTableRow index={8} fracture=" 0" result="Chaos"></DieTableRow>
+  <DieTableRow index={5} fracture="÷0" result="Chaos"></DieTableRow>
+  <DieTableRow index={6} fracture="÷0" result="Chaos"></DieTableRow>
+  <DieTableRow index={7} fracture="÷0" result="Chaos"></DieTableRow>
+  <DieTableRow index={8} fracture="÷0" result="Chaos"></DieTableRow>
   <DieTableRow index={9} fracture="+3" result="Success"></DieTableRow>
   <DieTableRow index={10} fracture="+4" result="Success"></DieTableRow>
 </DieTable>
@@ -103,7 +100,7 @@ This page contains the smallest summary possible of all the rules for quick refe
   <DieTableRow index={5} fracture="-4" result="Failure"></DieTableRow>
   <DieTableRow index={6} fracture="-4" result="Failure"></DieTableRow>
   <DieTableRow index={7} fracture="-4" result="Failure"></DieTableRow>
-  <DieTableRow index={8} fracture=" 0" result="Chaos"></DieTableRow>
+  <DieTableRow index={8} fracture="÷0" result="Chaos"></DieTableRow>
   <DieTableRow index={9} fracture="+2" result="Threat"></DieTableRow>
   <DieTableRow index={10} fracture="+5" result="Triumph"></DieTableRow>
   <DieTableRow index={11} fracture="+5" result="Triumph"></DieTableRow>
@@ -648,10 +645,9 @@ TODO
 
 const LancerGear = {
   uuid: "LancerGear",
-  type: "PAGE",
-  title: "Lancer Gear",
-  format: {
-
+  metadata: {
+    type: "PAGE",
+    title: "Lancer Gear",
   },
   content:
 `
@@ -661,52 +657,60 @@ This is a collection of GMS weapons, systems, and modifications that can be inst
 ## GMS Weapons
 
 <BlockContainer>
-  <DiceBlock
-    staticTitle="Anti-Materiel Rifle"
-    staticDice="2d12"
-    staticDescription="A lancer-sized, magnetic railgun (Extreme Range, Accurate, Armor Piercing, Loading, Ordnance).">
+  <DiceBlock diceBlock={{
+    "title": "Anti-Materiel Rifle",
+    "dice": "2d12",
+    "description": "A lancer-sized, magnetic railgun (Extreme Range, Accurate, Armor Piercing, Loading, Ordnance)."
+  }}>
   </DiceBlock>
   
-  <DiceBlock
-    staticTitle="Charged Blade"
-    staticDice="2d8"
-    staticDescription="An electrified and super-heated sword that can melt through most lancer armor (Melee Range, Armor Piercing).">
+  <DiceBlock diceBlock={{
+    "title": "Charged Blade",
+    "dice": "2d8",
+    "description": "An electrified and super-heated sword that can melt through most lancer armor (Melee Range, Armor Piercing)."
+  }}>
   </DiceBlock>
 
-  <DiceBlock
-    staticTitle="Howitzer"
-    staticDice="2d10"
-    staticDescription="A mounted cannon that turns a lancer into portable artillery (Long Range, Arcing, Blast, Inaccurate, Loading, Ordnance).">
+  <DiceBlock diceBlock={{
+    "title": "Howitzer",
+    "dice": "2d10",
+    "description": "A mounted cannon that turns a lancer into portable artillery (Long Range, Arcing, Blast, Inaccurate, Loading, Ordnance)."
+  }}>
   </DiceBlock>
 
-  <DiceBlock
-    staticTitle="Machine Gun"
-    staticDice="3d4"
-    staticDescription="A reliable, rapid-fire gun that utilizes a drum magazine (Medium Range, Inaccurate).">
+  <DiceBlock diceBlock={{
+    "title": "Machine Gun",
+    "dice": "3d4",
+    "description": "A reliable, rapid-fire gun that utilizes a drum magazine (Medium Range, Inaccurate)."
+  }}>
   </DiceBlock>
 
-  <DiceBlock
-    staticTitle="Missile Racks"
-    staticDice="3d6"
-    staticDescription="Auxiliary launchers with tracking capabilities (Medium Range, Blast, Loading, Tracking).">
+  <DiceBlock diceBlock={{
+    "title": "Missile Racks",
+    "dice": "3d6",
+    "description": "Auxiliary launchers with tracking capabilities (Medium Range, Blast, Loading, Tracking)."
+  }}>
   </DiceBlock>
 
-  <DiceBlock
-    staticTitle="Shotgun"
-    staticDice="3d20"
-    staticDescription="A multi-purpose kinetic and flechette gun with ricochetting rounds (Close Range).">
+  <DiceBlock diceBlock={{
+    "title": "Shotgun",
+    "dice": "3d20",
+    "description": "A multi-purpose kinetic and flechette gun with ricochetting rounds (Close Range)."
+  }}>
   </DiceBlock>
 
-  <DiceBlock
-    staticTitle="Thermal Rifle"
-    staticDice="2d20"
-    staticDescription="A powerful, overheating laser that can burn through multiple lancers in one shot (Long Range, Armor Piercing, Self-Heating).">
+  <DiceBlock diceBlock={{
+    "title": "Thermal Rifle",
+    "dice": "2d20",
+    "description": "A powerful, overheating laser that can burn through multiple lancers in one shot (Long Range, Armor Piercing, Self-Heating)."
+  }}>
   </DiceBlock>
 
-  <DiceBlock
-    staticTitle="Thermal Pistols"
-    staticDice="2d12"
-    staticDescription="Dual pistols capable of melting a lancer at close range when they strike cracks in the armor (Close Range, Armor Piercing, Self-Heating).">
+  <DiceBlock diceBlock={{
+    "title": "Thermal Pistols",
+    "dice": "2d12",
+    "description": "Dual pistols capable of melting a lancer at close range when they strike cracks in the armor (Close Range, Armor Piercing, Self-Heating)."
+  }}>
   </DiceBlock>
 </BlockContainer>
 `
@@ -775,47 +779,67 @@ TODO
 
 const ProteanRPG = {
   uuid: "ProteanRPG.json",
-  type: "BOOK",
-  title: "Protean RPG",
+  metadata: {
+    type: "BOOK",
+    title: "Protean RPG",
+    activePage: 1
+  },
   content: [
     ProteanIs,
     ProteanQuickReference,
-    ProteanDiceSystemPage,
-    ProteanSkeletonsAndFramesPage,
-    ProteanModuleBasicFrames,
   ]
 }
 
-const SupplementLancer = {
-  uuid: "Supplement-Lancer.json",
-  type: "BOOK",
-  title: "Supplement - Lancer",
+const LancerSupplement = {
+  uuid: "Lancer.json",
+  metadata: {
+    type: "BOOK",
+    title: "Lancer",
+    activePage: 0
+  },
   content: [
     LancerGear,
   ]
 }
 
 function loadLocalStorage(key, defaultValue) {
+  if (localStorage.getItem(key) !== null && key !== "darkMode") {
+    console.log("LocalStorage:" + key + "\n" + localStorage.getItem(key));
+    var parsed = JSON.parse(localStorage.getItem(key));
+    console.log("LocalStorage[0]:" + key + "\n" + JSON.stringify(parsed[0]));
+    console.log("LocalStorageParsed:" + key + "\n" + parsed);
+    console.log("LocalStorageLength:" + key + "\n" + parsed.length);
+    console.log("DefaultValue:" + key + "\n" + defaultValue);
+    console.log("ClearedValue:" + key + "\n" + parsed.filter(
+      function (x) {
+        // if (x === undefined || x === null) {
+        //   console.log("ERROR: File loaded from local storage was undefined or null");
+        // }
+        return x !== undefined || x !== null;
+      }
+    ));
+  }
   return localStorage.getItem(key) === null ? defaultValue : JSON.parse(localStorage.getItem(key));
 }
 
 const GlobalStoreContext = createContext();
 const initialGlobalState = {
   darkMode: loadLocalStorage("darkMode", false),
-  files: [
-    ProteanRPG,
-    SupplementLancer
-  ],
+  files: loadLocalStorage("files", [ProteanRPG, LancerSupplement]),
+  // files: [
+  //   ProteanRPG,
+  //   LancerSupplement
+  // ],
   activeFile: {
-
-  },
-  activePage: {
-
+    
   },
   fileIcons: {
     "BOOK": "ReadingMode",
     "SHEET": "TextDocumentShared",
     "PAGE": "TextDocument",
+  },
+  conditionalRenders: {
+    "ProteanSettingsModal": false
   }
 };
 
@@ -828,6 +852,7 @@ const reducer = (globalState, action) => {
         darkMode: action.payload.darkMode
       }
     case "uploadFile":
+      localStorage.setItem("files", JSON.stringify([...globalState.files, action.payload.file]));
       return {
         ...globalState,
         files: [...globalState.files, action.payload.file]
@@ -836,17 +861,29 @@ const reducer = (globalState, action) => {
       return {
         ...globalState,
         activeFile: action.payload.activeFile,
-        activePage: {}
       }
     case "setActivePage":
+      var copyFile = { ...globalState.activeFile };
+      copyFile.metadata.activePage = action.payload.activePage;
       return {
         ...globalState,
-        activePage: action.payload.activePage
+        activeFile: copyFile
       }
     case "updateActiveFileContent":
+      var copyFile = { ...globalState.activeFile };
+      copyFile.content = action.payload.content;
+      localStorage.setItem("files", JSON.stringify(globalState.files));
       return {
         ...globalState,
-        activeFile: action.payload.activeFile
+        activeFile: copyFile
+      }
+    case "setProteanSettingsState":
+      return {
+        ...globalState,
+        conditionalRenders: {
+          ...globalState.conditionalRenders,
+          "ProteanSettingsModal": action.payload.state
+        }
       }
     default:
       throw new Error(`Unhandled action type: ${action.type}`);

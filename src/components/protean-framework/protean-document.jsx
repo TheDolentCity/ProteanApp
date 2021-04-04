@@ -6,18 +6,21 @@ import Sheet from '../generic/game/sheet';
 
 export default function ProteanDocument() {
   const { globalState, dispatch } = useGlobalStore();
+
+  const activePage = () => {
+    return globalState?.activeFile?.content[globalState?.activeFile?.metadata.activePage];
+  }
   
   if (globalState?.activeFile) {
-    switch (globalState.activeFile.type) {
+    switch (globalState.activeFile?.metadata?.type) {
       case "BOOK":
         // Render pages if one is selected
         if (globalState.activePage !== null) {
           return (
             <MdxDocument
-              title={globalState?.activePage.title}
-              subtitle={globalState?.activeFile.title}
-              icon={globalState.fileIcons[globalState.activePage.type]}>
-              {globalState?.activePage.content}
+              title={activePage().metadata.title}
+              icon={globalState.fileIcons[activePage().metadata.type]}>
+              {activePage().content}
             </MdxDocument>
           );
         }
@@ -25,9 +28,8 @@ export default function ProteanDocument() {
         else {
           return (
             <MdxDocument
-              title={globalState?.activeFile.title}
-              subtitle="This is a book"
-              icon={globalState.fileIcons[globalState.activeFile.type]}>
+              title={globalState?.activeFile.metadata.title}
+              icon={globalState.fileIcons[globalState.activeFile.metadata.type]}>
               Please select a page to view book contents.
             </MdxDocument>
           );
@@ -35,18 +37,15 @@ export default function ProteanDocument() {
       case "SHEET":
         return (
           <SheetDocument
-            title={globalState?.activeFile.title}
-            subtitle="Character Sheet"
-            icon={globalState.fileIcons[globalState.activeFile.type]}>
-            Please select a page to view book contents.
+            title={globalState?.activeFile.metadata.title}
+            icon={globalState.fileIcons[globalState.activeFile.metadata.type]}>
           </SheetDocument>
         );
       default:
         return (
           <MdxDocument
-            title={globalState?.activeFile.title}
-            subtitle={globalState?.activeFile.parentTitle}>
-            {globalState?.activeFile.content}
+            title={globalState?.activeFile?.metadata?.title}>
+            {globalState?.activeFile?.content}
           </MdxDocument>
         );
     }
@@ -56,17 +55,15 @@ export default function ProteanDocument() {
 
 function Document(props) {
   return (
-    <div className="flex-grow flex justify-center px-12 py-6 md:px-24 md:py-12 xl:px-36 xl:py-12">
-      <Page title={props.title} subtitle={props.subtitle} icon={props.icon}>
-        {props.children}
-      </Page>
-    </div>
+    <Page title={props.title} icon={props.icon}>
+      {props.children}
+    </Page>
   );
 }
 
 function MdxDocument(props) {
   return (
-    <Document title={props.title} subtitle={props.subtitle} icon={props.icon}>
+    <Document title={props.title} icon={props.icon}>
       <MdxRender>
         {props.children}
       </MdxRender>
@@ -76,7 +73,7 @@ function MdxDocument(props) {
 
 function SheetDocument(props) {
   return (
-    <Document title={props.title} subtitle={props.subtitle} icon={props.icon}>
+    <Document title={props.title} icon={props.icon}>
       <Sheet>
         {props.children}
       </Sheet>

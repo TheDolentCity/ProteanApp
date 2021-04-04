@@ -18,7 +18,7 @@ export default function DiceBlock(props) {
   }
 
   return (
-    <SheetWidget css="col-span-12 2xl:col-span-6 bg-forestGreen-600 dark:bg-forestGreen-700 text-white">
+    <SheetWidget css="col-span-12 xl:col-span-6 bg-forestGreen-600 dark:bg-forestGreen-700 text-white">
       <div className="flex flex-col">
         <div className="grid grid-cols-12 mb-1 items-center">
           <input
@@ -49,4 +49,8 @@ export default function DiceBlock(props) {
       </div>
     </SheetWidget>
   );
+}
+
+DiceBlock.defaultProps = {
+  static: true
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import MDX from '@mdx-js/runtime';
+import MdxWrapper from './mdx-wrapper';
 import { Header1, Header2, Header3, Header4, Header5, Header6, Subtitle } from './header';
 import { Paragraph } from './paragraph';
 import { ListBulleted, ListNumbered } from './lists';
@@ -12,7 +13,7 @@ import Spacer from './spacer';
 
 const mdxComponents = {
   // Base wrapper for every mdx document
-  wrapper: props => (<div className="">{props.children}</div>),
+  wrapper: props => <MdxWrapper>{props.children}</MdxWrapper>,
 
   // Base Components
   a: (props) => <a className="">{props.children}</a>,

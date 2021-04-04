@@ -18,7 +18,7 @@ export default function NoteBlock(props) {
   }
 
   return (
-    <SheetWidget css="col-span-12 2xl:col-span-6 bg-dirtBrown-600 dark:bg-dirtBrown-700 text-white">
+    <SheetWidget css="col-span-12 xl:col-span-6 bg-dirtBrown-600 dark:bg-dirtBrown-700 text-white">
       <div className="flex flex-col">
         <input
           type="text"

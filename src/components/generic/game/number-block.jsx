@@ -22,7 +22,7 @@ export default function NumberBlock(props) {
   }
 
   return (
-    <SheetWidget css="col-span-12 2xl:col-span-6 bg-steelBlue-600 dark:bg-steelBlue-700 text-white">
+    <SheetWidget css="col-span-12 xl:col-span-6 bg-steelBlue-600 dark:bg-steelBlue-700 text-white">
       <div className="flex flex-col">
         <TextareaAutosize
           value={title}

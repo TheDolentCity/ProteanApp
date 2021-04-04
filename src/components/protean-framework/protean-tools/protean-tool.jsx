@@ -32,9 +32,9 @@ export function ProteanToolBody(props) {
 
 export function ProteanToolButton(props) {
   return (
-    <button onClick={props.onClick} className={(props.active ? "bg-primary-600 text-white font-semibold" : "hover:raise-10") + " acc-focus flex w-full mx-auto px-4 py-1 space-x-3 items-center rounded text-lg transition-colors duration-150 ease-in-out"}>
+    <button onClick={props.onClick} className={(props.active ? "bg-cyan-500 dark:bg-cyan-600 text-white font-semibold" : "hover:raise-10") + " acc-focus flex w-full max-w-full mx-auto px-4 py-1 space-x-3 items-center rounded text-lg overflow-hidden"}>
       <FabricIcon name={props.icon}></FabricIcon>
-      <span className="text-sm">
+      <span className="text-sm truncate">
         {props.children}
       </span>
     </button>
@@ -43,9 +43,9 @@ export function ProteanToolButton(props) {
 
 export function ProteanToolItem(props) {
   return (
-    <div className="acc-focus flex w-full mx-auto px-4 py-1 space-x-3 items-center rounded text-lg transition-colors duration-150 ease-in-out">
+    <div className="acc-focus flex w-full max-w-full mx-auto px-4 py-1 space-x-3 items-center rounded text-lg overflow-hidden">
       <FabricIcon name={props.icon}></FabricIcon>
-      <span className="text-sm">
+      <span className="text-sm truncate">
         {props.children}
       </span>
     </div>
