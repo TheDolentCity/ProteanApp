@@ -192,7 +192,7 @@
     @apply px-2 whitespace-nowrap elevation-0 justify-center text-sm xl:text-base font-medium;
   }
   .input-text-area {
-    @apply w-full px-2 elevation-0 justify-center text-sm xl:text-base font-medium;
+    @apply w-full px-2 elevation-0 justify-center overflow-hidden text-sm xl:text-base font-medium;
   }
 }
 

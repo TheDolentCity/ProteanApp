@@ -15,9 +15,9 @@ export default function DieTable(props) {
       <table className="flex-auto table-fixed max-w-full text-sm">
         <thead className="text-left font-semibold">
           <tr className="raise-10">
-            <th className="w-1/3 py-1 px-4 text-center">Roll</th>
-            <th className="w-1/3 py-1 px-4 text-center">Fracture</th>
-            <th className="w-1/3 py-1 px-4">Result</th>
+            <th className="w-1/2 py-1 px-4 text-center">Roll</th>
+            {/* <th className="w-1/2 py-1 px-4 text-center">Fracture</th> */}
+            <th className="w-1/2 py-1 px-4">Result</th>
           </tr>
         </thead>
         <tbody className="text-left font-normal">
@@ -31,9 +31,9 @@ export default function DieTable(props) {
 export function DieTableRow(props) {
   return (
     <tr className={(props.index) % 2 == 0 ? "raise-5" : ""}>
-      <th className="w-1/3 px-4 font-mono font-medium text-base text-center">{props.index}</th>
-      <th className="w-1/3 px-4 font-mono font-medium text-base text-center">{props.fracture}</th>
-      <th className="w-1/3 px-4 font-normal">{props.result}</th>
+      <th className="w-1/2 px-4 font-mono font-medium text-base text-center">{props.index}</th>
+      {/* <th className="w-1/2 px-4 font-mono font-medium text-base text-center">{props.fracture}</th> */}
+      <th className="w-1/2 px-4 font-normal">{props.result}</th>
     </tr>
   );
 }

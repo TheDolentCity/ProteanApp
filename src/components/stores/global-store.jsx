@@ -7,8 +7,7 @@ const ProteanIs = {
     title: "Protean Is...",
   },
   content:
-`
-# Protean Is...
+`# Protean Is...
 
 ---
 
@@ -26,6 +25,239 @@ TODO
 
 ## ... Accessible
 TODO
+`
+}
+
+const ThePlayers = {
+  uuid: "ThePlayers.json",
+  metadata: {
+    type: "PAGE",
+    title: "The Players",
+  },
+  content:
+`# The Players
+Everyone reading this right now is a player, no matter what you do while playing. However, there are two primary ways to play Protean: as an Advocate, or as an Actor.
+
+## The Advocate
+Most roleplaying games have one player who acts as an authority to settle conflict and play all the characters in the game that aren't "player" characters. This is commonly referred to as the Game Master, GM, or Referee, but in Protean we call this player the Advocate.
+
+The Advocate's role in Protean is similar to that of a traditional GM, but they are not placed on a pedestal above the rest of the players. The story is not their story. The story belongs to every person in the group. The Advocate's job is to ensure that remains the case.
+
+The Advocate exists to draw limits and work with the Actors to create a shared narrative, not to make their own story and lets the players move around in it.
+
+You are not the antagonist that everyone else fights against. You are not the master of the rules with a righteous decree to punish anyone who dares not follow them. You are a friend at the table who leads discussions and helps fill in the sets, extras, and other characters that create a great story. In short, you are an Advocate of the story and the Actors inside of it.
+
+## The Actors
+Most tabletop roleplaying games have players create and then control a single character, called a player character or PC. But in Protean, we refer to any player who has a single character that they control/roleplay as an Actor. This is representative of their overall role in the game. However, every Actor is also expected to take on a unique role in the game.
+
+## Actor Roles
+To ensure even distribution of labor, facilitate ease of play, and simply not place all responisiblites of the game on the Advocate, certain responisiblites are distributed among the Actors. Everyone chooses a unique role during session 0 of the game.
+
+### Palaver
+- Mediates the Actors during decision making and makes sure everyone's voice is heard.
+- Relays the final decision regarding Actors actions to the Advocate.
+- **Do not** impose your view on others.
+- **Do not** talk over others.
+- **Do not** give an answer to the Advocate without consensus.
+
+### Mapper
+- Records notes about important world details and locales.
+- Makes diagrams of locations if necessary.
+- **Do not** spend time creating diagrams when you should be paying attention.
+- **Do not** spend time creating diagrams if no Actor believes they are necessary.
+
+### Chronicler
+- Records the events of a game session.
+- Notes what transpires from a high level.
+- Notes the names of important characters and their purpose in the story.
+- **Do not** write too detailed; these should be used to remind any other player what happened last session or who a specific character is, but it does not need to be an autobiography.
+- **Do not** spend time writing when you should be paying attention.
+
+### Quartermaster
+- Manage shared party equipment and consumables (light, rations, batteries, etc.).
+- Reminds other Actors of the equipment, consumable, and carry rules when necessary.
+- **Do not** wait for someone to tell you what equipment they have or are consuming, pay attention and ask questions if you're unsure.
+- **Do not** require your character to possess or use the shared equipment just because you are recording it.
+
+### Timekeeper
+- Track literal time if it is used mechanically.
+- Track abstract time if it is used mechanically.
+- Track world time to help keep other Actors grounded in the fiction.
+- Prompt the Advocate if they did not clarify how much time has passed.
+- **Do not** remind players of the time too often.
+- **Do not** remind someone how much time something will take if they clearly know it will take time.
+`
+}
+
+const RulesInBrief = {
+  uuid: "RulesInBrief.json",
+  metadata: {
+    type: "PAGE",
+    title: "Rules In Brief",
+  },
+  content:
+`# Rules In Brief
+
+## Character Sheets
+Character sheets have several components to represent your character. Most of these are referred to as blocks. 
+
+## Making Checks
+
+### 1. Determine Starting Dice Pool
+If you're making a check with a specific dice block you will start with the associated dice as your pool. If you don't have any dice block that would apply to the check, then you start with 1d20.
+
+### 2. Apply Advantages
+Add +1 die if the Advocate says you have advantage.
+
+### 3. Apply Difficulty
+Subtract -1 or -2 dice if the Advocate deems this check hard or challenging.
+
+### 4. Roll Dice
+Roll all of the dice in your pool and take the highest result. If a rule stated that you take the lowest result then obviously do that instead.
+
+### 5. Determine Result
+Use the dice tables and dice result references below to interpret the check results.
+
+## Dice Table References
+
+<DieTable
+  die="d4"
+  description="There is a lower chance of success using this die, but the worst case scenario still provides an advantage.">
+  <DieTableRow index={1} fracture="-1" result="Boon"></DieTableRow>
+  <DieTableRow index={2} fracture="-1" result="Boon"></DieTableRow>
+  <DieTableRow index={3} fracture="-1" result="Boon"></DieTableRow>
+  <DieTableRow index={4} fracture="+3" result="Success"></DieTableRow>
+</DieTable>
+
+<DieTable
+  die="d6"
+  description="This die has the highest chance of triumph AND disaster.">
+  <DieTableRow index={1} fracture="-5" result="Disaster"></DieTableRow>
+  <DieTableRow index={2} fracture="-5" result="Disaster"></DieTableRow>
+  <DieTableRow index={3} fracture="-5" result="Disaster"></DieTableRow>
+  <DieTableRow index={4} fracture="+3" result="Success"></DieTableRow>
+  <DieTableRow index={5} fracture="+3" result="Success"></DieTableRow>
+  <DieTableRow index={6} fracture="+5" result="Triumph"></DieTableRow>
+</DieTable>
+
+<DieTable
+  die="d8"
+  description="This die has a high chance of success, but almost always some kind of drawback.">
+  <DieTableRow index={1} fracture="-5" result="Disaster"></DieTableRow>
+  <DieTableRow index={2} fracture="-4" result="Disaster"></DieTableRow>
+  <DieTableRow index={3} fracture="+1" result="Threat"></DieTableRow>
+  <DieTableRow index={4} fracture="+1" result="Threat"></DieTableRow>
+  <DieTableRow index={5} fracture="+2" result="Threat"></DieTableRow>
+  <DieTableRow index={6} fracture="+2" result="Threat"></DieTableRow>
+  <DieTableRow index={7} fracture="+3" result="Success"></DieTableRow>
+  <DieTableRow index={8} fracture="+3" result="Success"></DieTableRow>
+</DieTable>
+
+<DieTable
+  die="d10"
+  description="This die is unlikely to have a damaging failure result, but it is very chaotic.">
+  <DieTableRow index={1} fracture="-4" result="Failure"></DieTableRow>
+  <DieTableRow index={2} fracture="-3" result="Failure"></DieTableRow>
+  <DieTableRow index={3} fracture="-2" result="Boon"></DieTableRow>
+  <DieTableRow index={4} fracture="-1" result="Boon"></DieTableRow>
+  <DieTableRow index={5} fracture="÷0" result="Chaos"></DieTableRow>
+  <DieTableRow index={6} fracture="÷0" result="Chaos"></DieTableRow>
+  <DieTableRow index={7} fracture="÷0" result="Chaos"></DieTableRow>
+  <DieTableRow index={8} fracture="÷0" result="Chaos"></DieTableRow>
+  <DieTableRow index={9} fracture="+4" result="Success"></DieTableRow>
+  <DieTableRow index={10} fracture="+4" result="Success"></DieTableRow>
+</DieTable>
+
+<DieTable
+  die="d12"
+  description="This die has a chance of triumph and exceeds when rolled by itself, but almost always has a drawback.">
+  <DieTableRow index={1} fracture="-3" result="Failure"></DieTableRow>
+  <DieTableRow index={2} fracture="-2" result="Failure"></DieTableRow>
+  <DieTableRow index={3} fracture="-2" result="Failure"></DieTableRow>
+  <DieTableRow index={4} fracture="-1" result="Failure"></DieTableRow>
+  <DieTableRow index={5} fracture="-1" result="Failure"></DieTableRow>
+  <DieTableRow index={6} fracture="÷0" result="Chaos"></DieTableRow>
+  <DieTableRow index={7} fracture="+1" result="Threat"></DieTableRow>
+  <DieTableRow index={8} fracture="+1" result="Threat"></DieTableRow>
+  <DieTableRow index={9} fracture="+1" result="Threat"></DieTableRow>
+  <DieTableRow index={10} fracture="+1" result="Threat"></DieTableRow>
+  <DieTableRow index={11} fracture="+1" result="Threat"></DieTableRow>
+  <DieTableRow index={12} fracture="+5" result="Triumph"></DieTableRow>
+</DieTable>
+
+<DieTable
+  die="d20"
+  description="This die has the most even distribution of results, making it the default die. It excels at nothing.">
+  <DieTableRow index={1} fracture="-5" result="Disaster"></DieTableRow>
+  <DieTableRow index={2} fracture="-4" result="Failure"></DieTableRow>
+  <DieTableRow index={3} fracture="-4" result="Failure"></DieTableRow>
+  <DieTableRow index={4} fracture="-3" result="Failure"></DieTableRow>
+  <DieTableRow index={5} fracture="-3" result="Failure"></DieTableRow>
+  <DieTableRow index={6} fracture="-3" result="Failure"></DieTableRow>
+  <DieTableRow index={7} fracture="-2" result="Boon"></DieTableRow>
+  <DieTableRow index={8} fracture="-2" result="Boon"></DieTableRow>
+  <DieTableRow index={9} fracture="-2" result="Boon"></DieTableRow>
+  <DieTableRow index={10} fracture="-1" result="Boon"></DieTableRow>
+  <DieTableRow index={11} fracture="-1" result="Boon"></DieTableRow>
+  <DieTableRow index={12} fracture="+1" result="Threat"></DieTableRow>
+  <DieTableRow index={13} fracture="+1" result="Threat"></DieTableRow>
+  <DieTableRow index={14} fracture="+2" result="Threat"></DieTableRow>
+  <DieTableRow index={15} fracture="+2" result="Threat"></DieTableRow>
+  <DieTableRow index={16} fracture="+3" result="Success"></DieTableRow>
+  <DieTableRow index={17} fracture="+3" result="Success"></DieTableRow>
+  <DieTableRow index={18} fracture="+3" result="Success"></DieTableRow>
+  <DieTableRow index={19} fracture="+4" result="Success"></DieTableRow>
+  <DieTableRow index={20} fracture="+5" result="Triumph"></DieTableRow>
+</DieTable>
+
+## Dice Result References
+
+### Disaster
+The Actor fails to accomplish their goal. The Advocate introduces a new problem, serious danger, or character that wasn't in the scene prior as part of the group narration. 
+
+### Failure
+The Actor fails to accomplish their goal. The Advocate should prompt them for what went wrong.
+
+### Boon
+The Actor fails to accomplish their goal. As part of the narration, the Actor adds an aspect to the scene that can be treated as an advantage for the Actors.
+
+### Chaos
+The result is neither positive nor negative. Chaos is a drastic shift in the situation. This might mean a dogfight between two outlaw ships is suddenly interrupted by a giant military armada. The Advocate and the Actors should work together to come up with a way that the goals of every character in the scene shift due to a random event.
+
+### Threat
+The Actor accomplishes their goal. As part of the narration, the Advocate adds an aspect to the scene that can be treated as a disadvantage or unfortunate circumstance for the Actors.
+
+### Success
+The Actor accomplishes their goal. The Advocate should prompt them for how they succeed.
+
+### Triumph
+The Actor accomplishes their goal. The Advocate should prompt them for a solution to an existing problem, removal of a serious danger, or allow them to introduce a character that wasn't in the scene prior as part of the group narration.
+`
+}
+
+const MakingChecks = {
+  uuid: "MakingChecks.json",
+  metadata: {
+    type: "PAGE",
+    title: "Making Checks",
+  },
+  content:
+`# Making Checks
+
+## 1. Determine Starting Dice Pool
+If you're making a check with a specific dice block you will start with the associated dice as your pool. If you don't have any dice block that would apply to the check, then you start with 1d20.
+
+## 2. Apply Advantages
+If the Advocate believes that you are in a situation where you would have some advantage, be it a surplus of medical supplies, strong trade wind on the sea, or simply having access to a shovel while digging, then they may grant you an advantage. 
+
+## 3. Apply Difficulty
+There are three difficulties: average, hard, and challenge.
+
+- If the difficulty is average, do not modify the starting dice. 
+- If the difficulty is hard, roll one less die. 
+- If the difficulty is challenge, roll two less dice. 
+
+If you hit a dice pool of 0 it becomes a pool of 2 dice and you take the lowest result instead of the highest. Further subtractions increase the amount of dice. So if your dice pool started as 1d20 and the difficulty was challenging then you would roll 3d20 and take the lowest result.
 `
 }
 
@@ -655,26 +887,16 @@ const LancerGear = {
 This is a collection of GMS weapons, systems, and modifications that can be installed into lancers.
 
 ## GMS Weapons
+Much like GMS mechs, GMS weapons are reliable galactic standards, made using interchangeable parts and built to withstand almost any conditions. There are three lines currently in production. 
+
+### T-1
+The Type-I (T-1) line is defined by powerful, reliable, and conventional-kinetic ranged and melee weapons.
 
 <BlockContainer>
   <DiceBlock diceBlock={{
-    "title": "Anti-Materiel Rifle",
-    "dice": "2d12",
-    "description": "A lancer-sized, magnetic railgun (Extreme Range, Accurate, Armor Piercing, Loading, Ordnance)."
-  }}>
-  </DiceBlock>
-  
-  <DiceBlock diceBlock={{
-    "title": "Charged Blade",
-    "dice": "2d8",
-    "description": "An electrified and super-heated sword that can melt through most lancer armor (Melee Range, Armor Piercing)."
-  }}>
-  </DiceBlock>
-
-  <DiceBlock diceBlock={{
-    "title": "Howitzer",
-    "dice": "2d10",
-    "description": "A mounted cannon that turns a lancer into portable artillery (Long Range, Arcing, Blast, Inaccurate, Loading, Ordnance)."
+    "title": "Heavy Axe",
+    "dice": "3d6",
+    "description": "A heavy mechanical axe that can cleave off pieces of a lancer in one swing (Melee Range, Cleaving)."
   }}>
   </DiceBlock>
 
@@ -686,30 +908,75 @@ This is a collection of GMS weapons, systems, and modifications that can be inst
   </DiceBlock>
 
   <DiceBlock diceBlock={{
-    "title": "Missile Racks",
-    "dice": "3d6",
-    "description": "Auxiliary launchers with tracking capabilities (Medium Range, Blast, Loading, Tracking)."
+    "title": "Pistols",
+    "dice": "2d12",
+    "description": "A pair of reliable, close range pistols (Close Range, Accurate)."
   }}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
     "title": "Shotgun",
-    "dice": "3d20",
-    "description": "A multi-purpose kinetic and flechette gun with ricochetting rounds (Close Range)."
+    "dice": "2d8",
+    "description": "A multi-purpose kinetic and flechette gun with ricochetting rounds (Close Range, Ricochet)."
+  }}>
+  </DiceBlock>
+</BlockContainer>
+
+### T-2
+The Type-II (T-2) line displays GMS’s proprietary “charged” melee weapons and energy weapons. T-2 charged melee weapons are structurally similar to GMS’s T-1 melee weapons, though built with different materials to tolerate the intense heat generated by their projected plasma sheaths.
+
+<BlockContainer>
+  <DiceBlock diceBlock={{
+    "title": "Charged Blade",
+    "dice": "3d8",
+    "description": "An electrified and super-heated sword that can melt through most lancer armor (Melee Range, Melting, Self-Heating)."
   }}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
-    "title": "Thermal Rifle",
-    "dice": "2d20",
-    "description": "A powerful, overheating laser that can burn through multiple lancers in one shot (Long Range, Armor Piercing, Self-Heating)."
+    "title": "Thermal Cannon",
+    "dice": "1d12",
+    "description": "A single shot, fire-based weapon. The rounds burn extremely hot for extended amounts of time, doing massive damage to anything it touches (Medium Range, Burns, Melts)."
   }}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
     "title": "Thermal Pistols",
-    "dice": "2d12",
-    "description": "Dual pistols capable of melting a lancer at close range when they strike cracks in the armor (Close Range, Armor Piercing, Self-Heating)."
+    "dice": "2d20",
+    "description": "Dual pistols capable of melting a lancer at close range when they strike cracks in the armor (Close Range, Melting, Self-Heating)."
+  }}>
+  </DiceBlock>
+
+  <DiceBlock diceBlock={{
+    "title": "Thermal Rifle",
+    "dice": "2d8",
+    "description": "A powerful, overheating laser that can burn through multiple lancers in one shot (Long Range, Melting, Self-Heating)."
+  }}>
+  </DiceBlock>
+</BlockContainer>
+
+### T-3
+The Type-III (T-3) line is made up of heavy weapons, ordnance, and other exotic, specialized, or massive weapons.
+
+<BlockContainer>
+  <DiceBlock diceBlock={{
+    "title": "Anti-Materiel Rifle",
+    "dice": "2d6",
+    "description": "A lancer-sized, magnetic railgun (Extreme Range, Accurate, Armor Piercing, Loading, Ordnance)."
+  }}>
+  </DiceBlock>
+
+  <DiceBlock diceBlock={{
+    "title": "Howitzer",
+    "dice": "2d10",
+    "description": "A mounted cannon that turns a lancer into portable artillery (Long Range, Arcing, Blast, Inaccurate, Loading, Ordnance)."
+  }}>
+  </DiceBlock>
+
+  <DiceBlock diceBlock={{
+    "title": "Missile Racks",
+    "dice": "2d4",
+    "description": "Auxiliary launchers with tracking capabilities (Medium Range, Blast, Loading, Tracking)."
   }}>
   </DiceBlock>
 </BlockContainer>
@@ -786,7 +1053,9 @@ const ProteanRPG = {
   },
   content: [
     ProteanIs,
-    ProteanQuickReference,
+    ThePlayers,
+    RulesInBrief,
+    MakingChecks
   ]
 }
 
@@ -826,10 +1095,6 @@ const GlobalStoreContext = createContext();
 const initialGlobalState = {
   darkMode: loadLocalStorage("darkMode", false),
   files: loadLocalStorage("files", [ProteanRPG, LancerSupplement]),
-  // files: [
-  //   ProteanRPG,
-  //   LancerSupplement
-  // ],
   activeFile: {
     
   },
