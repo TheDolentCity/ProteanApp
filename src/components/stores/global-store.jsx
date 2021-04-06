@@ -122,95 +122,95 @@ Use the dice tables and dice result references below to interpret the check resu
 
 <DieTable
   die="d4"
-  description="There is a lower chance of success using this die, but the worst case scenario still provides an advantage.">
-  <DieTableRow index={1} fracture="-1" result="Boon"></DieTableRow>
-  <DieTableRow index={2} fracture="-1" result="Boon"></DieTableRow>
-  <DieTableRow index={3} fracture="-1" result="Boon"></DieTableRow>
-  <DieTableRow index={4} fracture="+3" result="Success"></DieTableRow>
+  description="FAIL FORWARD: There is a lower chance of success using this die, but the worst case scenario still provides an advantage.">
+  <DieTableRow index={1} result="1 Failure, 1 Advantage"></DieTableRow>
+  <DieTableRow index={2} result="1 Failure, 1 Advantage"></DieTableRow>
+  <DieTableRow index={3} result="1 Failure, 1 Advantage"></DieTableRow>
+  <DieTableRow index={4} result="3 Success"></DieTableRow>
 </DieTable>
 
 <DieTable
   die="d6"
-  description="This die has the highest chance of triumph AND disaster.">
-  <DieTableRow index={1} fracture="-5" result="Disaster"></DieTableRow>
-  <DieTableRow index={2} fracture="-5" result="Disaster"></DieTableRow>
-  <DieTableRow index={3} fracture="-5" result="Disaster"></DieTableRow>
-  <DieTableRow index={4} fracture="+3" result="Success"></DieTableRow>
-  <DieTableRow index={5} fracture="+3" result="Success"></DieTableRow>
-  <DieTableRow index={6} fracture="+5" result="Triumph"></DieTableRow>
+  description="GO BIG OR GO HOME: This die has the highest chance of triumph AND disaster.">
+  <DieTableRow index={1} result="Disaster!"></DieTableRow>
+  <DieTableRow index={2} result="Disaster!"></DieTableRow>
+  <DieTableRow index={3} result="Disaster!"></DieTableRow>
+  <DieTableRow index={4} result="3 Success"></DieTableRow>
+  <DieTableRow index={5} result="3 Success"></DieTableRow>
+  <DieTableRow index={6} result="Triumph!"></DieTableRow>
 </DieTable>
 
 <DieTable
   die="d8"
-  description="This die has a high chance of success, but almost always some kind of drawback.">
-  <DieTableRow index={1} fracture="-5" result="Disaster"></DieTableRow>
-  <DieTableRow index={2} fracture="-4" result="Disaster"></DieTableRow>
-  <DieTableRow index={3} fracture="+1" result="Threat"></DieTableRow>
-  <DieTableRow index={4} fracture="+1" result="Threat"></DieTableRow>
-  <DieTableRow index={5} fracture="+2" result="Threat"></DieTableRow>
-  <DieTableRow index={6} fracture="+2" result="Threat"></DieTableRow>
-  <DieTableRow index={7} fracture="+3" result="Success"></DieTableRow>
-  <DieTableRow index={8} fracture="+3" result="Success"></DieTableRow>
+  description="GIVE AND TAKE: If you succeed there is always a drawback, but if you fail there is always a boon.">
+  <DieTableRow index={1} result="Failure 5, Advantage 2"></DieTableRow>
+  <DieTableRow index={2} result="Failure 3, Advantage 1"></DieTableRow>
+  <DieTableRow index={3} result="Failure 3, Advantage 1"></DieTableRow>
+  <DieTableRow index={4} result="Failure 1, Advantage 1"></DieTableRow>
+  <DieTableRow index={5} result="Success 1, Disadvantage 1"></DieTableRow>
+  <DieTableRow index={6} result="Success 3, Disadvantage 1"></DieTableRow>
+  <DieTableRow index={7} result="Success 3, Disadvantage 1"></DieTableRow>
+  <DieTableRow index={8} result="Success 5, Disadvantage 2"></DieTableRow>
 </DieTable>
 
 <DieTable
   die="d10"
-  description="This die is unlikely to have a damaging failure result, but it is very chaotic.">
-  <DieTableRow index={1} fracture="-4" result="Failure"></DieTableRow>
-  <DieTableRow index={2} fracture="-3" result="Failure"></DieTableRow>
-  <DieTableRow index={3} fracture="-2" result="Boon"></DieTableRow>
-  <DieTableRow index={4} fracture="-1" result="Boon"></DieTableRow>
-  <DieTableRow index={5} fracture="÷0" result="Chaos"></DieTableRow>
-  <DieTableRow index={6} fracture="÷0" result="Chaos"></DieTableRow>
-  <DieTableRow index={7} fracture="÷0" result="Chaos"></DieTableRow>
-  <DieTableRow index={8} fracture="÷0" result="Chaos"></DieTableRow>
-  <DieTableRow index={9} fracture="+4" result="Success"></DieTableRow>
-  <DieTableRow index={10} fracture="+4" result="Success"></DieTableRow>
+  description="UNRELIABLE: This die has the highest likelihood of chaos and a low chance of failure rolls, but the highest rolls are fairly timid.">
+  <DieTableRow index={1} result="Failure 4"></DieTableRow>
+  <DieTableRow index={2} result="Failure 2"></DieTableRow>
+  <DieTableRow index={3} result="Chaos!"></DieTableRow>
+  <DieTableRow index={4} result="Chaos!"></DieTableRow>
+  <DieTableRow index={5} result="Chaos!"></DieTableRow>
+  <DieTableRow index={6} result="Chaos!"></DieTableRow>
+  <DieTableRow index={7} result="Success 1"></DieTableRow>
+  <DieTableRow index={8} result="Success 1, Advantage 1"></DieTableRow>
+  <DieTableRow index={9} result="Success 2"></DieTableRow>
+  <DieTableRow index={10} result="Success 2, Advantage 1"></DieTableRow>
 </DieTable>
 
 <DieTable
   die="d12"
-  description="This die has a chance of triumph and exceeds when rolled by itself, but almost always has a drawback.">
-  <DieTableRow index={1} fracture="-3" result="Failure"></DieTableRow>
-  <DieTableRow index={2} fracture="-2" result="Failure"></DieTableRow>
-  <DieTableRow index={3} fracture="-2" result="Failure"></DieTableRow>
-  <DieTableRow index={4} fracture="-1" result="Failure"></DieTableRow>
-  <DieTableRow index={5} fracture="-1" result="Failure"></DieTableRow>
-  <DieTableRow index={6} fracture="÷0" result="Chaos"></DieTableRow>
-  <DieTableRow index={7} fracture="+1" result="Threat"></DieTableRow>
-  <DieTableRow index={8} fracture="+1" result="Threat"></DieTableRow>
-  <DieTableRow index={9} fracture="+1" result="Threat"></DieTableRow>
-  <DieTableRow index={10} fracture="+1" result="Threat"></DieTableRow>
-  <DieTableRow index={11} fracture="+1" result="Threat"></DieTableRow>
-  <DieTableRow index={12} fracture="+5" result="Triumph"></DieTableRow>
+  description="COSTLY: This die has high rolls on average, but also rolls a high amount of toll. Your greatest successes will cost the most.">
+  <DieTableRow index={1} result="6 Failure"></DieTableRow>
+  <DieTableRow index={2} result="4 Failure"></DieTableRow>
+  <DieTableRow index={3} result="2 Failure"></DieTableRow>
+  <DieTableRow index={4} result="1 Failure"></DieTableRow>
+  <DieTableRow index={5} result="Chaos!"></DieTableRow>
+  <DieTableRow index={6} result="2 Success, 1 Toll"></DieTableRow>
+  <DieTableRow index={7} result="2 Success, 1 Toll"></DieTableRow>
+  <DieTableRow index={8} result="4 Success, 2 Toll"></DieTableRow>
+  <DieTableRow index={9} result="4 Success, 2 Toll"></DieTableRow>
+  <DieTableRow index={10} result="6 Success, 3 Toll"></DieTableRow>
+  <DieTableRow index={11} result="6 Success, 3 Toll"></DieTableRow>
+  <DieTableRow index={12} result="Triumph!"></DieTableRow>
 </DieTable>
 
 <DieTable
   die="d20"
-  description="This die has the most even distribution of results, making it the default die. It excels at nothing.">
-  <DieTableRow index={1} fracture="-5" result="Disaster"></DieTableRow>
-  <DieTableRow index={2} fracture="-4" result="Failure"></DieTableRow>
-  <DieTableRow index={3} fracture="-4" result="Failure"></DieTableRow>
-  <DieTableRow index={4} fracture="-3" result="Failure"></DieTableRow>
-  <DieTableRow index={5} fracture="-3" result="Failure"></DieTableRow>
-  <DieTableRow index={6} fracture="-3" result="Failure"></DieTableRow>
-  <DieTableRow index={7} fracture="-2" result="Boon"></DieTableRow>
-  <DieTableRow index={8} fracture="-2" result="Boon"></DieTableRow>
-  <DieTableRow index={9} fracture="-2" result="Boon"></DieTableRow>
-  <DieTableRow index={10} fracture="-1" result="Boon"></DieTableRow>
-  <DieTableRow index={11} fracture="-1" result="Boon"></DieTableRow>
-  <DieTableRow index={12} fracture="+1" result="Threat"></DieTableRow>
-  <DieTableRow index={13} fracture="+1" result="Threat"></DieTableRow>
-  <DieTableRow index={14} fracture="+2" result="Threat"></DieTableRow>
-  <DieTableRow index={15} fracture="+2" result="Threat"></DieTableRow>
-  <DieTableRow index={16} fracture="+3" result="Success"></DieTableRow>
-  <DieTableRow index={17} fracture="+3" result="Success"></DieTableRow>
-  <DieTableRow index={18} fracture="+3" result="Success"></DieTableRow>
-  <DieTableRow index={19} fracture="+4" result="Success"></DieTableRow>
-  <DieTableRow index={20} fracture="+5" result="Triumph"></DieTableRow>
+  description="NORMAL: A fairly spread out and even distribution of mixed and matched positive/negative results. This is the default die.">
+  <DieTableRow index={1} result="Disaster!"></DieTableRow>
+  <DieTableRow index={2} result="Failure 4"></DieTableRow>
+  <DieTableRow index={3} result="Failure 4"></DieTableRow>
+  <DieTableRow index={4} result="Failure 4"></DieTableRow>
+  <DieTableRow index={5} result="Failure 4"></DieTableRow>
+  <DieTableRow index={6} result="Failure 4, Advantage 1"></DieTableRow>
+  <DieTableRow index={7} result="Failure 2"></DieTableRow>
+  <DieTableRow index={8} result="Failure 2"></DieTableRow>
+  <DieTableRow index={9} result="Failure 2"></DieTableRow>
+  <DieTableRow index={10} result="Failure 2"></DieTableRow>
+  <DieTableRow index={11} result="Failure 2, Advantage 1"></DieTableRow>
+  <DieTableRow index={12} result="Success 2, Disadvantage 1"></DieTableRow>
+  <DieTableRow index={13} result="Success 2, Disadvantage 1"></DieTableRow>
+  <DieTableRow index={14} result="Success 2"></DieTableRow>
+  <DieTableRow index={15} result="Success 2"></DieTableRow>
+  <DieTableRow index={16} result="Success 4, Toll 1"></DieTableRow>
+  <DieTableRow index={17} result="Success 4, Disadvantage 1"></DieTableRow>
+  <DieTableRow index={18} result="Success 4"></DieTableRow>
+  <DieTableRow index={19} result="Success 4"></DieTableRow>
+  <DieTableRow index={20} result="Triumph!"></DieTableRow>
 </DieTable>
 
-## Dice Result References
+## Dice Results In Detail
 
 ### Disaster
 The Actor fails to accomplish their goal. The Advocate introduces a new problem, serious danger, or character that wasn't in the scene prior as part of the group narration. 
@@ -277,91 +277,91 @@ This page contains the smallest summary possible of all the rules for quick refe
 <DieTable 
   die="d4"
   description="You are always likely to succeed with this die, but if you do there will always be a consequence.">
-  <DieTableRow index={1} fracture="-3" result="Failure"></DieTableRow>
-  <DieTableRow index={2} fracture="+2" result="Threat"></DieTableRow>
-  <DieTableRow index={3} fracture="+2" result="Threat"></DieTableRow>
-  <DieTableRow index={4} fracture="+2" result="Threat"></DieTableRow>
+  <DieTableRow index={1} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
+  <DieTableRow index={2} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
+  <DieTableRow index={3} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
+  <DieTableRow index={4} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
 </DieTable>
 
 <DieTable
   die="d6"
   description="This die's worst result is boon, but it does occur more often than failure on other dice.">
-  <DieTableRow index={1} fracture="-1" result="Boon"></DieTableRow>
-  <DieTableRow index={2} fracture="-1" result="Boon"></DieTableRow>
-  <DieTableRow index={3} fracture="-1" result="Boon"></DieTableRow>
-  <DieTableRow index={4} fracture="-1" result="Boon"></DieTableRow>
-  <DieTableRow index={5} fracture="-1" result="Boon"></DieTableRow>
-  <DieTableRow index={6} fracture="+3" result="Success"></DieTableRow>
+  <DieTableRow index={1} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
+  <DieTableRow index={2} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
+  <DieTableRow index={3} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
+  <DieTableRow index={4} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
+  <DieTableRow index={5} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
+  <DieTableRow index={6} result="Success, the Actor accomplishes their goal"></DieTableRow>
 </DieTable>
 
 <DieTable
   die="d8"
   description="This die commonly succeeds with strong results, but if it fails it is always a disaster.">
-  <DieTableRow index={1} fracture="-5" result="Disaster"></DieTableRow>
-  <DieTableRow index={2} fracture="-5" result="Disaster"></DieTableRow>
-  <DieTableRow index={3} fracture="-5" result="Disaster"></DieTableRow>
-  <DieTableRow index={4} fracture="÷0" result="Chaos"></DieTableRow>
-  <DieTableRow index={5} fracture="+1" result="Threat"></DieTableRow>
-  <DieTableRow index={6} fracture="+2" result="Threat"></DieTableRow>
-  <DieTableRow index={7} fracture="+4" result="Success"></DieTableRow>
-  <DieTableRow index={8} fracture="+5" result="Triumph"></DieTableRow>
+  <DieTableRow index={1} result="Disaster!"></DieTableRow>
+  <DieTableRow index={2} result="Disaster!"></DieTableRow>
+  <DieTableRow index={3} result="Disaster!"></DieTableRow>
+  <DieTableRow index={4} result="Chaos!"></DieTableRow>
+  <DieTableRow index={5} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
+  <DieTableRow index={6} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
+  <DieTableRow index={7} result="Success, the Actor accomplishes their goal"></DieTableRow>
+  <DieTableRow index={8} result="Triumph"></DieTableRow>
 </DieTable>
 
 <DieTable
   die="d10"
   description="This die is unlikely to have a failure result and even if it does it is likely to be a minimally damaging one. The downside is that the die is very chaotic.">
-  <DieTableRow index={1} fracture="-4" result="Failure"></DieTableRow>
-  <DieTableRow index={2} fracture="-3" result="Failure"></DieTableRow>
-  <DieTableRow index={3} fracture="-2" result="Boon"></DieTableRow>
-  <DieTableRow index={4} fracture="-1" result="Boon"></DieTableRow>
-  <DieTableRow index={5} fracture="÷0" result="Chaos"></DieTableRow>
-  <DieTableRow index={6} fracture="÷0" result="Chaos"></DieTableRow>
-  <DieTableRow index={7} fracture="÷0" result="Chaos"></DieTableRow>
-  <DieTableRow index={8} fracture="÷0" result="Chaos"></DieTableRow>
-  <DieTableRow index={9} fracture="+3" result="Success"></DieTableRow>
-  <DieTableRow index={10} fracture="+4" result="Success"></DieTableRow>
+  <DieTableRow index={1} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
+  <DieTableRow index={2} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
+  <DieTableRow index={3} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
+  <DieTableRow index={4} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
+  <DieTableRow index={5} result="Chaos!"></DieTableRow>
+  <DieTableRow index={6} result="Chaos!"></DieTableRow>
+  <DieTableRow index={7} result="Chaos!"></DieTableRow>
+  <DieTableRow index={8} result="Chaos!"></DieTableRow>
+  <DieTableRow index={9} result="Success, the Actor accomplishes their goal"></DieTableRow>
+  <DieTableRow index={10} result="Success, the Actor accomplishes their goal"></DieTableRow>
 </DieTable>
 
 <DieTable
   die="d12"
   description="This die has the highest chance of triumph, but also suffers from a high chance of extreme failure.">
-  <DieTableRow index={1} fracture="-4" result="Failure"></DieTableRow>
-  <DieTableRow index={2} fracture="-4" result="Failure"></DieTableRow>
-  <DieTableRow index={3} fracture="-4" result="Failure"></DieTableRow>
-  <DieTableRow index={4} fracture="-4" result="Failure"></DieTableRow>
-  <DieTableRow index={5} fracture="-4" result="Failure"></DieTableRow>
-  <DieTableRow index={6} fracture="-4" result="Failure"></DieTableRow>
-  <DieTableRow index={7} fracture="-4" result="Failure"></DieTableRow>
-  <DieTableRow index={8} fracture="÷0" result="Chaos"></DieTableRow>
-  <DieTableRow index={9} fracture="+2" result="Threat"></DieTableRow>
-  <DieTableRow index={10} fracture="+5" result="Triumph"></DieTableRow>
-  <DieTableRow index={11} fracture="+5" result="Triumph"></DieTableRow>
-  <DieTableRow index={12} fracture="+5" result="Triumph"></DieTableRow>
+  <DieTableRow index={1} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
+  <DieTableRow index={2} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
+  <DieTableRow index={3} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
+  <DieTableRow index={4} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
+  <DieTableRow index={5} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
+  <DieTableRow index={6} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
+  <DieTableRow index={7} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
+  <DieTableRow index={8} result="Chaos!"></DieTableRow>
+  <DieTableRow index={9} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
+  <DieTableRow index={10} result="Triumph"></DieTableRow>
+  <DieTableRow index={11} result="Triumph"></DieTableRow>
+  <DieTableRow index={12} result="Triumph"></DieTableRow>
 </DieTable>
 
 <DieTable
   die="d20"
   description="This die has the most even distribution of results, making it the default die. It excels at nothing.">
-  <DieTableRow index={1} fracture="-5" result="Disaster"></DieTableRow>
-  <DieTableRow index={2} fracture="-4" result="Failure"></DieTableRow>
-  <DieTableRow index={3} fracture="-4" result="Failure"></DieTableRow>
-  <DieTableRow index={4} fracture="-3" result="Failure"></DieTableRow>
-  <DieTableRow index={5} fracture="-3" result="Failure"></DieTableRow>
-  <DieTableRow index={6} fracture="-3" result="Failure"></DieTableRow>
-  <DieTableRow index={7} fracture="-2" result="Boon"></DieTableRow>
-  <DieTableRow index={8} fracture="-2" result="Boon"></DieTableRow>
-  <DieTableRow index={9} fracture="-2" result="Boon"></DieTableRow>
-  <DieTableRow index={10} fracture="-1" result="Boon"></DieTableRow>
-  <DieTableRow index={11} fracture="-1" result="Boon"></DieTableRow>
-  <DieTableRow index={12} fracture="+1" result="Threat"></DieTableRow>
-  <DieTableRow index={13} fracture="+1" result="Threat"></DieTableRow>
-  <DieTableRow index={14} fracture="+2" result="Threat"></DieTableRow>
-  <DieTableRow index={15} fracture="+2" result="Threat"></DieTableRow>
-  <DieTableRow index={16} fracture="+3" result="Success"></DieTableRow>
-  <DieTableRow index={17} fracture="+3" result="Success"></DieTableRow>
-  <DieTableRow index={18} fracture="+3" result="Success"></DieTableRow>
-  <DieTableRow index={19} fracture="+4" result="Success"></DieTableRow>
-  <DieTableRow index={20} fracture="+5" result="Triumph"></DieTableRow>
+  <DieTableRow index={1} result="Disaster!"></DieTableRow>
+  <DieTableRow index={2} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
+  <DieTableRow index={3} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
+  <DieTableRow index={4} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
+  <DieTableRow index={5} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
+  <DieTableRow index={6} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
+  <DieTableRow index={7} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
+  <DieTableRow index={8} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
+  <DieTableRow index={9} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
+  <DieTableRow index={10} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
+  <DieTableRow index={11} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
+  <DieTableRow index={12} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
+  <DieTableRow index={13} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
+  <DieTableRow index={14} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
+  <DieTableRow index={15} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
+  <DieTableRow index={16} result="Success, the Actor accomplishes their goal"></DieTableRow>
+  <DieTableRow index={17} result="Success, the Actor accomplishes their goal"></DieTableRow>
+  <DieTableRow index={18} result="Success, the Actor accomplishes their goal"></DieTableRow>
+  <DieTableRow index={19} result="Success, the Actor accomplishes their goal"></DieTableRow>
+  <DieTableRow index={20} result="Triumph"></DieTableRow>
 </DieTable>
 `
 }
