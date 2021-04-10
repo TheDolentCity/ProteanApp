@@ -733,122 +733,128 @@ const BlankLancerSheet = {
     "type": "SHEET",
     "title": "Lancer Sheet"
   },
-  "content": {
-    "textBlocks": [
-      {
-        "textType": "Header1",
-        "text": "Lancer Name"
-      },
-      {
-        "textType": "Paragraph",
-        "text": "This is a blank description for a lancer. A lancer is a highly advanced mech that can turn any pilot into a one man army."
-      }
-    ],
-    "numberBlocks": [
-      {
-        "title": "Hull",
-        "fieldTitles": [
-          "Current Score",
-          "Max Score",
-          "Current Defense",
-          "Max Defense"
-        ],
-        "fieldValues": [
-          0,
-          0,
-          0,
-          0
-        ]
-      },
-      {
-        "title": "Heat",
-        "fieldTitles": [
-          "Current Score",
-          "Max Score",
-          "Current Defense",
-          "Max Defense"
-        ],
-        "fieldValues": [
-          0,
-          0,
-          0,
-          0
-        ]
-      },
-      {
-        "title": "Systems",
-        "fieldTitles": [
-          "Current Score",
-          "Max Score",
-          "Current Defense",
-          "Max Defense"
-        ],
-        "fieldValues": [
-          0,
-          0,
-          0,
-          0
-        ]
-      },
-      {
-        "title": "Supplies",
-        "fieldTitles": [
-          "Current Score",
-          "Max Score",
-          "Current Defense",
-          "Max Defense"
-        ],
-        "fieldValues": [
-          0,
-          0,
-          0,
-          0
-        ]
-      }
-    ],
-    "diceBlocks": [
-      {
-        "title": "Size",
-        "dice": "",
-        "description": "A lancer's size represents their physical strength and resilience. The larger a lancer is the bigger a wall they can run through and the better chance they'll have of wrestling another lancer to the ground."
-      },
-      {
-        "title": "Speed",
-        "dice": "",
-        "description": "A lancer's speed represents their reaction time and capability for traversing terrain. The faster a lancer the easier it will be to reposition and complete critical tasks quickly."
-      },
-      {
-        "title": "",
-        "dice": "",
-        "description": ""
-      },
-      {
-        "title": "",
-        "dice": "",
-        "description": ""
-      },
-      {
-        "title": "",
-        "dice": "",
-        "description": ""
-      },
-      {
-        "title": "",
-        "dice": "",
-        "description": ""
-      }
-    ],
-    "noteBlocks": [
-      {
-        "title": "Notes",
-        "description": ""
-      },
-      {
-        "title": "Conditions",
-        "description": ""
-      }
-    ]
-  }
+  "content": [
+    {
+      "type": "TextBlock",
+      "textType": "Header1",
+      "text": "Lancer Sheet"
+    },
+    {
+      "type": "TextBlock",
+      "textType": "Paragraph",
+      "text": "This is a blank description for a lancer. A lancer is a highly advanced mech that can turn any pilot into a one man army."
+    },
+    {
+      "type": "NumberBlock",
+      "title": "Hull",
+      "fieldTitles": [
+        "Current Score",
+        "Max Score",
+        "Current Defense",
+        "Max Defense"
+      ],
+      "fieldValues": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "type": "NumberBlock",
+      "title": "Heat",
+      "fieldTitles": [
+        "Current Score",
+        "Max Score",
+        "Current Defense",
+        "Max Defense"
+      ],
+      "fieldValues": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "type": "NumberBlock",
+      "title": "Systems",
+      "fieldTitles": [
+        "Current Score",
+        "Max Score",
+        "Current Defense",
+        "Max Defense"
+      ],
+      "fieldValues": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "type": "NumberBlock",
+      "title": "Supplies",
+      "fieldTitles": [
+        "Current Score",
+        "Max Score",
+        "Current Defense",
+        "Max Defense"
+      ],
+      "fieldValues": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "type": "DiceBlock",
+      "title": "Size",
+      "dice": "",
+      "description": "A lancer's size represents their physical strength and resilience. The larger a lancer is the bigger a wall they can run through and the better chance they'll have of wrestling another lancer to the ground."
+    },
+    {
+      "type": "DiceBlock",
+      "title": "Speed",
+      "dice": "",
+      "description": "A lancer's speed represents their reaction time and capability for traversing terrain. The faster a lancer the easier it will be to reposition and complete critical tasks quickly."
+    },
+    {
+      "type": "DiceBlock",
+      "title": "",
+      "dice": "",
+      "description": ""
+    },
+    {
+      "type": "DiceBlock",
+      "title": "",
+      "dice": "",
+      "description": ""
+    },
+    {
+      "type": "DiceBlock",
+      "title": "",
+      "dice": "",
+      "description": ""
+    },
+    {
+      "type": "DiceBlock",
+      "title": "",
+      "dice": "",
+      "description": ""
+    },
+    {
+      "type": "NoteBlock",
+      "title": "Notes",
+      "description": ""
+    },
+    {
+      "type": "NoteBlock",
+      "title": "Conditions",
+      "description": ""
+    }
+  ]
 }
 
 function loadLocalStorage(key, defaultValue) {

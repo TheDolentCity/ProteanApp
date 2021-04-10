@@ -8,7 +8,7 @@ import TextBlock from './blocks/text-block';
 
 export default function Sheet(props) {
   const { globalState, dispatch } = useGlobalStore();
-  const [sheet, setSheet] = useState(globalState.activeFile?.content);
+  const [sheet, setSheet] = useState(globalState.activeFile);
 
   const dispatchSheetData = (data) => {
     dispatch({
@@ -30,72 +30,67 @@ export default function Sheet(props) {
     }
   }
 
+  const updateSheet = (value, index) => {
+    if (sheet?.content[index] === undefined) {
+      console.log(`sheet.content[${index}] is undefined on sheet object.`);
+    }
+    else {
+      let newSheet = { ...sheet };
+      newSheet.content[index] = value;
+      setSheet(newSheet, dispatchSheetData(newSheet));
+    }
+  }
+
   return (
     <BlockContainer>
-      {/* {
-        sheet?.map((widget, index) => {
-          switch (widget) {
-            case "TextBlock":
-              return <TextBlock
-                key={index}
-                textBlock={widget}
-                static={false}
-                onChange={(newTextBlock) => setBlockData(newTextBlock, 'textBlocks', index)}>
-              </TextBlock>;
-            case "NoteBlock":
-              return <NumberBlock
-                key={index}
-                numberBlock={widget}
-                static={false}
-                onChange={(newNumberBlock) => setBlockData(newNumberBlock, 'numberBlocks', index)}>
-              </NumberBlock>;
-          }
-        })
-
-        sheet?.map((widget, index) => (
-          <
-        ))
-      } */}
       {
-        sheet?.textBlocks.map((textBlock, index) => (
-          <TextBlock
-            key={index}
-            textBlock={textBlock}
-            static={false}
-            onChange={(newTextBlock) => setBlockData(newTextBlock, 'textBlocks', index)}>
-          </TextBlock>
-        ))
-      }
-      {
-        sheet?.numberBlocks.map((numberBlock, index) => (
-          <NumberBlock 
-            key={index}
-            numberBlock={numberBlock}
-            static={false}
-            onChange={(newNumberBlock) => setBlockData(newNumberBlock, 'numberBlocks', index)}>
-          </NumberBlock>
-        ))
-      }
-      {
-        sheet?.diceBlocks.map((diceBlock, index) => (
-          <DiceBlock 
-            key={index}
-            diceBlock={diceBlock}
-            static={false}
-            onChange={(newDiceBlock) => setBlockData(newDiceBlock, 'diceBlocks', index)}>
-          </DiceBlock>
-        ))
-      }
-      {
-        sheet?.noteBlocks.map((noteBlock, index) => (
-          <NoteBlock 
-            key={index}
-            noteBlock={noteBlock} 
-            static={false}
-            onChange={(newNoteBlock) => setBlockData(newNoteBlock, 'noteBlocks', index)}>
-          </NoteBlock>
+        sheet?.content?.map((widget, index) => (
+          <Widget 
+            key={index} 
+            widget={widget} 
+            onChange={(newWidget) => updateSheet(newWidget, index)}>
+          </Widget>
         ))
       }
     </BlockContainer>
   );
+}
+
+function Widget(props) {
+  switch (props?.widget?.type) {
+    case "DiceBlock":
+      return (
+        <DiceBlock
+          static={false}
+          diceBlock={props.widget}
+          onChange={props.onChange}>
+        </DiceBlock>
+      );
+    case "NoteBlock":
+      return (
+        <NoteBlock
+          static={false}
+          noteBlock={props.widget}
+          onChange={props.onChange}>
+        </NoteBlock>
+      );
+    case "NumberBlock":
+      return (
+        <NumberBlock
+          static={false}
+          numberBlock={props.widget}
+          onChange={props.onChange}>
+        </NumberBlock>
+      );
+    case "TextBlock":
+      return (
+        <TextBlock
+          static={false}
+          textBlock={props.widget}
+          onChange={props.onChange}>
+        </TextBlock>
+      );
+    default:
+      console.log(`Widget type '${props?.widget?.type}' is not handled by dynamic Widget component.`);
+  }
 }
