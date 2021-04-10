@@ -1,4 +1,72 @@
-import React, { createContext, useContext, useState, useReducer } from 'react';
+import React, { createContext, useContext, useReducer } from 'react';
+
+const CharacterSheets = {
+  uuid: "character-sheets.json",
+  metadata: {
+    type: "PAGE",
+    title: "Character Sheets",
+  },
+  content:
+`
+# Character Sheets
+This is an overview of how character sheets function in the Protean App so that you understand how to use them to play Protean RPG.
+
+## Widgets
+The components that make up character sheets are called widgets. These are little pieces of functionality. For example, there is a widget to add additional blocks (we'll get to that) to your character sheet.
+
+## Blocks
+Blocks are technically a type of widget, but they're non-functional and instead focus on the recording and viewing of data. Protean RPG has a mechanic called action blocks, but in the Protean App they are represented with dice blocks on a character sheet. An overview of each block and how to use them can be found below.
+
+### Text Block
+An auto-resizing, full page width, text area. A secondary attribute can be applied to change the styling of the text block (Header1, Paragraph, etc.) but currently this can only be managed by editing JSON.
+
+<TextBlock static={false} onChange={() => {}} textBlock={{
+  "textType": "Header1",
+  "text": ""}}>
+</TextBlock>
+
+<TextBlock static={false} onChange={() => {}} textBlock={{
+  "textType": "Paragraph",
+  "text": ""}}>
+</TextBlock>
+
+### Note Block
+An auto-resizing text area with a title and description. This is a quick and easy tool to pair large amounts of text with a section header.
+
+<NoteBlock static={false} onChange={() => {}} noteBlock={{
+  "title": "Notes",
+  "description": "This is where someone can write a lot of notes. Maybe about their cat. Or a well-laid battle plan. Or more realistically, some absurd note like how many assorted gears they have and how much they weigh."}}>
+</NoteBlock>
+
+### Dice Block
+An auto-resizing text area with a title, dice section, and description. This is a quick and easy tool to pair large amounts of text with a section header and a dice value. In Protean RPG, these are used for action blocks.
+
+<DiceBlock static={false} onChange={() => {}} diceBlock={{
+  "title": "Big Fucking Sword",
+  "dice": "3d12",
+  "description": "This is a big fucking sword. It is heavy and it hurts people a lot which is why you roll 3d12."}}>
+</DiceBlock>
+
+### Number Block
+A block with a title and one or more fields. Each field has a title and a value. This can represent grouped numerical values with ease. In Protean RPG, these are used for defenses.
+
+<NumberBlock static={false} onChange={() => {}} numberBlock={{
+  "title": "Hit Points",
+  "fieldTitles": [
+    "Current Score",
+    "Max Score",
+    "Current Resistance",
+    "Max Resistance"
+  ],
+  "fieldValues": [
+    8,
+    10,
+    1,
+    1
+  ]}}>
+</NumberBlock>
+`
+}
 
 const ProteanIs = {
   uuid: "ProteanIs.json",
@@ -89,36 +157,139 @@ To ensure even distribution of labor, facilitate ease of play, and simply not pl
 `
 }
 
-const RulesInBrief = {
-  uuid: "RulesInBrief.json",
+const ActionBlocksAndTags = {
+  uuid: "action-blocks-and-tags.json",
   metadata: {
     type: "PAGE",
-    title: "Rules In Brief",
+    title: "Action Blocks And Tags",
   },
   content:
-`# Rules In Brief
+`
+# Action Blocks and Tags
+Action blocks and tags are the core metrics for what a character is capable of. Anything from a weapon to a lockpicking skill falls under the realm of action blocks.
 
-## Character Sheets
-Character sheets have several components to represent your character. Most of these are referred to as blocks. 
+## Action Blocks
+Action blocks are an abstract, mechanical method for providing stats for character props and skills. The stat block and the description of the item are one in the same. An action block is usually one or two sentences of descriptive text combined with a dice value. You can use an action block when you're making checks to determine the outcome of events in the game and when you do so you use the action block's dice value as the starting point.
 
-## Making Checks
+## Tags
+A tag is a heuristic or shortcut used to make action blocks less unwieldy. Most action blocks are accompanied by tags of some kind, usually one to three. Tags should make it clear what a prop or skill is capable of the vast majority of the time. They also can make some checks easier (see the Making Checks section).
 
-### 1. Determine Starting Dice Pool
-If you're making a check with a specific dice block you will start with the associated dice as your pool. If you don't have any dice block that would apply to the check, then you start with 1d20.
+## Example Action Block
 
-### 2. Apply Advantages
-Add +1 die if the Advocate says you have advantage.
+<DiceBlock diceBlock={{
+  "title": "Grapple Cable",
+  "dice": "2d8",
+  "description": "Auxiliary grapple cable mounts that support the weight of the mech, but can also be used for pulling objects towards the pilot (Medium Range)."}}>
+</DiceBlock>
+`
+}
 
-### 3. Apply Difficulty
-Subtract -1 or -2 dice if the Advocate deems this check hard or challenging.
+const DefensesAndConditions = {
+  uuid: "defenses-and-conditions.json",
+  metadata: {
+    type: "PAGE",
+    title: "Defenses",
+  },
+  content:
+    `
+# Defenses & Conditions
+Defenses communicate to the player what state their character is in at any point in time. They're designed to be abstract to support all sorts of content, from hydration to mutation mechanics. Conditions are permanent or temporary modifications to your character in the form of negative tags.
 
-### 4. Roll Dice
-Roll all of the dice in your pool and take the highest result. If a rule stated that you take the lowest result then obviously do that instead.
+## Defense
+Action blocks are for making checks, but defenses determine a lot of the fallout from these checks. Every defense has a current score, max score, current resistance, and max resistance. Each defense functions similarily to a timer: your defense score goes down over time as you take damage and once it reaches 0 it breaks. When your defense breaks you gain a condition and your defense score resets to its maximum. Here is an example:
 
-### 5. Determine Result
-Use the dice tables and dice result references below to interpret the check results.
+<NumberBlock static={false} onChange={() => {}} numberBlock={{
+  "title": "Body",
+  "fieldTitles": [
+    "Current Score",
+    "Max Score",
+    "Current Resistance",
+    "Max Resistance"
+  ],
+  "fieldValues": [
+    2,
+    10,
+    1,
+    1
+  ]}}>
+</NumberBlock>
 
-## Dice Table References
+Given the example above, if you were to take 3 Body damage then you would suffer a condition. When this happens your defense score resets to its max, but any overflow damage is applied so you would end up with 9/10 Body.
+
+## Conditions
+This is always negative, or at least mostly negative, for your character. TODO. The rest of this explanation needs to happen but it's long and difficult and I don't want to do it right now so I'll do it after the first playtest. Dante will explain this on the fly when they happen.
+`
+}
+
+const MakingChecks = {
+  uuid: "MakingChecks.json",
+  metadata: {
+    type: "PAGE",
+    title: "Making Checks",
+  },
+  content:
+`# Making Checks
+
+## 1. Determine Starting Dice Pool
+If you're making a check with a specific action block you will start with the associated dice as your pool. If you don't have any action block that would apply to the check, then you start with 1d20.
+
+## 2. Apply Advantages
+If the Advocate believes that you are in a situation where one of your action block's tags would grant some advantage then add an additional die of the same size. Example: add +1 die to a long range shot if your rifle has the 'magnification' tag.
+- You can add as many dice as there are applicable tags, but you cannot add dice from other relevant action block tags. 
+- You can add dice if a scene tag, such as a strong trade wind on the sea, would help in this situation.
+
+## 3. Apply Disadvantages
+If the Advocate believes that you are in a situation where an adversary's tags would inflict some disadvantage then increase the difficulty by one step. Example: difficulty changes from average to hard since the Gorgon has the 'turn to stone' tag and you need to close your eyes to try and strike at it.
+- The Advocate should stick to as few disadvantages as possible in a scene. One disadvantage that can be worked around is better than ten that increase difficulty meaninglessly.
+- Actors should try to work around a disadvantage once they learn of it and the Advocate should support their solutions. Using the example above, Perseus realizing he can use a reflective surface to get past the Gorgon's gaze would mean the Advocate should no longer apply the +1 difficulty when Perseus makes checks.
+
+## 4. Apply Difficulty
+There are three difficulties: average, hard, and severe.
+- If the difficulty is average, do not modify the starting dice. 
+- If the difficulty is hard, ignore the highest result. 
+- If the difficulty is severe, ignore the two highest results.
+
+If ignoring a die result would cause there to be no dice left to interpret then divide the lowest rolled die's result by 2, rounded down to a minimum of one. Ex: if making a severe check and you roll 1d20, you will need to divide by 2 twice since the singular die roll is ignored twice. So if the roll was 17 then the final result is actually 4.
+
+## 5. Determine Result
+Every die rolls differently, but there are common methods for interpreting them. You always take the result of the highest die rolled (keeping in mind to ignore some results based on difficulty). There are two kinds of results: numerical results and unique results. 
+
+Unique results are special keywords like 'Chaos!' that represent a very specific and unique outcome. Numerical results are simpler and combine a result tag (success, disadvantage, etc.) with a value. Each result tag has a distinct way of interpreting this value.
+
+Read about the dice results below and then look at the dice tables to see how each die is specifically rolled.
+
+## Dice Results
+Dice results are unique and significant ways to interpet checks. These are less commonly used than dice tags, but when they are rolled they always change the game dramatically.
+
+### Disaster
+The Actor fails to accomplish their goal. The Advocate introduces a new problem, serious danger, or character that wasn't in the scene prior as part of the group narration.
+
+### Chaos
+The result is neither positive nor negative. Chaos is a drastic shift in the situation. This might mean a dogfight between two outlaw ships is suddenly interrupted by a giant military armada. The Advocate and the Actors should work together to come up with a way that the goals of every character in the scene shift due to a random event.
+
+### Triumph
+The Actor accomplishes their goal. The Advocate should prompt them for a solution to an existing problem, removal of a serious danger, or allow them to introduce a character that wasn't in the scene prior as part of the group narration.
+
+## Dice Tags
+Dice tags are the most common way to interpet the results of a check. They have fairly straightforward interpetations and the only hard and fast rule is that if a dice roll doesn't have an associated dice result it must have a Success or Failure tag.
+
+### Success
+If a die has any numerical amount of success then the Actor accomplishes their goal. The numerical value is not always used, but it can be used to represent how much damage was done to a challenge (building a wall, destroying a bunker, tank squad) if the check's intention was to resolve or otherwise remove the challenge.
+
+### Failure
+If a die has any numerical amount of failure then the Actor fails to accomplish their goal. The numerical value is not always used, but it should almost always be used to apply damage to one of the Actor's defenses. A consensus on which defense the damage is inflicted to should be reached between the two, but the focus should be on what makes the most sense in the narrative OR what makes the best story.
+
+### Advantage
+The Actor adds a number of positive tags to the scene equal to the amount of advantage. The Actor and Advocate should work together to make sure these tags are interesting and make sense for the scene, but the Actor leads the process.
+
+### Disadvantage
+The Advocate adds a number of negative tags to the scene equal to the amount of disadvantage. The Actor and Advocate should work together to make sure these tags are interesting and make sense for the scene, but the Advocate leads the process.
+
+### Toll
+Whether they suceed or fail, the Actor always suffers an amount of damage when they roll a result with toll. The numerical value of the toll is inflicted as damage to one of the Actor's defenses. A consensus on which defense the damage is inflicted to should be reached between the Advocate and Actor, but the focus should be on what makes the most sense in the narrative OR what makes the best story.
+
+## Dice Tables
+Every die in Protean is unique. This means interpreting a 4 on a d4 is very different than a 4 on a d12. The default configuration of the six core RPG dice (d4, d6, d8, d10, d12, and d20) is represented below with tables. Use these tables when you make checks to determine the dice result or dice tags that you rolled.
 
 <DieTable
   die="d4"
@@ -209,590 +380,75 @@ Use the dice tables and dice result references below to interpret the check resu
   <DieTableRow index={19} result="Success 4"></DieTableRow>
   <DieTableRow index={20} result="Triumph!"></DieTableRow>
 </DieTable>
-
-## Dice Results In Detail
-
-### Disaster
-The Actor fails to accomplish their goal. The Advocate introduces a new problem, serious danger, or character that wasn't in the scene prior as part of the group narration. 
-
-### Failure
-The Actor fails to accomplish their goal. The Advocate should prompt them for what went wrong.
-
-### Boon
-The Actor fails to accomplish their goal. As part of the narration, the Actor adds an aspect to the scene that can be treated as an advantage for the Actors.
-
-### Chaos
-The result is neither positive nor negative. Chaos is a drastic shift in the situation. This might mean a dogfight between two outlaw ships is suddenly interrupted by a giant military armada. The Advocate and the Actors should work together to come up with a way that the goals of every character in the scene shift due to a random event.
-
-### Threat
-The Actor accomplishes their goal. As part of the narration, the Advocate adds an aspect to the scene that can be treated as a disadvantage or unfortunate circumstance for the Actors.
-
-### Success
-The Actor accomplishes their goal. The Advocate should prompt them for how they succeed.
-
-### Triumph
-The Actor accomplishes their goal. The Advocate should prompt them for a solution to an existing problem, removal of a serious danger, or allow them to introduce a character that wasn't in the scene prior as part of the group narration.
 `
 }
 
-const MakingChecks = {
-  uuid: "MakingChecks.json",
+const PlayingTheGame = {
+  uuid: 'playing-the-game.json',
   metadata: {
-    type: "PAGE",
-    title: "Making Checks",
+    type: 'PAGE',
+    title: 'Playing The Game'
   },
   content:
-`# Making Checks
+    `
+# Playing The Game
 
-## 1. Determine Starting Dice Pool
-If you're making a check with a specific dice block you will start with the associated dice as your pool. If you don't have any dice block that would apply to the check, then you start with 1d20.
+## Example of Play
+Zero, a mech pilot, is attempting to tear an entrance into a derelict starship before a legion of drones destroy her and Feather, her companion. Feather is currently fighting the drones off with their mech's plasma sword. The Advocate says that this will be a hard check and that Zero's Size action block makes the most sense for ripping a hole in the side of the starship. But Zero suggests that she use her Grapple Cable action block instead and explains how she would fire the grappling hooks into weaknesses in the metal and pull to create a hole. The Advocate agrees that makes sense (and is way cooler) so Zero rolls 2d8.
 
-## 2. Apply Advantages
-If the Advocate believes that you are in a situation where you would have some advantage, be it a surplus of medical supplies, strong trade wind on the sea, or simply having access to a shovel while digging, then they may grant you an advantage. 
+<DiceBlock diceBlock={{
+  "title": "Grapple Cable",
+  "dice": "2d8",
+  "description": "Auxiliary grapple cable mounts that support the weight of the mech, but can also be used for pulling objects towards the pilot (Medium Range)."}}>
+</DiceBlock>
 
-## 3. Apply Difficulty
-There are three difficulties: average, hard, and challenge.
+Zero rolls a 6 and an 8, but the difficulty is hard so the highest roll is removed, leaving the 6 and a result of _Success 3, Disadvantage 1_. "You start to pull," says the Advocate, "but you quickly realize you have to use your higher torque option on your grapple cables. The cables move slower in that mode so Feather will have to perform an action to hold back the drones while you're tearing open the door. Feather there is a horde of drones flying towards you from every angle so this will be a severe check. What would you like to do?"
 
-- If the difficulty is average, do not modify the starting dice. 
-- If the difficulty is hard, roll one less die. 
-- If the difficulty is challenge, roll two less dice. 
+Feather consults their character sheet and decides that their only viable option is to use their mech's Micro Missile System. However Feather's supplies defense is currently only 2 and the Micro Missile System has a side effect where upon firing it the user suffers 3 supplies damage. Feather also says that they think the 'blast' and 'self-guided' tags on the Micro Missile System action block would be advantageous for taking out a horde of flying drones. The Advocate agrees so instead of rolling 1d12 Feather rolls 3d12.
 
-If you hit a dice pool of 0 it becomes a pool of 2 dice and you take the lowest result instead of the highest. Further subtractions increase the amount of dice. So if your dice pool started as 1d20 and the difficulty was challenging then you would roll 3d20 and take the lowest result.
-`
-}
+<DiceBlock diceBlock={{
+  "title": "Micro Missile System",
+  "dice": "1d12",
+  "description": "An internal integration of micro missiles throughout the frame of the mech that supports immediate destruction of adversaries in all directions (Medium Range, Blast, Self-guided). Any time you use this action block suffer 3 supplies damage."}}>
+</DiceBlock>
 
-const ProteanQuickReference = {
-  uuid: "QuickReference.json",
-  metadata: {
-    type: "PAGE",
-    title: "Quick Reference",
-  },
-  content:
-`
-# Quick Rules Reference
-This page contains the smallest summary possible of all the rules for quick reference during play.
+"I stab my sword into the ground, stretch my mech's arms wide open and fire as many micro missiles as I can at the drones," says Feather. They roll a 2, 10, and 12, but since the check's difficulty is severe the two highest results are ignored. This leaves Feather with the _Failure 4_ result. "You unleash a hail storm of micro missiles at the oncoming drones and you do manage to take down all of the closest ones. Zero rips a hole into the starship, but the surge of power from firing all of the micro missiles has overloaded your systems temporarily. Take 4 systems damage." Feather says, "Okay so with the 3 supplies damage from the micro missiles as well I shatter both my supplies and systems defense."
 
-## Dice Tables
+<BlockContainer>
+<NumberBlock numberBlock={{
+  "title": "Supplies",
+  "fieldTitles": [
+    "Current Score",
+    "Max Score",
+    "Current Resistance",
+    "Max Resistance"
+  ],
+  "fieldValues": [
+    2,
+    6,
+    0,
+    0
+  ]}}>
+</NumberBlock>
 
-<DieTable 
-  die="d4"
-  description="You are always likely to succeed with this die, but if you do there will always be a consequence.">
-  <DieTableRow index={1} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
-  <DieTableRow index={2} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
-  <DieTableRow index={3} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
-  <DieTableRow index={4} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
-</DieTable>
+<NumberBlock numberBlock={{
+  "title": "Systems",
+  "fieldTitles": [
+    "Current Score",
+    "Max Score",
+    "Current Resistance",
+    "Max Resistance"
+  ],
+  "fieldValues": [
+    4,
+    5,
+    0,
+    0
+  ]}}>
+</NumberBlock>
+</BlockContainer>
 
-<DieTable
-  die="d6"
-  description="This die's worst result is boon, but it does occur more often than failure on other dice.">
-  <DieTableRow index={1} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
-  <DieTableRow index={2} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
-  <DieTableRow index={3} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
-  <DieTableRow index={4} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
-  <DieTableRow index={5} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
-  <DieTableRow index={6} result="Success, the Actor accomplishes their goal"></DieTableRow>
-</DieTable>
 
-<DieTable
-  die="d8"
-  description="This die commonly succeeds with strong results, but if it fails it is always a disaster.">
-  <DieTableRow index={1} result="Disaster!"></DieTableRow>
-  <DieTableRow index={2} result="Disaster!"></DieTableRow>
-  <DieTableRow index={3} result="Disaster!"></DieTableRow>
-  <DieTableRow index={4} result="Chaos!"></DieTableRow>
-  <DieTableRow index={5} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
-  <DieTableRow index={6} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
-  <DieTableRow index={7} result="Success, the Actor accomplishes their goal"></DieTableRow>
-  <DieTableRow index={8} result="Triumph"></DieTableRow>
-</DieTable>
-
-<DieTable
-  die="d10"
-  description="This die is unlikely to have a failure result and even if it does it is likely to be a minimally damaging one. The downside is that the die is very chaotic.">
-  <DieTableRow index={1} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
-  <DieTableRow index={2} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
-  <DieTableRow index={3} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
-  <DieTableRow index={4} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
-  <DieTableRow index={5} result="Chaos!"></DieTableRow>
-  <DieTableRow index={6} result="Chaos!"></DieTableRow>
-  <DieTableRow index={7} result="Chaos!"></DieTableRow>
-  <DieTableRow index={8} result="Chaos!"></DieTableRow>
-  <DieTableRow index={9} result="Success, the Actor accomplishes their goal"></DieTableRow>
-  <DieTableRow index={10} result="Success, the Actor accomplishes their goal"></DieTableRow>
-</DieTable>
-
-<DieTable
-  die="d12"
-  description="This die has the highest chance of triumph, but also suffers from a high chance of extreme failure.">
-  <DieTableRow index={1} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
-  <DieTableRow index={2} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
-  <DieTableRow index={3} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
-  <DieTableRow index={4} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
-  <DieTableRow index={5} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
-  <DieTableRow index={6} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
-  <DieTableRow index={7} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
-  <DieTableRow index={8} result="Chaos!"></DieTableRow>
-  <DieTableRow index={9} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
-  <DieTableRow index={10} result="Triumph"></DieTableRow>
-  <DieTableRow index={11} result="Triumph"></DieTableRow>
-  <DieTableRow index={12} result="Triumph"></DieTableRow>
-</DieTable>
-
-<DieTable
-  die="d20"
-  description="This die has the most even distribution of results, making it the default die. It excels at nothing.">
-  <DieTableRow index={1} result="Disaster!"></DieTableRow>
-  <DieTableRow index={2} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
-  <DieTableRow index={3} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
-  <DieTableRow index={4} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
-  <DieTableRow index={5} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
-  <DieTableRow index={6} result="Failure + the Actor fails to accomplish their goal"></DieTableRow>
-  <DieTableRow index={7} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
-  <DieTableRow index={8} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
-  <DieTableRow index={9} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
-  <DieTableRow index={10} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
-  <DieTableRow index={11} result="Failure + the Actor adds an advantage to the scene"></DieTableRow>
-  <DieTableRow index={12} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
-  <DieTableRow index={13} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
-  <DieTableRow index={14} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
-  <DieTableRow index={15} result="Success + the Advocate adds an obstacle to the scene"></DieTableRow>
-  <DieTableRow index={16} result="Success, the Actor accomplishes their goal"></DieTableRow>
-  <DieTableRow index={17} result="Success, the Actor accomplishes their goal"></DieTableRow>
-  <DieTableRow index={18} result="Success, the Actor accomplishes their goal"></DieTableRow>
-  <DieTableRow index={19} result="Success, the Actor accomplishes their goal"></DieTableRow>
-  <DieTableRow index={20} result="Triumph"></DieTableRow>
-</DieTable>
-`
-}
-
-const ProteanDiceSystemPage = {
-  uuid: "ProteanDiceSystemPage",
-  type: "PAGE",
-  title: "Dice System",
-  parentTitle: "Chapter 1: Core Rules",
-  format: {
-
-  },
-  content: 
-`
-<H1>
-  <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent-400 to-accent-600">
-    Protean Dice System
-  </span>
-</H1>
-
-Protean's dice system can be separated into two core mechanics: dynamic dice and dice outcomes. Dynamic dice are a method for changing the tone of dice rolls based on setting or genre. Dice outcomes are a spectrum of narrative success and failure to drive your story forward.
-
-## Dynamic Dice
-Most RPGs that use dice use one of two ways to determine an outcome from rolled dice: numerical results or symbolic results. A numerical outcome might be rolling a 14 on a d20 and then adding an attack modifier of +5 for a total of 19 and then comparing that to some target value to determine a success or failure result.
-
-### Symbolic vs Numeric
-Most RPGs that use dice use one of two ways to determine an outcome from rolled dice: numerical results or symbolic results. A numerical outcome might be rolling a 14 on a d20 and then adding an attack modifier of +5 for a total of 19 and then comparing that to some target value to determine a success or failure result. 
-
-A symbolic result might be a custom-made d6 that has a sword icon on four sides and a skull icon on two. In these systems it is common for there to be many sub-systems (damage, critical success, narrative fortune, etc.) that rely on the different kinds of symbols. Distinct iconography can be easier to interpret than numeric values when it comes to those sub-systems.
-
-Protean RPG uses a combination of the two. Most dice faces have a numerical result (-2, +1, +4) that you add together when making a check, but some dice will also have unique symbols with equally unique narrative effects.
-
-Here is the default d20 configuration from Protean RPG:
-<DieTable
-  die="d20"
-  description="This is the default die. It is very reliable no matter how many dice are rolled and contains all but the chaos dice result."
-  dieData={
-    [
-      {
-        fracture: "-5",
-        result: "Disaster"
-      },
-      {
-        fracture: "-4",
-        result: "Failure"
-      },
-      {
-        fracture: "-4",
-        result: "Failure"
-      },
-      {
-        fracture: "-3",
-        result: "Failure"
-      },
-      {
-        fracture: "-3",
-        result: "Failure"
-      },
-      {
-        fracture: "-3",
-        result: "Failure"
-      },
-      {
-        fracture: "-2",
-        result: "Boon"
-      },
-      {
-        fracture: "-2",
-        result: "Boon"
-      },
-      {
-        fracture: "-2",
-        result: "Boon"
-      },
-      {
-        fracture: "-1",
-        result: "Boon"
-      },
-      {
-        fracture: "-1",
-        result: "Boon"
-      },
-      {
-        fracture: "+1",
-        result: "Threat"
-      },
-      {
-        fracture: "+1",
-        result: "Threat"
-      },
-      {
-        fracture: "+2",
-        result: "Threat"
-      },
-      {
-        fracture: "+2",
-        result: "Threat"
-      },
-      {
-        fracture: "+3",
-        result: "Success"
-      },
-      {
-        fracture: "+3",
-        result: "Success"
-      },
-      {
-        fracture: "+3",
-        result: "Success"
-      },
-      {
-        fracture: "+4",
-        result: "Success"
-      },
-      {
-        fracture: "+5",
-        result: "Triumph"
-      }
-    ]
-  }>
-</DieTable>
-
-### Dice Configuration
-Now that you understand how the dice faces work, you must also understand how they change. Protean RPG Core has a default dice configuration, but different settings and modules can (and are encouraged to) implement unique dice configurations. This means that the symbols and numeric values on these dice values change. For example, the configuration for a d12 in a Victorian Horror game might look like this (compare the Victorian one to the core):
-<DieTable
-  die="d20"
-  description="This is the default die. It is very reliable no matter how many dice are rolled and contains all but the chaos dice result."
-  dieData={
-    [
-      {
-        fracture: "-5",
-        result: "Disaster"
-      },
-      {
-        fracture: "-4",
-        result: "Failure"
-      },
-      {
-        fracture: "-4",
-        result: "Failure"
-      },
-      {
-        fracture: "-3",
-        result: "Failure"
-      },
-      {
-        fracture: "-3",
-        result: "Failure"
-      },
-      {
-        fracture: "-3",
-        result: "Failure"
-      },
-      {
-        fracture: "-2",
-        result: "Boon"
-      },
-      {
-        fracture: "-2",
-        result: "Boon"
-      },
-      {
-        fracture: "-2",
-        result: "Boon"
-      },
-      {
-        fracture: "-1",
-        result: "Boon"
-      },
-      {
-        fracture: "-1",
-        result: "Boon"
-      },
-      {
-        fracture: "+1",
-        result: "Threat"
-      },
-      {
-        fracture: "+1",
-        result: "Threat"
-      },
-      {
-        fracture: "+2",
-        result: "Threat"
-      },
-      {
-        fracture: "+2",
-        result: "Threat"
-      },
-      {
-        fracture: "+3",
-        result: "Success"
-      },
-      {
-        fracture: "+3",
-        result: "Success"
-      },
-      {
-        fracture: "+3",
-        result: "Success"
-      },
-      {
-        fracture: "+4",
-        result: "Success"
-      },
-      {
-        fracture: "+5",
-        result: "Triumph"
-      }
-    ]
-  }>
-</DieTable>
-
-<Spacer space="mx-3"></Spacer>
-
-<DieTable
-  die="d20"
-  description="This is the default die. It is very reliable no matter how many dice are rolled and contains all but the chaos dice result."
-  dieData={
-    [
-      {
-        fracture: "-5",
-        result: "Disaster"
-      },
-      {
-        fracture: "-4",
-        result: "Failure"
-      },
-      {
-        fracture: "-4",
-        result: "Failure"
-      },
-      {
-        fracture: "-3",
-        result: "Failure"
-      },
-      {
-        fracture: "-3",
-        result: "Failure"
-      },
-      {
-        fracture: "-3",
-        result: "Failure"
-      },
-      {
-        fracture: "-2",
-        result: "Boon"
-      },
-      {
-        fracture: "-2",
-        result: "Boon"
-      },
-      {
-        fracture: "-2",
-        result: "Boon"
-      },
-      {
-        fracture: "-1",
-        result: "Boon"
-      },
-      {
-        fracture: "-1",
-        result: "Boon"
-      },
-      {
-        fracture: "+1",
-        result: "Threat"
-      },
-      {
-        fracture: "+1",
-        result: "Threat"
-      },
-      {
-        fracture: "+2",
-        result: "Threat"
-      },
-      {
-        fracture: "+2",
-        result: "Threat"
-      },
-      {
-        fracture: "+3",
-        result: "Success"
-      },
-      {
-        fracture: "+3",
-        result: "Success"
-      },
-      {
-        fracture: "+3",
-        result: "Success"
-      },
-      {
-        fracture: "+4",
-        result: "Success"
-      },
-      {
-        fracture: "+5",
-        result: "Triumph"
-      }
-    ]
-  }>
-</DieTable>
-
-<Spacer space="mx-3"></Spacer>
-
-<DieTable
-  die="d20"
-  description="This is the default die. It is very reliable no matter how many dice are rolled and contains all but the chaos dice result."
-  dieData={
-    [
-      {
-        fracture: "-5",
-        result: "Disaster"
-      },
-      {
-        fracture: "-4",
-        result: "Failure"
-      },
-      {
-        fracture: "-4",
-        result: "Failure"
-      },
-      {
-        fracture: "-3",
-        result: "Failure"
-      },
-      {
-        fracture: "-3",
-        result: "Failure"
-      },
-      {
-        fracture: "-3",
-        result: "Failure"
-      },
-      {
-        fracture: "-2",
-        result: "Boon"
-      },
-      {
-        fracture: "-2",
-        result: "Boon"
-      },
-      {
-        fracture: "-2",
-        result: "Boon"
-      },
-      {
-        fracture: "-1",
-        result: "Boon"
-      },
-      {
-        fracture: "-1",
-        result: "Boon"
-      },
-      {
-        fracture: "+1",
-        result: "Threat"
-      },
-      {
-        fracture: "+1",
-        result: "Threat"
-      },
-      {
-        fracture: "+2",
-        result: "Threat"
-      },
-      {
-        fracture: "+2",
-        result: "Threat"
-      },
-      {
-        fracture: "+3",
-        result: "Success"
-      },
-      {
-        fracture: "+3",
-        result: "Success"
-      },
-      {
-        fracture: "+3",
-        result: "Success"
-      },
-      {
-        fracture: "+4",
-        result: "Success"
-      },
-      {
-        fracture: "+5",
-        result: "Triumph"
-      }
-    ]
-  }>
-</DieTable>
-
-#### Physical Dice Disclaimer
-Unfortunately, the fluctuations in dice faces means I cannot easily produce physical dice for the game as it may change based on the module or system run that day, but I have provided the ability to upload editable dice configurations to the Protean App and simulate rolling them there.
-
-### Dice Sizes and Representations
-Protean uses seven different polyhedral dice. The most common is the six-sided die or 'd6'. This format is used to represent dice the vast majority of the time. For example, the seven polyhedral dice are commonly called d4, d6, d8, d10, d12, and d20. They are represented this way in both the Protean App and the Protean RPG. Other sizes of dice, such as d3, d66, or d100, can be rolled using a combination of the above dice.
-`
-}
-
-const ProteanSkeletonsAndFramesPage = {
-  uuid: "ProteanSkeletonsAndFramesPage",
-  type: "PAGE",
-  title: "Skeletons & Frames",
-  format: {
-
-  },
-  content:
-`
-# Skeletons
-Every character in Protean has a skeleton made up of frames. The skeleton is the basic building blocks for your character's representation. If rolling dice is a verb then the skeleton frames are the nouns. They communicate to the player what state their character is in at any point in time. Most RPGs have frames in some form. With a few small differences, traditional hit points are frames. Frames are designed to be abstract to support all sorts of content, from hydration to mutation mechanics.
-
-## Frames
-A frame represents a vital aspect of your character that can temporarily, or permanently, be broken. Every frame has a name, description, numerical score, repair method, and defense. Injuries, misfortune, and emotions cause fractures that lower your frame's score as you play, but defenses can mitigate a fracture. When your frame reaches a score of 0 or lower it creates a shatter. The Advocate and Actors must work together to interpret shatters. The maximum frame score is 10.
-
-### Fractures
-Fractures are an abstract concept, but incuring one is always negative for a character. It can represent anything from emotional harm, to dishonor, to a biting insult. A fracture always has a targeted frame and a numerical value you subtract from your current frame's score. The maximum fracture score is 5.
-
-### Defenses
-When the Advocate declares a fracture to one of your frames you reduce it by your frame's associated defense. A defense can reduce a fracture to zero, but it can never increase your frame's score. The maximum defense score is 3.
-
-Consider the following examples:
-- Frame Score: 2 &rarr; Defense: 0 &rarr; Fracture: 2 &rarr; Final Frame Score: 0
-- Frame Score: 2 &rarr; Defense: 1 &rarr; Fracture: 2 &rarr; Final Frame Score: 1
-- Frame Score: 2 &rarr; Defense: 3 &rarr; Fracture: 2 &rarr; Final Frame Score: 2
-
-### Shatters
-A frame shatters once it has reached a score of 0 or lower. This is always negative, or at least mostly negative, for your character. TODO. The rest of this explanation needs to happen but it's long and difficult and I don't want to do it right now so I'll do it after the first playtest. Dante will explain this on the fly when they happen.
 `
 }
 
@@ -875,109 +531,95 @@ TODO
 `
 }
 
-const LancerGear = {
-  uuid: "LancerGear",
+const LancerGMSWeapons = {
+  uuid: "LancerGMSWeapons",
   metadata: {
     type: "PAGE",
-    title: "Lancer Gear",
+    title: "GMS Weapons",
   },
   content:
 `
-# Lancer Gear
-This is a collection of GMS weapons, systems, and modifications that can be installed into lancers.
-
-## GMS Weapons
+# GMS Weapons
 Much like GMS mechs, GMS weapons are reliable galactic standards, made using interchangeable parts and built to withstand almost any conditions. There are three lines currently in production. 
 
-### T-1
+## GMS T-1: KINETIC
 The Type-I (T-1) line is defined by powerful, reliable, and conventional-kinetic ranged and melee weapons.
 
 <BlockContainer>
   <DiceBlock diceBlock={{
-    "title": "Heavy Axe",
-    "dice": "3d6",
-    "description": "A heavy mechanical axe that can cleave off pieces of a lancer in one swing (Melee Range, Cleaving)."
-  }}>
+    "title": "Kinetic Axe",
+    "dice": "2dX",
+    "description": "A heavy mechanical axe that can cleave off pieces of a lancer in one swing (Melee Range, Heavy, Severes)."}}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
     "title": "Machine Gun",
-    "dice": "3d4",
-    "description": "A reliable, rapid-fire gun that utilizes a drum magazine (Medium Range, Inaccurate)."
-  }}>
+    "dice": "3dX",
+    "description": "A reliable, rapid-fire gun that utilizes a drum magazine (Medium Range)."}}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
     "title": "Pistols",
-    "dice": "2d12",
-    "description": "A pair of reliable, close range pistols (Close Range, Accurate)."
-  }}>
+    "dice": "2dX",
+    "description": "A pair of reliable, close range pistols (Close Range). This action block deals 1 damage to a challenge when it doesn't succeed on a check."}}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
     "title": "Shotgun",
-    "dice": "2d8",
-    "description": "A multi-purpose kinetic and flechette gun with ricochetting rounds (Close Range, Ricochet)."
-  }}>
+    "dice": "2dX",
+    "description": "A multi-purpose kinetic and flechette gun with ricochetting rounds (Close Range, Ricochet, Spread)."}}>
   </DiceBlock>
 </BlockContainer>
 
-### T-2
+## GMS T-2: ENERGY
 The Type-II (T-2) line displays GMS’s proprietary “charged” melee weapons and energy weapons. T-2 charged melee weapons are structurally similar to GMS’s T-1 melee weapons, though built with different materials to tolerate the intense heat generated by their projected plasma sheaths.
 
 <BlockContainer>
   <DiceBlock diceBlock={{
     "title": "Charged Blade",
-    "dice": "3d8",
-    "description": "An electrified and super-heated sword that can melt through most lancer armor (Melee Range, Melting, Self-Heating)."
-  }}>
+    "dice": "2dX",
+    "description": "An electrified and super-heated sword that can melt through enemy lancers (Melee Range, Burns, Melts). Whenever you use this action block take 1 Heat damage, but also increase all damage dealt by this action block by +1."}}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
-    "title": "Thermal Cannon",
-    "dice": "1d12",
-    "description": "A single shot, fire-based weapon. The rounds burn extremely hot for extended amounts of time, doing massive damage to anything it touches (Medium Range, Burns, Melts)."
-  }}>
+    "title": "Laser Cannon",
+    "dice": "3dX",
+    "description": "A powerful, overheating laser that can burn through multiple lancers in one shot (Extreme Range, Melts). Whenever you use this action block take 3 Heat damage."}}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
-    "title": "Thermal Pistols",
-    "dice": "2d20",
-    "description": "Dual pistols capable of melting a lancer at close range when they strike cracks in the armor (Close Range, Melting, Self-Heating)."
-  }}>
+    "title": "Thermal Launcher",
+    "dice": "1dX",
+    "description": "A single shot, break-action thermite launcher. The rounds burn extremely hot for extended amounts of time, turning a battlefield into scorched earth littered with active thermite (Medium Range, Burns Over Time, Melts). Adversaries hit with this weapon must vacate the scorched area or burn to death."}}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
     "title": "Thermal Rifle",
-    "dice": "2d8",
-    "description": "A powerful, overheating laser that can burn through multiple lancers in one shot (Long Range, Melting, Self-Heating)."
-  }}>
+    "dice": "2dX",
+    "description": "A  (Long Range, Burns, Melts). Whenever you use this action block take 1 Heat damage, but also increase all damage dealt by this action block by +1."}}>
   </DiceBlock>
 </BlockContainer>
 
-### T-3
+## GMS T-3: ORDNANCE
 The Type-III (T-3) line is made up of heavy weapons, ordnance, and other exotic, specialized, or massive weapons.
 
 <BlockContainer>
   <DiceBlock diceBlock={{
     "title": "Anti-Materiel Rifle",
     "dice": "2d6",
-    "description": "A lancer-sized, magnetic railgun (Extreme Range, Accurate, Armor Piercing, Loading, Ordnance)."
-  }}>
+    "description": "A lancer-sized, magnetic railgun (Extreme Range, Accurate, Armor Piercing, Loading, Ordnance)."}}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
     "title": "Howitzer",
     "dice": "2d10",
-    "description": "A mounted cannon that turns a lancer into portable artillery (Long Range, Arcing, Blast, Inaccurate, Loading, Ordnance)."
-  }}>
+    "description": "A mounted cannon that turns a lancer into portable artillery (Long Range, Arcing, Blast, Inaccurate, Loading, Ordnance)."}}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
     "title": "Missile Racks",
     "dice": "2d4",
-    "description": "Auxiliary launchers with tracking capabilities (Medium Range, Blast, Loading, Tracking)."
-  }}>
+    "description": "Auxiliary launchers with tracking capabilities (Medium Range, Blast, Loading, Tracking)."}}>
   </DiceBlock>
 </BlockContainer>
 `
@@ -1044,18 +686,32 @@ TODO
 `
 }
 
+const ProteanApp = {
+  uuid: "ProteanApp.json",
+  metadata: {
+    type: "BOOK",
+    title: "Protean App",
+    activePage: 0
+  },
+  content: [
+    CharacterSheets
+  ]
+}
+
 const ProteanRPG = {
   uuid: "ProteanRPG.json",
   metadata: {
     type: "BOOK",
     title: "Protean RPG",
-    activePage: 1
+    activePage: 0
   },
   content: [
     ProteanIs,
     ThePlayers,
-    RulesInBrief,
-    MakingChecks
+    ActionBlocksAndTags,
+    DefensesAndConditions,
+    MakingChecks,
+    PlayingTheGame
   ]
 }
 
@@ -1067,8 +723,132 @@ const LancerSupplement = {
     activePage: 0
   },
   content: [
-    LancerGear,
+    LancerGMSWeapons,
   ]
+}
+
+const BlankLancerSheet = {
+  "uuid": "lancer-sheet.json",
+  "metadata": {
+    "type": "SHEET",
+    "title": "Lancer Sheet"
+  },
+  "content": {
+    "textBlocks": [
+      {
+        "textType": "Header1",
+        "text": "Lancer Name"
+      },
+      {
+        "textType": "Paragraph",
+        "text": "This is a blank description for a lancer. A lancer is a highly advanced mech that can turn any pilot into a one man army."
+      }
+    ],
+    "numberBlocks": [
+      {
+        "title": "Hull",
+        "fieldTitles": [
+          "Current Score",
+          "Max Score",
+          "Current Defense",
+          "Max Defense"
+        ],
+        "fieldValues": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "title": "Heat",
+        "fieldTitles": [
+          "Current Score",
+          "Max Score",
+          "Current Defense",
+          "Max Defense"
+        ],
+        "fieldValues": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "title": "Systems",
+        "fieldTitles": [
+          "Current Score",
+          "Max Score",
+          "Current Defense",
+          "Max Defense"
+        ],
+        "fieldValues": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "title": "Supplies",
+        "fieldTitles": [
+          "Current Score",
+          "Max Score",
+          "Current Defense",
+          "Max Defense"
+        ],
+        "fieldValues": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "diceBlocks": [
+      {
+        "title": "Size",
+        "dice": "",
+        "description": "A lancer's size represents their physical strength and resilience. The larger a lancer is the bigger a wall they can run through and the better chance they'll have of wrestling another lancer to the ground."
+      },
+      {
+        "title": "Speed",
+        "dice": "",
+        "description": "A lancer's speed represents their reaction time and capability for traversing terrain. The faster a lancer the easier it will be to reposition and complete critical tasks quickly."
+      },
+      {
+        "title": "",
+        "dice": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "dice": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "dice": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "dice": "",
+        "description": ""
+      }
+    ],
+    "noteBlocks": [
+      {
+        "title": "Notes",
+        "description": ""
+      },
+      {
+        "title": "Conditions",
+        "description": ""
+      }
+    ]
+  }
 }
 
 function loadLocalStorage(key, defaultValue) {
@@ -1094,7 +874,7 @@ function loadLocalStorage(key, defaultValue) {
 const GlobalStoreContext = createContext();
 const initialGlobalState = {
   darkMode: loadLocalStorage("darkMode", false),
-  files: loadLocalStorage("files", [ProteanRPG, LancerSupplement]),
+  files: loadLocalStorage("files", [ProteanApp, ProteanRPG, LancerSupplement, BlankLancerSheet]),
   activeFile: {
     
   },
@@ -1157,7 +937,7 @@ const reducer = (globalState, action) => {
 
 export const GlobalStoreProvider = ({ children }) => {
   const [globalState, dispatch] = useReducer(reducer, initialGlobalState);
-
+  
   return (
     <GlobalStoreContext.Provider value={{ globalState, dispatch }}>
       {children}

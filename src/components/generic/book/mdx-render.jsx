@@ -6,8 +6,11 @@ import { Paragraph } from './paragraph';
 import { ListBulleted, ListNumbered } from './lists';
 import ConfiguredDie from '../game/configured-die';
 import DieTable, { DieTableRow } from '../game/die-table';
-import BlockContainer from '../game/block-container';
-import DiceBlock from '../game/dice-block';
+import BlockContainer from '../game/blocks/block-container';
+import DiceBlock from '../game/blocks/dice-block';
+import NoteBlock from '../game/blocks/note-block';
+import NumberBlock from '../game/blocks/number-block';
+import TextBlock from '../game/blocks/text-block';
 import { ThematicBreak } from './thematic-break';
 import Spacer from './spacer';
 
@@ -57,7 +60,10 @@ const mdxComponents = {
   ConfiguredDie: ConfiguredDie,
   DieTable: DieTable,
   DieTableRow: DieTableRow,
-  DiceBlock: DiceBlock
+  DiceBlock: DiceBlock,
+  NoteBlock: NoteBlock,
+  NumberBlock: NumberBlock,
+  TextBlock: TextBlock
 };
 
 // Customize Document:

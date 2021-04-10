@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SheetWidget from './sheet-widget';
+import SheetWidget from '../sheet-widget';
 import TextareaAutosize from 'react-textarea-autosize';
 
 export default function DiceBlock(props) {

@@ -30,7 +30,7 @@ function ClearLocalStorageButton() {
   }
 
   return (
-    <button onClick={clearLocalStorage()} className="p-2 rounded-md text-white bg-red-500 hover:bg-red-800">
+    <button onClick={clearLocalStorage()} className="acc-focus p-2 rounded-md text-white bg-red-500 hover:bg-red-800">
       Clear Local Storage
     </button>
   );

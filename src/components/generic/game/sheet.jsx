@@ -1,31 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useGlobalStore } from '../../stores/global-store';
-import TextareaAutosize from 'react-textarea-autosize';
-import BlockContainer from './block-container';
-import NumberBlock from './number-block';
-import DiceBlock from '../game/dice-block';
-import NoteBlock from './note-block';
+import BlockContainer from './blocks/block-container';
+import NumberBlock from './blocks/number-block';
+import DiceBlock from './blocks/dice-block';
+import NoteBlock from './blocks/note-block';
+import TextBlock from './blocks/text-block';
 
 export default function Sheet(props) {
   const { globalState, dispatch } = useGlobalStore();
   const [sheet, setSheet] = useState(globalState.activeFile?.content);
 
-  const dispatchSheetData = () => dispatch({
-    type: "updateActiveFileContent",
-    payload: {
-      content: sheet
-    }
-  })
-
-  const setSheetData = (value, property) => {
-    if (sheet[property] === undefined) {
-      console.log("Property: '" + property + "' is undefined on sheet object.");
-    }
-    else {
-      let newSheet = { ...sheet };
-      newSheet[property] = value;
-      setSheet(newSheet, dispatchSheetData());
-    }
+  const dispatchSheetData = (data) => {
+    dispatch({
+      type: "updateActiveFileContent",
+      payload: {
+        content: data
+      }
+    })
   }
 
   const setBlockData = (value, property, index) => {
@@ -35,25 +26,51 @@ export default function Sheet(props) {
     else {
       let newSheet = { ...sheet };
       newSheet[property][index] = value;
-      setSheet(newSheet, dispatchSheetData());
+      setSheet(newSheet, dispatchSheetData(newSheet));
     }
   }
 
   return (
     <BlockContainer>
-      <TextareaAutosize
-        value={sheet.title}
-        rows={1}
-        maxRows={3}
-        className="acc-input flex col-span-12 p-1 mt-8 mb-3 elevation-0 text-3xl xl:text-5xl leading-tight font-bold"
-        placeholder="enter title"
-        onChange={(e) => setSheetData(e.target.value, 'title')} />
+      {/* {
+        sheet?.map((widget, index) => {
+          switch (widget) {
+            case "TextBlock":
+              return <TextBlock
+                key={index}
+                textBlock={widget}
+                static={false}
+                onChange={(newTextBlock) => setBlockData(newTextBlock, 'textBlocks', index)}>
+              </TextBlock>;
+            case "NoteBlock":
+              return <NumberBlock
+                key={index}
+                numberBlock={widget}
+                static={false}
+                onChange={(newNumberBlock) => setBlockData(newNumberBlock, 'numberBlocks', index)}>
+              </NumberBlock>;
+          }
+        })
+
+        sheet?.map((widget, index) => (
+          <
+        ))
+      } */}
+      {
+        sheet?.textBlocks.map((textBlock, index) => (
+          <TextBlock
+            key={index}
+            textBlock={textBlock}
+            static={false}
+            onChange={(newTextBlock) => setBlockData(newTextBlock, 'textBlocks', index)}>
+          </TextBlock>
+        ))
+      }
       {
         sheet?.numberBlocks.map((numberBlock, index) => (
           <NumberBlock 
-            key={index} 
-            index={index}
-            dice={numberBlock}
+            key={index}
+            numberBlock={numberBlock}
             static={false}
             onChange={(newNumberBlock) => setBlockData(newNumberBlock, 'numberBlocks', index)}>
           </NumberBlock>
@@ -62,8 +79,7 @@ export default function Sheet(props) {
       {
         sheet?.diceBlocks.map((diceBlock, index) => (
           <DiceBlock 
-            key={index} 
-            index={index}
+            key={index}
             diceBlock={diceBlock}
             static={false}
             onChange={(newDiceBlock) => setBlockData(newDiceBlock, 'diceBlocks', index)}>
@@ -73,8 +89,7 @@ export default function Sheet(props) {
       {
         sheet?.noteBlocks.map((noteBlock, index) => (
           <NoteBlock 
-            key={index} 
-            index={index} 
+            key={index}
             noteBlock={noteBlock} 
             static={false}
             onChange={(newNoteBlock) => setBlockData(newNoteBlock, 'noteBlocks', index)}>

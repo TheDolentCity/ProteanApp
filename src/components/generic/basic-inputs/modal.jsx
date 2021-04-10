@@ -13,7 +13,7 @@ export default function Modal(props) {
             <p className="flex-grow pb-4 pr-4 text-2xl text-left font-semibold">
               Protean Settings
             </p>
-            <button onClick={props.onClose} className="acc-input flex-none h-8 px-1 text-xl raise-10 hover:raise-25">
+            <button onClick={props.onClose} className="acc-focus flex-none h-8 px-1 text-xl raise-10 hover:raise-25">
               <FabricIcon name="Cancel"></FabricIcon>
             </button>
           </div>
