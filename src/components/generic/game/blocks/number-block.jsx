@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SheetWidget from '../sheet-widget';
+import { Widget } from '../widget';
 import TextareaAutosize from 'react-textarea-autosize';
 
 export default function NumberBlock(props) {
@@ -30,7 +30,7 @@ export default function NumberBlock(props) {
   }
 
   return (
-    <SheetWidget css="col-span-12 xl:col-span-6 bg-steelBlue-600 dark:bg-steelBlue-700 text-white">
+    <Widget css="col-span-12 xl:col-span-6 bg-steelBlue-600 dark:bg-steelBlue-700 text-white">
       <div className="flex flex-col">
         <TextareaAutosize
           value={numberBlock?.title}
@@ -65,7 +65,7 @@ export default function NumberBlock(props) {
           }
         </div>
       </div>
-    </SheetWidget>
+    </Widget>
   );
 }
 

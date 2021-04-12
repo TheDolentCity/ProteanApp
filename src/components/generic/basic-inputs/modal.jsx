@@ -1,5 +1,5 @@
 import React from 'react';
-import FabricIcon from '../icons/fabric-icon';
+import FabricIcon from './fabric-icon';
 
 export default function Modal(props) {
   return (

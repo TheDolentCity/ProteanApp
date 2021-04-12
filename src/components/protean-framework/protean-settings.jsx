@@ -5,33 +5,28 @@ import { useGlobalStore } from '../stores/global-store';
 export default function ProteanSettings(props) {
   const { globalState, dispatch } = useGlobalStore();
 
-  function closeProteanSettings() {
-    return {
+  const closeSettings = () => {
+    dispatch({
       type: "setProteanSettingsState",
       payload: {
         state: false
       }
-    }
+    });
   }
 
-  if (globalState.conditionalRenders["ProteanSettingsModal"]) {
+  const clearLocalStorage = () => {
+    localStorage.clear();
+    closeSettings();
+  }
+
+  if (globalState?.conditionalRenders["ProteanSettingsModal"]) {
     return (
-      <Modal onClose={() => dispatch(closeProteanSettings())}>
-        <ClearLocalStorageButton></ClearLocalStorageButton>
+      <Modal onClose={closeSettings}>
+        <button onClick={clearLocalStorage} className="acc-focus p-2 rounded-md text-white bg-red-500 hover:bg-red-800">
+          Clear Local Storage
+        </button>
       </Modal>
     );
   }
   else return <span className="hidden"></span>;
-}
-
-function ClearLocalStorageButton() {
-  const clearLocalStorage = () => {
-    localStorage.clear();
-  }
-
-  return (
-    <button onClick={clearLocalStorage()} className="acc-focus p-2 rounded-md text-white bg-red-500 hover:bg-red-800">
-      Clear Local Storage
-    </button>
-  );
 }

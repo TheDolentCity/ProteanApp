@@ -4,9 +4,8 @@ import MdxWrapper from './mdx-wrapper';
 import { Header1, Header2, Header3, Header4, Header5, Header6, Subtitle } from './header';
 import { Paragraph } from './paragraph';
 import { ListBulleted, ListNumbered } from './lists';
-import ConfiguredDie from '../game/configured-die';
 import DieTable, { DieTableRow } from '../game/die-table';
-import BlockContainer from '../game/blocks/block-container';
+import { WidgetContainer, Widget } from '../game/widget';
 import DiceBlock from '../game/blocks/dice-block';
 import NoteBlock from '../game/blocks/note-block';
 import NumberBlock from '../game/blocks/number-block';
@@ -56,8 +55,8 @@ const mdxComponents = {
   Spacer: (props) => <Spacer space={props.space}></Spacer>,
 
   // Protean RPG Components
-  BlockContainer: BlockContainer,
-  ConfiguredDie: ConfiguredDie,
+  WidgetContainer: WidgetContainer,
+  Widget: Widget,
   DieTable: DieTable,
   DieTableRow: DieTableRow,
   DiceBlock: DiceBlock,
@@ -69,7 +68,6 @@ const mdxComponents = {
 // Customize Document:
 // Pass a 'wrapper' object in the props. The wrapper should be a styled div.
 // For example: (<div className="bg-red-500">{props.children}</div>)
-
 export default function MdxRender(props) {
   return (
     <MDX components={mdxComponents} scope={props.scope} wrapper={props.wrapper}>

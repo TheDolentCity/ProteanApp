@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SheetWidget from '../sheet-widget';
+import { Widget } from '../widget';
 import TextareaAutosize from 'react-textarea-autosize';
 
 export default function NoteBlock(props) {
@@ -18,7 +18,7 @@ export default function NoteBlock(props) {
   }
 
   return (
-    <SheetWidget css="col-span-12 xl:col-span-6 bg-dirtBrown-600 dark:bg-dirtBrown-700 text-white">
+    <Widget css="col-span-12 xl:col-span-6 bg-dirtBrown-600 dark:bg-dirtBrown-700 text-white">
       <div className="flex flex-col">
         <input
           type="text"
@@ -35,6 +35,6 @@ export default function NoteBlock(props) {
           value={noteBlock?.description}
           onChange={(e) => setNoteBlockData(e.target.value, 'description')} />
       </div>
-    </SheetWidget>
+    </Widget>
   );
 }

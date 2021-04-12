@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SheetWidget from '../sheet-widget';
+import { Widget } from '../widget';
 import TextareaAutosize from 'react-textarea-autosize';
 
 export default function DiceBlock(props) {
@@ -18,7 +18,7 @@ export default function DiceBlock(props) {
   }
 
   return (
-    <SheetWidget css="col-span-12 xl:col-span-6 bg-forestGreen-600 dark:bg-forestGreen-700 text-white">
+    <Widget css="col-span-12 xl:col-span-6 bg-forestGreen-600 dark:bg-forestGreen-700 text-white">
       <div className="flex flex-col">
         <div className="grid grid-cols-12 mb-1 items-center">
           <input
@@ -47,7 +47,7 @@ export default function DiceBlock(props) {
           onChange={(e) => setDiceBlockData(e.target.value, 'description')}
           disabled={props.static === true} />
       </div>
-    </SheetWidget>
+    </Widget>
   );
 }
 

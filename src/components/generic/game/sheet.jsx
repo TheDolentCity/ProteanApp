@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useGlobalStore } from '../../stores/global-store';
-import BlockContainer from './blocks/block-container';
+import ProteanErrorBoundary from '../../protean-framework/protean-error-boundary';
+import { WidgetContainer } from './widget';
 import NumberBlock from './blocks/number-block';
 import DiceBlock from './blocks/dice-block';
 import NoteBlock from './blocks/note-block';
@@ -10,26 +11,6 @@ export default function Sheet(props) {
   const { globalState, dispatch } = useGlobalStore();
   const [sheet, setSheet] = useState(globalState.activeFile);
 
-  const dispatchSheetData = (data) => {
-    dispatch({
-      type: "updateActiveFileContent",
-      payload: {
-        content: data
-      }
-    })
-  }
-
-  const setBlockData = (value, property, index) => {
-    if (sheet[property][index] === undefined) {
-      console.log("Property: '" + property + "' with index '" + index + "' is undefined on sheet object.");
-    }
-    else {
-      let newSheet = { ...sheet };
-      newSheet[property][index] = value;
-      setSheet(newSheet, dispatchSheetData(newSheet));
-    }
-  }
-
   const updateSheet = (value, index) => {
     if (sheet?.content[index] === undefined) {
       console.log(`sheet.content[${index}] is undefined on sheet object.`);
@@ -37,26 +18,42 @@ export default function Sheet(props) {
     else {
       let newSheet = { ...sheet };
       newSheet.content[index] = value;
-      setSheet(newSheet, dispatchSheetData(newSheet));
+      setSheet(newSheet, dispatch({
+        type: "updateActiveFileContent",
+        payload: {
+          content: newSheet
+        }
+      }));
     }
   }
 
-  return (
-    <BlockContainer>
-      {
-        sheet?.content?.map((widget, index) => (
-          <Widget 
-            key={index} 
-            widget={widget} 
-            onChange={(newWidget) => updateSheet(newWidget, index)}>
-          </Widget>
-        ))
-      }
-    </BlockContainer>
-  );
+  if (typeof (sheet?.content) === typeof ([])) {
+    return (
+      <ProteanErrorBoundary
+        fallbackUI={
+          <div className="p-12">
+            <h2>Error in Protean Sheet</h2>
+            <p>Cannot render Sheet due to an error. Fix JSON, check console, or ask Dante for help.</p>
+          </div>
+        }>
+        <WidgetContainer>
+          {
+            sheet?.content?.map((widget, index) => (
+              <SheetWidget
+                key={index}
+                widget={widget}
+                onChange={(newWidget) => updateSheet(newWidget, index)}>
+              </SheetWidget>
+            ))
+          }
+        </WidgetContainer>
+      </ProteanErrorBoundary>
+    );
+  }
+  else return <span className="hidden"></span>;
 }
 
-function Widget(props) {
+function SheetWidget(props) {
   switch (props?.widget?.type) {
     case "DiceBlock":
       return (
@@ -91,6 +88,6 @@ function Widget(props) {
         </TextBlock>
       );
     default:
-      console.log(`Widget type '${props?.widget?.type}' is not handled by dynamic Widget component.`);
+      console.log(`Widget type '${props?.widget?.type}' is not handled by SheetWidget component.`);
   }
 }

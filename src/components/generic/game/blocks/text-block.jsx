@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import SheetWidget from '../sheet-widget';
+import { Widget } from '../widget';
 import TextareaAutosize from 'react-textarea-autosize';
 
 export default function TextBlock(props) {

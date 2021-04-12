@@ -1,5 +1,5 @@
 import React from 'react';
-import FabricIcon from "../../generic/icons/fabric-icon";
+import FabricIcon from "../../generic/basic-inputs/fabric-icon";
 
 export default function ProteanTool(props) {
   return (

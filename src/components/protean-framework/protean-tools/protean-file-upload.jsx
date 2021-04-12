@@ -27,8 +27,7 @@ export default function ProteanFileUpload() {
     const reader = new FileReader();
     reader.onload = e => {
       const contents = e.target.result;
-      console.log("FILE:\n" + file);
-      console.log("CONTENTS:\n" + contents);
+      console.log("UPLOAD_CONTENTS:\n" + contents);
       dispatch(uploadFileDispatch(JSON.parse(contents)));
     };
     reader.readAsText(file);

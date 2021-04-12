@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useGlobalStore } from "../../stores/global-store";
 import ProteanTool, { ProteanToolButton } from "./protean-tool";
-import FabricIcon from "../../generic/icons/fabric-icon";
+import FabricIcon from "../../generic/basic-inputs/fabric-icon";
 
 export default function ProteanPagesTool(props) {
   const { globalState, dispatch } = useGlobalStore();
