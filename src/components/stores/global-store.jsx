@@ -79,20 +79,23 @@ const ProteanIs = {
 
 ---
 
-## ... For Roleplaying With Friends
-TODO
+## ...For Roleplaying With Friends
+The only rule you have to follow is to have fun and respects your friends.
 
-## ... A Story Game
-TODO
+## ...Cooperative
+No gods, no game masters. Just friends working together to have fun and make a cool story.
 
-## ... Cooperative
-TODO
+## ...Modular
+One of the design goals of Protean is for the core rules to be as small as possible and to turn everything else into an optional module. Currently this feature is not supported by Protean App, but it will be.
 
-## ... Modular
-TODO
+## ...Accessible
+Hosting the rules for free as a web application makes the game accessible to many. Not to mention all of the accessibility tooling from an interactive web UI. I plan on making the game more accessible over time as well (url slugs, search, etc.).
 
-## ... Accessible
-TODO
+## ...A Story Game
+There are three kinds of stories told by Protean players:
+- The game story, a sequential fiction set within our minds.
+- The character story, a character's fiction that a single player experiences as they roleplay as them.
+- The meta story, the nonfictional account of the players at the table.
 `
 }
 
@@ -549,25 +552,25 @@ The Type-I (T-1) line is defined by powerful, reliable, and conventional-kinetic
   <DiceBlock diceBlock={{
     "title": "Kinetic Axe",
     "dice": "2dX",
-    "description": "A heavy mechanical axe that can cleave off pieces of a lancer in one swing (Melee Range, Heavy, Severes)."}}>
+    "description": "A heavy mechanical axe that can cleave off pieces of a lancer in one swing (Damage +3, Melee Range)."}}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
     "title": "Machine Gun",
     "dice": "3dX",
-    "description": "A reliable, rapid-fire gun that utilizes a drum magazine (Medium Range)."}}>
+    "description": "A reliable, rapid-fire gun that utilizes a drum magazine (Damage -1, Medium Range, Rapid Fire, Inaccurate)."}}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
     "title": "Pistols",
     "dice": "2dX",
-    "description": "A pair of reliable, close range pistols (Close Range). This action block deals 1 damage to a challenge when it doesn't succeed on a check."}}>
+    "description": "A pair of reliable, close range pistols (Medium Range, Accurate, CQB)."}}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
     "title": "Shotgun",
-    "dice": "2dX",
-    "description": "A multi-purpose kinetic and flechette gun with ricochetting rounds (Close Range, Ricochet, Spread)."}}>
+    "dice": "1dX",
+    "description": "A multi-purpose kinetic and flechette gun with high kinetic impact at close range (Damage +1, Close Range, Knockback, Spread)."}}>
   </DiceBlock>
 </WidgetContainer>
 
@@ -578,25 +581,25 @@ The Type-II (T-2) line displays GMS’s proprietary “charged” melee weapons 
   <DiceBlock diceBlock={{
     "title": "Charged Blade",
     "dice": "2dX",
-    "description": "An electrified and super-heated sword that can melt through enemy lancers (Melee Range, Burns, Melts). Whenever you use this action block take 1 Heat damage, but also increase all damage dealt by this action block by +1."}}>
+    "description": "An electrified and super-heated sword that can melt through enemy lancers (Melee Range, Burns, Melts)."}}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
     "title": "Laser Cannon",
     "dice": "3dX",
-    "description": "A powerful, overheating laser that can burn through multiple lancers in one shot (Extreme Range, Melts). Whenever you use this action block take 3 Heat damage."}}>
+    "description": "A powerful, overheating laser that can burn through multiple lancers in one shot (Extreme Range, Melts, Pierces). Whenever you use this action block take 3 Heat damage."}}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
     "title": "Thermal Launcher",
     "dice": "1dX",
-    "description": "A single shot, break-action thermite launcher. The rounds burn extremely hot for extended amounts of time, turning a battlefield into scorched earth littered with active thermite (Medium Range, Burns Over Time, Melts). Adversaries hit with this weapon must vacate the scorched area or burn to death."}}>
+    "description": "A single shot, break-action thermite launcher. The rounds burn extremely hot for extended amounts of time, turning a battlefield into scorched earth littered with active thermite (Damage +2, Medium Range, Burns Over Time)."}}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
     "title": "Thermal Rifle",
     "dice": "2dX",
-    "description": "A  (Long Range, Burns, Melts). Whenever you use this action block take 1 Heat damage, but also increase all damage dealt by this action block by +1."}}>
+    "description": "A long rifle equipped with lenses to focus laser beams into spears of plasma that burn holes in enemy lancers (Long Range, Burns, Melts)."}}>
   </DiceBlock>
 </WidgetContainer>
 
@@ -606,20 +609,26 @@ The Type-III (T-3) line is made up of heavy weapons, ordnance, and other exotic,
 <WidgetContainer>
   <DiceBlock diceBlock={{
     "title": "Anti-Materiel Rifle",
-    "dice": "2d6",
-    "description": "A lancer-sized, magnetic railgun (Extreme Range, Accurate, Armor Piercing, Loading, Ordnance)."}}>
+    "dice": "1dX",
+    "description": "A lancer-sized, magnetic railgun (Damage +4, Extreme Range)."}}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
     "title": "Howitzer",
-    "dice": "2d10",
-    "description": "A mounted cannon that turns a lancer into portable artillery (Long Range, Arcing, Blast, Inaccurate, Loading, Ordnance)."}}>
+    "dice": "2dX",
+    "description": "A mounted cannon that turns a lancer into portable artillery (Extreme Range, Arcing, Blast, Inaccurate). Whenever you use this action block take 2 Supplies damage."}}>
   </DiceBlock>
 
   <DiceBlock diceBlock={{
     "title": "Missile Racks",
-    "dice": "2d4",
-    "description": "Auxiliary launchers with tracking capabilities (Medium Range, Blast, Loading, Tracking)."}}>
+    "dice": "2dX",
+    "description": "Auxiliary launchers with tracking capabilities (Medium Range, Blast, Tracking). Whenever you use this action block take 2 Supplies damage."}}>
+  </DiceBlock>
+
+  <DiceBlock diceBlock={{
+    "title": "RPG",
+    "dice": "1dX",
+    "description": "A powerful, directed rocket that can be used to destroy foe or terrain alike (Damage +2, Long Range, Accurate, Blast, Knockback, Slow). Whenever you use this action block take 2 Supplies damage."}}>
   </DiceBlock>
 </WidgetContainer>
 `
