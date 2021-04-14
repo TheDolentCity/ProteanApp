@@ -3,6 +3,7 @@ import MDX from '@mdx-js/runtime';
 import MdxWrapper from './mdx-wrapper';
 import { Header1, Header2, Header3, Header4, Header5, Header6, Subtitle } from './header';
 import { Paragraph } from './paragraph';
+import { Blockquote } from './blockquote';
 import { ListBulleted, ListNumbered } from './lists';
 import DieTable, { DieTableRow } from '../game/die-table';
 import { WidgetContainer, Widget } from '../game/widget';
@@ -30,6 +31,7 @@ const mdxComponents = {
   h5: Header5,
   h6: Header6,
   hr: ThematicBreak,
+  blockquote: Blockquote,
   img: (props) => <img className="">{props.children}</img>,
   li: (props) => <li className="">{props.children}</li>,
   ol: (props) => <ol className="">{props.children}</ol>,

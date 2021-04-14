@@ -534,8 +534,78 @@ TODO
 `
 }
 
+const LancerSettingPrimer = {
+  uuid: "lancer-setting-primer.json",
+  metadata: {
+    type: "PAGE",
+    title: "Lancer Setting Primer"
+  },
+  content:
+`
+# Lancer Setting Primer
+
+Freedom is not a bargaining chip.
+
+It began with the Fall of humanity. But from the ashes Union was forged. Advanced technology of the ancients was found scattered across Cradle, a place sometimes referred to as EARTH by remnants from the Fall. Union spent its first 2000 years creating near-light starships and expanding into the void of space. But Union was not alone. They found humans who had survived on other planets, like the Aunic peoples. Peace was tried for a time, but Union and the Aunic people deceived each other and the First Distal War began.
+
+## SecComm
+A more aggressive and authoritative Second Committee of Union (SecComm for short) was founded in response. One by one, the free planets of the galaxy fell to SecComm...
+
+Some people resisted. RA, the first Non-Human Person (NHP), manifested themselves and removed Deimos from known space, forcing Union to formally recognize "artifical intelligences" as NHPs. But the event accelerated understanding of paracausal science and soon SecComm invented blink gate technology. Tens of billions of colonists were forcibly distributed across the Orion Arm of the galaxy.
+
+Then came the Hercynian Crisis, a conflict so violent, so deadly, that the only viable way to participate in the conflict and survive was to pilot a highly advanced war machine. A lancer.
+
+Mounting discontent with the "Great Expansion" and the bloody conflict of the First Distal War boiled over during the Hercynian Crisis. The pilots who survived told their stories and rightfully pointed fingers at SecComm. Revolution was swift. ThirdComm was born.
+
+## ThirdComm
+Expansion was halted, but an Aunic crusade fleet's attack on a blink gate erupted into the Second Distal War. ThirdComm dedicated themselves to upholding Union's original Utopian Pillars: ALL SHALL HAVE THEIR MATERIAL NEEDS FULFILLED, NO WALLS SHOULD STAND BETWEEN WORLDS, NO HUMAN SHALL BE HELD IN BONDAGE THROUGH FORCE, LABOR, OR DEBT.
+
+The Aunic people did not view this as Utopia however. Their treatment at the hands of SecComm was still clear in their minds.
+
+"ALL SHALL HAVE THEIR MATERIAL NEEDS FULFILLED" meant "we will control your resources."
+
+"NO WALLS SHOULD STAND BETWEEN WORLDS" meant "we can go where we please."
+
+"NO HUMAN SHALL BE HELD IN BONDAGE THROUGH FORCE, LABOR, OR DEBT" was an excuse to invade any planet where humans performed labor, whether they wanted to or not.
+
+ThirdComm had halted the empire of Union's Second Committee, but it had yet to recognize its unjust hierarchy and imposed ideals on other worlds. Eventually Union's Central Committee ceded this point to the Aunic people and a peace agreement was reached with the new pillars.
+
+> YOU ARE HUNGRY, YOU SHALL BE FED,  
+> YOU ARE HURT, YOU SHALL BE HEALED,  
+> YOU ARE CHAINED, YOU SHALL BE FREED,  
+> NO PAYMENT,  
+> NO SERVICE,  
+> NO EXCHANGE,  
+> YOU NEED ONLY ASK.  
+
+## FourthComm
+FourthComm was born from these pillars with a staunch intervention-on-request policy. Union would provide ample resources, including military, to any group of people that sought its aid. They no longer required planets to join them to gain protection. They no longer sent heavily armed mechs to rim planets and bent other cultures to their wills. They simply helped people, no matter the price.
+
+Additionally, they did have a scorched earth policy of aggression towards all mega-Corporations. It was the opinion of FourthComm that this capitalist structure had to end once and for all. Harrison Armory, IPS-Northstar, and more became transparent overnight. All lancer frames became open sourced. As long as you passed the simulator tests, anyone could be a licensed pilot.
+`
+}
+
+const LancerCampaignPrimer = {
+  uuid: "lancer-campaign-primer.json",
+  metadata: {
+    type: "PAGE",
+    title: "Lancer Campaign Primer"
+  },
+  content:
+`
+# Campaign: Midnight at Termis
+The year is 8192u.
+
+You are all cadets, _senior_ cadets, in the Union Naval Academy (UNA). For various reasons you have chosen to join and serve Union to uphold its new principles. UNA training is harsh and individualized to make sure you become a strong pilot. In the last two years of your training you are assigned three other squad members.
+
+Together you've trained every day aboard the Bellicose, a crusier dedicated to transporting cadets to different planets for training. It is equipped with advanced simulators for training as well. The Bellicose still contains active Union Naval forces, but in a diminished capacity.
+
+You just took your last test to become an official member of the active Union Navy, a dream you've been realizing for the last ten years. But the problem is... you are almost certain you just failed the test.
+`
+}
+
 const LancerGMSWeapons = {
-  uuid: "LancerGMSWeapons",
+  uuid: "lancer-gms-weapons.json",
   metadata: {
     type: "PAGE",
     title: "GMS Weapons",
@@ -732,6 +802,8 @@ const LancerSupplement = {
     activePage: 0
   },
   content: [
+    LancerSettingPrimer,
+    LancerCampaignPrimer,
     LancerGMSWeapons,
   ]
 }
