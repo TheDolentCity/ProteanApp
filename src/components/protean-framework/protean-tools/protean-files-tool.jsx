@@ -5,13 +5,13 @@ import { useGlobalStore } from "../../stores/global-store";
 export default function ProteanFilesTool(props) {
   const { globalState, dispatch } = useGlobalStore();
 
-  function activeFileDispatch(file) {
-    return {
+  function setActiveFile(file) {
+    dispatch({
       type: "setActiveFile",
       payload: {
         activeFile: file
       }
-    }
+    });
   }
 
   return (
@@ -21,7 +21,7 @@ export default function ProteanFilesTool(props) {
           <ProteanToolButton
             key={i}
             icon={globalState.fileIcons[file?.metadata.type]}
-            onClick={() => dispatch(activeFileDispatch(file))}
+            onClick={() => setActiveFile(file)}
             active={globalState?.activeFile?.uuid === file?.uuid}>
             {file?.metadata.title}
           </ProteanToolButton>

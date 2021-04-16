@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useGlobalStore } from '../../stores/global-store';
 import ProteanErrorBoundary from '../../protean-framework/protean-error-boundary';
 import { WidgetContainer } from './widget';
@@ -7,10 +7,18 @@ import DiceBlock from './blocks/dice-block';
 import NoteBlock from './blocks/note-block';
 import TextBlock from './blocks/text-block';
 
-export default function Sheet(props) {
+export default function Sheet() {
   const { globalState, dispatch } = useGlobalStore();
   const [sheet, setSheet] = useState(globalState.activeFile);
 
+  // Update sheet when active file changes
+  useEffect(() => {
+    if (globalState.activeFile !== null && globalState.activeFile !== undefined) {
+      setSheet(globalState.activeFile);
+    }
+  }, [globalState.activeFile]);
+
+  // Sends the local sheet data to global storage
   const updateSheet = (value, index) => {
     if (sheet?.content[index] === undefined) {
       console.log(`sheet.content[${index}] is undefined on sheet object.`);
@@ -18,16 +26,17 @@ export default function Sheet(props) {
     else {
       let newSheet = { ...sheet };
       newSheet.content[index] = value;
-      setSheet(newSheet, dispatch({
-        type: "updateActiveFileContent",
+      setSheet(newSheet);
+      dispatch({
+        type: "updateActiveFile",
         payload: {
-          content: newSheet
+          activeFile: newSheet
         }
-      }));
+      });
     }
   }
 
-  if (typeof (sheet?.content) === typeof ([])) {
+  if (typeof(sheet?.content) === typeof([])) {
     return (
       <ProteanErrorBoundary
         fallbackUI={
@@ -40,7 +49,7 @@ export default function Sheet(props) {
           {
             sheet?.content?.map((widget, index) => (
               <SheetWidget
-                key={index}
+                key={widget.uuid}
                 widget={widget}
                 onChange={(newWidget) => updateSheet(newWidget, index)}>
               </SheetWidget>

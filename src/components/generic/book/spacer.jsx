@@ -6,3 +6,7 @@ export default function Spacer({space}) {
     </div>
   );
 }
+
+Spacer.defaultProps = {
+  space: "my-4 mb-4 leading-7"
+}
