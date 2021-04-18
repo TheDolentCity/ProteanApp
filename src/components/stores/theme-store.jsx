@@ -1,13 +1,13 @@
 import React, { createContext, useContext, useState } from 'react';
 
 const initialThemeState = {
-  baseColors: 'text-gray-1000 bg-gray-100 dark:text-gray-100 dark:bg-gray-1000',
-  appHeaderColors: 'text-gray-700 bg-gray-300 dark:text-gray-300 dark:bg-gray-700',
-  commandBarColors: 'text-gray-800 bg-gray-200 dark:text-gray-200 dark:bg-gray-800',
-  documentTabColors: 'text-gray-800 bg-gray-200 dark:text-gray-200 dark:bg-gray-800',
-  panelColors: 'text-gray-800 bg-gray-200 dark:text-gray-200 dark:bg-gray-800',
-  toolPanelColors: 'text-gray-800 bg-gray-200 dark:text-gray-200 dark:bg-gray-800',
-  toolPanelItemColors: 'text-gray-800 bg-gray-200 dark:text-gray-200 dark:bg-gray-800',
+  baseColors: 'text-proteanGray-1000 bg-proteanGray-100 dark:text-proteanGray-100 dark:bg-proteanGray-1000',
+  appHeaderColors: 'text-proteanGray-700 bg-proteanGray-300 dark:text-proteanGray-300 dark:bg-proteanGray-700',
+  commandBarColors: 'text-proteanGray-800 bg-proteanGray-200 dark:text-proteanGray-200 dark:bg-proteanGray-800',
+  documentTabColors: 'text-proteanGray-800 bg-proteanGray-200 dark:text-proteanGray-200 dark:bg-proteanGray-800',
+  panelColors: 'text-proteanGray-800 bg-proteanGray-200 dark:text-proteanGray-200 dark:bg-proteanGray-800',
+  toolPanelColors: 'text-proteanGray-800 bg-proteanGray-200 dark:text-proteanGray-200 dark:bg-proteanGray-800',
+  toolPanelItemColors: 'text-proteanGray-800 bg-proteanGray-200 dark:text-proteanGray-200 dark:bg-proteanGray-800',
 };
 export const ThemeStoreContext = createContext(initialThemeState);
 

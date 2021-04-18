@@ -626,8 +626,21 @@ Follow these steps to create your pilot and lancer character sheets.
 ## Character Backstory and Traits
 
 ### 1. Read Base Character Information
+Read the initial backstory, motivation, strength, and weakness that I wrote for your character. Consider the following questions:
+- _Do I sympathize with this character's motivation?_
+- _Can I roleplay to this character's strength?_
+- _Am I comfortable acting on this character's weakness?_
 
 ### 2. Finalize Character Information
+If any of the answers to the previous questions is "no," then consider what needs to be changed to turn the answer into a yes. Once you are comfortable with your character's design, move on to the next step.
+
+## Pilot Sheet
+
+### 1. Choose Pilot Action Blocks
+Every pilot has six action blocks. Three of these are action blocks that you can fill with any skills (called Triggers in the lancer core rulebook). One of these is a pilot hardsuit, a piece of equipment every lancer pilot utilizes. The last two action blocks are for any pieces of gear your pilot brings on missions.
+
+### 2. Choose Action Block Dice
+For this game we will be using the "standard distribution" of dice sizes. This means your six action blocks must each have a unique die value (d4, d6, d8, d10, d12 and d20). Consult the Protean RPG Making Checks page to see the differences between the dice sizes.
 
 ## Lancer Sheet
 
@@ -690,14 +703,10 @@ The following examples use the same Monarch frame from above, which is 'Size 2' 
 </WidgetContainer>
 
 #### Free Action Blocks
+You can use the GMS weapons, GMS systems, and the weapons/systems from your frame to determine your action blocks. These must be converted from Lancer RPG to Protean RPG. Work with the Advocate in order to do the conversions.
 
 ### 4. Choose Action Block Dice
-
-## Pilot Sheet
-
-### 1. Choose Pilot Action Blocks
-
-### 2. Choose Action Block Dice
+For this game we will be using the "standard distribution" of dice sizes. This means six of your action blocks must each have a unique die value (d4, d6, d8, d10, d12 and d20). The additional two action blocks can use any die size you wish. Consult the Protean RPG Making Checks page to see the differences between the dice sizes.
 `
 }
 

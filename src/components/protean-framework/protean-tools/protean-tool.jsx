@@ -17,7 +17,7 @@ export default function ProteanTool(props) {
 
 export function ProteanToolHeader(props) {
   return (
-    <div className="flex-none w-full p-2 text-xs font-semibold uppercase truncate text-gray-500">
+    <div className="flex-none w-full p-2 text-xs font-semibold uppercase truncate text-proteanGray-500">
       {props.children}
     </div>
   );
@@ -71,7 +71,7 @@ export function ProteanToolOptions(props) {
       <Popover.Button className="acc-focus py-1 hover:raise-10">
         <FabricIcon name="MoreVertical"></FabricIcon>
       </Popover.Button>
-      <Popover.Panel className="absolute z-10 bg-gray-500">
+      <Popover.Panel className="absolute z-10 bg-proteanGray-500">
         {props.children}
       </Popover.Panel>
     </Popover>

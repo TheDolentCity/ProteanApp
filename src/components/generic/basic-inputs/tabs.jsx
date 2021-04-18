@@ -13,7 +13,7 @@ export default function Tabs(props) {
   return (
     <div className={"flex-1 flex flex-col whitespace-normal " + props.openCss}>
 
-      <div className="flex-none flex w-full items-center border-b border-gray-400 bg-gray-200 dark:border-gray-700"> {
+      <div className="flex-none flex w-full items-center border-b border-proteanGray-400 bg-proteanGray-200 dark:border-proteanGray-700"> {
         tabs.map((tab, i) => (
           <div className="flex-1 flex h-6 my-auto items-center">
             <button onClick={setCurrentTab(tab.label)} className="flex-grow">
