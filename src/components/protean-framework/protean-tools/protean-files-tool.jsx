@@ -14,8 +14,8 @@ export default function ProteanFilesTool(props) {
           <ProteanToolRow key={i}>
             <ProteanFile file={file}></ProteanFile>
             <ProteanFileOptions>
-              <ProteanFileDelete file={file}></ProteanFileDelete>
               <ProteanFileDownload file={file}></ProteanFileDownload>
+              <ProteanFileDelete file={file}></ProteanFileDelete>
             </ProteanFileOptions>
           </ProteanToolRow>
         ))
@@ -52,7 +52,7 @@ function ProteanFileOptions({ children }) {
       <Popover.Button className="acc-focus z-0 py-1 hover:raise-10">
         <FabricIcon name="MoreVertical"></FabricIcon>
       </Popover.Button>
-      <Popover.Panel className="fixed z-10 w-48 ml-10 -mt-9 py-2 rounded glass-10 shadow-md">
+      <Popover.Panel className="fixed z-10 w-48 ml-6 -mt-10 py-2 rounded bg-proteanGray-200 dark:bg-proteanGray-900 shadow-md">
         {children}
       </Popover.Panel>
     </Popover>

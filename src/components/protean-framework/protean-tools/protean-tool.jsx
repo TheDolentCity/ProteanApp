@@ -45,7 +45,7 @@ export function ProteanToolButton(props) {
       onClick={props.onClick} 
       className={
         (props.active ? "theme-color text-white font-semibold" : "hover:raise-10")
-        + " acc-focus flex flex-grow px-4 py-1 items-center overflow-hidden"}>
+        + " acc-focus flex flex-grow px-4 py-1 rounded items-center overflow-hidden"}>
       <FabricIcon name={props.icon} className=""></FabricIcon>
       <div className="pl-2 text-sm truncate">
         {props.children}

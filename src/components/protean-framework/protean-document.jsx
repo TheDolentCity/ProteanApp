@@ -50,7 +50,7 @@ export default function ProteanDocument() {
         );
     }
   }
-  else return <span></span>;
+  else return <Page></Page>;
 }
 
 function Document(props) {

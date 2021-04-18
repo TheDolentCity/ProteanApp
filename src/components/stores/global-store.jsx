@@ -916,13 +916,14 @@ function loadLocalStorage(key, defaultValue) {
   return localStorage.getItem(key) === null ? defaultValue : JSON.parse(localStorage.getItem(key));
 }
 
-function isNotBuiltInFile(file) {
-  return BuiltInFiles[file?.uuid] === undefined;
+function isNotBuiltInFile(uuid) {
+  console.log(`isNotBuiltInFile:${uuid}:${BuiltInFiles[uuid]}:${BuiltInFiles[uuid] === undefined}`);
+  return BuiltInFiles[uuid] === undefined;
 }
 
 function saveNonBuiltInFiles(files) {
-  console.log("saveNonBuiltInFiles:FileNames:\n" + JSON.stringify(files.map(file => file.uuid)));
-  var nonBuiltInFiles = files.filter(file => isNotBuiltInFile(file));
+  // console.log("saveNonBuiltInFiles:FileNames:\n" + JSON.stringify(files.map(file => file.uuid)));
+  var nonBuiltInFiles = files.filter(file => isNotBuiltInFile(file?.uuid));
   console.log("saveNonBuiltInFiles:NonBuiltInFileNames:\n" + JSON.stringify(nonBuiltInFiles.map(file => file.uuid)));
   localStorage.setItem("files", JSON.stringify(nonBuiltInFiles));
 }
@@ -966,19 +967,19 @@ const initialGlobalState = {
 const reducer = (globalState, action) => {
   switch (action.type) {
     case "setDarkMode":
-      localStorage.setItem("darkMode", action.payload.darkMode);
+      localStorage.setItem("darkMode", action?.payload.darkMode);
       return {
         ...globalState,
-        darkMode: action.payload.darkMode
+        darkMode: action?.payload.darkMode
       }
     case "uploadFile":
       var iterations = 1;
-      var newFile = { ...action.payload.file };
+      var newFile = { ...action?.payload.file };
       const existingFileUuids = globalState.files.map(file => file.uuid);
       while (existingFileUuids.includes(newFile?.uuid)) {
         console.log(`Existing file with uuid '${newFile?.uuid}' exists.`);
         console.log(`Renaming new file...`);
-        newFile.uuid = `(${iterations})` + action.payload.file.uuid;
+        newFile.uuid = `(${iterations})` + action?.payload.file.uuid;
         console.log(`Renamed new file to '${newFile.uuid}'`);
         iterations++;
       }
@@ -990,11 +991,11 @@ const reducer = (globalState, action) => {
     case "setActiveFile":
       return {
         ...globalState,
-        activeFile: action.payload.activeFile,
+        activeFile: action?.payload.activeFile,
       }
     case "setActivePage":
       var copyFile = { ...globalState.activeFile };
-      copyFile.metadata.activePage = action.payload.activePage;
+      copyFile.metadata.activePage = action?.payload.activePage;
       return {
         ...globalState,
         activeFile: copyFile
@@ -1003,34 +1004,36 @@ const reducer = (globalState, action) => {
       saveNonBuiltInFiles([...globalState.files]);
       return {
         ...globalState,
-        activeFile: action.payload.activeFile
+        activeFile: action?.payload.activeFile
       }
     case "deleteFile":
       // Don't delete built in files
-      if (isNotBuiltInFile(action.payload.deleteFile?.uuid)) {
+      if (isNotBuiltInFile(action?.payload.deleteFile?.uuid) == false) {
         console.log("Error: Cannot delete built in file.");
         return { ...globalState };
       }
 
       // Remove the file from the arrays
       console.log("deleteFile:originals:\n" + JSON.stringify(globalState?.files.map(f => f.uuid)));
-      const files = globalState?.files.filter((file) => action.payload.deleteFile?.uuid !== file.uuid);
+      const files = globalState?.files.filter((file) => action?.payload.deleteFile?.uuid !== file.uuid);
       console.log("deleteFile:afterDelete:\n" + JSON.stringify(files.map(f => f.uuid)));
 
       // Save the new list of files in local storage
       saveNonBuiltInFiles(files);
 
       // Return the new in-memory global state
+      // Nullifies the active file if it is the file we just deleted
       return {
         ...globalState,
-        files: files
+        files: files,
+        activeFile: action?.payload?.deleteFile?.uuid === globalState.activeFile?.uuid ? null : globalState.activeFile
       }
     case "setProteanSettingsState":
       return {
         ...globalState,
         conditionalRenders: {
           ...globalState.conditionalRenders,
-          "ProteanSettingsModal": action.payload.state
+          "ProteanSettingsModal": action?.payload.state
         }
       }
     default:

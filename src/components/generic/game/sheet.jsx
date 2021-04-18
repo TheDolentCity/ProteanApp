@@ -59,7 +59,7 @@ export default function Sheet() {
       </ProteanErrorBoundary>
     );
   }
-  else return <span className="hidden"></span>;
+  else return <div></div>;
 }
 
 function SheetWidget(props) {

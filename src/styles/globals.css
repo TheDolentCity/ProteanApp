@@ -195,7 +195,7 @@
     @apply w-full px-2 elevation-0 justify-center overflow-hidden text-sm xl:text-base font-medium;
   }
   .scroll {
-    @apply scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300 dark:scrollbar-thumb-gray-500 dark:scrollbar-track-gray-700;
+    @apply scrollbar-thin scrollbar-thumb-proteanGray-400 scrollbar-track-proteanGray-300 dark:scrollbar-thumb-proteanGray-500 dark:scrollbar-track-proteanGray-700;
   }
   @variants focus, hover {
     .theme-color {
