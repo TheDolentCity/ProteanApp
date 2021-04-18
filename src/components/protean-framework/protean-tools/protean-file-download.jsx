@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useGlobalStore } from "../../stores/global-store";
-import { ProteanToolButton } from './protean-tool';
+import { ProteanToolButton, ProteanToolRow } from './protean-tool';
 
 export default function ProteanFileDownload() {
   const { globalState, dispatch } = useGlobalStore();
@@ -18,7 +18,7 @@ export default function ProteanFileDownload() {
   }
 
   return (
-    <div>
+    <ProteanToolRow>
       <ProteanToolButton
         icon="Download"
         onClick={downloadActiveFile}>
@@ -31,6 +31,6 @@ export default function ProteanFileDownload() {
         ref={fileOutputRef}>
         DOWNLOAD
       </a>
-    </div>
+    </ProteanToolRow>
   );
 };

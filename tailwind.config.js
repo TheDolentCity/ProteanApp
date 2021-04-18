@@ -9,8 +9,8 @@ module.exports = {
       current: "currentColor",
       black: colors.black,
       white: colors.white,
-      gray: colors.gray,
-      primary: colors.green,
+      gray: colors.coolGray,
+      primary: colors.lightBlue,
       green: colors.green,
       red: colors.red,
       cyan: colors.cyan,
@@ -233,6 +233,7 @@ module.exports = {
     },
   },
   variants: {
+    scrollbar: ['dark'],
     extend: {
       backgroundColor: ['checked'],
       outline: ['focus-visible'],
@@ -241,6 +242,6 @@ module.exports = {
     }
   },
   plugins: [
-    // require('@tailwindcss/forms'),
+    require('tailwind-scrollbar'),
   ],
 }

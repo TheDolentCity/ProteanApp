@@ -21,7 +21,7 @@ export default function ProteanSettings(props) {
 
   if (globalState?.conditionalRenders["ProteanSettingsModal"]) {
     return (
-      <Modal onClose={closeSettings}>
+      <Modal onClose={closeSettings} header="Protean Settings">
         <button onClick={clearLocalStorage} className="acc-focus p-2 rounded-md text-white bg-red-500 hover:bg-red-800">
           Clear Local Storage
         </button>

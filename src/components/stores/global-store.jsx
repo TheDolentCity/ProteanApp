@@ -399,11 +399,19 @@ const PlayingTheGame = {
 ## Example of Play
 Zero, a mech pilot, is attempting to tear an entrance into a derelict starship before a legion of drones destroy her and Feather, her companion. Feather is currently fighting the drones off with their mech's plasma sword. The Advocate says that this will be a hard check and that Zero's Size action block makes the most sense for ripping a hole in the side of the starship. But Zero suggests that she use her Grapple Cable action block instead and explains how she would fire the grappling hooks into weaknesses in the metal and pull to create a hole. The Advocate agrees that makes sense (and is way cooler) so Zero rolls 2d8.
 
+<WidgetContainer>
+<DiceBlock diceBlock={{
+  "title": "Size",
+  "dice": "1d20",
+  "description": "A lancer's size represents their physical strength and resilience. The larger a lancer is the bigger a wall they can run through and the better chance they'll have of wrestling another lancer to the ground."}}>
+</DiceBlock>
+
 <DiceBlock diceBlock={{
   "title": "Grapple Cable",
   "dice": "2d8",
   "description": "Auxiliary grapple cable mounts that support the weight of the mech, but can also be used for pulling objects towards the pilot (Medium Range)."}}>
 </DiceBlock>
+</WidgetContainer>
 
 Zero rolls a 6 and an 8, but the difficulty is hard so the highest roll is removed, leaving the 6 and a result of _Success 3, Disadvantage 1_. "You start to pull," says the Advocate, "but you quickly realize you have to use your higher torque option on your grapple cables. The cables move slower in that mode so Feather will have to perform an action to hold back the drones while you're tearing open the door. Feather there is a horde of drones flying towards you from every angle so this will be a severe check. What would you like to do?"
 
@@ -604,6 +612,95 @@ You just took your last test to become an official member of the active Union Na
 `
 }
 
+const LancerCharacterCreation = {
+  uuid: "lancer-character-creation.json",
+  metadata: {
+    type: "PAGE",
+    title: "Lancer Character Creation"
+  },
+  content:
+    `
+# Character Creation Steps
+Follow these steps to create your pilot and lancer character sheets.
+
+## Character Backstory and Traits
+
+### 1. Read Base Character Information
+
+### 2. Finalize Character Information
+
+## Lancer Sheet
+
+### 1. Choose a Lancer Frame
+The most fun step. Step into the mind of your character and think about how they handle problems. Are they the kind of pilot to run into danger and punch it in the face? Or do they use stealth and tech system attacks to take down their enemies?
+
+The lancer frames can be found on pages 128-252 in the Lancer core rulebook, pages 41-67 of the Long Rim supplement, and 179-189 of the No Room For A Wallflower adventure.
+
+**DISCLAIMER:** Some lancer frames might be restricted by me if I don't think they are fair or would work in Protean RPG. A few examples are the Pegasus (which literally has a gun that chooses to ignore physics) and the Lich which can control time and reanimate itself.
+
+### 2. Create Lancer Defenses
+We are using four defenses in the Protean version of lancer: Hull, Heat, Systems, and Supplies. Each has a separate conversion method found below:
+- **Hull:** The maximum score is equal to your lancer's 'HP' minus 2. The Hull resistance is equal to your lancer's 'Armor'.
+- **Heat:** The maximum score is equal to your lancer's 'Heat Capacity'.
+- **Systems:** The maximum score is equal to your lancer's 'E-defense' minus 2.
+- **Supplies:** The maximum score is equal to 6, no matter what lancer frame you chose.
+
+### 3. Choose Lancer Action Blocks
+Every lancer has eight action blocks. Four of these are free action blocks that you can fill with any systems or weapons available to your lancer frame. Four of these are constant as they are a defining part of every lancer: frame, core system, size, and speed. Let's handle these constant ones first.
+
+#### Frame Action Block
+Record the name and basic descripton of your lancer frame in the action block titled 'Frame:'. Your frame block always rolls 2dx. Don't worry about its dice size, but record its traits as tags in paranthesis. Use the following example as a reference:
+
+<DiceBlock diceBlock={{
+  "title": "Frame: Monarch",
+  "dice": "2d20",
+  "description": "The Monarch is SSC's groundbreaking lession in how to design a fast platform for the delivery of missiles and other self-propelled ordnance. The monarch is ready to mount ground-to-ground, ground-to-air, ground-to-orbit, and all-theater missiles and guidance systems. (Avenger Silos, Seeking Payload)."}}>
+</DiceBlock>
+<Spacer></Spacer>
+
+#### Core System Action Block
+Record the name and basic description of your lancer's core system in the action block titled 'Core:'.  Your core system block always rolls 3dx. Don't worry about its dice size, but record its traits as tags in paranthesis. Use the following example as a reference:
+
+<DiceBlock diceBlock={{
+  "title": "Core: HIGH-PENETRATION MISSILE SYSTEM",
+  "dice": "3d20",
+  "description": "The SSC-30 High-Penetration Missile System is a mech-mounted micro-missile delivery system with a payload of 60 or more deadly, miniaturized Avenger warheads in a single volley. (Long Range, Blast, Self-Guided). Whenever you use this action block take 6 supplies damage."}}>
+</DiceBlock>
+<Spacer></Spacer>
+
+#### Size & Speed Action Blocks
+The name and description of every lancer mech's Size and Speed is the same, but you do have to convert your frame's size and speed to the action block version.
+- **Size:** The number of dice rolled is equal to your lancer's 'Size' + 1. If your lancer is half sized (1/2), then its number of dice rolled is just 1.
+- **Speed:** The number of dice is equal to your lancer's 'Speed' minus 2 (to a minimum of 1).
+
+The following examples use the same Monarch frame from above, which is 'Size 2' and 'Speed 5' in Lancer.
+
+<WidgetContainer>
+<DiceBlock diceBlock={{
+  "title": "Size",
+  "dice": "3dX",
+  "description": "A lancer's size represents their physical strength and resilience. The larger a lancer is the bigger a wall they can run through and the better chance they'll have of wrestling another lancer to the ground."}}>
+</DiceBlock>
+
+<DiceBlock diceBlock={{
+  "title": "Speed",
+  "dice": "3dX",
+  "description": "A lancer's speed represents their reaction time and capability for traversing terrain. The faster a lancer the easier it will be to reposition and complete critical tasks quickly."}}>
+</DiceBlock>
+</WidgetContainer>
+
+#### Free Action Blocks
+
+### 4. Choose Action Block Dice
+
+## Pilot Sheet
+
+### 1. Choose Pilot Action Blocks
+
+### 2. Choose Action Block Dice
+`
+}
+
 const LancerGMSWeapons = {
   uuid: "lancer-gms-weapons.json",
   metadata: {
@@ -701,95 +798,6 @@ The Type-III (T-3) line is made up of heavy weapons, ordnance, and other exotic,
     "description": "A powerful, directed rocket that can be used to destroy foe or terrain alike (Medium Range, Accurate, Blast, Knockback). Whenever you use this action block take 2 Supplies damage."}}>
   </DiceBlock>
 </WidgetContainer>
-`
-}
-
-const LancerCharacterCreation = {
-  uuid: "lancer-character-creation.json",
-  metadata: {
-    type: "PAGE",
-    title: "Lancer Character Creation"
-  },
-  content:
-`
-# Character Creation Steps
-Follow these steps to create your pilot and lancer character sheets.
-
-## Character Backstory and Traits
-
-### 1. Read Base Character Information
-
-### 2. Finalize Character Information
-
-## Lancer Sheet
-
-### 1. Choose a Lancer Frame
-The most fun step. Step into the mind of your character and think about how they handle problems. Are they the kind of pilot to run into danger and punch it in the face? Or do they use stealth and tech system attacks to take down their enemies?
-
-The lancer frames can be found on pages 128-252 in the Lancer core rulebook, pages 41-67 of the Long Rim supplement, and 179-189 of the No Room For A Wallflower adventure.
-
-**DISCLAIMER:** Some lancer frames might be restricted by me if I don't think they are fair or would work in Protean RPG. A few examples are the Pegasus (which literally has a gun that chooses to ignore physics) and the Lich which can control time and reanimate itself.
-
-### 2. Create Lancer Defenses
-We are using four defenses in the Protean version of lancer: Hull, Heat, Systems, and Supplies. Each has a separate conversion method found below:
-- **Hull:** The maximum score is equal to your lancer's 'HP' minus 2. The Hull resistance is equal to your lancer's 'Armor'.
-- **Heat:** The maximum score is equal to your lancer's 'Heat Capacity'.
-- **Systems:** The maximum score is equal to your lancer's 'E-defense' minus 2.
-- **Supplies:** The maximum score is equal to 6, no matter what lancer frame you chose.
-
-### 3. Choose Lancer Action Blocks
-Every lancer has eight action blocks. Four of these are free action blocks that you can fill with any systems or weapons available to your lancer frame. Four of these are constant as they are a defining part of every lancer: frame, core system, size, and speed. Let's handle these constant ones first.
-
-#### Frame Action Block
-Record the name and basic descripton of your lancer frame in the action block titled 'Frame:'. Don't worry about its dice value for now, but record its traits as tags in paranthesis. Use the following example as a reference:
-
-<DiceBlock diceBlock={{
-  "title": "Frame: Monarch",
-  "dice": "3d20",
-  "description": "The Monarch is SSC's groundbreaking lession in how to design a fast platform for the delivery of missiles and other self-propelled ordnance. The monarch is ready to mount ground-to-ground, ground-to-air, ground-to-orbit, and all-theater missiles and guidance systems. (Avenger Silos, Seeking Payload)."}}>
-</DiceBlock>
-<Spacer></Spacer>
-
-#### Core System Action Block
-Record the name and basic description of your lancer's core system in the action block titled 'Core:'. Don't worry about its dice value for now, but record its traits as tags in paranthesis. Use the following example as a reference.
-
-<DiceBlock diceBlock={{
-  "title": "Core: HIGH-PENETRATION MISSILE SYSTEM",
-  "dice": "3d20",
-  "description": "The SSC-30 High-Penetration Missile System is a mech-mounted micro-missile delivery system with a payload of 60 or more deadly, miniaturized Avenger warheads in a single volley. (Long Range, Blast, Self-Guided). Whenever you use this action block take 6 supplies damage."}}>
-</DiceBlock>
-<Spacer></Spacer>
-
-#### Size & Speed Action Blocks
-The name and description of every lancer mech's Size and Speed is the same, but you do have to convert your frame's size and speed to the action block version.
-- **Size:** The number of dice rolled is equal to your lancer's 'Size' + 1. If your lancer is half sized (1/2), then its number of dice rolled is just 1.
-- **Speed:** The number of dice is equal to your lancer's 'Speed' minus 2 (to a minimum of 1).
-
-The following examples use the same Monarch frame from above, which is 'Size 2' and 'Speed 5' in Lancer.
-
-<WidgetContainer>
-<DiceBlock diceBlock={{
-  "title": "Size",
-  "dice": "3dX",
-  "description": "A lancer's size represents their physical strength and resilience. The larger a lancer is the bigger a wall they can run through and the better chance they'll have of wrestling another lancer to the ground."}}>
-</DiceBlock>
-
-<DiceBlock diceBlock={{
-  "title": "Speed",
-  "dice": "3dX",
-  "description": "A lancer's speed represents their reaction time and capability for traversing terrain. The faster a lancer the easier it will be to reposition and complete critical tasks quickly."}}>
-</DiceBlock>
-</WidgetContainer>
-
-#### Free Action Blocks
-
-### 4. Choose Action Block Dice
-
-## Pilot Sheet
-
-### 1. Choose Pilot Action Blocks
-
-### 2. Choose Action Block Dice
 `
 }
 
@@ -908,9 +916,13 @@ function loadLocalStorage(key, defaultValue) {
   return localStorage.getItem(key) === null ? defaultValue : JSON.parse(localStorage.getItem(key));
 }
 
+function isNotBuiltInFile(file) {
+  return BuiltInFiles[file?.uuid] === undefined;
+}
+
 function saveNonBuiltInFiles(files) {
   console.log("saveNonBuiltInFiles:FileNames:\n" + JSON.stringify(files.map(file => file.uuid)));
-  var nonBuiltInFiles = files.filter(file => BuiltInFiles[file.uuid] === undefined);
+  var nonBuiltInFiles = files.filter(file => isNotBuiltInFile(file));
   console.log("saveNonBuiltInFiles:NonBuiltInFileNames:\n" + JSON.stringify(nonBuiltInFiles.map(file => file.uuid)));
   localStorage.setItem("files", JSON.stringify(nonBuiltInFiles));
 }
@@ -992,6 +1004,26 @@ const reducer = (globalState, action) => {
       return {
         ...globalState,
         activeFile: action.payload.activeFile
+      }
+    case "deleteFile":
+      // Don't delete built in files
+      if (isNotBuiltInFile(action.payload.deleteFile?.uuid)) {
+        console.log("Error: Cannot delete built in file.");
+        return { ...globalState };
+      }
+
+      // Remove the file from the arrays
+      console.log("deleteFile:originals:\n" + JSON.stringify(globalState?.files.map(f => f.uuid)));
+      const files = globalState?.files.filter((file) => action.payload.deleteFile?.uuid !== file.uuid);
+      console.log("deleteFile:afterDelete:\n" + JSON.stringify(files.map(f => f.uuid)));
+
+      // Save the new list of files in local storage
+      saveNonBuiltInFiles(files);
+
+      // Return the new in-memory global state
+      return {
+        ...globalState,
+        files: files
       }
     case "setProteanSettingsState":
       return {

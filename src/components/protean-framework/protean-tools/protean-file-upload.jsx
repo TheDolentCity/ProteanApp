@@ -1,6 +1,6 @@
 import React from 'react';
 import { useGlobalStore } from "../../stores/global-store";
-import { ProteanToolButton } from './protean-tool';
+import { ProteanToolButton, ProteanToolRow } from './protean-tool';
 
 export default function ProteanFileUpload() {
   const { globalState, dispatch } = useGlobalStore();
@@ -34,18 +34,20 @@ export default function ProteanFileUpload() {
   };
 
   return (
-    <ProteanToolButton
-      icon="Upload"
-      onClick={onClickHandler}>
-      Upload
+    <ProteanToolRow>
+      <ProteanToolButton
+        icon="Upload"
+        onClick={onClickHandler}>
+        Upload Files
       <input
-        type="file"
-        className="hidden"
-        accept=".json,application/json,"
-        multiple={false}
-        onChange={onChangeHandler}
-        ref={fileInputRef}
-      />
-    </ProteanToolButton>
+          type="file"
+          className="hidden"
+          accept=".json,application/json,"
+          multiple={false}
+          onChange={onChangeHandler}
+          ref={fileInputRef}
+        />
+      </ProteanToolButton>
+    </ProteanToolRow>
   );
 };

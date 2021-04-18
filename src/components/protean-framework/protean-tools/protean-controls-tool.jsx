@@ -1,5 +1,5 @@
 import React from 'react';
-import ProteanTool, { ProteanToolButton } from "./protean-tool";
+import ProteanTool, { ProteanToolButton, ProteanToolRow } from "./protean-tool";
 import { useGlobalStore } from "../../stores/global-store";
 import ProteanDarkToggle from './protean-dark-toggle';
 import ProteanFileUpload from './protean-file-upload';
@@ -12,7 +12,6 @@ export default function ProteanControlsTool(props) {
       <ProteanDarkToggle></ProteanDarkToggle>
       <ProteanSettingsLauncher></ProteanSettingsLauncher>
       <ProteanFileUpload></ProteanFileUpload>
-      <ProteanFileDownload></ProteanFileDownload>
       {/* <ProteanToolButton icon="View">Reading Mode</ProteanToolButton>
       <ProteanToolButton icon="EditCreate">Writing Mode</ProteanToolButton>
       <ProteanToolButton icon="Game">Playing Mode</ProteanToolButton> */}
@@ -33,10 +32,12 @@ function ProteanSettingsLauncher() {
   }
 
   return (
-    <ProteanToolButton 
-      icon="Settings" 
-      onClick={() => dispatch(launchProteanSettings())}>
-      Settings
-    </ProteanToolButton>
+    <ProteanToolRow>
+      <ProteanToolButton
+        icon="Settings"
+        onClick={() => dispatch(launchProteanSettings())}>
+        Settings
+      </ProteanToolButton>
+    </ProteanToolRow>
   );
 }

@@ -23,7 +23,7 @@ export function ProteanRightSidebar() {
 
 function ProteanSidebar(props) {
   return (
-    <div className="flex-none flex flex-col w-52 xl:w-72 overflow-y-auto raise-5">
+    <div className="flex-none flex flex-col z-30 w-52 xl:w-72 overflow-y-auto bg-darken-5 dark:bg-darken-25">
       {props.children}
     </div>
   );

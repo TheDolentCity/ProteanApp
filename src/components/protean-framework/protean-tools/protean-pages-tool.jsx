@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useGlobalStore } from "../../stores/global-store";
-import ProteanTool, { ProteanToolButton } from "./protean-tool";
+import ProteanTool, { ProteanToolRow, ProteanToolButton } from "./protean-tool";
 import FabricIcon from "../../generic/basic-inputs/fabric-icon";
 
 export default function ProteanPagesTool(props) {
@@ -20,13 +20,15 @@ export default function ProteanPagesTool(props) {
       <ProteanTool toolName="Pages">
         {
           globalState?.activeFile?.content.map((page, i) => (
-            <ProteanToolButton
-              key={page.uuid}
-              icon={globalState.fileIcons[page.metadata.type]}
-              onClick={() => dispatch(activePageDispatch(i))}
-              active={globalState?.activeFile?.metadata.activePage === i}>
-              {page.metadata.title}
-            </ProteanToolButton>
+            <ProteanToolRow key={page.uuid}>
+              <ProteanToolButton
+                key={page.uuid}
+                icon={globalState.fileIcons[page.metadata.type]}
+                onClick={() => dispatch(activePageDispatch(i))}
+                active={globalState?.activeFile?.metadata.activePage === i}>
+                {page.metadata.title}
+              </ProteanToolButton>
+            </ProteanToolRow>
           ))
         }
       </ProteanTool>
@@ -74,7 +76,7 @@ function ProteanPageButton(props) {
     return (
       <button onClick={props.onClick} className="acc-focus flex flex-col col-span-2 px-4 pt-2 pb-4 rounded text-base hover:raise-10">
         <p className="max-w-full pb-2 text-sm truncate">{props.children}</p>
-        <div className="flex w-full h-36 justify-center items-center rounded shadow-md bg-cyan-500 dark:bg-cyan-600 text-white font-semibold">
+        <div className="flex w-full h-36 justify-center items-center rounded shadow-md theme-color text-white font-semibold">
           <span className="text-7xl font-semibold">
             {props.number}
           </span>

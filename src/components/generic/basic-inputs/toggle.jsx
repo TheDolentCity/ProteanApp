@@ -16,7 +16,7 @@ export default function Toggle(props) {
         as="button"
         checked={switchValue}
         onChange={onChange}
-        className={`${switchValue ? "bg-cyan-500 dark:bg-cyan-600" : "raise-25"}
+        className={`${switchValue ? "theme-color" : "raise-25"}
             relative inline-flex flex-shrink-0 h-6 transition-colors duration-200 ease-in-out border-2 border-transparent rounded-full cursor-pointer w-11 focus:outline-none focus:shadow-outline`}
       >
         {({ checked }) => (
