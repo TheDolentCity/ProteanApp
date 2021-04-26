@@ -20,7 +20,7 @@ export default function TextBlock(props) {
   const textCss = (textType) => {
     switch (textType) {
       case "Header1": return "p-1 mt-8 mb-3 leading-tight text-3xl xl:text-5xl font-bold";
-      case "Paragraph": return "my-4 leading-7 text-base xl:text-lg font-normal";
+      case "Paragraph": return "my-4 leading-7 text-base xl:text-lg font-normal text-darken-50 dark:text-lighten-50";
       default: return "";
     }
   }

@@ -2,7 +2,8 @@ import React from "react";
 
 export function WidgetContainer(props) {
   return (
-    <div className="grid grid-cols-12 gap-6 mb-8 w-full items-start">
+    // <div className="grid grid-cols-12 gap-6 mb-8 w-full items-start">
+    <div className="grid grid-cols-12 gap-6 mb-8 w-full items-stretch">
       {props.children}
     </div>
   );

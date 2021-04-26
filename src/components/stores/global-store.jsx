@@ -236,10 +236,21 @@ const MakingChecks = {
 ## 1. Determine Starting Dice Pool
 If you're making a check with a specific action block you will start with the associated dice as your pool. If you don't have any action block that would apply to the check, then you start with 1d20.
 
-## 2. Apply Advantages
-If the Advocate believes that you are in a situation where one of your action block's tags would grant some advantage then add an additional die of the same size. Example: add +1 die to a long range shot if your rifle has the 'magnification' tag.
-- You can add as many dice as there are applicable tags, but you cannot add dice from other relevant action block tags. 
-- You can add dice if a scene tag, such as a strong trade wind on the sea, would help in this situation.
+## 2. "Right Tool For The Job"
+If you are making a check and the Advocate agrees that your action block is the "right tool for the job" then you add +1 die to the pool. But what does that mean? It depends on what the action block represents. 
+The easiest way to determine if something is the right tool for the job is to ask "what do you use this tool/skill for?" Do not consider what it _could_ be used for, just what its purpose is. Read the examples that follow.
+
+### Shovel
+- A shovel is the right tool for the job if you are digging a hole.
+- A shovel is NOT the right tool for the job if you are trying to knock someone out.
+
+### Flattery
+- Flattery is the right tool for the job if you are trying to compliment someone.
+- Flattery is NOT the right tool for the job to convince someone you're trustworthy.
+
+### Computer
+- A computer is the right tool for the job if you are trying to use computer programs or execute complex algorithms.
+- A computer is NOT the right tool for the job to write a convincing speech just because it has a word processor and access to the internet.
 
 ## 3. Apply Disadvantages
 If the Advocate believes that you are in a situation where an adversary's tags would inflict some disadvantage then increase the difficulty by one step. Example: difficulty changes from average to hard since the Gorgon has the 'turn to stone' tag and you need to close your eyes to try and strike at it.
@@ -386,18 +397,16 @@ Every die in Protean is unique. This means interpreting a 4 on a d4 is very diff
 `
 }
 
-const PlayingTheGame = {
-  uuid: 'playing-the-game.json',
+const ExampleOfPlay = {
+  uuid: 'example-of-play.json',
   metadata: {
     type: 'PAGE',
-    title: 'Playing The Game'
+    title: 'Example of Play'
   },
   content:
     `
-# Playing The Game
-
-## Example of Play
-Zero, a mech pilot, is attempting to tear an entrance into a derelict starship before a legion of drones destroy her and Feather, her companion. Feather is currently fighting the drones off with their mech's plasma sword. The Advocate says that this will be a hard check and that Zero's Size action block makes the most sense for ripping a hole in the side of the starship. But Zero suggests that she use her Grapple Cable action block instead and explains how she would fire the grappling hooks into weaknesses in the metal and pull to create a hole. The Advocate agrees that makes sense (and is way cooler) so Zero rolls 2d8.
+# Example of Play
+Zero and Feather are two mech pilots whose mission has gone horribly wrong. Zero is attempting to tear an entrance into a derelict starship before a legion of drones destroy her and Feather. Feather is currently fighting the drones off with their mech's plasma sword. The Advocate says that this will be a hard check and that Zero's Size action block makes the most sense for ripping a hole in the side of the starship. But Zero suggests that she use her Grapple Cable action block instead and explains how she would fire the grappling hooks into weaknesses in the metal and pull to create a hole. The Advocate agrees that makes sense (and is way cooler) so Zero rolls 2d8.
 
 <WidgetContainer>
 <DiceBlock diceBlock={{
@@ -415,15 +424,15 @@ Zero, a mech pilot, is attempting to tear an entrance into a derelict starship b
 
 Zero rolls a 6 and an 8, but the difficulty is hard so the highest roll is removed, leaving the 6 and a result of _Success 3, Disadvantage 1_. "You start to pull," says the Advocate, "but you quickly realize you have to use your higher torque option on your grapple cables. The cables move slower in that mode so Feather will have to perform an action to hold back the drones while you're tearing open the door. Feather there is a horde of drones flying towards you from every angle so this will be a severe check. What would you like to do?"
 
-Feather consults their character sheet and decides that their only viable option is to use their mech's Micro Missile System. However Feather's supplies defense is currently only 2 and the Micro Missile System has a side effect where upon firing it the user suffers 3 supplies damage. Feather also says that they think the 'blast' and 'self-guided' tags on the Micro Missile System action block would be advantageous for taking out a horde of flying drones. The Advocate agrees so instead of rolling 1d12 Feather rolls 3d12.
+Feather consults their character sheet and decides that their only viable option is to use their mech's Micro Missile System. However Feather's supplies defense is currently only 2 and the Micro Missile System has a side effect where upon firing it the user suffers 3 supplies damage. Feather also says that they think the Micro Missile System is the right tool for the job for taking out flying drones due to its 'blast' and 'self-guided' tags. The Advocate agrees so instead of rolling 2d12 Feather rolls 3d12.
 
 <DiceBlock diceBlock={{
   "title": "Micro Missile System",
-  "dice": "1d12",
+  "dice": "2d12",
   "description": "An internal integration of micro missiles throughout the frame of the mech that supports immediate destruction of adversaries in all directions (Medium Range, Blast, Self-guided). Any time you use this action block suffer 3 supplies damage."}}>
 </DiceBlock>
 
-"I stab my sword into the ground, stretch my mech's arms wide open and fire as many micro missiles as I can at the drones," says Feather. They roll a 2, 10, and 12, but since the check's difficulty is severe the two highest results are ignored. This leaves Feather with the _Failure 4_ result. "You unleash a hail storm of micro missiles at the oncoming drones and you do manage to take down all of the closest ones. Zero rips a hole into the starship, but the surge of power from firing all of the micro missiles has overloaded your systems temporarily. Take 4 systems damage." Feather says, "Okay so with the 3 supplies damage from the micro missiles as well I shatter both my supplies and systems defense."
+"I stab my sword into the ground, stretch my mech's arms wide open and fire as many micro missiles as I can at the drones," says Feather. They roll a 2, 10, and 12, but since the check's difficulty is severe the two highest results are ignored. This leaves Feather with the _Failure 4_ result. "You unleash a hail storm of micro missiles at the oncoming drones and you do manage to take down most of the closest ones. Zero rips a hole into the starship, but the surge of power from firing all of the micro missiles has overloaded your systems temporarily. Take 4 systems damage." Feather says, "Okay so with the 3 supplies damage from the micro missiles as well I break both my supplies and systems defense."
 
 <WidgetContainer>
 <NumberBlock numberBlock={{
@@ -459,7 +468,25 @@ Feather consults their character sheet and decides that their only viable option
 </NumberBlock>
 </WidgetContainer>
 
+"Uh oh. Hmm the condition for the supplies defense is that your Micro Missile System is out of ammo and you can't use it until you get back to base," says the Advocate. "And for your systems break, hmm... your mech's batteries are overloaded. You need to get a replacement battery and until then your mech won't be able to move."
 
+Feather curses, but Zero asks, "Well the hole into the ship is open now right? Can I try to grab Feather and jump into it and then collapse the entrance so the remaining drones can't get in? I think it should just be a check using my laser cannon."
+
+"Alright what could go wrong. That's going to be a hard check though."
+
+<DiceBlock diceBlock={{
+  "title": "Laser Cannon",
+  "dice": "2d10",
+  "description": "A shoulder-mounted, super-heated laser that can introduce structural distortion in nanoseconds at extreme distances (Extreme Range, Melts, Pierces)."}}>
+</DiceBlock>
+
+She rolls a 6 and a 7, but since the check's difficulty is hard the 7 is ignored. This leaves Zero with the _Chaos!_ result. "You drag Feather into the starship and fire the laser cannon into the roof of the entrance you just created. At first it seems to work. Sheets of metal tumble between you and the drones, cutting them off from you. But before you can relish your success, a large groan reverberates throughout the ship. The ground beneath you shakes for a moment. Then it collapses. You fall fifty feet into some kind of underground cave system. The cave's ceiling was weakened by all of the explosives and lasers above, not to mention the starship that crashed into it at some point. You find yourself now at the bottom of a large cavern with multiple passageways snaking into the pitch black dark. What would you like to do?"
+
+"I climb out of my mech," Feather says. "I need a battery so can I use my mech scanner to try and find the nearest one? I think it makes sense that it could find one if it can detect mechs."
+
+"I agree, but that doesn't need to be a check. You have enough time to tune it and figure it out. The nearest one is somewhere Northeast of here."
+
+Feather climbs aboard Zero's mech and pulls out a flashlight. They slap the side of the mech twice like a jockey and say "Hurry up I want to get OFF of this planet."
 `
 }
 
@@ -896,7 +923,7 @@ const ProteanRPG = {
     ActionBlocksAndTags,
     DefensesAndConditions,
     MakingChecks,
-    PlayingTheGame
+    ExampleOfPlay
   ]
 }
 
@@ -926,14 +953,14 @@ function loadLocalStorage(key, defaultValue) {
 }
 
 function isNotBuiltInFile(uuid) {
-  console.log(`isNotBuiltInFile:${uuid}:${BuiltInFiles[uuid]}:${BuiltInFiles[uuid] === undefined}`);
+  // console.log(`isNotBuiltInFile:${uuid}:${BuiltInFiles[uuid]}:${BuiltInFiles[uuid] === undefined}`);
   return BuiltInFiles[uuid] === undefined;
 }
 
 function saveNonBuiltInFiles(files) {
   // console.log("saveNonBuiltInFiles:FileNames:\n" + JSON.stringify(files.map(file => file.uuid)));
   var nonBuiltInFiles = files.filter(file => isNotBuiltInFile(file?.uuid));
-  console.log("saveNonBuiltInFiles:NonBuiltInFileNames:\n" + JSON.stringify(nonBuiltInFiles.map(file => file.uuid)));
+  // console.log("saveNonBuiltInFiles:NonBuiltInFileNames:\n" + JSON.stringify(nonBuiltInFiles.map(file => file.uuid)));
   localStorage.setItem("files", JSON.stringify(nonBuiltInFiles));
 }
 

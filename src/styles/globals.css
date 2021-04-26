@@ -182,8 +182,16 @@
 }
 
 @layer components {
+  @variants dark {
+    .acc-focus-black {
+      @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-inset;
+    }
+    .acc-focus-white {
+      @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset;
+    }
+  }
   .acc-focus {
-    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-inset;
+    @apply acc-focus-black dark:acc-focus-white;
   }
   .acc-input {
     @apply appearance-none focus:outline-none focus-visible:raise-25;
@@ -193,6 +201,7 @@
   }
   .input-text-area {
     @apply w-full px-2 elevation-0 justify-center overflow-hidden text-sm xl:text-base font-medium;
+    resize: none;
   }
   .scroll {
     @apply scrollbar-thin scrollbar-thumb-proteanGray-400 scrollbar-track-proteanGray-300 dark:scrollbar-thumb-proteanGray-500 dark:scrollbar-track-proteanGray-700;
