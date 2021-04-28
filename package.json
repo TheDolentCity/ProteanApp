@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.1.1",
+    "@dnd-kit/core": "^3.0.1",
+    "@dnd-kit/sortable": "^3.0.1",
     "@headlessui/react": "^1.0.0",
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
@@ -12,7 +14,6 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.1",
-    "babel-loader": "^8.1.0",
     "focus-visible": "^5.2.0",
     "react": "16.13",
     "react-dom": "16.13",

@@ -1,10 +1,27 @@
-import React from "react";
+import React, {useState} from 'react';
+import {
+  DndContext, 
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core';
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
 
 export function WidgetContainer(props) {
   return (
-    // <div className="grid grid-cols-12 gap-6 mb-8 w-full items-start">
     <div className="grid grid-cols-12 gap-6 mb-8 w-full items-stretch">
-      {props.children}
+      <DndContext>
+        <SortableContext>
+          {props.children}
+        </SortableContext>
+      </DndContext>
     </div>
   );
 }
