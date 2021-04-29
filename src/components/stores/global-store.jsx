@@ -996,7 +996,7 @@ const initialGlobalState = {
     "PAGE": "TextDocument",
   },
   conditionalRenders: {
-    "ProteanSettingsModal": false
+    "SettingsModal": false
   }
 };
 
@@ -1064,12 +1064,12 @@ const reducer = (globalState, action) => {
         files: files,
         activeFile: action?.payload?.deleteFile?.uuid === globalState.activeFile?.uuid ? null : globalState.activeFile
       }
-    case "setProteanSettingsState":
+    case "setSettingsState":
       return {
         ...globalState,
         conditionalRenders: {
           ...globalState.conditionalRenders,
-          "ProteanSettingsModal": action?.payload.state
+          "SettingsModal": action?.payload.state
         }
       }
     default:

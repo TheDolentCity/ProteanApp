@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class ProteanErrorBoundary extends React.Component {
+export default class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
@@ -13,7 +13,6 @@ export default class ProteanErrorBoundary extends React.Component {
   // Log error
   componentDidCatch(error, errorInfo) {
     console.log(`ERROR:${error}`);
-    // console.log(`ERROR_INFO:${JSON.stringify(errorInfo)}`);
   }
 
   render() {

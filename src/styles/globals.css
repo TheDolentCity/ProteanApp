@@ -29,22 +29,40 @@
     @apply text-xs font-medium;
   }
   html {
-    @apply text-base font-sans font-light;
+    @apply text-base font-sans font-normal;
   }
 }
 
 @layer utilities {
-  .glass-5 {
-    @apply bg-white bg-opacity-5;
-    backdrop-filter: blur(5px);
-  }
-  .glass-10 {
-    @apply bg-white bg-opacity-10;
-    backdrop-filter: blur(10px);
-  }
-  .glass-20 {
-    @apply bg-white bg-opacity-20;
-    backdrop-filter: blur(20px);
+  @variants dark, hover {
+    .glass-0 {
+      @apply bg-transparent bg-opacity-0;
+      backdrop-filter: blur(5px);
+    }
+    .glass-5 {
+      @apply bg-white bg-opacity-5;
+      backdrop-filter: blur(5px);
+    }
+    .glass-10 {
+      @apply bg-white bg-opacity-10;
+      backdrop-filter: blur(10px);
+    }
+    .glass-25 {
+      @apply bg-white bg-opacity-25;
+      backdrop-filter: blur(25px);
+    }
+    .glass-burned-5 {
+      @apply bg-black bg-opacity-5;
+      backdrop-filter: blur(5px);
+    }
+    .glass-burned-10 {
+      @apply bg-black bg-opacity-10;
+      backdrop-filter: blur(10px);
+    }
+    .glass-burned-25 {
+      @apply bg-black bg-opacity-25;
+      backdrop-filter: blur(25px);
+    }
   }
   @variants hover, focus-visible {
     .elevation-0 {
@@ -204,7 +222,7 @@
     resize: none;
   }
   .scroll {
-    @apply scrollbar-thin scrollbar-thumb-proteanGray-400 scrollbar-track-proteanGray-300 dark:scrollbar-thumb-proteanGray-500 dark:scrollbar-track-proteanGray-700;
+    @apply scrollbar scrollbar-thumb-gray-400 scrollbar-track-gray-300 dark:scrollbar-thumb-gray-500 dark:scrollbar-track-gray-700;
   }
   @variants focus, hover {
     .theme-color {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useGlobalStore } from "../../stores/global-store";
-import { ProteanToolItem } from "./protean-tool";
 import Toggle from "../../generic/basic-inputs/toggle";
+import { ToolItem } from "./tool";
 
-export default function ProteanDarkToggle() {
+export default function DarkTool() {
   const { globalState, dispatch } = useGlobalStore();
 
   function darkModeDispatch(darkValue) {
@@ -16,12 +16,12 @@ export default function ProteanDarkToggle() {
   }
 
   return (
-    <ProteanToolItem icon={globalState.darkMode ? "IntermittentCloudsNight" : "Brightness"}>
+    <ToolItem icon={globalState.darkMode ? "IntermittentCloudsNight" : "Brightness"}>
       <Toggle
         label="Dark Mode"
         initialValue={globalState.darkMode}
         onChange={(toggleValue) => dispatch(darkModeDispatch(toggleValue))}>
       </Toggle>
-    </ProteanToolItem>
+    </ToolItem>
   );
 }

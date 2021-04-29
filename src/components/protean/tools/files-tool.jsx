@@ -2,29 +2,29 @@ import React from 'react';
 import { Popover } from '@headlessui/react';
 import { useGlobalStore } from "../../stores/global-store";
 import FabricIcon from "../../generic/basic-inputs/fabric-icon";
-import ProteanTool, { ProteanToolButton, ProteanToolRow } from "./protean-tool";
+import Tool, { ToolButton, ToolRow } from "./tool";
 
-export default function ProteanFilesTool(props) {
+export default function FilesTool(props) {
   const { globalState, dispatch } = useGlobalStore();
 
   return (
-    <ProteanTool toolName="Files">
+    <Tool header="Files">
       {
         globalState?.files.map((file, i) => (
-          <ProteanToolRow key={i}>
-            <ProteanFile file={file}></ProteanFile>
-            <ProteanFileOptions>
-              <ProteanFileDownload file={file}></ProteanFileDownload>
-              <ProteanFileDelete file={file}></ProteanFileDelete>
-            </ProteanFileOptions>
-          </ProteanToolRow>
+          <ToolRow key={i}>
+            <FileButton file={file}></FileButton>
+            <FileOptions>
+              <FileDownloadButton file={file}></FileDownloadButton>
+              <FileDeleteButton file={file}></FileDeleteButton>
+            </FileOptions>
+          </ToolRow>
         ))
       }
-    </ProteanTool>
+    </Tool>
   );
 }
 
-function ProteanFile({ file }) {
+function FileButton({ file }) {
   const { globalState, dispatch } = useGlobalStore();
 
   function setActiveFile(file) {
@@ -37,29 +37,29 @@ function ProteanFile({ file }) {
   }
 
   return (
-    <ProteanToolButton
+    <ToolButton
       icon={globalState.fileIcons[file?.metadata.type]}
       onClick={() => setActiveFile(file)}
       active={globalState?.activeFile?.uuid === file?.uuid}>
       {file?.metadata.title}
-    </ProteanToolButton>
+    </ToolButton>
   );
 }
 
-function ProteanFileOptions({ children }) {
+function FileOptions({ children }) {
   return (
     <Popover className="relative z-0">
-      <Popover.Button className="acc-focus z-0 py-1 hover:raise-10">
+      <Popover.Button className="acc-focus z-0 h-full hover:raise-10">
         <FabricIcon name="MoreVertical"></FabricIcon>
       </Popover.Button>
-      <Popover.Panel className="fixed z-10 w-48 ml-6 -mt-10 py-2 rounded bg-proteanGray-200 dark:bg-proteanGray-900 shadow-md">
+      <Popover.Panel className="fixed z-10 w-48 ml-6 -mt-10 py-2 rounded bg-gray-200 dark:bg-gray-900 shadow-md">
         {children}
       </Popover.Panel>
     </Popover>
   );
 }
 
-function ProteanFileDelete({ file }) {
+function FileDeleteButton({ file }) {
   const { globalState, dispatch } = useGlobalStore();
 
   function deleteFile(file) {
@@ -72,17 +72,17 @@ function ProteanFileDelete({ file }) {
   }
 
   return (
-    <ProteanToolRow>
-      <ProteanToolButton
+    <ToolRow>
+      <ToolButton
         icon="Delete"
         onClick={() => deleteFile(file)}>
         Delete File
-      </ProteanToolButton>
-    </ProteanToolRow>
+      </ToolButton>
+    </ToolRow>
   );
 }
 
-function ProteanFileDownload({ file }) {
+function FileDownloadButton({ file }) {
   const fileOutputRef = React.useRef(null);
 
   function downloadActiveFile(event) {
@@ -97,12 +97,12 @@ function ProteanFileDownload({ file }) {
   }
 
   return (
-    <ProteanToolRow>
-      <ProteanToolButton
+    <ToolRow>
+      <ToolButton
         icon="Download"
         onClick={downloadActiveFile}>
         Download File
-      </ProteanToolButton>
+      </ToolButton>
       <a
         className="hidden"
         href=""
@@ -110,6 +110,6 @@ function ProteanFileDownload({ file }) {
         ref={fileOutputRef}>
         DOWNLOAD
       </a>
-    </ProteanToolRow>
+    </ToolRow>
   );
 };

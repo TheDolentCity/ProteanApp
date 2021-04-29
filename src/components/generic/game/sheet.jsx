@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useGlobalStore } from '../../stores/global-store';
-import ProteanErrorBoundary from '../../protean-framework/protean-error-boundary';
+import ErrorBoundary from '../../protean/error-boundary';
 import { WidgetContainer } from './widget';
 import NumberBlock from './blocks/number-block';
 import DiceBlock from './blocks/dice-block';
@@ -38,7 +38,7 @@ export default function Sheet() {
 
   if (typeof(sheet?.content) === typeof([])) {
     return (
-      <ProteanErrorBoundary
+      <ErrorBoundary
         fallbackUI={
           <div className="p-12">
             <h2>Error in Protean Sheet</h2>
@@ -56,7 +56,7 @@ export default function Sheet() {
             ))
           }
         </WidgetContainer>
-      </ProteanErrorBoundary>
+      </ErrorBoundary>
     );
   }
   else return <div></div>;

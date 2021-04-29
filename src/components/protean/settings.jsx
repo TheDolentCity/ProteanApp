@@ -2,12 +2,12 @@ import React from 'react';
 import Modal from '../generic/basic-inputs/modal';
 import { useGlobalStore } from '../stores/global-store';
 
-export default function ProteanSettings(props) {
+export default function Settings(props) {
   const { globalState, dispatch } = useGlobalStore();
 
   const closeSettings = () => {
     dispatch({
-      type: "setProteanSettingsState",
+      type: "setSettingsState",
       payload: {
         state: false
       }
@@ -19,9 +19,9 @@ export default function ProteanSettings(props) {
     closeSettings();
   }
 
-  if (globalState?.conditionalRenders["ProteanSettingsModal"]) {
+  if (globalState?.conditionalRenders["SettingsModal"]) {
     return (
-      <Modal onClose={closeSettings} header="Protean Settings">
+      <Modal onClose={closeSettings} header="Settings">
         <button onClick={clearLocalStorage} className="acc-focus p-2 rounded-md text-white bg-red-500 hover:bg-red-800">
           Clear Local Storage
         </button>

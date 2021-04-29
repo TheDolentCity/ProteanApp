@@ -10,7 +10,7 @@ export default function Modal(props) {
         <span className="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
         <div className="inline-block w-1/3 p-4 align-middle rounded-lg text-left overflow-hidden shadow-xl transform transition-all bg-white dark:bg-black">
           <div className="flex w-full pb-4 text-right">
-            <p className="flex-grow pb-4 pr-4 text-2xl text-left font-semibold">
+            <p className="flex-grow pb-4 pr-4 text-2xl text-left font-semibold text-black dark:text-white">
               {props.header}
             </p>
             <button onClick={props.onClose} className="acc-focus flex-none h-8 px-1 text-xl raise-10 hover:raise-25">

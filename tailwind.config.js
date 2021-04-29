@@ -9,6 +9,7 @@ module.exports = {
       current: "currentColor",
       black: colors.black,
       white: colors.white,
+      gray: colors.gray,
       primary: colors.lightBlue,
       green: colors.green,
       red: colors.red,
@@ -16,16 +17,28 @@ module.exports = {
       magenta: colors.fuchsia,
       yellow: colors.yellow,
       proteanGray: {
-        "50": "#f9fafb",
-        "100": "#f3f4f6",
-        "200": "#e5e7eb",
-        "300": "#d1d5db",
-        "400": "#9ca3af",
-        "500": "#6b7280",
-        "600": "#4b5563",
-        "700": "#374151",
-        "800": "#232530",
-        "900": "#131419",
+        // "50": "#faf9f8",
+        // "100": "#edebe9",
+        // "200": "#d2d0ce",
+        // "300": "#bebbb8",
+        // "400": "#a19f9d",
+        // "500": "#8a8886",
+        // "600": "#605e5c",
+        // "700": "#3b3a39",
+        // "800": "#292827",
+        // "900": "#201f1e",
+        // "1000": "161514"
+        "50": "#f9f9f9",
+        "100": "#ebebeb",
+        "200": "#d0d0d0",
+        "300": "#bbbbbb",
+        "400": "#a1a1a1",
+        "500": "#888888",
+        "600": "#5e5e5e",
+        "700": "#3a3a3a",
+        "800": "#282828",
+        "900": "#1f1f1f",
+        "1000": "151515"
       },
       steelBlue: {
         "50": "#f8fafb",
@@ -37,7 +50,7 @@ module.exports = {
         "600": "#577fa3",
         "700": "#3e5b74",
         "800": "#243442",
-        "900": "#090d11",
+        "900": "#0F0d11",
       },
       forestGreen: {
         "50": "#f1f4f0",
@@ -157,6 +170,7 @@ module.exports = {
       '10/12': '83%',
       '11/12': '92%',
       'full': '100%',
+      'half-screen': '50vw',
       'screen': '100vw'
     },
     maxHeight: {
@@ -187,6 +201,7 @@ module.exports = {
       '10/12': '83%',
       '11/12': '92%',
       'full': '100%',
+      'half-screen': '50vh',
       'screen': '100vh'
     },
     opacity: {
@@ -253,6 +268,7 @@ module.exports = {
     }
   },
   plugins: [
+    require('@tailwindcss/aspect-ratio'),
     require('tailwind-scrollbar'),
   ],
 }

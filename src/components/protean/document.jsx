@@ -3,8 +3,9 @@ import { useGlobalStore } from '../stores/global-store';
 import Page from '../generic/book/page';
 import MdxRender from '../generic/book/mdx-render';
 import Sheet from '../generic/game/sheet';
+import { ColorContainer } from './layout';
 
-export default function ProteanDocument() {
+export default function Document() {
   const { globalState, dispatch } = useGlobalStore();
 
   const activePage = () => {
@@ -53,30 +54,35 @@ export default function ProteanDocument() {
   else return <Page></Page>;
 }
 
-function Document(props) {
+function DocumentWrapper(props) {
   return (
-    <Page title={props.title} icon={props.icon}>
-      {props.children}
-    </Page>
+    <div className="flex-grow flex flex-col h-full pb-16 overflow-y-auto scroll">
+      <ColorContainer className="flex-none flex sticky top-0 h-16 items-center text-opacity-25 dark:text-opacity-25">
+        This will have information and buttons
+      </ColorContainer>
+      <Page title={props.title} icon={props.icon}>
+        {props.children}
+      </Page>
+    </div>
   );
 }
 
 function MdxDocument(props) {
   return (
-    <Document title={props.title} icon={props.icon}>
+    <DocumentWrapper title={props.title} icon={props.icon}>
       <MdxRender>
         {props.children}
       </MdxRender>
-    </Document>
+    </DocumentWrapper>
   );
 }
 
 function SheetDocument(props) {
   return (
-    <Document title={props.title} icon={props.icon}>
+    <DocumentWrapper title={props.title} icon={props.icon}>
       <Sheet>
         {props.children}
       </Sheet>
-    </Document>
+    </DocumentWrapper>
   );
 }
