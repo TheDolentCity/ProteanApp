@@ -5,11 +5,13 @@ import { Header1, Header2, Header3, Header4, Header5, Header6, Subtitle } from '
 import { Paragraph } from './paragraph';
 import { Blockquote } from './blockquote';
 import { ListBulleted, ListNumbered } from './lists';
+import Columns from './columns';
 import DieTable, { DieTableRow } from '../game/die-table';
 import { WidgetContainer, Widget } from '../game/widget';
 import DiceBlock from '../game/blocks/dice-block';
 import NoteBlock from '../game/blocks/note-block';
 import NumberBlock from '../game/blocks/number-block';
+import StatBlock from '../game/stat-block';
 import TextBlock from '../game/blocks/text-block';
 import { ThematicBreak } from './thematic-break';
 import Spacer from './spacer';
@@ -55,6 +57,7 @@ const mdxComponents = {
   P: (props) => <Paragraph css={props.css}>{props.children}</Paragraph>,
   Subtitle: (props) => <Subtitle css={props.css}>{props.children}</Subtitle>,
   Spacer: (props) => <Spacer space={props.space}></Spacer>,
+  Columns: (props) => <Columns count={props.count} className={props.className}>{props.children}</Columns>,
 
   // Protean RPG Components
   WidgetContainer: WidgetContainer,
@@ -64,6 +67,7 @@ const mdxComponents = {
   DiceBlock: DiceBlock,
   NoteBlock: NoteBlock,
   NumberBlock: NumberBlock,
+  StatBlock: StatBlock,
   TextBlock: TextBlock
 };
 

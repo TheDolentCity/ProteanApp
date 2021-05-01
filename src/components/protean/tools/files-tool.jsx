@@ -52,7 +52,7 @@ function FileOptions({ children }) {
       <Popover.Button className="acc-focus z-0 h-full hover:raise-10">
         <FabricIcon name="MoreVertical"></FabricIcon>
       </Popover.Button>
-      <Popover.Panel className="fixed z-10 w-48 ml-6 -mt-10 py-2 rounded bg-gray-200 dark:bg-gray-900 shadow-md">
+      <Popover.Panel className="fixed z-10 w-48 ml-6 -mt-10 py-2 rounded bg-gray-300 dark:bg-gray-700 shadow-md">
         {children}
       </Popover.Panel>
     </Popover>

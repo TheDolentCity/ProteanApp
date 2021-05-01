@@ -33,7 +33,7 @@ export function AppContainer({ children }) {
 
 export function ColorContainer({ className, children }) {
   return (
-    <div className={"text-gray-600 bg-gray-200 dark:text-gray-400 dark:bg-gray-900 transition-colors duration-75 ease-in-out " + className}>
+    <div className={"antialiased text-black bg-gray-50 dark:text-gray-100 dark:bg-black transition-colors duration-75 ease-in-out " + className}>
       {children}
     </div>
   );
@@ -41,7 +41,7 @@ export function ColorContainer({ className, children }) {
 
 export function Sidebar(props) {
   return (
-    <div className="flex-none flex flex-col z-30 w-72 mx-12 pt-20 overflow-y-auto">
+    <div className="flex-none flex flex-col z-30 w-80 p-8 overflow-y-auto bg-gray-200 dark:bg-gray-900">
       {props.children}
     </div>
   );

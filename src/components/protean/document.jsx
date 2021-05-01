@@ -56,10 +56,7 @@ export default function Document() {
 
 function DocumentWrapper(props) {
   return (
-    <div className="flex-grow flex flex-col h-full pb-16 overflow-y-auto scroll">
-      <ColorContainer className="flex-none flex sticky top-0 h-16 items-center text-opacity-25 dark:text-opacity-25">
-        This will have information and buttons
-      </ColorContainer>
+    <div className="flex-grow h-full py-16 overflow-y-auto scroll">
       <Page title={props.title} icon={props.icon}>
         {props.children}
       </Page>

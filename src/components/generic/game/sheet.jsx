@@ -5,6 +5,7 @@ import { WidgetContainer } from './widget';
 import NumberBlock from './blocks/number-block';
 import DiceBlock from './blocks/dice-block';
 import NoteBlock from './blocks/note-block';
+import StatBlock from './stat-block';
 import TextBlock from './blocks/text-block';
 
 export default function Sheet() {
@@ -87,6 +88,14 @@ function SheetWidget(props) {
           numberBlock={props.widget}
           onChange={props.onChange}>
         </NumberBlock>
+      );
+    case "StatBlock":
+      return (
+        <StatBlock
+          static={false}
+          statBlock={props.widget}
+          onChange={props.onChange}>
+        </StatBlock>
       );
     case "TextBlock":
       return (

@@ -68,6 +68,36 @@ A block with a title and one or more fields. Each field has a title and a value.
 `
 }
 
+const TestPage = {
+  uuid: "test-page.json",
+  metadata: {
+    type: "PAGE",
+    title: "Test Page",
+  },
+  content:
+  `
+  # Header 1
+  This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph.
+
+  ## Header 2
+  This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph.
+  
+  <Columns count="2">
+
+  ## Header 2 w/ 2 columns
+  This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph.
+
+  </Columns>
+  
+  <Columns count="3">
+
+  ### Header 3 w/ 3 columns
+  This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph.
+
+  </Columns>
+  `
+}
+
 const ProteanIs = {
   uuid: "ProteanIs.json",
   metadata: {
@@ -605,7 +635,7 @@ The Aunic people did not view this as Utopia however. Their treatment at the han
 
 ThirdComm had halted the empire of Union's Second Committee, but it had yet to recognize its unjust hierarchy and imposed ideals on other worlds. Eventually Union's Central Committee ceded this point to the Aunic people and a peace agreement was reached with the new pillars.
 
-> YOU ARE HUNGRY, YOU SHALL BE FED,  
+> YOU ARE HUNGRY, YOU SHALL BE FED,
 > YOU ARE HURT, YOU SHALL BE HEALED,  
 > YOU ARE CHAINED, YOU SHALL BE FREED,  
 > NO PAYMENT,  
@@ -898,6 +928,102 @@ TODO
 `
 }
 
+const TitanfallPilotWeapons = {
+  uuid: "titanfall-pilot-weapons.json",
+  metadata: {
+    type: "PAGE",
+    title: "Titanfall: Pilot Weapons",
+  },
+  content:
+  `
+  # Titanfall: Pilot Weapons
+  
+  ## Assault Rifles
+
+  <WidgetContainer>
+  <DiceBlock diceBlock={{
+    "title": "R-201 Carbine",
+    "dice": "d20",
+    "description": "Full-auto and high accuracy (Accuracy +1, Fire Rate +1)."}}>
+  </DiceBlock>
+
+  <DiceBlock diceBlock={{
+    "title": "Hemlok BF-R",
+    "dice": "d8",
+    "description": "Burst-fire assault rifle (Accuracy +1, Damage +1, Fire Rate +1)."}}>
+  </DiceBlock>
+
+  <DiceBlock diceBlock={{
+    "title": "G2A5",
+    "dice": "d6",
+    "description": "Semi-auto precision rifle (Accuracy +1, Damage +1, Fire Rate -1)."}}>
+  </DiceBlock>
+
+  <DiceBlock diceBlock={{
+    "title": "V-47 Flatline",
+    "dice": "d12",
+    "description": "Full-auto with a punch (Accuracy -1, Damage +1, Knockback +1)."}}>
+  </DiceBlock>
+</WidgetContainer>
+  
+## Submachine Guns
+
+<WidgetContainer>
+<DiceBlock diceBlock={{
+  "title": "CAR",
+  "dice": "d4",
+  "description": "Consistent recoil SMG (Accuracy +1, Fire Rate +1, Range -1)."}}>
+</DiceBlock>
+
+<DiceBlock diceBlock={{
+  "title": "Alternator",
+  "dice": "",
+  "description": "Twin barrel SMG (Damage 3, Accuracy 2, Range 1, Fire Rate 2)."}}>
+</DiceBlock>
+
+<DiceBlock diceBlock={{
+  "title": "Volt",
+  "dice": "",
+  "description": "Energy actuated SMG (Damage 1, Accuracy 3, Range 1, Fire Rate 1)."}}>
+</DiceBlock>
+
+<DiceBlock diceBlock={{
+  "title": "R-97",
+  "dice": "",
+  "description": "Rapid fire SMG (Damage 1, Accuracy 1, Range 1, Fire Rate 3)."}}>
+</DiceBlock>
+</WidgetContainer>
+  
+## Light Machine Guns
+
+<WidgetContainer>
+<DiceBlock diceBlock={{
+  "title": "Spitfire",
+  "dice": "",
+  "description": "Steady fire rate with a punch (Damage 2, Accuracy 1, Range 3, Fire Rate 2). "}}>
+</DiceBlock>
+
+<DiceBlock diceBlock={{
+  "title": "L-Star",
+  "dice": "",
+  "description": "Rapid fire energy LMG (Damage 2, Accuracy 1, Range 3, Fire Rate 2)."}}>
+</DiceBlock>
+
+<DiceBlock diceBlock={{
+  "title": "X-55 Devotion",
+  "dice": "d4",
+  "description": "Ramps up fire rate over time (Damage 3, Accuracy 2, Range 3, Fire Rate 2)."}}>
+</DiceBlock>
+
+<DiceBlock diceBlock={{
+  "title": "R-97",
+  "dice": "",
+  "description": "Rapid fire SMG (Damage 1, Accuracy 1, Range 1, Fire Rate 3)."}}>
+</DiceBlock>
+</WidgetContainer>
+  `
+}
+
 const ProteanApp = {
   uuid: "protean-app.json",
   metadata: {
@@ -906,7 +1032,8 @@ const ProteanApp = {
     activePage: 0
   },
   content: [
-    CharacterSheets
+    CharacterSheets,
+    TestPage
   ]
 }
 

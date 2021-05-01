@@ -17,13 +17,13 @@ export default function Toggle(props) {
         checked={switchValue}
         onChange={onChange}
         className={`${switchValue ? "theme-color" : "raise-25"}
-            relative inline-flex flex-shrink-0 h-6 transition-colors duration-200 ease-in-out border-2 border-transparent rounded-full cursor-pointer w-11 focus:outline-none focus:shadow-outline`}
+            relative inline-flex flex-shrink-0 h-5 transition-colors duration-200 ease-in-out border-2 border-transparent rounded-full cursor-pointer w-11 focus:outline-none focus:shadow-outline`}
       >
         {({ checked }) => (
           <span
             className={`
-                  ${checked ? "translate-x-5" : "translate-x-0"}
-                  inline-block w-5 h-5 transition duration-200 ease-in-out transform bg-white rounded-full`}
+                  ${checked ? "translate-x-6" : "translate-x-0"}
+                  inline-block w-4 h-4 transition duration-200 ease-in-out transform bg-white rounded-full`}
           />
         )}
       </Switch>

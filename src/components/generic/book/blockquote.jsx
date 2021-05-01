@@ -9,5 +9,5 @@ export function Blockquote({ css, children }) {
 }
 
 Blockquote.defaultProps = {
-  css: "my-4 mb-4 mx-8 px-4 py-2 rounded-md leading-7 text-base font-medium text-proteanGray-700 dark:text-proteanGray-400 raise-5",
+  css: "w-full col-span mb-5 p-5 text-sm leading-normal font-semibold italic rounded-md raise-5",
 }

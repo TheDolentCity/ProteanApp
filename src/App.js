@@ -29,8 +29,8 @@ export default function App() {
           }>
           <Document></Document>
         </ErrorBoundary>
-        <ProteanSettingsModal></ProteanSettingsModal>
       </AppLayout>
+      <ProteanSettingsModal></ProteanSettingsModal>
     </GlobalStoreProvider>
   );
 }
