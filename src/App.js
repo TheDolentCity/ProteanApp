@@ -3,20 +3,20 @@ import './styles/globals.css';
 
 import React from 'react';
 import { GlobalStoreProvider } from './components/stores/global-store';
+import AppLayout, { Sidebar } from './components/protean/layout';
+import { CommandBar } from './components/protean/commands/command';
+import FilesTool from './components/protean/tools/files-tool';
+import PagesTool from './components/protean/tools/pages-tool';
 import ErrorBoundary from './components/protean/error-boundary';
 import Document from './components/protean/document';
-import ProteanSettingsModal from './components/protean/settings';
-import AppLayout, { Sidebar } from './components/protean/layout';
-import PagesTool from './components/protean/tools/pages-tool';
-import ControlsTool from './components/protean/tools/controls-tool';
-import FilesTool from './components/protean/tools/files-tool';
 
 export default function App() {
   return (
     <GlobalStoreProvider>
       <AppLayout>
+        <CommandBar>
+        </CommandBar>
         <Sidebar>
-          <ControlsTool></ControlsTool>
           <FilesTool></FilesTool>
           <PagesTool></PagesTool>
         </Sidebar>
@@ -30,7 +30,6 @@ export default function App() {
           <Document></Document>
         </ErrorBoundary>
       </AppLayout>
-      <ProteanSettingsModal></ProteanSettingsModal>
     </GlobalStoreProvider>
   );
 }

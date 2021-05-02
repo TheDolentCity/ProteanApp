@@ -110,7 +110,14 @@ module.exports = {
       '10/12': '83%',
       '11/12': '92%',
       'full': '100%',
-      'screen': '100vw'
+      'screen': '100vw',
+      'xs': '480px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+      '3xl': '1920px'
     },
     minHeight: {
       '0': '0',
@@ -170,8 +177,23 @@ module.exports = {
       '10/12': '83%',
       '11/12': '92%',
       'full': '100%',
-      'half-screen': '50vw',
-      'screen': '100vw'
+      'screen-10': '10vw',
+      'screen-20': '20vw',
+      'screen-30': '30vw',
+      'screen-40': '40vw',
+      'screen-50': '50vw',
+      'screen-60': '60vw',
+      'screen-70': '70vw',
+      'screen-80': '80vw',
+      'screen-90': '90vw',
+      'screen': '100vw',
+      'xs': '480px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+      '3xl': '1920px'
     },
     maxHeight: {
       '0': '0',
@@ -254,6 +276,7 @@ module.exports = {
         black: '2px solid #000000',
       },
       screens: {
+        'xs': '480px',
         '3xl': '1920px',
       },
     },

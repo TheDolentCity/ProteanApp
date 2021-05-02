@@ -5,7 +5,7 @@ import { Header2 } from '../../generic/book/header';
 export default function Tool(props) {
   return (
     <div className="flex flex-col w-full mx-auto pb-12">
-      <div className="flex-none w-full pb-2 text-2xl font-semibold truncate text-gray-900 dark:text-gray-100">
+      <div className="flex-none w-full pb-2 text-2xl font-semibold text-gray-900 dark:text-gray-100">
         {props.header}
       </div>
       <div className="flex-grow h-full overflow-y-auto">

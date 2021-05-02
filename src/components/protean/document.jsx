@@ -56,7 +56,7 @@ export default function Document() {
 
 function DocumentWrapper(props) {
   return (
-    <div className="flex-grow h-full py-16 overflow-y-auto scroll">
+    <div className="flex-grow h-full py-12 overflow-y-auto scroll">
       <Page title={props.title} icon={props.icon}>
         {props.children}
       </Page>

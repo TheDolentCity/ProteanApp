@@ -211,18 +211,21 @@
   .acc-focus {
     @apply acc-focus-black dark:acc-focus-white;
   }
+  .acc-input {
+    @apply appearance-none focus:outline-none focus-visible:raise-5;
+  }
   .input-text {
-    @apply whitespace-nowrap elevation-0 justify-center;
+    @apply acc-input whitespace-nowrap elevation-0 justify-center;
   }
   .input-text-area {
-    @apply acc-focus w-full elevation-0 justify-center overflow-hidden resize-none;
+    @apply acc-input w-full elevation-0 justify-center overflow-hidden resize-none;
   }
   .scroll {
     @apply scrollbar scrollbar-thumb-gray-400 scrollbar-track-gray-300 dark:scrollbar-thumb-gray-500 dark:scrollbar-track-gray-700;
   }
   @variants focus, hover {
     .theme-color {
-      @apply bg-primary-500 dark:bg-primary-600;
+      @apply bg-primary-600 dark:bg-primary-700 text-gray-100;
     }
   }
 

@@ -635,7 +635,7 @@ The Aunic people did not view this as Utopia however. Their treatment at the han
 
 ThirdComm had halted the empire of Union's Second Committee, but it had yet to recognize its unjust hierarchy and imposed ideals on other worlds. Eventually Union's Central Committee ceded this point to the Aunic people and a peace agreement was reached with the new pillars.
 
-> YOU ARE HUNGRY, YOU SHALL BE FED,
+> YOU ARE HUNGRY, YOU SHALL BE FED,  
 > YOU ARE HURT, YOU SHALL BE HEALED,  
 > YOU ARE CHAINED, YOU SHALL BE FREED,  
 > NO PAYMENT,  
@@ -1121,9 +1121,6 @@ const initialGlobalState = {
     "BOOK": "ReadingMode",
     "SHEET": "TextDocumentShared",
     "PAGE": "TextDocument",
-  },
-  conditionalRenders: {
-    "SettingsModal": false
   }
 };
 
