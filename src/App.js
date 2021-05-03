@@ -5,8 +5,6 @@ import React from 'react';
 import { GlobalStoreProvider } from './components/stores/global-store';
 import AppLayout, { Sidebar } from './components/protean/layout';
 import { CommandBar } from './components/protean/commands/command';
-import FilesTool from './components/protean/tools/files-tool';
-import PagesTool from './components/protean/tools/pages-tool';
 import ErrorBoundary from './components/protean/error-boundary';
 import Document from './components/protean/document';
 import FileExplorer from './components/protean/files/file-explorer';
@@ -15,12 +13,9 @@ export default function App() {
   return (
     <GlobalStoreProvider>
       <AppLayout>
-        <CommandBar>
-        </CommandBar>
+        <CommandBar></CommandBar>
         <Sidebar>
           <FileExplorer></FileExplorer>
-          {/* <FilesTool></FilesTool>
-          <PagesTool></PagesTool> */}
         </Sidebar>
         <ErrorBoundary
           fallbackUI={
