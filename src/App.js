@@ -9,6 +9,7 @@ import FilesTool from './components/protean/tools/files-tool';
 import PagesTool from './components/protean/tools/pages-tool';
 import ErrorBoundary from './components/protean/error-boundary';
 import Document from './components/protean/document';
+import FileExplorer from './components/protean/files/file-explorer';
 
 export default function App() {
   return (
@@ -17,8 +18,9 @@ export default function App() {
         <CommandBar>
         </CommandBar>
         <Sidebar>
-          <FilesTool></FilesTool>
-          <PagesTool></PagesTool>
+          <FileExplorer></FileExplorer>
+          {/* <FilesTool></FilesTool>
+          <PagesTool></PagesTool> */}
         </Sidebar>
         <ErrorBoundary
           fallbackUI={

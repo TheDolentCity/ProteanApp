@@ -63,6 +63,18 @@
       @apply bg-black bg-opacity-25;
       backdrop-filter: blur(25px);
     }
+    .blur-1 {
+      backdrop-filter: blur(5px);
+    }
+    .blur-2 {
+      backdrop-filter: blur(10px);
+    }
+    .blur-4 {
+      backdrop-filter: blur(20px);
+    }
+    .blur-8 {
+      backdrop-filter: blur(40px);
+    }
   }
   @variants hover, focus-visible {
     .elevation-0 {
@@ -224,8 +236,11 @@
     @apply scrollbar scrollbar-thumb-gray-400 scrollbar-track-gray-300 dark:scrollbar-thumb-gray-500 dark:scrollbar-track-gray-700;
   }
   @variants focus, hover {
-    .theme-color {
+    .bg-theme {
       @apply bg-primary-600 dark:bg-primary-700 text-gray-100;
+    }
+    .border-theme {
+      @apply border-primary-600 dark:border-primary-700;
     }
   }
 

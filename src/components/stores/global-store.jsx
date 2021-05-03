@@ -1024,6 +1024,32 @@ const TitanfallPilotWeapons = {
   `
 }
 
+const ProteanRPGChapterOne = {
+  uuid: "protean-rpg-chapter-one.json",
+  metadata: {
+    type: "FOLDER",
+    title: "Chapter One: What Is Protean?"
+  },
+  content: [
+    ProteanIs,
+    ThePlayers
+  ]
+}
+
+const ProteanRPGChapterTwo = {
+  uuid: "protean-rpg-chapter-two.json",
+  metadata: {
+    type: "FOLDER",
+    title: "Chapter Two: Playing The Game"
+  },
+  content: [
+    ActionBlocksAndTags,
+    DefensesAndConditions,
+    MakingChecks,
+    ExampleOfPlay
+  ]
+}
+
 const ProteanApp = {
   uuid: "protean-app.json",
   metadata: {
@@ -1045,12 +1071,8 @@ const ProteanRPG = {
     activePage: 0
   },
   content: [
-    ProteanIs,
-    ThePlayers,
-    ActionBlocksAndTags,
-    DefensesAndConditions,
-    MakingChecks,
-    ExampleOfPlay
+    ProteanRPGChapterOne,
+    ProteanRPGChapterTwo
   ]
 }
 

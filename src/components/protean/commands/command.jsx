@@ -12,7 +12,7 @@ export function CommandBar({ children }) {
   };
 
   return (
-    <div className={(isOpen ? "w-40 px-2 sm:py-2 md:py-6" : "px-2 sm:py-2 md:py-6") + " flex-none flex flex-col items-center theme-color"}>
+    <div className={(isOpen ? "w-40 px-2 sm:py-2 md:py-6" : "px-2 sm:py-2 md:py-6") + " flex-none flex flex-col items-center bg-theme"}>
       <Command 
         onClick={toggleOpen} 
         isOpen={isOpen}
