@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useGlobalStore } from '../../stores/global-store';
-import ErrorBoundary from '../../protean/error-boundary';
-import { WidgetContainer } from './widget';
+import { Widget, WidgetContainer } from './widget';
 import NumberBlock from './blocks/number-block';
 import DiceBlock from './blocks/dice-block';
 import NoteBlock from './blocks/note-block';
 import StatBlock from './stat-block';
 import TextBlock from './blocks/text-block';
+import DiceHeader from './blocks/dice-header';
 
 export default function Sheet() {
   const { globalState, dispatch } = useGlobalStore();
@@ -20,14 +20,15 @@ export default function Sheet() {
   }, [globalState.activeFile]);
 
   // Sends the local sheet data to global storage
-  const updateSheet = (value, index) => {
-    if (sheet?.content[index] === undefined) {
-      console.log(`sheet.content[${index}] is undefined on sheet object.`);
+  const updateSheet = (value) => {
+		// console.log(`Sheet:${sheet}\nContent:${sheet?.content}\nIndex:${index}`);
+    if (sheet === undefined) {
+      console.log(`sheet is undefined on Sheet object.`);
     }
     else {
-      let newSheet = { ...sheet };
-      newSheet.content[index] = value;
+      let newSheet = { ...value };
       setSheet(newSheet);
+			console.log("Dispatch Sheet:\n" + JSON.stringify(newSheet, null, 2));
       dispatch({
         type: "updateActiveFile",
         payload: {
@@ -37,75 +38,114 @@ export default function Sheet() {
     }
   }
 
-  if (typeof(sheet?.content) === typeof([])) {
+  return (
+    <SheetWidgetContainer 
+      widgetContainer={sheet} 
+      onChange={updateSheet}>
+    </SheetWidgetContainer>
+  );
+}
+
+function SheetWidgetContainer({ widgetContainer, onChange }) {
+  const [widgets, setWidgets] = useState(widgetContainer);
+
+  // Update sheet when widget container changes
+  useEffect(() => {
+    if (widgetContainer !== null && widgetContainer !== undefined) {
+      setWidgets(widgetContainer);
+    }
+  }, [widgetContainer]);
+
+  const updateWidgets = (value, index) => {
+    if (widgets?.content[index] === undefined) {
+      console.log(`widgets.content[${index}] is undefined on SheetWidgetContainer object.`);
+    }
+    else {
+      let newWidgets = { ...widgets };
+      newWidgets.content[index] = value;
+      setWidgets(newWidgets);
+      onChange(newWidgets);
+    }
+  }
+
+  if (typeof(widgets?.content) === typeof([])) {
     return (
-      <ErrorBoundary
-        fallbackUI={
-          <div className="p-12">
-            <h2>Error in Protean Sheet</h2>
-            <p>Cannot render Sheet due to an error. Fix JSON, check console, or ask Dante for help.</p>
-          </div>
-        }>
-        <WidgetContainer>
-          {
-            sheet?.content?.map((widget, index) => (
-              <SheetWidget
-                key={widget.uuid}
-                widget={widget}
-                onChange={(newWidget) => updateSheet(newWidget, index)}>
-              </SheetWidget>
-            ))
-          }
-        </WidgetContainer>
-      </ErrorBoundary>
+      <WidgetContainer>
+			{
+				widgets?.content?.map((widget, index) => (
+					<SheetWidget
+						key={widget.uuid}
+						widget={widget}
+						onChange={(newWidget) => updateWidgets(newWidget, index)}>
+					</SheetWidget>
+				))
+			}
+      </WidgetContainer>
     );
   }
   else return <div></div>;
 }
 
-function SheetWidget(props) {
-  switch (props?.widget?.type) {
+function SheetWidget({ widget, onChange }) {
+  switch (widget?.type) {
+    case "SheetWidgetContainer":
+      return (
+				<Widget css="col-span-12 xl:col-span-6">
+					<SheetWidgetContainer
+						widgetContainer={widget}
+						onChange={onChange}>
+					</SheetWidgetContainer>
+				</Widget>
+      );
+    case "DiceHeader":
+      return (
+        <DiceHeader
+          static={false}
+          diceHeader={widget}
+          onChange={onChange}>
+        </DiceHeader>
+      );
     case "DiceBlock":
       return (
         <DiceBlock
           static={false}
-          diceBlock={props.widget}
-          onChange={props.onChange}>
+          diceBlock={widget}
+          onChange={onChange}>
         </DiceBlock>
       );
     case "NoteBlock":
       return (
         <NoteBlock
           static={false}
-          noteBlock={props.widget}
-          onChange={props.onChange}>
+          noteBlock={widget}
+          onChange={onChange}>
         </NoteBlock>
       );
     case "NumberBlock":
       return (
         <NumberBlock
           static={false}
-          numberBlock={props.widget}
-          onChange={props.onChange}>
+          numberBlock={widget}
+          onChange={onChange}>
         </NumberBlock>
       );
     case "StatBlock":
       return (
         <StatBlock
           static={false}
-          statBlock={props.widget}
-          onChange={props.onChange}>
+          statBlock={widget}
+          onChange={onChange}>
         </StatBlock>
       );
     case "TextBlock":
       return (
         <TextBlock
           static={false}
-          textBlock={props.widget}
-          onChange={props.onChange}>
+          textBlock={widget}
+          onChange={onChange}>
         </TextBlock>
       );
     default:
-      console.log(`Widget type '${props?.widget?.type}' is not handled by SheetWidget component.`);
+      console.log(`Widget type '${widget?.type}' is not handled by SheetWidget component.`);
   }
 }

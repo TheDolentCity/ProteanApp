@@ -41,7 +41,7 @@ export function ColorContainer({ className, children }) {
 
 export function Sidebar(props) {
   return (
-    <div className="flex-none flex flex-col sm:w-56 md:w-96 sm:p-4 md:p-8 overflow-y-auto bg-gray-200 dark:bg-gray-900">
+    <div className="flex-none flex flex-col h-full sm:w-56 md:w-96 sm:p-4 md:p-8 overflow-y-auto scroll-thin bg-gray-200 dark:bg-gray-900">
       {props.children}
     </div>
   );

@@ -18,13 +18,13 @@ export default function DiceBlock(props) {
   }
 
   return (
-    <Widget css="col-span-12 xl:col-span-6 bg-forestGreen-600 dark:bg-forestGreen-700 text-white">
+    <Widget css="col-span-12 xl:col-span-6">
       <div className="flex flex-col">
         <div className="grid grid-cols-12 mb-1 items-center">
           <TextareaAutosize
             rows={1}
             maxRows={100}
-            className="acc-input input-text-area col-span-9 text-lg 3xl:text-2xl font-bold"
+            className="acc-input input-text-area col-span-9 text-base font-semibold placeholder-opacity-25"
             placeholder="title"
             value={diceBlock?.title}
             onChange={(e) => setDiceBlockData(e.target.value, 'title')}
@@ -32,7 +32,7 @@ export default function DiceBlock(props) {
           <TextareaAutosize
             rows={1}
             maxRows={100}
-            className="acc-input input-text-area col-span-3 text-right text-lg 3xl:text-2xl font-bold text-lighten-75"
+            className="acc-input input-text-area col-span-3 text-right text-base font-semibold placeholder-opacity-25"
             placeholder="dice"
             value={diceBlock?.dice}
             onChange={(e) => setDiceBlockData(e.target.value, 'dice')}
@@ -41,7 +41,7 @@ export default function DiceBlock(props) {
         <TextareaAutosize
           rows={2}
           maxRows={100}
-          className="acc-input input-text-area font-medium text-lighten-75"
+          className="acc-input input-text-area text-sm"
           placeholder="description"
           value={diceBlock?.description}
           onChange={(e) => setDiceBlockData(e.target.value, 'description')}

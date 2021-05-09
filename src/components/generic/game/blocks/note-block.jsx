@@ -13,28 +13,36 @@ export default function NoteBlock(props) {
       let newNoteBlock = { ...noteBlock };
       newNoteBlock[property] = value;
       setNoteBlock(newNoteBlock);
-      props?.onChange(newNoteBlock);
+			if (props?.onChange !== undefined) {
+				props.onChange(newNoteBlock);
+			}
     }
   }
 
   return (
-    <Widget css="col-span-12 xl:col-span-6 bg-dirtBrown-600 dark:bg-dirtBrown-700 text-white">
+    <Widget css="col-span-12 xl:col-span-6">
       <div className="flex flex-col">
-        <input
-          type="text"
-          className="acc-input input-text w-full p-1 elevation-0 text-lg 3xl:text-2xl font-bold"
-          placeholder="enter title"
-          value={noteBlock?.title}
-          onChange={(e) => setNoteBlockData(e.target.value, 'title')}>
-        </input>
         <TextareaAutosize
           rows={2}
           maxRows={100}
-          className="acc-input input-text-area flex p-1 font-medium text-lighten-75"
+          className="input-text-area text-base font-bold"
+          placeholder="enter title"
+          value={noteBlock?.title}
+          onChange={(e) => setNoteBlockData(e.target.value, 'title')} 
+					disabled={props.static === true} />
+        <TextareaAutosize
+          rows={2}
+          maxRows={100}
+          className="input-text-area text-sm"
           placeholder="enter description"
           value={noteBlock?.description}
-          onChange={(e) => setNoteBlockData(e.target.value, 'description')} />
+          onChange={(e) => setNoteBlockData(e.target.value, 'description')} 
+					disabled={props.static === true} />
       </div>
     </Widget>
   );
+}
+
+NoteBlock.defaultProps = {
+  static: true
 }

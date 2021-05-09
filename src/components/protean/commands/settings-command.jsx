@@ -31,6 +31,7 @@ function SettingsModal({ isOpen, onClose }) {
 
   const clearLocalStorage = () => {
     localStorage.clear();
+		window.location.reload();
   }
 
   return (

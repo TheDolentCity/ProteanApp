@@ -928,100 +928,92 @@ TODO
 `
 }
 
-const TitanfallPilotWeapons = {
-  uuid: "titanfall-pilot-weapons.json",
+const PilotWeapons = {
+  uuid: "pilot-weapons.json",
   metadata: {
     type: "PAGE",
-    title: "Titanfall: Pilot Weapons",
+    title: "Pilot Weapons",
   },
   content:
-  `
-  # Titanfall: Pilot Weapons
-  
-  ## Assault Rifles
+`
+# Pilot Weapons
 
-  <WidgetContainer>
-  <DiceBlock diceBlock={{
-    "title": "R-201 Carbine",
-    "dice": "d20",
-    "description": "Full-auto and high accuracy (Accuracy +1, Fire Rate +1)."}}>
-  </DiceBlock>
-
-  <DiceBlock diceBlock={{
-    "title": "Hemlok BF-R",
-    "dice": "d8",
-    "description": "Burst-fire assault rifle (Accuracy +1, Damage +1, Fire Rate +1)."}}>
-  </DiceBlock>
-
-  <DiceBlock diceBlock={{
-    "title": "G2A5",
-    "dice": "d6",
-    "description": "Semi-auto precision rifle (Accuracy +1, Damage +1, Fire Rate -1)."}}>
-  </DiceBlock>
-
-  <DiceBlock diceBlock={{
-    "title": "V-47 Flatline",
-    "dice": "d12",
-    "description": "Full-auto with a punch (Accuracy -1, Damage +1, Knockback +1)."}}>
-  </DiceBlock>
+## Assault Rifles
+<WidgetContainer>
+<NoteBlock noteBlock={{
+	"title": "R-201 Carbine",
+	"description": "Full-auto rifle with high accuracy.\\n(1d8 Attack)"}}>
+</NoteBlock>
+<NoteBlock noteBlock={{
+	"title": "Hemlok BF-R",
+	"description": "Burst-fire assault rifle.\\n(2d4 Attack)"}}>
+</NoteBlock>
+<NoteBlock noteBlock={{
+	"title": "G2A5",
+	"description": "Semi-auto precision rifle.\\n(1d6 Attack, Long Range)"}}>
+</NoteBlock>
+<NoteBlock noteBlock={{
+	"title": "V-47 Flatline",
+	"description": "Full-auto rifle with a punch.\\n(1d6 Attack, take 1 damage to roll 1d12 instead)"}}>
+</NoteBlock>
 </WidgetContainer>
-  
+
 ## Submachine Guns
-
 <WidgetContainer>
-<DiceBlock diceBlock={{
-  "title": "CAR",
-  "dice": "d4",
-  "description": "Consistent recoil SMG (Accuracy +1, Fire Rate +1, Range -1)."}}>
-</DiceBlock>
-
-<DiceBlock diceBlock={{
-  "title": "Alternator",
-  "dice": "",
-  "description": "Twin barrel SMG (Damage 3, Accuracy 2, Range 1, Fire Rate 2)."}}>
-</DiceBlock>
-
-<DiceBlock diceBlock={{
-  "title": "Volt",
-  "dice": "",
-  "description": "Energy actuated SMG (Damage 1, Accuracy 3, Range 1, Fire Rate 1)."}}>
-</DiceBlock>
-
-<DiceBlock diceBlock={{
-  "title": "R-97",
-  "dice": "",
-  "description": "Rapid fire SMG (Damage 1, Accuracy 1, Range 1, Fire Rate 3)."}}>
-</DiceBlock>
+<NoteBlock noteBlock={{
+	"title": "Alternator",
+	"description": "Twin barrel SMG with high fire rate.\\n(2d6 Attack at short range, otherwise 1d4 Attack)"}}>
+</NoteBlock>
+<NoteBlock noteBlock={{
+	"title": "Volt",
+	"description": "CQB focused, energy actuated SMG.\\n(1d6 Attack, +1 Fight at short range)"}}>
+</NoteBlock>
 </WidgetContainer>
-  
+
 ## Light Machine Guns
-
 <WidgetContainer>
-<DiceBlock diceBlock={{
-  "title": "Spitfire",
-  "dice": "",
-  "description": "Steady fire rate with a punch (Damage 2, Accuracy 1, Range 3, Fire Rate 2). "}}>
-</DiceBlock>
-
-<DiceBlock diceBlock={{
-  "title": "L-Star",
-  "dice": "",
-  "description": "Rapid fire energy LMG (Damage 2, Accuracy 1, Range 3, Fire Rate 2)."}}>
-</DiceBlock>
-
-<DiceBlock diceBlock={{
-  "title": "X-55 Devotion",
-  "dice": "d4",
-  "description": "Ramps up fire rate over time (Damage 3, Accuracy 2, Range 3, Fire Rate 2)."}}>
-</DiceBlock>
-
-<DiceBlock diceBlock={{
-  "title": "R-97",
-  "dice": "",
-  "description": "Rapid fire SMG (Damage 1, Accuracy 1, Range 1, Fire Rate 3)."}}>
-</DiceBlock>
+<NoteBlock noteBlock={{
+	"title": "Spitfire",
+	"description": "Steady fire rate with a punch.\\n(3d4 Attack, )"}}>
+</NoteBlock>
+<NoteBlock noteBlock={{
+	"title": "L-Star",
+	"description": "Plasma-fueled LMG with high lethality and inaccuracy.\\n(1d12 Attack, -1 Fight)."}}>
+</NoteBlock>
 </WidgetContainer>
-  `
+
+## Sniper Rifles
+<WidgetContainer>
+<NoteBlock noteBlock={{
+	"title": "Kraber-AP Sniper",
+	"description": "Fires a unique round that ensures 'one shot, one kill'.\\n(2d20 Attack take highest, Extreme range, you must concentrate and skip two attacks to attack with this weapon.)"}}>
+</NoteBlock>
+<NoteBlock noteBlock={{
+	"title": "D-3 Triple Take",
+	"description": "Triple-barrel sniper rifle with auto-tightening choke.\\n(1d4 Attack, Long range, increases to 3d4 the next time you use it if you skip an attack)."}}>
+</NoteBlock>
+</WidgetContainer>
+
+## Anti-Lancer Weapons
+<WidgetContainer>
+<NoteBlock noteBlock={{
+	"title": "Charge Rifle",
+	"description": "Charged beam sniper rifle.\\n(1d6 Attack, Extreme range)"}}>
+</NoteBlock>
+<NoteBlock noteBlock={{
+	"title": "Magnetic Grenade Launcher",
+	"description": "Fires magnetic grenades that veer towards nearby lancers.\\n(1d6 Attack, +1 Fight)"}}>
+</NoteBlock>
+<NoteBlock noteBlock={{
+	"title": "LG-97 Thunderbolt",
+	"description": "Fires a large, slow-moving ball of electricity with a very wide AOE.\\n(1d4 Attack)"}}>
+</NoteBlock>
+<NoteBlock noteBlock={{
+	"title": "Archer Heavy Rocket",
+	"description": "The Archer fires a powerful homing rocket. It must be locked onto a target.\\n(1d8 Attack)"}}>
+</NoteBlock>
+</WidgetContainer>
+`
 }
 
 const ProteanRPGChapterOne = {
@@ -1088,6 +1080,7 @@ const LancerSupplement = {
     LancerCampaignPrimer,
     LancerCharacterCreation, 
     LancerGMSWeapons,
+		PilotWeapons
   ]
 }
 
@@ -1175,13 +1168,6 @@ const reducer = (globalState, action) => {
         ...globalState,
         activeFile: action?.payload.activeFile,
       }
-    case "setActivePage":
-      var copyFile = { ...globalState.activeFile };
-      copyFile.metadata.activePage = action?.payload.activePage;
-      return {
-        ...globalState,
-        activeFile: copyFile
-      }
     case "updateActiveFile":
       saveNonBuiltInFiles([...globalState.files]);
       return {
@@ -1209,14 +1195,6 @@ const reducer = (globalState, action) => {
         ...globalState,
         files: files,
         activeFile: action?.payload?.deleteFile?.uuid === globalState.activeFile?.uuid ? null : globalState.activeFile
-      }
-    case "setSettingsState":
-      return {
-        ...globalState,
-        conditionalRenders: {
-          ...globalState.conditionalRenders,
-          "SettingsModal": action?.payload.state
-        }
       }
     default:
       throw new Error(`Unhandled action type: ${action.type}`);

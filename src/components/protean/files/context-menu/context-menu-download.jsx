@@ -1,5 +1,5 @@
 import React from 'react';
-import Item from './item';
+import { SmallItem } from '../item';
 
 export default function ContextMenuDownload({ file }) {
   const fileOutputRef = React.useRef(null);
@@ -16,10 +16,12 @@ export default function ContextMenuDownload({ file }) {
   }
 
   return (
-    <Item
-      onClick={downloadFile}
-      icon="Download">
-      Download File
+    <div className="w-full">
+      <SmallItem
+        onClick={downloadFile}
+        icon="Download">
+        Download File
+      </SmallItem>
       <a
         className="hidden"
         href=""
@@ -27,6 +29,6 @@ export default function ContextMenuDownload({ file }) {
         ref={fileOutputRef}>
         DOWNLOAD
       </a>
-    </Item>
+    </div>
   );
 }

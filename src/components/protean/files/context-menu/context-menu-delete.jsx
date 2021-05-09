@@ -1,6 +1,6 @@
 import React from 'react';
-import { useGlobalStore } from '../../stores/global-store';
-import Item from './item';
+import { useGlobalStore } from '../../../stores/global-store';
+import { SmallItem } from '../item';
 
 export default function ContextMenuDelete({ file }) {
   const { globalState, dispatch } = useGlobalStore();
@@ -15,10 +15,10 @@ export default function ContextMenuDelete({ file }) {
   }
 
   return (
-    <Item
+    <SmallItem
       onClick={deleteFile}
-      icon="ChromeClose">
+      icon="Cancel">
       Delete File
-    </Item>
+    </SmallItem>
   );
 }

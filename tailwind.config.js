@@ -285,6 +285,7 @@ module.exports = {
     scrollbar: ['dark'],
     extend: {
       backgroundColor: ['checked'],
+      letterSpacing: ['dark'],
       outline: ['focus-visible'],
       ringColor: ['focus-visible'],
       ringWidth: ['focus-visible'],

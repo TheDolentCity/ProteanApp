@@ -12,7 +12,7 @@ export default function FileExplorer() {
       <h1 className="flex-none w-full pb-2 text-2xl font-semibold">
         Explorer
       </h1>
-      <div className="flex-grow h-full overflow-y-auto">
+      <div className="flex-grow">
         <FileExplorerTree files={globalState?.files}></FileExplorerTree>
       </div>
     </div>
@@ -33,13 +33,13 @@ function FileExplorerTree({ files }) {
           switch (item?.metadata?.type) {
             case "BOOK":
               return (
-                <Book key={item.uuid} fileName={item?.metadata?.title}>
+                <Book key={item.uuid} file={item}>
                   <FileExplorerTree files={item?.content}></FileExplorerTree>
                 </Book> 
               );
             case "FOLDER":
               return (
-                <Folder key={item.uuid} fileName={item?.metadata?.title}>
+                <Folder key={item.uuid} file={item}>
                   <FileExplorerTree files={item?.content}></FileExplorerTree>
                 </Folder> 
               );

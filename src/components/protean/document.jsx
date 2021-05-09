@@ -54,32 +54,26 @@ export default function Document() {
   else return <Page></Page>;
 }
 
-function DocumentWrapper(props) {
-  return (
-    <div className="flex-grow h-full py-12 overflow-y-auto scroll">
-      <Page title={props.title} icon={props.icon}>
-        {props.children}
-      </Page>
-    </div>
-  );
-}
-
 function MdxDocument(props) {
   return (
-    <DocumentWrapper title={props.title} icon={props.icon}>
-      <MdxRender>
-        {props.children}
-      </MdxRender>
-    </DocumentWrapper>
+    <div className="flex-grow h-full overflow-y-auto scroll">
+      <div className="w-full max-w-md p-12 text-left">
+        <MdxRender>
+          {props.children}
+        </MdxRender>
+      </div>
+    </div>
   );
 }
 
 function SheetDocument(props) {
   return (
-    <DocumentWrapper title={props.title} icon={props.icon}>
-      <Sheet>
-        {props.children}
-      </Sheet>
-    </DocumentWrapper>
+    <div className="flex-grow h-full overflow-y-auto scroll">
+      <div className="col-count-2 max-w-md text-left">
+        <Sheet>
+          {props.children}
+        </Sheet>
+      </div>
+    </div>
   );
 }

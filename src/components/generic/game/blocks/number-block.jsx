@@ -30,13 +30,13 @@ export default function NumberBlock(props) {
   }
 
   return (
-    <Widget css="col-span-12 xl:col-span-6 bg-steelBlue-600 dark:bg-steelBlue-700 text-white">
+    <Widget css="col-span-12 xl:col-span-6">
       <div className="flex flex-col">
         <TextareaAutosize
           value={numberBlock?.title}
           rows={1}
           maxRows={3}
-          className="acc-input input-text-area text-lg 3xl:text-2xl font-bold"
+          className="input-text-area text-base font-bold"
           placeholder="Number Block Title"
           disabled={props.static === true}
           onChange={(e) => setNumberBlockData(e.target.value, 'title')}/>
@@ -46,7 +46,7 @@ export default function NumberBlock(props) {
               <div key={index} className="grid grid-cols-12 items-center">
                 <input
                   type="text"
-                  className="acc-input input-text col-span-9 text-lighten-75"
+                  className="input-text-area col-span-9 text-sm"
                   placeholder="enter title here"
                   value={fieldTitle}
                   disabled={props.static === true}
@@ -54,7 +54,7 @@ export default function NumberBlock(props) {
                 </input>
                 <input
                   type="number"
-                  className="acc-input input-text col-span-3"
+                  className="input-text-area col-span-3 text-sm"
                   placeholder="#"
                   value={numberBlock?.fieldValues[index]}
                   disabled={props.static === true}

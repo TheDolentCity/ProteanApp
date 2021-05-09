@@ -10,7 +10,7 @@ export function FileExplorerSection(props) {
   };
 
   return (
-    <div className="flex flex-col w-full whitespace-normal overflow-x-hidden overflow-y-auto">
+    <div className="flex flex-col w-full whitespace-normal overflow-x-hidden">
       <button onClick={toggleOpen} className="acc-focus flex-none h-6 pl-2 my-auto items-center hover:bg-proteanGray-250 dark:hover:bg-proteanGray-750">
         <h6 className="flex truncate">
           {isOpen ?
@@ -23,7 +23,7 @@ export function FileExplorerSection(props) {
         </h6>
       </button>
       {isOpen ?
-        <div className="flex-grow w-full pl-3 whitespace-normal overflow-y-auto">
+        <div className="w-full pl-3 whitespace-normal overflow-y-auto">
           <FileExplorerSectionItems section={props.section}></FileExplorerSectionItems>
         </div>
         :

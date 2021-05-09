@@ -227,13 +227,16 @@
     @apply appearance-none focus:outline-none focus-visible:raise-5;
   }
   .input-text {
-    @apply acc-input whitespace-nowrap elevation-0 justify-center;
+    @apply acc-input px-1 whitespace-nowrap elevation-0 justify-center placeholder-black placeholder-opacity-25 dark:placeholder-gray-100 dark:placeholder-opacity-25;
   }
   .input-text-area {
-    @apply acc-input w-full elevation-0 justify-center overflow-hidden resize-none;
+    @apply acc-input w-full px-1 elevation-0 justify-center overflow-hidden resize-none placeholder-black placeholder-opacity-25 dark:placeholder-gray-100 dark:placeholder-opacity-25;
   }
   .scroll {
     @apply scrollbar scrollbar-thumb-gray-400 scrollbar-track-gray-300 dark:scrollbar-thumb-gray-500 dark:scrollbar-track-gray-700;
+  }
+  .scroll-thin {
+    @apply scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300 dark:scrollbar-thumb-gray-500 dark:scrollbar-track-gray-700;
   }
   @variants focus, hover {
     .bg-theme {
