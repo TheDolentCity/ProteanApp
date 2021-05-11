@@ -20,19 +20,17 @@ export function ContextMenu({ itemRef, children }) {
     }
 
     const closeMenu = (event) => {
-      // if (event.target != ref) {
-      //   setIsOpen(false);
-      // }
-      setIsOpen(false);
+      if (event.target != ref) {
+        setIsOpen(false);
+      }
+      // setIsOpen(false);
     }
 
     ref.addEventListener('contextmenu', showMenu);
-    window.addEventListener('contextmenu', closeMenu);
     window.addEventListener('click', closeMenu);
 
     return function cleanup() {
       ref.removeEventListener('contextmenu', showMenu);
-      window.removeEventListener('contextmenu', closeMenu);
       window.removeEventListener('click', closeMenu);
     }
   });

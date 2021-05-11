@@ -954,7 +954,7 @@ const PilotWeapons = {
 </NoteBlock>
 <NoteBlock noteBlock={{
 	"title": "V-47 Flatline",
-	"description": "Full-auto rifle with a punch.\\n(1d6 Attack, take 1 damage to roll 1d12 instead)"}}>
+	"description": "Full-auto rifle with a punch.\\n(1d10 Attack, no damage on a 1 or 2)"}}>
 </NoteBlock>
 </WidgetContainer>
 
@@ -974,7 +974,7 @@ const PilotWeapons = {
 <WidgetContainer>
 <NoteBlock noteBlock={{
 	"title": "Spitfire",
-	"description": "Steady fire rate with a punch.\\n(3d4 Attack, )"}}>
+	"description": "Steady fire rate and a heavy hitter.\\n(2d4 Attack, -1 Fight, Attack dice explode on a 4)"}}>
 </NoteBlock>
 <NoteBlock noteBlock={{
 	"title": "L-Star",
@@ -1079,7 +1079,6 @@ const LancerSupplement = {
     LancerSettingPrimer,
     LancerCampaignPrimer,
     LancerCharacterCreation, 
-    LancerGMSWeapons,
 		PilotWeapons
   ]
 }

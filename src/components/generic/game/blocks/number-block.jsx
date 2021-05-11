@@ -54,7 +54,7 @@ export default function NumberBlock(props) {
                 </input>
                 <input
                   type="number"
-                  className="input-text-area col-span-3 text-sm"
+                  className="input-text-area col-span-3 text-sm font-semibold"
                   placeholder="#"
                   value={numberBlock?.fieldValues[index]}
                   disabled={props.static === true}
