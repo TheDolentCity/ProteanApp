@@ -152,7 +152,7 @@ You are not the antagonist that everyone else fights against. You are not the ma
 Most tabletop roleplaying games have players create and then control a single character, called a player character or PC. But in Protean, we refer to any player who has a single character that they control/roleplay as an Actor. This is representative of their overall role in the game. However, every Actor is also expected to take on a unique role in the game.
 
 ## Actor Roles
-To ensure even distribution of labor, facilitate ease of play, and simply not place all responisiblites of the game on the Advocate, certain responisiblites are distributed among the Actors. Everyone chooses a unique role during session 0 of the game.
+To ensure even distribution of labor, facilitate ease of play, and simply not place all responsibilities of the game on the Advocate, certain responsibilities are distributed among the Actors. Everyone chooses a unique role during session 0 of the game.
 
 ### Palaver
 - Mediates the Actors during decision making and makes sure everyone's voice is heard.
@@ -303,7 +303,7 @@ Unique results are special keywords like 'Chaos!' that represent a very specific
 Read about the dice results below and then look at the dice tables to see how each die is specifically rolled.
 
 ## Dice Results
-Dice results are unique and significant ways to interpet checks. These are less commonly used than dice tags, but when they are rolled they always change the game dramatically.
+Dice results are unique and significant ways to interpret checks. These are less commonly used than dice tags, but when they are rolled they always change the game dramatically.
 
 ### Disaster
 The Actor fails to accomplish their goal. The Advocate introduces a new problem, serious danger, or character that wasn't in the scene prior as part of the group narration.
@@ -315,7 +315,7 @@ The result is neither positive nor negative. Chaos is a drastic shift in the sit
 The Actor accomplishes their goal. The Advocate should prompt them for a solution to an existing problem, removal of a serious danger, or allow them to introduce a character that wasn't in the scene prior as part of the group narration.
 
 ## Dice Tags
-Dice tags are the most common way to interpet the results of a check. They have fairly straightforward interpetations and the only hard and fast rule is that if a dice roll doesn't have an associated dice result it must have a Success or Failure tag.
+Dice tags are the most common way to interpret the results of a check. They have fairly straightforward interpretations and the only hard and fast rule is that if a dice roll doesn't have an associated dice result it must have a Success or Failure tag.
 
 ### Success
 If a die has any numerical amount of success then the Actor accomplishes their goal. The numerical value is not always used, but it can be used to represent how much damage was done to a challenge (building a wall, destroying a bunker, tank squad) if the check's intention was to resolve or otherwise remove the challenge.
@@ -330,7 +330,7 @@ The Actor adds a number of positive tags to the scene equal to the amount of adv
 The Advocate adds a number of negative tags to the scene equal to the amount of disadvantage. The Actor and Advocate should work together to make sure these tags are interesting and make sense for the scene, but the Advocate leads the process.
 
 ### Toll
-Whether they suceed or fail, the Actor always suffers an amount of damage when they roll a result with toll. The numerical value of the toll is inflicted as damage to one of the Actor's defenses. A consensus on which defense the damage is inflicted to should be reached between the Advocate and Actor, but the focus should be on what makes the most sense in the narrative OR what makes the best story.
+Whether they succeed or fail, the Actor always suffers an amount of damage when they roll a result with toll. The numerical value of the toll is inflicted as damage to one of the Actor's defenses. A consensus on which defense the damage is inflicted to should be reached between the Advocate and Actor, but the focus should be on what makes the most sense in the narrative OR what makes the best story.
 
 ## Dice Tables
 Every die in Protean is unique. This means interpreting a 4 on a d4 is very different than a 4 on a d12. The default configuration of the six core RPG dice (d4, d6, d8, d10, d12, and d20) is represented below with tables. Use these tables when you make checks to determine the dice result or dice tags that you rolled.
@@ -341,7 +341,7 @@ Every die in Protean is unique. This means interpreting a 4 on a d4 is very diff
   <DieTableRow index={1} result="1 Failure, 1 Advantage"></DieTableRow>
   <DieTableRow index={2} result="1 Failure, 1 Advantage"></DieTableRow>
   <DieTableRow index={3} result="1 Failure, 1 Advantage"></DieTableRow>
-  <DieTableRow index={4} result="3 Success"></DieTableRow>
+  <DieTableRow index={4} result="2 Success"></DieTableRow>
 </DieTable>
 
 <DieTable
@@ -350,29 +350,29 @@ Every die in Protean is unique. This means interpreting a 4 on a d4 is very diff
   <DieTableRow index={1} result="Disaster!"></DieTableRow>
   <DieTableRow index={2} result="Disaster!"></DieTableRow>
   <DieTableRow index={3} result="Disaster!"></DieTableRow>
-  <DieTableRow index={4} result="3 Success"></DieTableRow>
-  <DieTableRow index={5} result="3 Success"></DieTableRow>
+  <DieTableRow index={4} result="2 Success"></DieTableRow>
+  <DieTableRow index={5} result="2 Success"></DieTableRow>
   <DieTableRow index={6} result="Triumph!"></DieTableRow>
 </DieTable>
 
 <DieTable
   die="d8"
   description="GIVE AND TAKE: If you succeed there is always a drawback, but if you fail there is always a boon.">
-  <DieTableRow index={1} result="Failure 5, Advantage 2"></DieTableRow>
-  <DieTableRow index={2} result="Failure 3, Advantage 1"></DieTableRow>
-  <DieTableRow index={3} result="Failure 3, Advantage 1"></DieTableRow>
+  <DieTableRow index={1} result="Failure 3, Advantage 2"></DieTableRow>
+  <DieTableRow index={2} result="Failure 2, Advantage 1"></DieTableRow>
+  <DieTableRow index={3} result="Failure 2, Advantage 1"></DieTableRow>
   <DieTableRow index={4} result="Failure 1, Advantage 1"></DieTableRow>
   <DieTableRow index={5} result="Success 1, Disadvantage 1"></DieTableRow>
-  <DieTableRow index={6} result="Success 3, Disadvantage 1"></DieTableRow>
-  <DieTableRow index={7} result="Success 3, Disadvantage 1"></DieTableRow>
-  <DieTableRow index={8} result="Success 5, Disadvantage 2"></DieTableRow>
+  <DieTableRow index={6} result="Success 2, Disadvantage 1"></DieTableRow>
+  <DieTableRow index={7} result="Success 2, Disadvantage 1"></DieTableRow>
+  <DieTableRow index={8} result="Success 3, Disadvantage 2"></DieTableRow>
 </DieTable>
 
 <DieTable
   die="d10"
   description="UNRELIABLE: This die has the highest likelihood of chaos and a low chance of failure rolls, but the highest rolls are fairly timid.">
-  <DieTableRow index={1} result="Failure 4"></DieTableRow>
-  <DieTableRow index={2} result="Failure 2"></DieTableRow>
+  <DieTableRow index={1} result="Failure 3"></DieTableRow>
+  <DieTableRow index={2} result="Failure 3"></DieTableRow>
   <DieTableRow index={3} result="Chaos!"></DieTableRow>
   <DieTableRow index={4} result="Chaos!"></DieTableRow>
   <DieTableRow index={5} result="Chaos!"></DieTableRow>
@@ -386,17 +386,17 @@ Every die in Protean is unique. This means interpreting a 4 on a d4 is very diff
 <DieTable
   die="d12"
   description="COSTLY: This die has high rolls on average, but also rolls a high amount of toll. Your greatest successes will cost the most.">
-  <DieTableRow index={1} result="6 Failure"></DieTableRow>
-  <DieTableRow index={2} result="4 Failure"></DieTableRow>
+  <DieTableRow index={1} result="3 Failure"></DieTableRow>
+  <DieTableRow index={2} result="2 Failure"></DieTableRow>
   <DieTableRow index={3} result="2 Failure"></DieTableRow>
   <DieTableRow index={4} result="1 Failure"></DieTableRow>
   <DieTableRow index={5} result="Chaos!"></DieTableRow>
   <DieTableRow index={6} result="2 Success, 1 Toll"></DieTableRow>
   <DieTableRow index={7} result="2 Success, 1 Toll"></DieTableRow>
-  <DieTableRow index={8} result="4 Success, 2 Toll"></DieTableRow>
-  <DieTableRow index={9} result="4 Success, 2 Toll"></DieTableRow>
-  <DieTableRow index={10} result="6 Success, 3 Toll"></DieTableRow>
-  <DieTableRow index={11} result="6 Success, 3 Toll"></DieTableRow>
+  <DieTableRow index={8} result="3 Success, 2 Toll"></DieTableRow>
+  <DieTableRow index={9} result="3 Success, 2 Toll"></DieTableRow>
+  <DieTableRow index={10} result="4 Success, 3 Toll"></DieTableRow>
+  <DieTableRow index={11} result="4 Success, 3 Toll"></DieTableRow>
   <DieTableRow index={12} result="Triumph!"></DieTableRow>
 </DieTable>
 
@@ -404,24 +404,24 @@ Every die in Protean is unique. This means interpreting a 4 on a d4 is very diff
   die="d20"
   description="NORMAL: A fairly spread out and even distribution of mixed and matched positive/negative results. This is the default die.">
   <DieTableRow index={1} result="Disaster!"></DieTableRow>
-  <DieTableRow index={2} result="Failure 4"></DieTableRow>
-  <DieTableRow index={3} result="Failure 4"></DieTableRow>
-  <DieTableRow index={4} result="Failure 4"></DieTableRow>
-  <DieTableRow index={5} result="Failure 4"></DieTableRow>
-  <DieTableRow index={6} result="Failure 4, Advantage 1"></DieTableRow>
-  <DieTableRow index={7} result="Failure 2"></DieTableRow>
-  <DieTableRow index={8} result="Failure 2"></DieTableRow>
-  <DieTableRow index={9} result="Failure 2"></DieTableRow>
-  <DieTableRow index={10} result="Failure 2"></DieTableRow>
-  <DieTableRow index={11} result="Failure 2, Advantage 1"></DieTableRow>
-  <DieTableRow index={12} result="Success 2, Disadvantage 1"></DieTableRow>
-  <DieTableRow index={13} result="Success 2, Disadvantage 1"></DieTableRow>
-  <DieTableRow index={14} result="Success 2"></DieTableRow>
-  <DieTableRow index={15} result="Success 2"></DieTableRow>
-  <DieTableRow index={16} result="Success 4, Toll 1"></DieTableRow>
-  <DieTableRow index={17} result="Success 4, Disadvantage 1"></DieTableRow>
-  <DieTableRow index={18} result="Success 4"></DieTableRow>
-  <DieTableRow index={19} result="Success 4"></DieTableRow>
+  <DieTableRow index={2} result="Failure 2"></DieTableRow>
+  <DieTableRow index={3} result="Failure 2"></DieTableRow>
+  <DieTableRow index={4} result="Failure 2"></DieTableRow>
+  <DieTableRow index={5} result="Failure 2"></DieTableRow>
+  <DieTableRow index={6} result="Failure 2, Advantage 1"></DieTableRow>
+  <DieTableRow index={7} result="Failure 1"></DieTableRow>
+  <DieTableRow index={8} result="Failure 1"></DieTableRow>
+  <DieTableRow index={9} result="Failure 1"></DieTableRow>
+  <DieTableRow index={10} result="Failure 1"></DieTableRow>
+  <DieTableRow index={11} result="Failure 1, Advantage 1"></DieTableRow>
+  <DieTableRow index={12} result="Success 1, Disadvantage 1"></DieTableRow>
+  <DieTableRow index={13} result="Success 1, Disadvantage 1"></DieTableRow>
+  <DieTableRow index={14} result="Success 1"></DieTableRow>
+  <DieTableRow index={15} result="Success 1"></DieTableRow>
+  <DieTableRow index={16} result="Success 2, Toll 1"></DieTableRow>
+  <DieTableRow index={17} result="Success 2, Disadvantage 1"></DieTableRow>
+  <DieTableRow index={18} result="Success 2"></DieTableRow>
+  <DieTableRow index={19} result="Success 2"></DieTableRow>
   <DieTableRow index={20} result="Triumph!"></DieTableRow>
 </DieTable>
 `
