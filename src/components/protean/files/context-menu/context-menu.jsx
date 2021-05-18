@@ -23,7 +23,6 @@ export function ContextMenu({ itemRef, children }) {
       if (event.target != ref) {
         setIsOpen(false);
       }
-      // setIsOpen(false);
     }
 
     ref.addEventListener('contextmenu', showMenu);
@@ -42,7 +41,7 @@ export function ContextMenu({ itemRef, children }) {
 
   if (isOpen) {
     return (
-      <div className="fixed flex flex-col min-w-48 py-2 rounded shadow-xl bg-white dark:bg-gray-700" style={style}>
+      <div className="fixed flex flex-col min-w-48 -mx-4 py-2 rounded shadow-xl bg-white dark:bg-gray-700" style={style}>
         {children}
       </div>
     );

@@ -5,29 +5,31 @@ import ContextMenuDownload from './context-menu/context-menu-download';
 import ContextMenuDelete from './context-menu/context-menu-delete';
 import Item from './item';
 
-export function Book({ file, children }) {
+export function Book({ file, indent, children }) {
   return (
     <Container
       file={file} 
       openIcon="ReadingMode" 
-      closedIcon="ReadingMode">
+      closedIcon="ReadingMode"
+			indent={indent}>
       {children}
     </Container>
   );
 }
 
-export function Folder({ file, children }) {
+export function Folder({ file, indent, children }) {
   return (
     <Container
       file={file} 
       openIcon="FabricOpenFolderHorizontal" 
-      closedIcon="FabricFolder">
+      closedIcon="FabricFolder"
+			indent={indent}>
       {children}
     </Container>
   );
 }
 
-function Container({ file, openIcon, closedIcon, children }) {
+function Container({ file, openIcon, closedIcon, indent, children }) {
   const itemRef = useRef(null);
   return (
     <div>
@@ -35,11 +37,11 @@ function Container({ file, openIcon, closedIcon, children }) {
         {({ open }) => (
           <>
           <Disclosure.Button ref={itemRef} className="acc-focus w-full">
-            <Item icon={open ? openIcon : closedIcon}>
+            <Item icon={open ? openIcon : closedIcon} indent={indent}>
               {file?.metadata?.title}
             </Item>
           </Disclosure.Button>
-          <Disclosure.Panel className="ml-4 pl-3 border-l border-dashed border-theme">
+          <Disclosure.Panel>
             {children}
           </Disclosure.Panel>
           </>

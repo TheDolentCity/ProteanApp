@@ -1,94 +1,103 @@
 import React from 'react';
 import FabricIcon from './../../generic/basic-inputs/fabric-icon';
 
-export default function Item({ itemRef, active, icon, onClick, children}) {
+export default function Item({ itemRef, active, icon, onClick, indent, children}) {
   if (onClick === null || onClick === undefined) {
     return (
-      <BasicItem
-        ref={itemRef}
-        active={active}
-        icon={icon}>
-        {children}
-      </BasicItem>
+			<ItemContainer ref={itemRef} active={active} className="text-sm" indent={indent}>
+				<ItemIcon icon={icon} className="text-lg"></ItemIcon>
+				<ItemContent>
+					{children}
+				</ItemContent>
+			</ItemContainer>
     );
   }
   else return (
-    <button
-      ref={itemRef} 
-      onClick={onClick} 
-      className="acc-focus w-full">
-      <BasicItem
-        active={active}
-        icon={icon}>
-        {children}
-      </BasicItem>
-    </button>
+		<ButtonContainer itemRef={itemRef} onClick={onClick}>
+			<ItemContainer ref={itemRef} active={active} className="text-sm" indent={indent}>
+				<ItemIcon icon={icon} className="text-lg"></ItemIcon>
+				<ItemContent>
+					{children}
+				</ItemContent>
+			</ItemContainer>
+		</ButtonContainer>
   );
 }
 
-export function SmallItem({ itemRef, active, icon, onClick, children}) {
+export function SmallItem({ itemRef, active, icon, onClick, indent, children}) {
   if (onClick === null || onClick === undefined) {
     return (
-      <BasicItemSmall
-        ref={itemRef}
-        active={active}
-        icon={icon}>
-        {children}
-      </BasicItemSmall>
+			<ItemContainer ref={itemRef} active={active} className="text-xs" indent={indent}>
+				<ItemIcon icon={icon} className="text-base"></ItemIcon>
+				<ItemContent>
+					{children}
+				</ItemContent>
+			</ItemContainer>
     );
   }
   else return (
-    <button
-      ref={itemRef} 
-      onClick={onClick} 
-      className="acc-focus w-full">
-      <BasicItemSmall
-        active={active}
-        icon={icon}>
-        {children}
-      </BasicItemSmall>
-    </button>
+		<ButtonContainer ref={itemRef} onClick={onClick}>
+			<ItemContainer active={active} className="text-xs" indent={indent}>
+				<ItemIcon icon={icon} className="text-base"></ItemIcon>
+				<ItemContent>
+					{children}
+				</ItemContent>
+			</ItemContainer>
+		</ButtonContainer>
   );
 }
 
-function BasicItem({ active, icon, children}) {
-  return (
+export function ButtonContainer({ onClick, children }) {
+	return (
+		<button
+      onClick={onClick} 
+      className="acc-focus w-full">
+			{children}
+    </button>
+	);
+}
+
+function ItemContainer({ active, indent, className, children }) {
+	const createIndentation = () => {
+		if (indent === -1) {
+			return {
+				"padding-left": "0.75rem"
+			}
+		}
+		return {
+			"padding-left": (2.0 + (indent * 1.75)) + "rem"
+		};
+	}
+
+	return (
     <div className={
-      (active ? "bg-theme" : "hover:raise-5") +
-      " acc-focus flex w-full px-2 py-1 rounded-sm items-center text-left text-sm overflow-hidden"}>
-      <ItemIcon icon={icon}></ItemIcon>
-      <div className="w-full truncate">
-        {children}
-      </div>
+			(active ? "bg-theme" : "hover:raise-5")
+			+ " acc-focus flex w-full px-3 py-1 items-center text-left overflow-hidden " 
+			+ className}
+			style={createIndentation()}>
+			{children}
     </div>
   );
 }
 
-function BasicItemSmall({ active, icon, children}) {
+function ItemIcon({ icon, className }) {
   return (
-    <div className={
-      (active ? "bg-theme" : "hover:raise-5") +
-      " acc-focus flex w-full px-2 py-1 rounded-sm items-center text-left text-xs overflow-hidden"}>
-      <ItemIconSmall icon={icon}></ItemIconSmall>
-      <div className="w-full truncate">
-        {children}
-      </div>
-    </div>
-  );
-}
-
-function ItemIcon({ icon }) {
-  return (
-    <div className="flex pr-2 text-lg items-center">
+    <div className={"flex pr-2 items-center " + className}>
       <FabricIcon name={icon}></FabricIcon>
     </div>
   );
 }
 
-function ItemIconSmall({ icon }) {
-  return (
-    <div className="flex pr-2 text-base items-center">
-      <FabricIcon name={icon}></FabricIcon>
-    </div>
-  );
+function ItemContent({ children }) {
+	return (
+		<div className="w-full truncate">
+			{children}
+		</div>
+	);
 }
+
+ItemContainer.defaultProps = {
+	active: false,
+	indent: -1,
+	className: "text-sm"
+};

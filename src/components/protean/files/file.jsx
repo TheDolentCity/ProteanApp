@@ -5,7 +5,7 @@ import ContextMenuDownload from './context-menu/context-menu-download';
 import ContextMenuDelete from './context-menu/context-menu-delete';
 import { ContextMenu } from './context-menu/context-menu';
 
-export default function File({ file }) {
+export default function File({ file, indent }) {
   const itemRef = useRef(null);
   const { globalState, dispatch } = useGlobalStore();
 
@@ -24,7 +24,8 @@ export default function File({ file }) {
         itemRef={itemRef}
         onClick={activeFileDispatch}
         icon={globalState.fileIcons[file.metadata.type]}
-        active={globalState?.activeFile?.uuid === file?.uuid}>
+        active={globalState?.activeFile?.uuid === file?.uuid}
+				indent={indent}>
         {file?.metadata?.title}
       </Item>
       <ContextMenu itemRef={itemRef}>

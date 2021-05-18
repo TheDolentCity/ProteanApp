@@ -9,11 +9,11 @@ export default function FileExplorer() {
 
   return (
     <div className="flex flex-col w-full mx-auto pb-12">
-      <h1 className="flex-none w-full pb-2 text-2xl font-semibold">
+      <h1 className="flex-none w-full sm:p-4 md:p-8 pb-2 text-2xl font-semibold">
         Explorer
       </h1>
       <div className="flex-grow">
-        <FileExplorerTree files={globalState?.files}></FileExplorerTree>
+        <FileExplorerTree files={globalState?.files} iteration={0}></FileExplorerTree>
       </div>
     </div>
   );
@@ -25,7 +25,7 @@ const MENU_ID = "FILE-EXPLORER-CONTEXT-MENU";
   A recursive tree component that creates book/folder disclosures
   and files that the user can select or modify.
 */
-function FileExplorerTree({ files }) {
+function FileExplorerTree({ files, iteration }) {
   return (
     <div>
       {
@@ -33,20 +33,20 @@ function FileExplorerTree({ files }) {
           switch (item?.metadata?.type) {
             case "BOOK":
               return (
-                <Book key={item.uuid} file={item}>
-                  <FileExplorerTree files={item?.content}></FileExplorerTree>
+                <Book key={item.uuid} file={item} indent={iteration}>
+                  <FileExplorerTree files={item?.content} iteration={iteration+1}></FileExplorerTree>
                 </Book> 
               );
             case "FOLDER":
               return (
-                <Folder key={item.uuid} file={item}>
-                  <FileExplorerTree files={item?.content}></FileExplorerTree>
-                </Folder> 
+                <Folder key={item.uuid} file={item} indent={iteration}>
+                  <FileExplorerTree files={item?.content} iteration={iteration+1}></FileExplorerTree>
+                </Folder>
               );
             case "SHEET":
-              return <File key={item.uuid} file={item}></File>;
+              return <File key={item.uuid} file={item} indent={iteration}></File>;
             case "PAGE":
-              return <File key={item.uuid} file={item}></File>;
+              return <File key={item.uuid} file={item} indent={iteration}></File>;
             default:
               return <span key={item.uuid} className="hidden"></span>;
           }
