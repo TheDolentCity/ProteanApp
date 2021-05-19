@@ -4,6 +4,7 @@ import { ContextMenu } from './context-menu/context-menu';
 import ContextMenuDownload from './context-menu/context-menu-download';
 import ContextMenuDelete from './context-menu/context-menu-delete';
 import Item from './item';
+import ContextMenuNewPage from './context-menu/context-menu-new-page';
 
 export function Book({ file, indent, children }) {
   return (
@@ -48,6 +49,7 @@ function Container({ file, openIcon, closedIcon, indent, children }) {
         )}
       </Disclosure>
       <ContextMenu itemRef={itemRef}>
+				<ContextMenuNewPage file={file}></ContextMenuNewPage>
         <ContextMenuDownload file={file}></ContextMenuDownload>
         <ContextMenuDelete file={file}></ContextMenuDelete>
       </ContextMenu>

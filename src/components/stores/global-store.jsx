@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const CharacterSheets = {
   uuid: "character-sheets.json",
@@ -517,6 +518,19 @@ She rolls a 6 and a 7, but since the check's difficulty is hard the 7 is ignored
 "I agree, but that doesn't need to be a check. You have enough time to tune it and figure it out. The nearest one is somewhere Northeast of here."
 
 Feather climbs aboard Zero's mech and pulls out a flashlight. They slap the side of the mech twice like a jockey and say "Hurry up I want to get OFF of this planet."
+`
+}
+
+const CombatModule = {
+  uuid: 'combat-module.json',
+  metadata: {
+    type: 'PAGE',
+    title: 'Module: Combat'
+  },
+  content:
+`
+# Module: Combat
+This module provides more detailed rules for combat. This is useful for any game with a heavy combat focus, such as a mech combat game.
 `
 }
 
@@ -1042,6 +1056,17 @@ const ProteanRPGChapterTwo = {
   ]
 }
 
+const ProteanRPGChapterThree = {
+  uuid: "protean-rpg-chapter-three.json",
+  metadata: {
+    type: "FOLDER",
+    title: "Chapter Three: Rule Modules"
+  },
+  content: [
+    CombatModule
+  ]
+}
+
 const ProteanApp = {
   uuid: "protean-app.json",
   metadata: {
@@ -1064,7 +1089,8 @@ const ProteanRPG = {
   },
   content: [
     ProteanRPGChapterOne,
-    ProteanRPGChapterTwo
+    ProteanRPGChapterTwo,
+    ProteanRPGChapterThree
   ]
 }
 
@@ -1126,6 +1152,7 @@ function getFiles() {
 
 const GlobalStoreContext = createContext();
 const initialGlobalState = {
+	mode: "ReadingMode",
   darkMode: loadLocalStorage("darkMode", false),
   files: getFiles(),
   activeFile: {
@@ -1140,6 +1167,11 @@ const initialGlobalState = {
 
 const reducer = (globalState, action) => {
   switch (action.type) {
+    case "setMode":
+      return {
+        ...globalState,
+        mode: action?.payload.mode
+      }
     case "setDarkMode":
       localStorage.setItem("darkMode", action?.payload.darkMode);
       return {
@@ -1148,7 +1180,7 @@ const reducer = (globalState, action) => {
       }
     case "uploadFile":
       var iterations = 1;
-      var newFile = { ...action?.payload.file };
+      const newFile = { ...action?.payload.file };
       const existingFileUuids = globalState.files.map(file => file.uuid);
       while (existingFileUuids.includes(newFile?.uuid)) {
         console.log(`Existing file with uuid '${newFile?.uuid}' exists.`);
@@ -1162,6 +1194,29 @@ const reducer = (globalState, action) => {
         ...globalState,
         files: [...globalState.files, newFile]
       }
+		case "newPage":
+			const newPage = {
+				uuid: uuidv4(),
+				metadata: {
+					type: "PAGE",
+					title: "untitled"
+				},
+				content: ``
+			};
+			switch (action?.payload.parentFile?.metadata.type) {
+				case "BOOK":
+					action?.payload.parentFile?.content.push(newPage);
+					break;
+				case "FOLDER":
+					action?.payload.parentFile?.content.push(newPage);
+					break;
+				default:
+					globalState.files.push(newPage);
+					break;
+			}
+			return {
+				...globalState
+			}
     case "setActiveFile":
       return {
         ...globalState,

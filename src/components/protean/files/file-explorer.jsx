@@ -1,15 +1,14 @@
-import React, { useRef } from 'react';
-import { useContextMenu, Menu, Item, Separator } from "react-contexify";
+import React from 'react';
 import { useGlobalStore } from '../../stores/global-store';
 import { Book, Folder } from './container';
-import File, { FileContextMenu } from './file';
+import File from './file';
 
 export default function FileExplorer() {
   const { globalState, dispatch } = useGlobalStore();
 
   return (
     <div className="flex flex-col w-full mx-auto pb-12">
-      <h1 className="flex-none w-full sm:p-4 md:p-8 pb-2 text-2xl font-semibold">
+      <h1 className="flex-none w-full sm:px-4 md:px-8 sm:pt-4 md:pt-8 pb-2 text-2xl font-semibold">
         Explorer
       </h1>
       <div className="flex-grow">
@@ -18,8 +17,6 @@ export default function FileExplorer() {
     </div>
   );
 }
-
-const MENU_ID = "FILE-EXPLORER-CONTEXT-MENU";
 
 /*
   A recursive tree component that creates book/folder disclosures

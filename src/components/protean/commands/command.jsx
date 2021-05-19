@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import FabricIcon from '../../generic/basic-inputs/fabric-icon';
 import DarkModeCommand from './dark-mode-command';
+import PlayingModeCommand from './playing-mode-command';
+import ReadingModeCommand from './reading-mode-command';
 import SettingsCommand from './settings-command';
 import UploadCommand from './upload-command';
+import WritingModeCommand from './writing-mode-command';
 
 export function CommandBar({ children }) {
   const [isOpen, setIsOpen] = useState(true);
@@ -12,7 +15,7 @@ export function CommandBar({ children }) {
   };
 
   return (
-    <div className={(isOpen ? "w-40 px-2 sm:py-2 md:py-6" : "px-2 sm:py-2 md:py-6") + " flex-none flex flex-col items-center bg-theme"}>
+    <div className={(isOpen ? "w-48 px-2 sm:py-2 md:py-6" : "px-2 sm:py-2 md:py-6") + " flex-none flex flex-col items-center bg-theme"}>
       <Command 
         onClick={toggleOpen} 
         isOpen={isOpen}
@@ -20,6 +23,9 @@ export function CommandBar({ children }) {
         text="Collapse">
       </Command>
       <SettingsCommand isOpen={isOpen}></SettingsCommand>
+			<WritingModeCommand isOpen={isOpen}></WritingModeCommand>
+			<ReadingModeCommand isOpen={isOpen}></ReadingModeCommand>
+			<PlayingModeCommand isOpen={isOpen}></PlayingModeCommand>
       <DarkModeCommand isOpen={isOpen}></DarkModeCommand>
       <UploadCommand isOpen={isOpen}></UploadCommand>
     </div>

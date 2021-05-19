@@ -4,7 +4,7 @@ import FabricIcon from './../../generic/basic-inputs/fabric-icon';
 export default function Item({ itemRef, active, icon, onClick, indent, children}) {
   if (onClick === null || onClick === undefined) {
     return (
-			<ItemContainer ref={itemRef} active={active} className="text-sm" indent={indent}>
+			<ItemContainer itemRef={itemRef} active={active} className="text-sm" indent={indent}>
 				<ItemIcon icon={icon} className="text-lg"></ItemIcon>
 				<ItemContent>
 					{children}
@@ -14,7 +14,7 @@ export default function Item({ itemRef, active, icon, onClick, indent, children}
   }
   else return (
 		<ButtonContainer itemRef={itemRef} onClick={onClick}>
-			<ItemContainer ref={itemRef} active={active} className="text-sm" indent={indent}>
+			<ItemContainer active={active} className="text-sm" indent={indent}>
 				<ItemIcon icon={icon} className="text-lg"></ItemIcon>
 				<ItemContent>
 					{children}
@@ -47,9 +47,10 @@ export function SmallItem({ itemRef, active, icon, onClick, indent, children}) {
   );
 }
 
-export function ButtonContainer({ onClick, children }) {
+export function ButtonContainer({ itemRef, onClick, children }) {
 	return (
 		<button
+			ref={itemRef}
       onClick={onClick} 
       className="acc-focus w-full">
 			{children}
@@ -61,11 +62,11 @@ function ItemContainer({ active, indent, className, children }) {
 	const createIndentation = () => {
 		if (indent === -1) {
 			return {
-				"padding-left": "0.75rem"
+				"paddingLeft": "0.75rem"
 			}
 		}
 		return {
-			"padding-left": (2.0 + (indent * 1.75)) + "rem"
+			"paddingLeft": (2.0 + (indent * 1.75)) + "rem"
 		};
 	}
 
