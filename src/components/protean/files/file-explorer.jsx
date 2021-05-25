@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { useGlobalStore } from '../../stores/global-store';
 import { ContextMenu } from './context-menu/context-menu';
+import ContextMenuNewBook from './context-menu/context-menu-new-book';
+import ContextMenuNewFolder from './context-menu/context-menu-new-folder';
 import ContextMenuNewPage from './context-menu/context-menu-new-page';
 import { Book, Folder } from './container';
 import File from './file';
@@ -19,6 +21,8 @@ export default function FileExplorer() {
       </div>
       <div ref={itemRef} className="flex-grow pb-12">
 				<ContextMenu itemRef={itemRef}>
+					<ContextMenuNewBook file={null}></ContextMenuNewBook>
+					<ContextMenuNewFolder file={null}></ContextMenuNewFolder>
 					<ContextMenuNewPage file={null}></ContextMenuNewPage>
 				</ContextMenu>
       </div>

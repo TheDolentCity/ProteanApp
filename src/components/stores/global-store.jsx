@@ -1141,6 +1141,22 @@ function saveNonBuiltInFiles(files) {
   localStorage.setItem("files", JSON.stringify(nonBuiltInFiles));
 }
 
+function updateTreeFile(treeFiles, newFile) {
+	for (var i = 0; i < treeFiles.length; i++) {
+		if (treeFiles[i].uuid === newFile.uuid) {
+			treeFiles.splice(i, 1, newFile);
+			return treeFiles;
+		}
+		// Call recursive function if this file has child files
+		else if (Array.isArray(treeFiles[i].content) && treeFiles[i].content.length > 0) {
+			updateTreeFile(treeFiles[i].content, newFile);
+		}
+	}
+
+	// Default return
+	return treeFiles;
+}
+
 // Gets all of the files needed for the application to run.
 // This returns the built in files, local files, or the combination of the two.
 function getFiles() {
@@ -1156,7 +1172,7 @@ function getFiles() {
   // Return built in files and local storage files
   else {
     console.log("getFiles:BuiltInFilesNames+LocalFilesNames:" + JSON.stringify([...Object.values(BuiltInFiles), ...localFiles]?.map(file => file.uuid)));
-    console.log("getFiles:LocalFilesNames:" + JSON.stringify([...localFiles]));
+    // console.log("getFiles:LocalFilesNames:" + JSON.stringify([...localFiles]));
     return [...Object.values(BuiltInFiles), ...localFiles];
   }
 }
@@ -1203,26 +1219,51 @@ const reducer = (globalState, action) => {
         ...globalState,
         files: [...globalState.files, newFile]
       }
-		case "newPage":
-			const newPage = {
-				uuid: uuidv4(),
-				metadata: {
-					type: "PAGE",
-					title: "untitled"
-				},
-				content: ``
-			};
+		case "newDocument":
+			var newDocument = {};
+			switch (action?.payload.documentType) {
+				case "BOOK":
+					newDocument = {
+						uuid: uuidv4(),
+						metadata: {
+							type: "BOOK",
+							title: "untitled"
+						},
+						content: []
+					};
+					break;
+				case "FOLDER":
+					newDocument = {
+						uuid: uuidv4(),
+						metadata: {
+							type: "FOLDER",
+							title: "untitled"
+						},
+						content: []
+					};
+					break;
+				case "PAGE":
+					newDocument = {
+						uuid: uuidv4(),
+						metadata: {
+							type: "PAGE",
+							title: "untitled"
+						},
+						content: ``
+					};
+					break;
+			}
 			switch (action?.payload.parentFile?.metadata.type) {
 				case "BOOK":
-					action?.payload.parentFile?.content.push(newPage);
+					action?.payload.parentFile?.content.push(newDocument);
 					saveNonBuiltInFiles(globalState.files);
 					break;
 				case "FOLDER":
-					action?.payload.parentFile?.content.push(newPage);
+					action?.payload.parentFile?.content.push(newDocument);
 					saveNonBuiltInFiles(globalState.files);
 					break;
 				default:
-					globalState.files.push(newPage);
+					globalState.files.push(newDocument);
 					saveNonBuiltInFiles(globalState.files);
 					break;
 			}
@@ -1235,17 +1276,19 @@ const reducer = (globalState, action) => {
         activeFile: action?.payload.activeFile,
       }
     case "updateActiveFile":
-			var updatedFiles = [...globalState.files];
-			const activeFileIndex = updatedFiles.findIndex((file) => file.uuid === action.payload.activeFile.uuid);
-			updatedFiles.splice(activeFileIndex, 1, action.payload.activeFile);
+			// var updatedFiles = [...globalState.files];
+			// const activeFileIndex = updatedFiles.findIndex((file) => file.uuid === action.payload.activeFile.uuid);
+			// updatedFiles.splice(activeFileIndex, 1, action.payload.activeFile);
+			var filesCopy = [...globalState.files];
+			updateTreeFile(filesCopy, action.payload.activeFile);
 			console.log("globalState.files:\n" + JSON.stringify(globalState.files, null, 2));
 			console.log("action.payload.activeFile:\n" + JSON.stringify(action.payload.activeFile, null, 2));
-			console.log("updatedFiles:\n" + JSON.stringify(updatedFiles, null, 2));
-      saveNonBuiltInFiles(updatedFiles);
+			console.log("updatedFiles:\n" + JSON.stringify(filesCopy, null, 2));
+      saveNonBuiltInFiles(filesCopy);
       return {
         ...globalState,
-				files: updatedFiles,
-        activeFile: action?.payload.activeFile
+				files: filesCopy,
+        activeFile: action.payload.activeFile
       }
     case "deleteFile":
       // Don't delete built in files

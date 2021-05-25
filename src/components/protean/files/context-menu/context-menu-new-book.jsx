@@ -2,14 +2,14 @@ import React from 'react';
 import { useGlobalStore } from '../../../stores/global-store';
 import { SmallItem } from '../item';
 
-export default function ContextMenuNewPage({ file }) {
+export default function ContextMenuNewBook({ file }) {
   const { globalState, dispatch } = useGlobalStore();
 
-  const createPage = () => {
+  const createBook = () => {
     dispatch({
       type: "newDocument",
       payload: {
-				documentType: "PAGE",
+				documentType: "BOOK",
         parentFile: file
       }
     });
@@ -17,9 +17,9 @@ export default function ContextMenuNewPage({ file }) {
 
   return (
     <SmallItem
-      onClick={createPage}
+      onClick={createBook}
       icon="Add">
-      New Page
+      New Book
     </SmallItem>
   );
 }
