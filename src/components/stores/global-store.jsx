@@ -531,6 +531,15 @@ const CombatModule = {
 `
 # Module: Combat
 This module provides more detailed rules for combat. This is useful for any game with a heavy combat focus, such as a mech combat game.
+
+## Turns
+This module introduces turn-based actions for combat. This applies to PCs and NPCs. The Advocate establishes whether the NPCs act first or whether the PCs act first based on the starting incident for the combat. On your turn you take one *significant* action. If an action doesn't require concentration or thought then it can be performed as part of the turn. There are three types of significant actions: movements, attacks, and checks.
+
+### Movements
+
+### Attacks
+
+### Checks
 `
 }
 
@@ -1128,6 +1137,7 @@ function saveNonBuiltInFiles(files) {
   // console.log("saveNonBuiltInFiles:FileNames:\n" + JSON.stringify(files.map(file => file.uuid)));
   var nonBuiltInFiles = files.filter(file => isNotBuiltInFile(file?.uuid));
   // console.log("saveNonBuiltInFiles:NonBuiltInFileNames:\n" + JSON.stringify(nonBuiltInFiles.map(file => file.uuid)));
+  console.log("saveNonBuiltInFiles:\n" + JSON.stringify(nonBuiltInFiles, null, 2));
   localStorage.setItem("files", JSON.stringify(nonBuiltInFiles));
 }
 
@@ -1146,6 +1156,7 @@ function getFiles() {
   // Return built in files and local storage files
   else {
     console.log("getFiles:BuiltInFilesNames+LocalFilesNames:" + JSON.stringify([...Object.values(BuiltInFiles), ...localFiles]?.map(file => file.uuid)));
+    console.log("getFiles:LocalFilesNames:" + JSON.stringify([...localFiles]));
     return [...Object.values(BuiltInFiles), ...localFiles];
   }
 }
@@ -1179,15 +1190,13 @@ const reducer = (globalState, action) => {
         darkMode: action?.payload.darkMode
       }
     case "uploadFile":
-      var iterations = 1;
       const newFile = { ...action?.payload.file };
       const existingFileUuids = globalState.files.map(file => file.uuid);
       while (existingFileUuids.includes(newFile?.uuid)) {
         console.log(`Existing file with uuid '${newFile?.uuid}' exists.`);
         console.log(`Renaming new file...`);
-        newFile.uuid = `(${iterations})` + action?.payload.file.uuid;
+        newFile.uuid = uuidv4();
         console.log(`Renamed new file to '${newFile.uuid}'`);
-        iterations++;
       }
       saveNonBuiltInFiles([...globalState.files, newFile]);
       return {
@@ -1206,12 +1215,15 @@ const reducer = (globalState, action) => {
 			switch (action?.payload.parentFile?.metadata.type) {
 				case "BOOK":
 					action?.payload.parentFile?.content.push(newPage);
+					saveNonBuiltInFiles(globalState.files);
 					break;
 				case "FOLDER":
 					action?.payload.parentFile?.content.push(newPage);
+					saveNonBuiltInFiles(globalState.files);
 					break;
 				default:
 					globalState.files.push(newPage);
+					saveNonBuiltInFiles(globalState.files);
 					break;
 			}
 			return {
@@ -1223,9 +1235,16 @@ const reducer = (globalState, action) => {
         activeFile: action?.payload.activeFile,
       }
     case "updateActiveFile":
-      saveNonBuiltInFiles([...globalState.files]);
+			var updatedFiles = [...globalState.files];
+			const activeFileIndex = updatedFiles.findIndex((file) => file.uuid === action.payload.activeFile.uuid);
+			updatedFiles.splice(activeFileIndex, 1, action.payload.activeFile);
+			console.log("globalState.files:\n" + JSON.stringify(globalState.files, null, 2));
+			console.log("action.payload.activeFile:\n" + JSON.stringify(action.payload.activeFile, null, 2));
+			console.log("updatedFiles:\n" + JSON.stringify(updatedFiles, null, 2));
+      saveNonBuiltInFiles(updatedFiles);
       return {
         ...globalState,
+				files: updatedFiles,
         activeFile: action?.payload.activeFile
       }
     case "deleteFile":

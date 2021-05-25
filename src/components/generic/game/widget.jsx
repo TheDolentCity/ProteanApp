@@ -10,7 +10,7 @@ export function WidgetContainer({ className, children }) {
 
 export function Widget(props) {
 	return (
-		<div className={"col-span p-2 xl:p-4 border-2 border-gray-200 dark:border-gray-900 bg-gray-100 dark:bg-black " + props.css}>
+		<div className={"col-span p-2 xl:p-4 border border-gray-200 dark:border-gray-700 " + props.css}>
 			{props.children}
 		</div>
 	);

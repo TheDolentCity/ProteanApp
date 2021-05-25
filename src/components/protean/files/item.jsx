@@ -72,7 +72,7 @@ function ItemContainer({ active, indent, className, children }) {
 
 	return (
     <div className={
-			(active ? "bg-theme" : "hover:raise-5")
+			(active ? "font-semibold bg-gray-200 dark:bg-gray-700 text-black dark:text-white" : "hover:bg-gray-100 dark:hover:bg-gray-800")
 			+ " acc-focus flex w-full px-3 py-1 items-center text-left overflow-hidden " 
 			+ className}
 			style={createIndentation()}>

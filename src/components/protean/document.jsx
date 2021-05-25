@@ -37,7 +37,7 @@ function WritingDocument() {
 
   // Sends the local document data to global storage
   const updateDocument = (value) => {
-		// console.log(`Document:${document}\nContent:${document?.content}\nIndex:${index}`);
+		console.log(`Sending Document To Global Storage\nContent:${document?.content}\nValue:${value}`);
     if (document === undefined) {
       console.log(`document is undefined on Document object.`);
     }
@@ -55,17 +55,32 @@ function WritingDocument() {
     }
   }
 
-  return (
-		<div className="w-full max-w-md p-12 text-left">
-			<TextareaAutosize
-				rows={2}
-				maxRows={10000}
-				className="input-text-area h-full text-base"
-				placeholder="enter file contents"
-				value={document?.content}
-				onChange={(e) => updateDocument(e.target.value)}/>
-		</div>
-  );
+	switch (globalState.activeFile?.metadata?.type) {
+		case "SHEET":
+			return (
+				<div className="w-full max-w-md p-12 text-left">
+					<TextareaAutosize
+						rows={2}
+						maxRows={10000}
+						className="input-text-area h-full text-base"
+						placeholder="enter file contents"
+						value={JSON.stringify(document?.content, null, 4)}
+						onChange={(e) => updateDocument(e.target.value)}/>
+				</div>
+			);
+		default:
+			return (
+				<div className="w-full max-w-md p-12 text-left">
+					<TextareaAutosize
+						rows={2}
+						maxRows={10000}
+						className="input-text-area h-full text-base"
+						placeholder="enter file contents"
+						value={document?.content}
+						onChange={(e) => updateDocument(e.target.value)}/>
+				</div>
+			);
+	}
 }
 
 function ReadingDocument() {

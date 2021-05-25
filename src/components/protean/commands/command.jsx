@@ -15,7 +15,7 @@ export function CommandBar({ children }) {
   };
 
   return (
-    <div className={(isOpen ? "w-48 px-2 sm:py-2 md:py-6" : "px-2 sm:py-2 md:py-6") + " flex-none flex flex-col items-center bg-theme"}>
+    <div className={(isOpen ? "w-48 sm:py-2 md:py-6" : "sm:py-2 md:py-6") + " flex-none flex flex-col items-center bg-gray-300 dark:bg-black"}>
       <Command 
         onClick={toggleOpen} 
         isOpen={isOpen}
@@ -34,7 +34,7 @@ export function CommandBar({ children }) {
 
 export function Command({ onClick, isOpen, icon, text, children }) {
   return (
-    <button onClick={onClick} className={(isOpen ? "w-full" : "") + " acc-focus flex px-3 py-2 rounded-sm items-center text-left text-lg overflow-hidden hover:raise-10"}>
+    <button onClick={onClick} className={(isOpen ? "w-full" : "") + " acc-focus flex px-4 py-2 items-center rounded-none text-left text-lg overflow-hidden hover:raise-10"}>
       <FabricIcon name={icon}></FabricIcon>
       {
         isOpen ?

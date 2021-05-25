@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useGlobalStore } from '../../stores/global-store';
+import { ContextMenu } from './context-menu/context-menu';
+import ContextMenuNewPage from './context-menu/context-menu-new-page';
 import { Book, Folder } from './container';
 import File from './file';
 
 export default function FileExplorer() {
   const { globalState, dispatch } = useGlobalStore();
+  const itemRef = useRef(null);
 
   return (
-    <div className="flex flex-col w-full mx-auto pb-12">
-      <h1 className="flex-none w-full sm:px-4 md:px-8 sm:pt-4 md:pt-8 pb-2 text-2xl font-semibold">
+    <div className="flex flex-col w-full h-full mx-auto">
+      <h1 className="flex-none w-full sm:px-4 md:px-8 sm:pt-4 md:pt-8 pb-2 text-2xl font-semibold text-gray-900 dark:text-gray-100">
         Explorer
       </h1>
-      <div className="flex-grow">
+      <div className="flex-shrink">
         <FileExplorerTree files={globalState?.files} iteration={0}></FileExplorerTree>
+      </div>
+      <div ref={itemRef} className="flex-grow pb-12">
+				<ContextMenu itemRef={itemRef}>
+					<ContextMenuNewPage file={null}></ContextMenuNewPage>
+				</ContextMenu>
       </div>
     </div>
   );
