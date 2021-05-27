@@ -1,5 +1,5 @@
 import React from 'react';
-import FabricIcon from './../../generic/basic-inputs/fabric-icon';
+import FabricIcon from '../../generic/basic-inputs/fabric-icon';
 
 export default function Item({ itemRef, active, icon, onClick, indent, children}) {
   if (onClick === null || onClick === undefined) {
@@ -72,7 +72,7 @@ function ItemContainer({ active, indent, className, children }) {
 
 	return (
     <div className={
-			(active ? "font-semibold bg-gray-200 dark:bg-gray-700 text-black dark:text-white" : "hover:bg-gray-100 dark:hover:bg-gray-800")
+			(active ? "font-semibold raise-10 text-black dark:text-white" : "hover:raise-5")
 			+ " acc-focus flex w-full px-3 py-1 items-center text-left overflow-hidden " 
 			+ className}
 			style={createIndentation()}>
@@ -83,18 +83,26 @@ function ItemContainer({ active, indent, className, children }) {
 
 function ItemIcon({ icon, className }) {
   return (
-    <div className={"flex pr-2 items-center " + className}>
-      <FabricIcon name={icon}></FabricIcon>
+    <div className={"flex pr-2 items-center  " + className}>
+      <FabricIcon name={icon} className="text-theme"></FabricIcon>
     </div>
   );
 }
 
 function ItemContent({ children }) {
-	return (
-		<div className="w-full truncate">
-			{children}
-		</div>
-	);
+	if (typeof children === 'object') {
+		console.log("Objects Offender:" + JSON.stringify(children));
+		return (
+			<span></span>
+		);
+	}
+	else {
+		return (
+			<div className="w-full truncate">
+				{children}
+			</div>
+		);
+	} 
 }
 
 ItemContainer.defaultProps = {

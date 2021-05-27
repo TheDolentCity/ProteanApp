@@ -1276,19 +1276,21 @@ const reducer = (globalState, action) => {
         activeFile: action?.payload.activeFile,
       }
     case "updateActiveFile":
-			// var updatedFiles = [...globalState.files];
-			// const activeFileIndex = updatedFiles.findIndex((file) => file.uuid === action.payload.activeFile.uuid);
-			// updatedFiles.splice(activeFileIndex, 1, action.payload.activeFile);
 			var filesCopy = [...globalState.files];
 			updateTreeFile(filesCopy, action.payload.activeFile);
-			console.log("globalState.files:\n" + JSON.stringify(globalState.files, null, 2));
-			console.log("action.payload.activeFile:\n" + JSON.stringify(action.payload.activeFile, null, 2));
-			console.log("updatedFiles:\n" + JSON.stringify(filesCopy, null, 2));
       saveNonBuiltInFiles(filesCopy);
       return {
         ...globalState,
 				files: filesCopy,
         activeFile: action.payload.activeFile
+      }
+		case "updateFile":
+			var filesCopy = [...globalState.files];
+			updateTreeFile(filesCopy, action.payload.updateFile);
+      saveNonBuiltInFiles(filesCopy);
+      return {
+        ...globalState,
+				files: filesCopy
       }
     case "deleteFile":
       // Don't delete built in files

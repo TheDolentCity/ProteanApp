@@ -35,7 +35,7 @@ export function CommandBar({ children }) {
 export function Command({ onClick, isOpen, icon, text, children }) {
   return (
     <button onClick={onClick} className={(isOpen ? "w-full" : "") + " acc-focus flex px-4 py-2 items-center rounded-none text-left text-lg overflow-hidden hover:raise-10"}>
-      <FabricIcon name={icon}></FabricIcon>
+      <FabricIcon name={icon} className="text-theme"></FabricIcon>
       {
         isOpen ?
         <div className="w-full pl-2 truncate text-sm">
