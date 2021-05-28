@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useGlobalStore } from '../../stores/global-store';
-import { SmallItem } from './item';
+import Item from './item';
 
 export function ContextMenu({ itemRef, children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +42,7 @@ export function ContextMenu({ itemRef, children }) {
 
   if (isOpen) {
     return (
-      <div className="fixed flex flex-col min-w-48 -mx-4 shadow-xl bg-white divide-y divide-gray-300 dark:bg-gray-700 dark:divide-gray-600" style={style}>
+      <div className="fixed flex flex-none flex-col min-w-48 -mx-4 shadow-xl bg-white divide-y divide-gray-300 dark:bg-gray-700 dark:divide-gray-600" style={style}>
         {children}
       </div>
     );
@@ -71,11 +71,11 @@ export function ContextMenuDelete({ file }) {
   }
 
   return (
-    <SmallItem
+    <Item
       onClick={deleteFile}
       icon="Cancel">
       Delete
-    </SmallItem>
+    </Item>
   );
 }
 
@@ -95,11 +95,11 @@ export function ContextMenuDownload({ file }) {
 
   return (
     <div className="w-full">
-      <SmallItem
+      <Item
         onClick={downloadFile}
         icon="Download">
         Download
-      </SmallItem>
+      </Item>
       <a
         className="hidden"
         href=""
@@ -125,11 +125,11 @@ export function ContextMenuNewBook({ file }) {
   }
 
   return (
-    <SmallItem
+    <Item
       onClick={createBook}
       icon="Add">
       New Book
-    </SmallItem>
+    </Item>
   );
 }
 
@@ -147,11 +147,11 @@ export function ContextMenuNewFolder({ file }) {
   }
 
   return (
-    <SmallItem
+    <Item
       onClick={createFolder}
       icon="Add">
       New Folder
-    </SmallItem>
+    </Item>
   );
 }
 
@@ -169,18 +169,18 @@ export function ContextMenuNewPage({ file }) {
   }
 
   return (
-    <SmallItem
+    <Item
       onClick={createPage}
       icon="Add">
       New Page
-    </SmallItem>
+    </Item>
   );
 }
 
 export function ContextMenuRename({ onClick }) {
 	return (
-		<SmallItem icon="Rename" onClick={onClick}>
+		<Item icon="Rename" onClick={onClick}>
 			Rename
-		</SmallItem>
+		</Item>
 	);
 }

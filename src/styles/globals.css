@@ -250,7 +250,7 @@
       @apply border-primary-600 dark:border-primary-700;
     }
 		.text-theme {
-			@apply text-primary-800 dark:text-primary-600;
+			@apply text-primary-600 dark:text-primary-600;
 		}
   }
 

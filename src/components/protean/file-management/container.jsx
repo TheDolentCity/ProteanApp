@@ -17,7 +17,7 @@ export function Book({ file, indent, children }) {
   return (
     <Container
       file={file} 
-      openIcon="ReadingMode" 
+      openIcon="ReadingModeSolid" 
       closedIcon="ReadingMode"
 			indent={indent}>
       {children}
@@ -45,31 +45,30 @@ function Container({ file, openIcon, closedIcon, indent, children }) {
 	if (file !== null && file !== undefined) {
 		return (
 			<div>
-				{
-					renaming && (file?.metadata?.title !== null || file?.metadata?.title !== undefined) ?
-					<Rename 
-						file={file} 
-						icon={globalState.fileIcons[file.metadata.type]} 
-						indent={indent} 
-						endRename={() => setRenaming(false)}>
-					</Rename>
-					:
-					// BUG: FIND WAY TO CLOSE DISCLOSURE WHEN RENAMING
-					<Disclosure>
-						{({ open }) => (
-							<>
+				<Disclosure>
+					{({ open }) => (
+						<>
+						{
+							renaming && (file?.metadata?.title !== null || file?.metadata?.title !== undefined) ?
+							<Rename 
+								file={file} 
+								icon={globalState.fileIcons[file.metadata.type]} 
+								indent={indent} 
+								endRename={() => setRenaming(false)}>
+							</Rename>
+							:
 							<Disclosure.Button ref={itemRef} className="acc-focus w-full">
 								<Item icon={open ? openIcon : closedIcon} indent={indent}>
 									{file?.metadata?.title}
 								</Item>
 							</Disclosure.Button>
-							<Disclosure.Panel>
-								{children}
-							</Disclosure.Panel>
-							</>
-						)}
-					</Disclosure>
-				}
+						}
+						<Disclosure.Panel>
+							{children}
+						</Disclosure.Panel>
+						</>
+					)}
+				</Disclosure>
 				<ContextMenu itemRef={itemRef}>
 					<ContextMenuSection>
 						<ContextMenuNewPage file={file}></ContextMenuNewPage>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import FabricIcon from '../../generic/basic-inputs/fabric-icon';
+import ModeSwitcher from '../app-modes/mode-switcher';
 import DarkModeCommand from './dark-mode-command';
 import PlayingModeCommand from './playing-mode-command';
 import ReadingModeCommand from './reading-mode-command';
@@ -15,13 +16,14 @@ export function CommandBar({ children }) {
   };
 
   return (
-    <div className={(isOpen ? "w-48 sm:py-2 md:py-6" : "sm:py-2 md:py-6") + " flex-none flex flex-col items-center bg-gray-300 dark:bg-black"}>
+    <div className={(isOpen ? "w-48 sm:py-2 md:py-6" : "sm:py-2 md:py-6") + " flex-none flex flex-col items-center bg-white dark:bg-black"}>
       <Command 
         onClick={toggleOpen} 
         isOpen={isOpen}
         icon="CollapseMenu" 
         text="Collapse">
       </Command>
+			<ModeSwitcher isOpen={isOpen}></ModeSwitcher>
       <SettingsCommand isOpen={isOpen}></SettingsCommand>
 			<WritingModeCommand isOpen={isOpen}></WritingModeCommand>
 			<ReadingModeCommand isOpen={isOpen}></ReadingModeCommand>

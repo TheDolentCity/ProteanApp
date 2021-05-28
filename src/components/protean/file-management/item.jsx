@@ -5,7 +5,7 @@ export default function Item({ itemRef, active, icon, onClick, indent, children}
   if (onClick === null || onClick === undefined) {
     return (
 			<ItemContainer itemRef={itemRef} active={active} className="text-sm" indent={indent}>
-				<ItemIcon icon={icon} className="text-lg"></ItemIcon>
+				<ItemIcon icon={icon} className="text-sm"></ItemIcon>
 				<ItemContent>
 					{children}
 				</ItemContent>
@@ -15,7 +15,7 @@ export default function Item({ itemRef, active, icon, onClick, indent, children}
   else return (
 		<ButtonContainer itemRef={itemRef} onClick={onClick}>
 			<ItemContainer active={active} className="text-sm" indent={indent}>
-				<ItemIcon icon={icon} className="text-lg"></ItemIcon>
+				<ItemIcon icon={icon} className="text-sm"></ItemIcon>
 				<ItemContent>
 					{children}
 				</ItemContent>
@@ -28,7 +28,7 @@ export function SmallItem({ itemRef, active, icon, onClick, indent, children}) {
   if (onClick === null || onClick === undefined) {
     return (
 			<ItemContainer ref={itemRef} active={active} className="text-xs" indent={indent}>
-				<ItemIcon icon={icon} className="text-base"></ItemIcon>
+				<ItemIcon icon={icon} className="text-xs"></ItemIcon>
 				<ItemContent>
 					{children}
 				</ItemContent>
@@ -38,7 +38,7 @@ export function SmallItem({ itemRef, active, icon, onClick, indent, children}) {
   else return (
 		<ButtonContainer ref={itemRef} onClick={onClick}>
 			<ItemContainer active={active} className="text-xs" indent={indent}>
-				<ItemIcon icon={icon} className="text-base"></ItemIcon>
+				<ItemIcon icon={icon} className="text-xs"></ItemIcon>
 				<ItemContent>
 					{children}
 				</ItemContent>
@@ -66,7 +66,7 @@ function ItemContainer({ active, indent, className, children }) {
 			}
 		}
 		return {
-			"paddingLeft": (2.0 + (indent * 1.75)) + "rem"
+			"paddingLeft": (2.0 + (indent * 1.5)) + "rem"
 		};
 	}
 
