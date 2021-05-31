@@ -4,8 +4,8 @@ import FabricIcon from '../../generic/basic-inputs/fabric-icon';
 export default function Item({ itemRef, active, icon, onClick, indent, children}) {
   if (onClick === null || onClick === undefined) {
     return (
-			<ItemContainer itemRef={itemRef} active={active} className="text-sm" indent={indent}>
-				<ItemIcon icon={icon} className="text-sm"></ItemIcon>
+			<ItemContainer itemRef={itemRef} active={active} className="text-base" indent={indent}>
+				<ItemIcon icon={icon} className="text-base"></ItemIcon>
 				<ItemContent>
 					{children}
 				</ItemContent>
@@ -14,8 +14,8 @@ export default function Item({ itemRef, active, icon, onClick, indent, children}
   }
   else return (
 		<ButtonContainer itemRef={itemRef} onClick={onClick}>
-			<ItemContainer active={active} className="text-sm" indent={indent}>
-				<ItemIcon icon={icon} className="text-sm"></ItemIcon>
+			<ItemContainer active={active} className="text-base" indent={indent}>
+				<ItemIcon icon={icon} className="text-base"></ItemIcon>
 				<ItemContent>
 					{children}
 				</ItemContent>
@@ -59,7 +59,7 @@ export function ButtonContainer({ itemRef, onClick, children }) {
 }
 
 function ItemContainer({ active, indent, className, children }) {
-	const createIndentation = () => {
+	const createPadding = () => {
 		if (indent === -1) {
 			return {
 				"paddingLeft": "0.75rem"
@@ -70,12 +70,26 @@ function ItemContainer({ active, indent, className, children }) {
 		};
 	}
 
+	const createMargin = () => {
+		if (indent === 0) {
+			return {
+				"paddingLeft": "1rem",
+				"marginLeft": "-2rem",
+				"border-width": "0px"
+			}
+		}
+		return {
+			"paddingLeft": "-1rem"
+		};
+	}
+
 	return (
     <div className={
 			(active ? "font-semibold raise-10 text-black dark:text-white" : "hover:raise-5")
 			+ " acc-focus flex w-full px-3 py-1 items-center text-left overflow-hidden " 
 			+ className}
-			style={createIndentation()}>
+			style={createPadding()}>
+			{/* <div className="border-l border-theme" style={createMargin()}>&#8203;</div> */}
 			{children}
     </div>
   );

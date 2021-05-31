@@ -37,8 +37,9 @@ export default function ModeSwitcher({ isOpen }) {
           <Listbox.Option
             key={mode.id}
             value={mode}
-            disabled={mode.unavailable}>
-						<ModeOption isOpen={isOpen} mode={mode} className="bg-gray-200 dark:bg-gray-700"></ModeOption>
+            disabled={mode.unavailable}
+						className="cursor-pointer">
+						<ModeOption isOpen={isOpen} mode={mode} className="bg-gray-100 dark:bg-gray-700"></ModeOption>
           </Listbox.Option>
         ))}
       </Listbox.Options>
@@ -48,11 +49,11 @@ export default function ModeSwitcher({ isOpen }) {
 
 function ModeOption({ className, isOpen, mode }) {
 	return (
-		<div className={"flex px-4 py-2 items-center rounded-none text-left text-lg overflow-hidden hover:raise-10 " + className}>
+		<div className={"flex px-4 py-2 items-center rounded-none text-left text-base overflow-hidden hover:raise-10 " + className}>
 			<FabricIcon name={mode.icon} className="text-theme"></FabricIcon>
 			{
 				isOpen ?
-				<div className="w-full pl-2 truncate text-sm">
+				<div className="w-full pl-2 truncate">
 					{mode.name}
 				</div>
 				:

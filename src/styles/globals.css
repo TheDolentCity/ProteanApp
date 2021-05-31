@@ -231,7 +231,7 @@
     @apply acc-input px-1 whitespace-nowrap elevation-0 justify-center placeholder-black placeholder-opacity-25 dark:placeholder-gray-100 dark:placeholder-opacity-25;
   }
   .input-text-area {
-    @apply acc-input w-full px-1 elevation-0 justify-center overflow-hidden resize-none placeholder-black placeholder-opacity-25 dark:placeholder-gray-100 dark:placeholder-opacity-25;
+    @apply acc-input px-1 elevation-0 justify-center overflow-hidden resize-none placeholder-black placeholder-opacity-25 dark:placeholder-gray-100 dark:placeholder-opacity-25;
   }
   .input-text-visible {
     @apply appearance-none focus:outline-none focus-visible:raise-10 px-1 whitespace-nowrap justify-center raise-5 placeholder-black placeholder-opacity-25 dark:placeholder-gray-100 dark:placeholder-opacity-25;

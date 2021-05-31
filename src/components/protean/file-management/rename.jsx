@@ -1,17 +1,54 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useGlobalStore } from '../../stores/global-store';
 import FabricIcon from '../../generic/basic-inputs/fabric-icon';
 
-export default function Rename({ file, icon, indent, endRename}) {
-  const { globalState, dispatch } = useGlobalStore();
-	const [ fileName, setFileName ] = useState(file.metadata.title);
+export default function Rename({ file, icon, indent, endRename }) {
+	const { globalState, dispatch } = useGlobalStore();
+	const [fileName, setFileName] = useState(file.metadata.title);
+	const renameInput = useRef(null);
+
+	// Constructor
+	useEffect(() => {
+		// Focus input when the Rename component is created
+		renameInput.current.focus();
+
+		// Define methods for submitting rename
+		const submitRename = ({ key }) => {
+			if (key === "Enter" && fileName !== "") {
+				if (fileName === undefined) {
+					console.log(`fileName is undefined on Rename object.`);
+				}
+				else {
+					let newFile = { ...file };
+					newFile.metadata.title = fileName;
+					dispatch({
+						type: "updateFile",
+						payload: {
+							updateFile: newFile
+						}
+					});
+				}
+				endRename();
+			}
+			else if (key === "Escape") {
+				endRename();
+			}
+		}
+
+		// Set up event listeners for 
+		renameInput.current.addEventListener('keyup', submitRename);
+
+    return function cleanup() {
+			renameInput.current.removeEventListener('keyup', submitRename);
+    }
+	});
 
 	const updateFileDispatch = () => {
 		if (fileName === undefined) {
-      console.log(`fileName is undefined on Rename object.`);
-    }
-    else {
-      let newFile = { ...file };
+			console.log(`fileName is undefined on Rename object.`);
+		}
+		else {
+			let newFile = { ...file };
 			newFile.metadata.title = fileName;
 			dispatch({
 				type: "updateFile",
@@ -19,8 +56,8 @@ export default function Rename({ file, icon, indent, endRename}) {
 					updateFile: newFile
 				}
 			});
-    }
-  }
+		}
+	}
 
 	const validFileName = () => {
 		if (fileName === "") {
@@ -37,9 +74,9 @@ export default function Rename({ file, icon, indent, endRename}) {
 	}
 
 	return (
-		<RenameContainer indent={indent} className="text-sm">
+		<RenameContainer indent={indent} className="text-base">
 			<Icon icon={icon}></Icon>
-			<RenameInput fileName={fileName} setFileName={setFileName}></RenameInput>
+			<RenameInput inputRef={renameInput} fileName={fileName} onChange={setFileName}></RenameInput>
 			<RenameButton onClick={onAccept} icon="Accept"></RenameButton>
 			<RenameButton onClick={endRename} icon="Cancel"></RenameButton>
 		</RenameContainer>
@@ -59,30 +96,31 @@ function RenameContainer({ indent, className, children }) {
 	}
 
 	return (
-    <div
-			className={"acc-focus flex w-full h-7 px-3 py-1 items-center text-left overflow-hidden " + className}
+		<div
+			className={"acc-focus flex w-full px-3 items-center text-left overflow-hidden " + className}
 			style={createIndentation()}>
 			{children}
-    </div>
-  );
+		</div>
+	);
 }
 
 function Icon({ icon, className }) {
-  return (
-    <div className={"flex pr-1 items-center " + className}>
-      <FabricIcon name={icon} className="text-theme"></FabricIcon>
-    </div>
-  );
+	return (
+		<div className={"flex pr-1 items-center " + className}>
+			<FabricIcon name={icon} className="text-theme"></FabricIcon>
+		</div>
+	);
 }
 
-function RenameInput({ fileName, setFileName }) {
+function RenameInput({ inputRef, fileName, onChange }) {
 	return (
-		<input 
+		<input
+			ref={inputRef}
 			type="text"
-			className="input-text-visible flex-grow py-1 text-sm"
+			className="input-text-visible flex-grow py-1"
 			placeholder=""
 			value={fileName}
-			onChange={e => setFileName(e.target.value)}/>
+			onChange={e => onChange(e.target.value)} />
 	);
 }
 

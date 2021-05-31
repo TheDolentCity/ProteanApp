@@ -1252,6 +1252,16 @@ const reducer = (globalState, action) => {
 						content: ``
 					};
 					break;
+				case "SHEET":
+					newDocument = {
+						uuid: uuidv4(),
+						metadata: {
+							type: "SHEET",
+							title: "untitled"
+						},
+						content: []
+					};
+					break;
 			}
 			switch (action?.payload.parentFile?.metadata.type) {
 				case "BOOK":

@@ -58,15 +58,10 @@ function WritingDocument() {
 	switch (globalState.activeFile?.metadata?.type) {
 		case "SHEET":
 			return (
-				<div className="w-full max-w-md p-12 text-left">
-					<TextareaAutosize
-						rows={2}
-						maxRows={10000}
-						className="input-text-area h-full text-base"
-						placeholder="enter file contents"
-						value={JSON.stringify(document?.content, null, 4)}
-						onChange={(e) => updateDocument(e.target.value)}/>
-				</div>
+				<SheetDocument
+					title={globalState?.activeFile.metadata.title}
+					icon={globalState.fileIcons[globalState.activeFile.metadata.type]}>
+				</SheetDocument>
 			);
 		default:
 			return (
@@ -74,7 +69,7 @@ function WritingDocument() {
 					<TextareaAutosize
 						rows={2}
 						maxRows={10000}
-						className="input-text-area h-full text-base"
+						className="input-text-area w-full h-full text-base"
 						placeholder="enter file contents"
 						value={document?.content}
 						onChange={(e) => updateDocument(e.target.value)}/>
@@ -131,21 +126,21 @@ function PlayingDocument() {
 	else return <Page></Page>;
 }
 
-function MdxDocument(props) {
+function MdxDocument({ children }) {
   return (
 		<div className="w-full max-w-md p-12 text-left">
 			<MdxRender>
-				{props.children}
+				{children}
 			</MdxRender>
 		</div>
   );
 }
 
-function SheetDocument(props) {
+function SheetDocument({ children }) {
   return (
 		<div className="col-count-2 max-w-md text-left">
 			<Sheet>
-				{props.children}
+				{children}
 			</Sheet>
 		</div>
   );

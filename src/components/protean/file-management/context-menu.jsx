@@ -90,8 +90,21 @@ export function ContextMenuDownload({ file }) {
       const fileDownloadUrl = URL.createObjectURL(blob);
       fileOutputRef.current?.setAttribute("href", fileDownloadUrl);
       fileOutputRef.current?.click();
+			URL.revokeObjectURL(fileDownloadUrl);
     }
   }
+
+	function getFileName(file) {
+		if (file?.metadata?.title === null || file?.metadata?.title === "") {
+			return "untitled.json";
+		}
+		else {
+			var name = file?.metadata?.title;
+			name = name.split(' ').join();
+			name += ".json";
+			return name;
+		}
+	}
 
   return (
     <div className="w-full">
@@ -103,7 +116,7 @@ export function ContextMenuDownload({ file }) {
       <a
         className="hidden"
         href=""
-        download={file.uuid}
+        download={getFileName(file)}
         ref={fileOutputRef}>
         DOWNLOAD
       </a>
@@ -173,6 +186,28 @@ export function ContextMenuNewPage({ file }) {
       onClick={createPage}
       icon="Add">
       New Page
+    </Item>
+  );
+}
+
+export function ContextMenuNewSheet({ file }) {
+  const { globalState, dispatch } = useGlobalStore();
+
+  const createSheet = () => {
+    dispatch({
+      type: "newDocument",
+      payload: {
+				documentType: "SHEET",
+        parentFile: file
+      }
+    });
+  }
+
+  return (
+    <Item
+      onClick={createSheet}
+      icon="Add">
+      New Sheet
     </Item>
   );
 }
