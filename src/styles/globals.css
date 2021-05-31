@@ -244,7 +244,7 @@
   }
   @variants focus, hover {
     .bg-theme {
-      @apply bg-primary-600 dark:bg-primary-700 text-gray-100;
+      @apply bg-primary-600 dark:bg-primary-700 text-gray-100 hover:bg-primary-700 dark:hover:bg-primary-800;
     }
     .border-theme {
       @apply border-primary-600 dark:border-primary-700;

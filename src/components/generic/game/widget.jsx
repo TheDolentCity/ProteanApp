@@ -2,7 +2,7 @@ import React from "react";
 
 export function WidgetContainer({ className, children }) {
 	return (
-		<div className={"col-span grid col-span-12 w-full items-stretch " + className}>
+		<div className={"col-span grid grid-cols-12 col-span-12 w-full items-stretch " + className}>
 			{children}
 		</div>
 	);

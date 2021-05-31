@@ -20,7 +20,7 @@ export default function TextLine({ data, className, onChange }) {
   }
 
   return (
-		<div className="w-full">
+		<div className="col-span-full w-full">
 			<ReadingMode>
 				<TextareaAutosize
 					rows={1}

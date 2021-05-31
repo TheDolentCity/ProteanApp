@@ -14,14 +14,42 @@ import DiceLine from './blocks/dice-line';
 import TextLine from './blocks/text-line';
 
 const WidgetTypes = [
-	"SheetWidgetContainer",
-	"DiceHeader",
-	"DiceParagraph",
-	"Header1",
-	"Header2",
-	"Header3",
-	"Header4",
-	"Paragraph"
+	{
+		"type": "SheetWidgetContainerFull",
+		"title": "Container (Full Width)"
+	},
+	{
+		"type": "SheetWidgetContainerDynamic",
+		"title": "Container (Dynamic Size)"
+	},
+	{
+		"type": "DiceHeader",
+		"title": "Dice Header"
+	},
+	{
+		"type": "DiceParagraph",
+		"title": "Dice Paragraph"
+	},
+	{
+		"type": "Header1",
+		"title": "Header 1"
+	},
+	{
+		"type": "Header2",
+		"title": "Header 2"
+	},
+	{
+		"type": "Header3",
+		"title": "Header 3"
+	},
+	{
+		"type": "Header4",
+		"title": "Header 4"
+	},
+	{
+		"type": "Paragraph",
+		"title": "Paragraph"
+	}
 ];
 
 export default function Sheet({ disabled }) {
@@ -106,7 +134,7 @@ function SheetWidgetContainer({ widgetContainer, onChange }) {
 						onChange={(newWidget) => updateWidgets(newWidget, index)}>
 					</SheetWidget>
 				))}
-				<WritingMode>
+				<WritingMode className="col-span-full">
 					<WidgetCreator onAddWidget={addWidget}></WidgetCreator>
 				</WritingMode>
       </WidgetContainer>
@@ -118,7 +146,14 @@ function SheetWidgetContainer({ widgetContainer, onChange }) {
 function WidgetCreator({ onAddWidget }) {
 	const addWidget = (widgetType) => {
 		switch (widgetType) {
-			case "SheetWidgetContainer":
+			case "SheetWidgetContainerFull":
+				onAddWidget({
+					"uuid": uuidv4(),
+					"type": widgetType,
+					"content": []
+				})
+				break;
+			case "SheetWidgetContainerDynamic":
 				onAddWidget({
 					"uuid": uuidv4(),
 					"type": widgetType,
@@ -153,22 +188,22 @@ function WidgetCreator({ onAddWidget }) {
 
 	return (
 		<Popover className="relative">
-			<Popover.Button className="acc-focus w-full">
-				<Widget>
-					<FabricIcon name="Add" className="text-theme"></FabricIcon>
+			<Popover.Button className="acc-focus w-full mt-2 xl:mt-4">
+				<Widget className="p-2 xl:p-4 bg-theme">
+					<FabricIcon name="Add" className=""></FabricIcon>
 				</Widget>
 			</Popover.Button>
 			<Popover.Panel className="absolute z-10">
 				<div className="flex flex-col max-w-72 shadow-xl bg-white dark:bg-gray-700">
 					{
-						WidgetTypes.map((type) => (
+						WidgetTypes.map((widgetType) => (
 							<button 
-								key={type}
-								onClick={() => addWidget(type)} 
+								key={widgetType.type}
+								onClick={() => addWidget(widgetType.type)} 
 								className="acc-focus flex w-full px-3 py-1 items-center text-left overflow-hidden hover:raise-5">
       					<FabricIcon name="Add" className="mr-2 text-theme"></FabricIcon>
 								<div className="w-full truncate">
-									{type}
+									{widgetType.title}
 								</div>
 							</button>
 						))
@@ -181,15 +216,24 @@ function WidgetCreator({ onAddWidget }) {
 
 function SheetWidget({ widget, onChange }) {
   switch (widget?.type) {
-    case "SheetWidgetContainer":
+    case "SheetWidgetContainerFull":
       return (
-				<Widget>
+				<Widget className="col-span-12">
 					<SheetWidgetContainer
 						widgetContainer={widget}
 						onChange={onChange}>
 					</SheetWidgetContainer>
 				</Widget>
       );
+		case "SheetWidgetContainerDynamic":
+			return (
+				<Widget className="col-span-12 xl:col-span-6">
+					<SheetWidgetContainer
+						widgetContainer={widget}
+						onChange={onChange}>
+					</SheetWidgetContainer>
+				</Widget>
+			);
     case "DiceHeader":
       return (
         <DiceLine

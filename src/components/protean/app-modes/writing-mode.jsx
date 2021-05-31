@@ -1,12 +1,12 @@
 import React from 'react';
 import { useGlobalStore } from "../../stores/global-store";
 
-export default function WritingMode({ children }) {
+export default function WritingMode({ className, children }) {
   const { globalState, dispatch } = useGlobalStore();
 	
 	if (globalState?.mode == "WritingMode") {
 		return (
-			<div>
+			<div className={className}>
 				{children}
 			</div>
 		);

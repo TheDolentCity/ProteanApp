@@ -20,7 +20,7 @@ export default function DiceLine({ data, className, onChange }) {
   }
 
   return (
-		<div className="w-full">
+		<div className="col-span-full w-full">
 			<ReadingMode>
 				<div className="flex w-full items-center">
 					<TextareaAutosize
