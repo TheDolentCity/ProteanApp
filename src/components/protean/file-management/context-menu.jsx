@@ -65,7 +65,7 @@ export function ContextMenuDelete({ file }) {
     dispatch({
       type: "deleteFile",
       payload: {
-        deleteFile: file
+        file: file
       }
     });
   }
@@ -129,7 +129,7 @@ export function ContextMenuNewBook({ file }) {
 
   const createBook = () => {
     dispatch({
-      type: "newDocument",
+      type: "newFile",
       payload: {
 				documentType: "BOOK",
         parentFile: file
@@ -151,7 +151,7 @@ export function ContextMenuNewFolder({ file }) {
 
   const createFolder = () => {
     dispatch({
-      type: "newDocument",
+      type: "newFile",
       payload: {
 				documentType: "FOLDER",
         parentFile: file
@@ -173,7 +173,7 @@ export function ContextMenuNewPage({ file }) {
 
   const createPage = () => {
     dispatch({
-      type: "newDocument",
+      type: "newFile",
       payload: {
 				documentType: "PAGE",
         parentFile: file
@@ -195,7 +195,7 @@ export function ContextMenuNewSheet({ file }) {
 
   const createSheet = () => {
     dispatch({
-      type: "newDocument",
+      type: "newFile",
       payload: {
 				documentType: "SHEET",
         parentFile: file

@@ -5,9 +5,8 @@ import React from 'react';
 import { GlobalStoreProvider } from './components/stores/global-store';
 import AppLayout, { Sidebar } from './components/protean/layout';
 import { CommandBar } from './components/protean/commands/command';
-import ErrorBoundary from './components/protean/error-boundary';
-import Document from './components/protean/document';
 import FileExplorer from './components/protean/file-management/file-explorer';
+import { ViewController } from './components/protean/view-management/view';
 
 export default function App() {
   return (
@@ -17,15 +16,7 @@ export default function App() {
         <Sidebar>
           <FileExplorer></FileExplorer>
         </Sidebar>
-        <ErrorBoundary
-          fallbackUI={
-            <div className="p-12">
-              <h1>Critical Error</h1>
-              <p>Cannot render ProteanDocument</p>
-            </div>
-          }>
-          <Document></Document>
-        </ErrorBoundary>
+				<ViewController></ViewController>
       </AppLayout>
     </GlobalStoreProvider>
   );

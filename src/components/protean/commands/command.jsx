@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FabricIcon from '../../generic/basic-inputs/fabric-icon';
+import CircleIcon from '../../generic/basic-inputs/circle-icon';
 import ModeSwitcher from '../app-modes/mode-switcher';
 import DarkModeCommand from './dark-mode-command';
 import SettingsCommand from './settings-command';
@@ -13,7 +13,7 @@ export function CommandBar({ children }) {
   };
 
   return (
-    <div className={(isOpen ? "w-48 sm:py-2 md:py-7" : "sm:py-2 md:py-7") + " flex-none flex flex-col items-center bg-white dark:bg-black"}>
+    <div className={(isOpen ? "w-48 sm:py-2 md:py-7" : "sm:py-2 md:py-7") + " flex-none flex flex-col items-center"}>
       <Command 
         onClick={toggleOpen} 
         isOpen={isOpen}
@@ -29,18 +29,23 @@ export function CommandBar({ children }) {
 }
 
 export function Command({ onClick, isOpen, icon, text, children }) {
-  return (
-    <button onClick={onClick} className={(isOpen ? "w-full" : "") + " acc-focus flex px-4 py-2 items-center rounded-none text-left text-base overflow-hidden hover:raise-10"}>
-      <FabricIcon name={icon} className="text-theme"></FabricIcon>
-      {
-        isOpen ?
-        <div className="w-full pl-2 truncate">
-          {text}
-        </div>
-        :
-        <span></span>
-      }
-      {children}
-    </button>
-  );
+	switch (isOpen) {
+		case true:
+			return (
+				<button onClick={onClick} className="w-full acc-focus flex px-3 py-2 items-center rounded-none text-left text-base overflow-hidden hover:raise-10">
+					<CircleIcon name={icon} size="sm" className="text-white dark:text-black bg-black dark:bg-white"></CircleIcon>
+					<div className="w-full pl-2 truncate">
+						{text}
+					</div>
+					{children}
+				</button>
+			);
+		case false:
+			return (
+				<button onClick={onClick} className="acc-focus flex px-3 py-2 items-center rounded-none text-left text-base overflow-hidden hover:raise-10">
+					<CircleIcon name={icon} size="sm" className="text-white dark:text-black bg-black dark:bg-white"></CircleIcon>
+					{children}
+				</button>
+			);
+	}
 }

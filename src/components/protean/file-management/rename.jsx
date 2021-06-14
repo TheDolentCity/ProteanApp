@@ -24,7 +24,7 @@ export default function Rename({ file, icon, indent, endRename }) {
 					dispatch({
 						type: "updateFile",
 						payload: {
-							updateFile: newFile
+							file: newFile
 						}
 					});
 				}
@@ -53,7 +53,7 @@ export default function Rename({ file, icon, indent, endRename }) {
 			dispatch({
 				type: "updateFile",
 				payload: {
-					updateFile: newFile
+					file: newFile
 				}
 			});
 		}

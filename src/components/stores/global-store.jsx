@@ -1133,6 +1133,17 @@ function isNotBuiltInFile(uuid) {
   return BuiltInFiles[uuid] === undefined;
 }
 
+function isOpenFile(openFiles, uuid) {
+	for (var i = 0; i < openFiles.length; i++) {
+		if (openFiles[i].uuid === uuid) {
+			return true;
+		}
+	}
+
+	// Default return
+	return false;
+}
+
 function saveNonBuiltInFiles(files) {
   // console.log("saveNonBuiltInFiles:FileNames:\n" + JSON.stringify(files.map(file => file.uuid)));
   var nonBuiltInFiles = files.filter(file => isNotBuiltInFile(file?.uuid));
@@ -1182,9 +1193,9 @@ const initialGlobalState = {
 	mode: "ReadingMode",
   darkMode: loadLocalStorage("darkMode", false),
   files: getFiles(),
-  activeFile: {
-    
-  },
+	openFiles: [
+
+	],
   fileIcons: {
     "BOOK": "ReadingMode",
     "SHEET": "TextDocumentShared",
@@ -1205,25 +1216,53 @@ const reducer = (globalState, action) => {
         ...globalState,
         darkMode: action?.payload.darkMode
       }
+		case "openFile":
+			if (isOpenFile(globalState.openFiles, action.payload.file.uuid)) {
+				console.log("FileAlreadyOpen");
+				console.log("OpenFiles:" + JSON.stringify(globalState.openFiles));
+				return {
+					...globalState
+				}
+			}
+			else {
+				console.log("OpenFiles:" + JSON.stringify([ ...globalState.openFiles, action.payload.file ]));
+				return {
+					...globalState,
+					openFiles: [ ...globalState.openFiles, action.payload.file ]
+				}
+			}
+		case "closeFile":
+			if (isOpenFile(globalState.openFiles, action.payload.file.uuid)) {
+				return {
+					...globalState,
+					openFiles: [ ...globalState.openFiles.filter((file) => { return file.uuid !== action.payload.file.uuid }) ]
+				}
+			}
+			else {
+				console.log("Cannot close file that is not open!");
+				return {
+					...globalState
+				}
+			}
     case "uploadFile":
-      const newFile = { ...action?.payload.file };
+      const uploadFile = { ...action?.payload.file };
       const existingFileUuids = globalState.files.map(file => file.uuid);
-      while (existingFileUuids.includes(newFile?.uuid)) {
-        console.log(`Existing file with uuid '${newFile?.uuid}' exists.`);
+      while (existingFileUuids.includes(uploadFile?.uuid)) {
+        console.log(`Existing file with uuid '${uploadFile?.uuid}' exists.`);
         console.log(`Renaming new file...`);
-        newFile.uuid = uuidv4();
-        console.log(`Renamed new file to '${newFile.uuid}'`);
+        uploadFile.uuid = uuidv4();
+        console.log(`Renamed new file to '${uploadFile.uuid}'`);
       }
-      saveNonBuiltInFiles([...globalState.files, newFile]);
+      saveNonBuiltInFiles([...globalState.files, uploadFile]);
       return {
         ...globalState,
-        files: [...globalState.files, newFile]
+        files: [...globalState.files, uploadFile]
       }
-		case "newDocument":
-			var newDocument = {};
+		case "newFile":
+			var newFile = {};
 			switch (action?.payload.documentType) {
 				case "BOOK":
-					newDocument = {
+					newFile = {
 						uuid: uuidv4(),
 						metadata: {
 							type: "BOOK",
@@ -1233,7 +1272,7 @@ const reducer = (globalState, action) => {
 					};
 					break;
 				case "FOLDER":
-					newDocument = {
+					newFile = {
 						uuid: uuidv4(),
 						metadata: {
 							type: "FOLDER",
@@ -1243,7 +1282,7 @@ const reducer = (globalState, action) => {
 					};
 					break;
 				case "PAGE":
-					newDocument = {
+					newFile = {
 						uuid: uuidv4(),
 						metadata: {
 							type: "PAGE",
@@ -1253,7 +1292,7 @@ const reducer = (globalState, action) => {
 					};
 					break;
 				case "SHEET":
-					newDocument = {
+					newFile = {
 						uuid: uuidv4(),
 						metadata: {
 							type: "SHEET",
@@ -1265,38 +1304,24 @@ const reducer = (globalState, action) => {
 			}
 			switch (action?.payload.parentFile?.metadata.type) {
 				case "BOOK":
-					action?.payload.parentFile?.content.push(newDocument);
+					action?.payload.parentFile?.content.push(newFile);
 					saveNonBuiltInFiles(globalState.files);
 					break;
 				case "FOLDER":
-					action?.payload.parentFile?.content.push(newDocument);
+					action?.payload.parentFile?.content.push(newFile);
 					saveNonBuiltInFiles(globalState.files);
 					break;
 				default:
-					globalState.files.push(newDocument);
+					globalState.files.push(newFile);
 					saveNonBuiltInFiles(globalState.files);
 					break;
 			}
 			return {
 				...globalState
 			}
-    case "setActiveFile":
-      return {
-        ...globalState,
-        activeFile: action?.payload.activeFile,
-      }
-    case "updateActiveFile":
-			var filesCopy = [...globalState.files];
-			updateTreeFile(filesCopy, action.payload.activeFile);
-      saveNonBuiltInFiles(filesCopy);
-      return {
-        ...globalState,
-				files: filesCopy,
-        activeFile: action.payload.activeFile
-      }
 		case "updateFile":
 			var filesCopy = [...globalState.files];
-			updateTreeFile(filesCopy, action.payload.updateFile);
+			updateTreeFile(filesCopy, action.payload.file);
       saveNonBuiltInFiles(filesCopy);
       return {
         ...globalState,
@@ -1304,25 +1329,32 @@ const reducer = (globalState, action) => {
       }
     case "deleteFile":
       // Don't delete built in files
-      if (isNotBuiltInFile(action?.payload.deleteFile?.uuid) == false) {
+      if (isNotBuiltInFile(action?.payload.file?.uuid) == false) {
         console.log("Error: Cannot delete built in file.");
         return { ...globalState };
       }
 
       // Remove the file from the arrays
       console.log("deleteFile:originals:\n" + JSON.stringify(globalState?.files.map(f => f.uuid)));
-      const files = globalState?.files.filter((file) => action?.payload.deleteFile?.uuid !== file.uuid);
+      const files = globalState?.files.filter((file) => action?.payload.file?.uuid !== file.uuid);
       console.log("deleteFile:afterDelete:\n" + JSON.stringify(files.map(f => f.uuid)));
 
       // Save the new list of files in local storage
       saveNonBuiltInFiles(files);
 
+			// If the file is open clear it from open files when you return
+			if (isOpenFile(globalState.openFiles, action.payload.file.uuid)) {
+				return {
+					...globalState,
+					files: files,
+					openFiles: [ ...globalState.openFiles.filter((file) => { return file.uuid !== action.payload.file.uuid }) ]
+				}
+			}
+
       // Return the new in-memory global state
-      // Nullifies the active file if it is the file we just deleted
       return {
         ...globalState,
-        files: files,
-        activeFile: action?.payload?.deleteFile?.uuid === globalState.activeFile?.uuid ? null : globalState.activeFile
+        files: files
       }
     default:
       throw new Error(`Unhandled action type: ${action.type}`);

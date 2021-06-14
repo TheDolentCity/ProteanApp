@@ -1,39 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import { useGlobalStore } from '../stores/global-store';
-import WritingMode from './app-modes/writing-mode';
-import ReadingMode from './app-modes/reading-mode';
-import PlayingMode from './app-modes/playing-mode';
-import Page from '../generic/book/page';
-import MdxRender from '../generic/book/mdx-render';
-import Sheet from '../generic/game/sheet';
+import { useGlobalStore } from '../../stores/global-store';
+import WritingMode from '../app-modes/writing-mode';
+import ReadingMode from '../app-modes/reading-mode';
+import PlayingMode from '../app-modes/playing-mode';
+import Page from '../../generic/book/page';
+import MdxRender from '../../generic/book/mdx-render';
+import Sheet from '../../generic/game/sheet';
 import TextareaAutosize from 'react-textarea-autosize';
 
-export default function Document() {
+export default function Document({ uuid }) {
 	return (
-    <div className="flex-grow h-full overflow-y-auto scroll">
+    <div className="w-full h-full">
 			<WritingMode>
-				<WritingDocument></WritingDocument>
+				<WritingDocument documentId={uuid}></WritingDocument>
 			</WritingMode>
-			<ReadingMode>
-				<ReadingDocument></ReadingDocument>
+			<ReadingMode className="">
+				<ReadingDocument documentId={uuid}></ReadingDocument>
 			</ReadingMode>
 			<PlayingMode>
-				<PlayingDocument></PlayingDocument>
+				<PlayingDocument documentId={uuid}></PlayingDocument>
 			</PlayingMode>
 		</div>
 	);
 }
 
-function WritingDocument() {
+function WritingDocument({ documentId }) {
   const { globalState, dispatch } = useGlobalStore();
-  const [document, setDocument] = useState(globalState.activeFile);
+  const [document, setDocument] = useState(globalState.openFiles.filter((file) => { return file.uuid === documentId }));
 
   // Update document when active file changes
   useEffect(() => {
-    if (globalState.activeFile !== null && globalState.activeFile !== undefined) {
-      setDocument(globalState.activeFile);
+    if (globalState.openFiles !== null && globalState.openFiles !== undefined) {
+      setDocument(globalState.openFiles.filter((file) => { return file.uuid === documentId }));
     }
-  }, [globalState.activeFile]);
+  }, [globalState.openFiles]);
 
   // Sends the local document data to global storage
   const updateDocument = (value) => {
@@ -47,20 +47,20 @@ function WritingDocument() {
       setDocument(newDocument);
 			console.log("Dispatch Document:\n" + JSON.stringify(newDocument, null, 2));
       dispatch({
-        type: "updateActiveFile",
+        type: "updateFile",
         payload: {
-          activeFile: newDocument
+          file: newDocument
         }
       });
     }
   }
 
-	switch (globalState.activeFile?.metadata?.type) {
+	switch (document?.metadata?.type) {
 		case "SHEET":
 			return (
 				<SheetDocument
-					title={globalState?.activeFile.metadata.title}
-					icon={globalState.fileIcons[globalState.activeFile.metadata.type]}>
+					title={document.metadata.title}
+					icon={globalState.fileIcons[document.metadata.type]}>
 				</SheetDocument>
 			);
 		default:
@@ -78,23 +78,24 @@ function WritingDocument() {
 	}
 }
 
-function ReadingDocument() {
+function ReadingDocument({ documentId }) {
   const { globalState, dispatch } = useGlobalStore();
+	const file = globalState.openFiles.filter((file) => { return file.uuid === documentId })[0];
+	console.log("File:\n" + JSON.stringify(file, null, 2));
 
-  if (globalState?.activeFile) {
-		switch (globalState.activeFile?.metadata?.type) {
+  if (file) {
+		switch (file?.metadata?.type) {
 			case "SHEET":
 				return (
 					<SheetDocument
-						title={globalState?.activeFile.metadata.title}
-						icon={globalState.fileIcons[globalState.activeFile.metadata.type]}>
+						title={file?.metadata?.title}
+						icon={globalState.fileIcons[file?.metadata?.type]}>
 					</SheetDocument>
 				);
 			default:
 				return (
-					<MdxDocument
-						title={globalState?.activeFile?.metadata?.title}>
-						{globalState?.activeFile?.content}
+					<MdxDocument>
+						{file?.content}
 					</MdxDocument>
 				);
 		}
@@ -102,7 +103,7 @@ function ReadingDocument() {
 	else return <Page></Page>;
 }
 
-function PlayingDocument() {
+function PlayingDocument({ documentId }) {
   const { globalState, dispatch } = useGlobalStore();
 
   if (globalState?.activeFile) {
@@ -128,7 +129,7 @@ function PlayingDocument() {
 
 function MdxDocument({ children }) {
   return (
-		<div className="w-full max-w-md p-12 text-left">
+		<div className="w-full h-full p-12 text-left">
 			<MdxRender>
 				{children}
 			</MdxRender>
@@ -136,10 +137,10 @@ function MdxDocument({ children }) {
   );
 }
 
-function SheetDocument({ children }) {
+function SheetDocument({ file, children }) {
   return (
-		<div className="col-count-2 max-w-md text-left">
-			<Sheet>
+		<div className="w-full h-full text-left">
+			<Sheet fileData={file}>
 				{children}
 			</Sheet>
 		</div>

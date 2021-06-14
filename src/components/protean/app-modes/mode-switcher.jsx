@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Listbox } from '@headlessui/react'
 import { useGlobalStore } from "../../stores/global-store";
-import FabricIcon from './../../generic/basic-inputs/fabric-icon';
+import CircleIcon from './../../generic/basic-inputs/circle-icon';
 
 const modes = [
   { id: 1, name: 'Reading Mode', icon: 'View', unavailable: false },
@@ -33,14 +33,16 @@ export default function ModeSwitcher({ isOpen }) {
 				<ModeOption isOpen={isOpen} mode={mode}></ModeOption>
 			</Listbox.Button>
       <Listbox.Options className="w-full">
-        {modes.map((mode) => (
+        {modes.map((modeOption) => (mode.name !== modeOption.name ?
           <Listbox.Option
-            key={mode.id}
-            value={mode}
-            disabled={mode.unavailable}
+            key={modeOption.id}
+            value={modeOption}
+            disabled={modeOption.unavailable}
 						className="cursor-pointer">
-						<ModeOption isOpen={isOpen} mode={mode} className="bg-gray-100 dark:bg-gray-700"></ModeOption>
+						<ModeOption isOpen={isOpen} mode={modeOption} className="bg-gray-100 dark:bg-gray-700"></ModeOption>
           </Listbox.Option>
+					:
+					<span></span>
         ))}
       </Listbox.Options>
     </Listbox>
@@ -48,17 +50,21 @@ export default function ModeSwitcher({ isOpen }) {
 }
 
 function ModeOption({ className, isOpen, mode }) {
-	return (
-		<div className={"flex px-4 py-2 items-center rounded-none text-left text-base overflow-hidden hover:raise-10 " + className}>
-			<FabricIcon name={mode.icon} className="text-theme"></FabricIcon>
-			{
-				isOpen ?
-				<div className="w-full pl-2 truncate">
-					{mode.name}
+	switch (isOpen) {
+		case true:
+			return (
+				<div className={"w-full acc-focus flex px-3 py-2 items-center rounded-none text-left text-base overflow-hidden hover:raise-10 " + className}>
+					<CircleIcon name={mode.icon} size="sm" className="text-white dark:text-black bg-black dark:bg-white"></CircleIcon>
+					<div className="w-full pl-2 truncate">
+						{mode.name}
+					</div>
 				</div>
-				:
-				<span></span>
-			}
-		</div>
-	);
+			);
+		case false:
+			return (
+				<div className={"acc-focus flex px-3 py-2 items-center rounded-none text-left text-base overflow-hidden hover:raise-10 " + className}>
+					<CircleIcon name={mode.icon} size="sm" className="text-white dark:text-black bg-black dark:bg-white"></CircleIcon>
+				</div>
+			);
+	}
 }

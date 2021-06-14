@@ -52,16 +52,16 @@ const WidgetTypes = [
 	}
 ];
 
-export default function Sheet({ disabled }) {
+export default function Sheet({ fileData }) {
   const { globalState, dispatch } = useGlobalStore();
-  const [sheet, setSheet] = useState(globalState.activeFile);
+  const [sheet, setSheet] = useState(fileData);
 
-  // Update sheet when active file changes
+  // Update sheet when fileData changes
   useEffect(() => {
-    if (globalState.activeFile !== null && globalState.activeFile !== undefined) {
-      setSheet(globalState.activeFile);
+    if (fileData !== null && fileData !== undefined) {
+      setSheet(fileData);
     }
-  }, [globalState.activeFile]);
+  }, [fileData]);
 
   // Sends the local sheet data to global storage
   const updateSheet = (value) => {

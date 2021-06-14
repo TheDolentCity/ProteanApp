@@ -15,11 +15,11 @@ export default function File({ file, indent }) {
   const { globalState, dispatch } = useGlobalStore();
 	const [ renaming, setRenaming ] = useState(false);
 
-  const activeFileDispatch = () => {
+  const openFileDispatch = () => {
     dispatch({
-      type: "setActiveFile",
+      type: "openFile",
       payload: {
-        activeFile: file
+        file: file
       }
     });
   }
@@ -41,7 +41,7 @@ export default function File({ file, indent }) {
 						icon={globalState.fileIcons[file.metadata.type]}
 						indent={indent}
 						itemRef={itemRef}
-						onClick={activeFileDispatch}>
+						onClick={openFileDispatch}>
 						{file.metadata.title}
 					</Item>
 				}
