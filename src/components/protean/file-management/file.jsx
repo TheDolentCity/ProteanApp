@@ -3,7 +3,8 @@ import { useGlobalStore } from '../../stores/global-store';
 import { 
 	ContextMenu, 
 	ContextMenuDelete, 
-	ContextMenuDownload, 
+	ContextMenuDownload,
+	ContextMenuOpenToTheSide,
 	ContextMenuRename, 
 	ContextMenuSection 
 } from './context-menu';
@@ -46,6 +47,9 @@ export default function File({ file, indent }) {
 					</Item>
 				}
 				<ContextMenu itemRef={itemRef}>
+					<ContextMenuSection>
+						<ContextMenuOpenToTheSide file={file}></ContextMenuOpenToTheSide>
+					</ContextMenuSection>
 					<ContextMenuSection>
 						<ContextMenuRename onClick={() => setRenaming(true)}></ContextMenuRename>
 						<ContextMenuDownload file={file}></ContextMenuDownload>

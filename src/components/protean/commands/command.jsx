@@ -5,7 +5,7 @@ import DarkModeCommand from './dark-mode-command';
 import SettingsCommand from './settings-command';
 import UploadCommand from './upload-command';
 
-export function CommandBar({ children }) {
+export function CommandBar() {
   const [isOpen, setIsOpen] = useState(true);
 
   const toggleOpen = () => {
@@ -13,7 +13,7 @@ export function CommandBar({ children }) {
   };
 
   return (
-    <div className={(isOpen ? "w-48 sm:py-2 md:py-7" : "sm:py-2 md:py-7") + " flex-none flex flex-col items-center"}>
+    <div className={(isOpen ? "w-48" : "") + " flex-none flex flex-col py-4 items-center border-r border-gray-500 dark:border-gray-600"}>
       <Command 
         onClick={toggleOpen} 
         isOpen={isOpen}
@@ -21,8 +21,8 @@ export function CommandBar({ children }) {
         text="Collapse">
       </Command>
       <SettingsCommand isOpen={isOpen}></SettingsCommand>
-			<ModeSwitcher isOpen={isOpen}></ModeSwitcher>
       <DarkModeCommand isOpen={isOpen}></DarkModeCommand>
+			<ModeSwitcher isOpen={isOpen}></ModeSwitcher>
       <UploadCommand isOpen={isOpen}></UploadCommand>
     </div>
   );
@@ -32,7 +32,7 @@ export function Command({ onClick, isOpen, icon, text, children }) {
 	switch (isOpen) {
 		case true:
 			return (
-				<button onClick={onClick} className="w-full acc-focus flex px-3 py-2 items-center rounded-none text-left text-base overflow-hidden hover:raise-10">
+				<button onClick={onClick} className="w-full acc-focus flex px-3 py-2 items-center rounded-none text-left text-base overflow-hidden hover:raise-5">
 					<CircleIcon name={icon} size="sm" className="text-white dark:text-black bg-black dark:bg-white"></CircleIcon>
 					<div className="w-full pl-2 truncate">
 						{text}
@@ -42,10 +42,32 @@ export function Command({ onClick, isOpen, icon, text, children }) {
 			);
 		case false:
 			return (
-				<button onClick={onClick} className="acc-focus flex px-3 py-2 items-center rounded-none text-left text-base overflow-hidden hover:raise-10">
+				<button onClick={onClick} className="acc-focus flex px-3 py-2 items-center rounded-none text-left text-base overflow-hidden hover:raise-5">
 					<CircleIcon name={icon} size="sm" className="text-white dark:text-black bg-black dark:bg-white"></CircleIcon>
 					{children}
 				</button>
 			);
 	}
 }
+
+// export function NewViewCommand() {
+// 	const [isOpenModal, setIsOpenModal] = useState(false);
+
+//   const toggleSettings = () => {
+//     setIsOpenModal(!isOpenModal);
+//   }
+
+//   const closeModal = () => {
+//     setIsOpenModal(false);
+//   }
+
+//   return (
+//     <Command
+//       onClick={newView}
+//       icon="Settings" 
+//       isOpen={isOpen} 
+//       text="Settings">
+//       <SettingsModal isOpen={isOpenModal} onClose={closeModal}></SettingsModal>
+//     </Command>
+//   );
+// }

@@ -66,7 +66,7 @@ function ItemContainer({ active, indent, className, children }) {
 			}
 		}
 		return {
-			"paddingLeft": (2.0 + (indent * 1.5)) + "rem"
+			"paddingLeft": (1.5 + (indent * 1.5)) + "rem"
 		};
 	}
 
@@ -86,7 +86,7 @@ function ItemContainer({ active, indent, className, children }) {
 	return (
     <div className={
 			(active ? "font-semibold raise-10 text-black dark:text-white" : "hover:raise-5")
-			+ " acc-focus flex w-full px-3 py-1 items-center text-left overflow-hidden " 
+			+ " acc-focus flex w-full pr-3 py-1 items-center text-left overflow-hidden " 
 			+ className}
 			style={createPadding()}>
 			{/* <div className="border-l border-theme" style={createMargin()}>&#8203;</div> */}
@@ -97,8 +97,8 @@ function ItemContainer({ active, indent, className, children }) {
 
 function ItemIcon({ icon, className }) {
   return (
-    <div className={"flex pr-2 items-center  " + className}>
-      <FabricIcon name={icon} className="text-theme"></FabricIcon>
+    <div className={"flex mr-2 items-center  " + className}>
+      <FabricIcon name={icon} className="text-black dark:text-white"></FabricIcon>
     </div>
   );
 }

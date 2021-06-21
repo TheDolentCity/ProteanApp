@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { useGlobalStore } from '../../stores/global-store';
 import Item from './item';
 
@@ -208,6 +209,28 @@ export function ContextMenuNewSheet({ file }) {
       onClick={createSheet}
       icon="Add">
       New Sheet
+    </Item>
+  );
+}
+
+export function ContextMenuOpenToTheSide({ file }) {
+  const { globalState, dispatch } = useGlobalStore();
+
+  const openToTheSide = () => {
+    dispatch({
+      type: 'openView',
+      payload: {
+				title: 'Document View',
+				file: file
+      }
+    });
+  }
+
+  return (
+    <Item
+      onClick={openToTheSide}
+      icon="OpenInNewWindow">
+      Open to the side
     </Item>
   );
 }

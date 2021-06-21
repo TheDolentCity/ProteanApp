@@ -13,9 +13,6 @@ export default function App() {
     <GlobalStoreProvider>
       <AppLayout>
         <CommandBar></CommandBar>
-        <Sidebar>
-          <FileExplorer></FileExplorer>
-        </Sidebar>
 				<ViewController></ViewController>
       </AppLayout>
     </GlobalStoreProvider>

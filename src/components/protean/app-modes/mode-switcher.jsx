@@ -42,7 +42,7 @@ export default function ModeSwitcher({ isOpen }) {
 						<ModeOption isOpen={isOpen} mode={modeOption} className="bg-gray-100 dark:bg-gray-700"></ModeOption>
           </Listbox.Option>
 					:
-					<span></span>
+					<span key={modeOption.id}></span>
         ))}
       </Listbox.Options>
     </Listbox>

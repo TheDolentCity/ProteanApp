@@ -1,66 +1,93 @@
 import React from 'react'
-import FabricIcon from '../../generic/basic-inputs/fabric-icon';
 import { useGlobalStore } from '../../stores/global-store';
+import Tabs from '../../generic/basic-inputs/tabs';
 import ErrorBoundary from '../error-boundary';
 import Document from './document';
+import FileExplorer from '../file-management/file-explorer';
 
 export function ViewController() {
-  const { globalState, dispatch } = useGlobalStore();
+	const { globalState, dispatch } = useGlobalStore();
 
-	const closeView = (file) => {
+	const handleSelectTab = (view, tab) => {
 		dispatch({
-      type: "closeFile",
-      payload: {
-        file: file
-      }
-    });
+			type: "selectTab",
+			payload: {
+				view: view,
+				tab: tab
+			}
+		});
 	}
 
-	console.log("ViewController:openFiles:\n" + JSON.stringify(globalState.openFiles, null, 2));
+	const handleCloseTab = (view, tab) => {
+		switch (view.tabs.length) {
+			case 0: throw new Error("Cannot close tab since none exist.");
+			// If there's only one tab just close the view
+			case 1:
+				console.log("CloseView:\n" + JSON.stringify(view, null, 2));
+				dispatch({
+					type: "closeView",
+					payload: {
+						view: view
+					}
+				});
+				break;
+			default:
+				console.log("CloseTab:\n" + JSON.stringify(tab, null, 2));
+				dispatch({
+					type: "closeTab",
+					payload: {
+						view: view,
+						tab: tab
+					}
+				});
+				break;
+		}
+	}
+	
+	const getActiveTab = (view) => {
+		return view.tabs.find(tab => tab.active);
+	}
 
 	return (
 		<div className="flex-grow flex h-full">
 			{
-				globalState.openFiles.map((file) => (
-					<View key={file.uuid} file={file} closeView={() => closeView(file)}></View>
+				globalState.views.map((view) => (
+					<div key={view.uuid} className="flex-auto flex flex-col max-w-md border-r border-gray-500 dark:border-gray-600">
+						<Tabs
+							tabs={view.tabs}
+							group={view.title}
+							onSelect={(t) => handleSelectTab(view, t)}
+							onClose={(t) => handleCloseTab(view, t)}>
+						</Tabs>
+						<div className="flex-grow overflow-x-hidden overflow-y-auto scroll-thin">
+							<ViewContents viewTitle={view.title} tab={getActiveTab(view)}></ViewContents>
+						</div>
+					</div>
 				))
 			}
 		</div>
 	);
 }
 
-function View({ file, closeView }) {
-	return (
-		<div className="flex-1 flex flex-col max-w-md border-r border-gray-500 dark:border-gray-600">
-			<ViewTab title={file.metadata.title} closeTab={closeView}></ViewTab>
-			<div className="flex-grow overflow-x-hidden overflow-y-auto scroll-thin">
+function ViewContents({ viewTitle, tab }) {
+	switch (viewTitle) {
+		case 'File Explorer':
+			return (
+				<FileExplorer></FileExplorer>
+			);
+		case 'Document Tabs':
+			return (
 				<ErrorBoundary
 					fallbackUI={
 						<div className="p-12">
 							<h2>Critical Error</h2>
-							<p>Cannot render {file.uuid}</p>
+							<p>Cannot render {tab.contents.uuid}</p>
 						</div>
 					}>
-					<Document uuid={file.uuid}></Document>
+					<Document uuid={tab.contents.uuid}></Document>
 				</ErrorBoundary>
-			</div>
-		</div>
-	);
-}
-
-function ViewTab({ title, closeTab }) {
-	return (
-		<div className="flex px-2 py-1 items-center border-b border-gray-500 dark:border-gray-600">
-			<h5 className="flex-grow pl-2 leading-none">
-				{title}
-			</h5>
-			<button onClick={closeTab} className="acc-focus px-1 justify-self-end hover:raise-10">
-				<FabricIcon name="Cancel" className="h-6"></FabricIcon>
-			</button>
-		</div>
-	);
-}
-
-function ViewDocument() {
-
+			);
+		default:
+			return <span></span>;
+	}
 }

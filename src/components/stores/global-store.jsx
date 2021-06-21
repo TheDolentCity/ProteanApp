@@ -1192,9 +1192,25 @@ const GlobalStoreContext = createContext();
 const initialGlobalState = {
 	mode: "ReadingMode",
   darkMode: loadLocalStorage("darkMode", false),
+	views: [
+		{
+			'uuid': '0123',
+			'title': 'File Explorer',
+			'tabs': [
+				{
+					'uuid': '4567',
+					'value': 'File Explorer',
+					'active': true,
+					'metadata': {
+						
+					}
+				}
+			]
+		}
+	],
   files: getFiles(),
 	openFiles: [
-
+		
 	],
   fileIcons: {
     "BOOK": "ReadingMode",
@@ -1216,6 +1232,51 @@ const reducer = (globalState, action) => {
         ...globalState,
         darkMode: action?.payload.darkMode
       }
+		case "openView":
+			switch (action.payload.title) {
+				case 'Document View':
+					return {
+						...globalState,
+						views: [ ...globalState.views, {
+							uuid: uuidv4(),
+							title: action.payload.title,
+							tabs: [
+								{
+									uuid: uuidv4(),
+									value: action.payload.file.metadata.title,
+									active: true,
+									contents: action.payload.file,
+									metadata: {
+		
+									}
+								}
+							]
+						} ]
+					}
+				default: return { ...globalState };
+			}
+		case "closeView":
+			return {
+				...globalState,
+				views: [ ...globalState.views.filter((view) => view.uuid !== action.payload.view.uuid) ]
+			}
+		case "selectTab":
+			var viewsCopy = [ ...globalState.views ];
+			var view = viewsCopy.find(view => view.uuid === action.payload.view);
+			view.tabs.find(tab => tab.active).active = false;
+			view.tabs.find(tab => tab.uuid === action.payload.uuid).active = true;
+			return {
+				...globalState,
+				views: viewsCopy
+			}
+		case "closeTab":
+			var viewsCopy = [ ...globalState.views ];
+			var view = viewsCopy.find(view => view.uuid === action.payload.view);
+			view.tabs.filter(tab => tab !== action.payload.tab);
+			return {
+				...globalState,
+				views: viewsCopy
+			}
 		case "openFile":
 			if (isOpenFile(globalState.openFiles, action.payload.file.uuid)) {
 				console.log("FileAlreadyOpen");

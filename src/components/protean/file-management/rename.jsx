@@ -91,7 +91,7 @@ function RenameContainer({ indent, className, children }) {
 			}
 		}
 		return {
-			"paddingLeft": (2.0 + (indent * 1.75)) + "rem"
+			"paddingLeft": (1.5 + (indent * 1.5)) + "rem"
 		};
 	}
 

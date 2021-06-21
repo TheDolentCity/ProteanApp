@@ -25,7 +25,7 @@ export function DarkContainer({ children }) {
 
 export function AppContainer({ children }) {
   return (
-    <div className="flex w-screen h-screen max-w-screen max-h-screen">
+    <div className="flex w-screen h-screen max-w-screen max-h-screen overflow-x-hidden ">
       {children}
     </div>
   );
