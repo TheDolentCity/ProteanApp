@@ -4,8 +4,8 @@ import FabricIcon from '../../generic/basic-inputs/fabric-icon';
 export default function Item({ itemRef, active, icon, onClick, indent, children}) {
   if (onClick === null || onClick === undefined) {
     return (
-			<ItemContainer itemRef={itemRef} active={active} className="text-base" indent={indent}>
-				<ItemIcon icon={icon} className="text-base"></ItemIcon>
+			<ItemContainer itemRef={itemRef} active={active} className="text-sm" indent={indent}>
+				<ItemIcon icon={icon} className="text-sm"></ItemIcon>
 				<ItemContent>
 					{children}
 				</ItemContent>
@@ -14,8 +14,8 @@ export default function Item({ itemRef, active, icon, onClick, indent, children}
   }
   else return (
 		<ButtonContainer itemRef={itemRef} onClick={onClick}>
-			<ItemContainer active={active} className="text-base" indent={indent}>
-				<ItemIcon icon={icon} className="text-base"></ItemIcon>
+			<ItemContainer active={active} className="text-sm" indent={indent}>
+				<ItemIcon icon={icon} className="text-sm"></ItemIcon>
 				<ItemContent>
 					{children}
 				</ItemContent>

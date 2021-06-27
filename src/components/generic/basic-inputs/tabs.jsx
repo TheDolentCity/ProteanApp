@@ -14,7 +14,7 @@ export default function Tabs({ className, tabs, group, onSelect, onClose }) {
 	}
 
 	const selectTab = (selectedTab) => {
-		setSelected(selectTab);
+		setSelected(selectedTab);
 		if (onSelect !== null && onSelect !== undefined) {
 			onSelect(selectedTab);
 		}
@@ -46,11 +46,11 @@ export default function Tabs({ className, tabs, group, onSelect, onClose }) {
 						internalTabs.map((tab) => (
 							<RadioGroup.Option
 								key={tab.uuid}
-								value={tab.value} 
+								value={tab} 
 								className={({ active, checked }) => `
-									${checked ? "bg-black text-white dark:bg-white dark:text-black" : ""}
+									${checked ? "opacity-100" : "opacity-50"}
 									flex-shrink flex h-8 max-h-8 px-2 py-1 truncate items-center cursor-pointer`}>
-										<RadioGroup.Label className="flex-shrink px-2 pr-1 truncate text-sm">
+										<RadioGroup.Label className="flex-shrink px-2 pr-1 truncate text-sm cursor-pointer">
 											{tab.value}
 										</RadioGroup.Label>
 										<button onClick={() => closeTab(tab)} className="acc-focus px-1 hover:raise-10">

@@ -21,18 +21,7 @@ export function ViewController() {
 	const handleCloseTab = (view, tab) => {
 		switch (view.tabs.length) {
 			case 0: throw new Error("Cannot close tab since none exist.");
-			// If there's only one tab just close the view
-			case 1:
-				console.log("CloseView:\n" + JSON.stringify(view, null, 2));
-				dispatch({
-					type: "closeView",
-					payload: {
-						view: view
-					}
-				});
-				break;
 			default:
-				console.log("CloseTab:\n" + JSON.stringify(tab, null, 2));
 				dispatch({
 					type: "closeTab",
 					payload: {
@@ -60,7 +49,7 @@ export function ViewController() {
 							onClose={(t) => handleCloseTab(view, t)}>
 						</Tabs>
 						<div className="flex-grow overflow-x-hidden overflow-y-auto scroll-thin">
-							<ViewContents viewTitle={view.title} tab={getActiveTab(view)}></ViewContents>
+							<ViewContent viewTitle={view.title} tab={getActiveTab(view)}></ViewContent>
 						</div>
 					</div>
 				))
@@ -69,22 +58,22 @@ export function ViewController() {
 	);
 }
 
-function ViewContents({ viewTitle, tab }) {
+function ViewContent({ viewTitle, tab }) {
 	switch (viewTitle) {
 		case 'File Explorer':
 			return (
 				<FileExplorer></FileExplorer>
 			);
-		case 'Document Tabs':
+		case 'Document View':
 			return (
 				<ErrorBoundary
 					fallbackUI={
 						<div className="p-12">
 							<h2>Critical Error</h2>
-							<p>Cannot render {tab.contents.uuid}</p>
+							<p>Cannot render {tab.content}</p>
 						</div>
 					}>
-					<Document uuid={tab.contents.uuid}></Document>
+					<Document uuid={tab.content}></Document>
 				</ErrorBoundary>
 			);
 		default:

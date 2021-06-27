@@ -9,5 +9,5 @@ export default function Columns({ count, className, children }) {
 }
 
 Columns.defaultProps = {
-  className: "w-full mt-3 mb-8 col-gap-1",
+  className: "w-full mt-3 mb-8 col-gap-4",
 }

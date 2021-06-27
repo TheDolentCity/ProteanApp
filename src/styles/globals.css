@@ -35,6 +35,17 @@
 }
 
 @layer utilities {
+  @variants hover, focus, focus-visible {
+    .bg-theme {
+      @apply bg-primary-600 dark:bg-primary-700 text-gray-100 hover:bg-primary-700 dark:hover:bg-primary-800;
+    }
+    .border-theme {
+      @apply border-primary-600 dark:border-primary-700;
+    }
+		.text-theme {
+			@apply text-primary-600 dark:text-primary-600;
+		}
+  }
   @variants dark, hover {
     .glass-0 {
       @apply bg-transparent bg-opacity-0;
@@ -79,135 +90,135 @@
   }
   @variants hover, focus-visible {
     .elevation-0 {
-      @apply bg-gray-900 bg-opacity-0 dark:bg-gray-100 dark:bg-opacity-0;
+      @apply bg-primary-900 bg-opacity-0 dark:bg-primary-100 dark:bg-opacity-0;
     }
     .raise-5 {
-      @apply bg-gray-900 bg-opacity-5 dark:bg-gray-100 dark:bg-opacity-5;
+      @apply bg-primary-900 bg-opacity-5 dark:bg-primary-100 dark:bg-opacity-5;
     }
     .raise-10 {
-      @apply bg-gray-900 bg-opacity-10 dark:bg-gray-100 dark:bg-opacity-10;
+      @apply bg-primary-900 bg-opacity-10 dark:bg-primary-100 dark:bg-opacity-10;
     }
     .raise-25 {
-      @apply bg-gray-900 bg-opacity-25 dark:bg-gray-100 dark:bg-opacity-25;
+      @apply bg-primary-900 bg-opacity-25 dark:bg-primary-100 dark:bg-opacity-25;
     }
     .raise-50 {
-      @apply bg-gray-900 bg-opacity-50 dark:bg-gray-100 dark:bg-opacity-50;
+      @apply bg-primary-900 bg-opacity-50 dark:bg-primary-100 dark:bg-opacity-50;
     }
     .raise-75 {
-      @apply bg-gray-900 bg-opacity-75 dark:bg-gray-100 dark:bg-opacity-75;
+      @apply bg-primary-900 bg-opacity-75 dark:bg-primary-100 dark:bg-opacity-75;
     }
     .raise-90 {
-      @apply bg-gray-900 bg-opacity-90 dark:bg-gray-100 dark:bg-opacity-25;
+      @apply bg-primary-900 bg-opacity-90 dark:bg-primary-100 dark:bg-opacity-25;
     }
     .raise-95 {
-      @apply bg-gray-900 bg-opacity-95 dark:bg-gray-100 dark:bg-opacity-95;
+      @apply bg-primary-900 bg-opacity-95 dark:bg-primary-100 dark:bg-opacity-95;
     }
     .lower-5 {
-      @apply bg-gray-100 bg-opacity-5 dark:bg-gray-900 dark:bg-opacity-5;
+      @apply bg-primary-100 bg-opacity-5 dark:bg-primary-900 dark:bg-opacity-5;
     }
     .lower-10 {
-      @apply bg-gray-100 bg-opacity-10 dark:bg-gray-900 dark:bg-opacity-10;
+      @apply bg-primary-100 bg-opacity-10 dark:bg-primary-900 dark:bg-opacity-10;
     }
     .lower-25 {
-      @apply bg-gray-100 bg-opacity-25 dark:bg-gray-900 dark:bg-opacity-25;
+      @apply bg-primary-100 bg-opacity-25 dark:bg-primary-900 dark:bg-opacity-25;
     }
     .lower-50 {
-      @apply bg-gray-100 bg-opacity-50 dark:bg-gray-900 dark:bg-opacity-50;
+      @apply bg-primary-100 bg-opacity-50 dark:bg-primary-900 dark:bg-opacity-50;
     }
     .lower-75 {
-      @apply bg-gray-100 bg-opacity-75 dark:bg-gray-900 dark:bg-opacity-75;
+      @apply bg-primary-100 bg-opacity-75 dark:bg-primary-900 dark:bg-opacity-75;
     }
     .lower-90 {
-      @apply bg-gray-100 bg-opacity-90 dark:bg-gray-900 dark:bg-opacity-90;
+      @apply bg-primary-100 bg-opacity-90 dark:bg-primary-900 dark:bg-opacity-90;
     }
     .lower-95 {
-      @apply bg-gray-100 bg-opacity-95 dark:bg-gray-900 dark:bg-opacity-95;
+      @apply bg-primary-100 bg-opacity-95 dark:bg-primary-900 dark:bg-opacity-95;
     }
   }
   @variants dark, hover, focus-visible {
     .bg-darken-5 {
-      @apply bg-gray-900 bg-opacity-5;
+      @apply bg-primary-900 bg-opacity-5;
     }
     .bg-darken-10 {
-      @apply bg-gray-900 bg-opacity-10;
+      @apply bg-primary-900 bg-opacity-10;
     }
     .bg-darken-25 {
-      @apply bg-gray-900 bg-opacity-25;
+      @apply bg-primary-900 bg-opacity-25;
     }
     .bg-darken-50 {
-      @apply bg-gray-900 bg-opacity-50;
+      @apply bg-primary-900 bg-opacity-50;
     }
     .bg-darken-75 {
-      @apply bg-gray-900 bg-opacity-75;
+      @apply bg-primary-900 bg-opacity-75;
     }
     .bg-darken-90 {
-      @apply bg-gray-900 bg-opacity-90;
+      @apply bg-primary-900 bg-opacity-90;
     }
     .bg-darken-95 {
-      @apply bg-gray-900 bg-opacity-95;
+      @apply bg-primary-900 bg-opacity-95;
     }
     .bg-lighten-5 {
-      @apply bg-gray-100 bg-opacity-5;
+      @apply bg-primary-100 bg-opacity-5;
     }
     .bg-lighten-10 {
-      @apply bg-gray-100 bg-opacity-10;
+      @apply bg-primary-100 bg-opacity-10;
     }
     .bg-lighten-25 {
-      @apply bg-gray-100 bg-opacity-25;
+      @apply bg-primary-100 bg-opacity-25;
     }
     .bg-lighten-50 {
-      @apply bg-gray-100 bg-opacity-50;
+      @apply bg-primary-100 bg-opacity-50;
     }
     .bg-lighten-75 {
-      @apply bg-gray-100 bg-opacity-75;
+      @apply bg-primary-100 bg-opacity-75;
     }
     .bg-lighten-90 {
-      @apply bg-gray-100 bg-opacity-90;
+      @apply bg-primary-100 bg-opacity-90;
     }
     .bg-lighten-95 {
-      @apply bg-gray-100 bg-opacity-95;
+      @apply bg-primary-100 bg-opacity-95;
     }
     .text-darken-5 {
-      @apply text-gray-900 text-opacity-5;
+      @apply text-primary-900 text-opacity-5;
     }
     .text-darken-10 {
-      @apply text-gray-900 text-opacity-10;
+      @apply text-primary-900 text-opacity-10;
     }
     .text-darken-25 {
-      @apply text-gray-900 text-opacity-25;
+      @apply text-primary-900 text-opacity-25;
     }
     .text-darken-50 {
-      @apply text-gray-900 text-opacity-50;
+      @apply text-primary-900 text-opacity-50;
     }
     .text-darken-75 {
-      @apply text-gray-900 text-opacity-75;
+      @apply text-primary-900 text-opacity-75;
     }
     .text-darken-90 {
-      @apply text-gray-900 text-opacity-90;
+      @apply text-primary-900 text-opacity-90;
     }
     .text-darken-95 {
-      @apply text-gray-900 text-opacity-95;
+      @apply text-primary-900 text-opacity-95;
     }
     .text-lighten-5 {
-      @apply text-gray-100 text-opacity-5;
+      @apply text-primary-100 text-opacity-5;
     }
     .text-lighten-10 {
-      @apply text-gray-100 text-opacity-10;
+      @apply text-primary-100 text-opacity-10;
     }
     .text-lighten-25 {
-      @apply text-gray-100 text-opacity-25;
+      @apply text-primary-100 text-opacity-25;
     }
     .text-lighten-50 {
-      @apply text-gray-100 text-opacity-50;
+      @apply text-primary-100 text-opacity-50;
     }
     .text-lighten-75 {
-      @apply text-gray-100 text-opacity-75;
+      @apply text-primary-100 text-opacity-75;
     }
     .text-lighten-90 {
-      @apply text-gray-100 text-opacity-90;
+      @apply text-primary-100 text-opacity-90;
     }
     .text-lighten-95 {
-      @apply text-gray-100 text-opacity-95;
+      @apply text-primary-100 text-opacity-95;
     }
   }
 }
@@ -241,17 +252,6 @@
   }
   .scroll-thin {
     @apply scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300 dark:scrollbar-thumb-gray-500 dark:scrollbar-track-gray-700;
-  }
-  @variants focus, hover {
-    .bg-theme {
-      @apply bg-primary-600 dark:bg-primary-700 text-gray-100 hover:bg-primary-700 dark:hover:bg-primary-800;
-    }
-    .border-theme {
-      @apply border-primary-600 dark:border-primary-700;
-    }
-		.text-theme {
-			@apply text-primary-600 dark:text-primary-600;
-		}
   }
 
   /* COLUMN COMPONENTS */

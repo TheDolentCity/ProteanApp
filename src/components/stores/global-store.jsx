@@ -1245,7 +1245,7 @@ const reducer = (globalState, action) => {
 									uuid: uuidv4(),
 									value: action.payload.file.metadata.title,
 									active: true,
-									contents: action.payload.file,
+									content: action.payload.file.uui,
 									metadata: {
 		
 									}
@@ -1258,24 +1258,55 @@ const reducer = (globalState, action) => {
 		case "closeView":
 			return {
 				...globalState,
-				views: [ ...globalState.views.filter((view) => view.uuid !== action.payload.view.uuid) ]
+				views: [ ...globalState.views.filter(view => view.uuid !== action.payload.view.uuid) ]
 			}
 		case "selectTab":
 			var viewsCopy = [ ...globalState.views ];
-			var view = viewsCopy.find(view => view.uuid === action.payload.view);
-			view.tabs.find(tab => tab.active).active = false;
-			view.tabs.find(tab => tab.uuid === action.payload.uuid).active = true;
+			var view = viewsCopy.find(view => view.uuid === action.payload.view.uuid);
+			view.tabs.forEach(tab => tab.active = false);
+			var selected = view.tabs.find(tab => tab.uuid === action.payload.tab.uuid);
+			if (selected === undefined) {
+				console.log("View:\n" + JSON.stringify(view, null, 2));
+				console.log("PayloadTab:\n" + JSON.stringify(action.payload, null, 2));
+				throw new Error("Selected tab cannot be found.");
+			}
+			else selected.active = true;
 			return {
 				...globalState,
 				views: viewsCopy
 			}
 		case "closeTab":
 			var viewsCopy = [ ...globalState.views ];
-			var view = viewsCopy.find(view => view.uuid === action.payload.view);
-			view.tabs.filter(tab => tab !== action.payload.tab);
-			return {
-				...globalState,
-				views: viewsCopy
+			var view = viewsCopy.find(view => view.uuid === action.payload.view.uuid);
+			console.log("ViewCopy:\n" + JSON.stringify(viewsCopy, null, 2));
+			console.log("action.payload.view:\n" + JSON.stringify(action.payload.view, null, 2));
+
+			switch (view.tabs.length) {
+				// Cannot close a tab that doesn't exist
+				case 0: throw new Error("Cannot close tab since none exist.");
+				// Delete the entire view if there is only one tab
+				case 1:
+					viewsCopy.filter(view => view.uuid !== action.payload.view.uuid);
+					break;
+				// Delete the tab from the view
+				default:
+					view.tabs.filter(tab => tab.uuid !== action.payload.tab.uuid);
+					break;
+			}
+
+			// Handle the case where the tab was a file
+			if (view.title === "Document View") {
+				return {
+					...globalState,
+					views: viewsCopy,
+					openFiles: [ ...globalState.openFiles.filter(file => file.uuid !== action.payload.tab.content) ]
+				}
+			}
+			else {
+				return {
+					...globalState,
+					views: viewsCopy
+				}
 			}
 		case "openFile":
 			if (isOpenFile(globalState.openFiles, action.payload.file.uuid)) {
@@ -1286,10 +1317,47 @@ const reducer = (globalState, action) => {
 				}
 			}
 			else {
-				console.log("OpenFiles:" + JSON.stringify([ ...globalState.openFiles, action.payload.file ]));
-				return {
-					...globalState,
-					openFiles: [ ...globalState.openFiles, action.payload.file ]
+				var viewIndex = globalState.views.map(view => view.title).indexOf("Document View");
+				if (viewIndex === -1) {
+					return {
+						...globalState,
+						openFiles: [ ...globalState.openFiles, action.payload.file ],
+						views: [ ...globalState.views, {
+							uuid: uuidv4(),
+							title: "Document View",
+							tabs: [
+								{
+									uuid: uuidv4(),
+									value: action.payload.file.metadata.title,
+									active: true,
+									content: action.payload.file.uuid,
+									metadata: {
+		
+									}
+								}
+							]
+						} ]
+					}
+				}
+				else {
+					var documentView = globalState.views[viewIndex];
+					documentView.tabs.forEach(tab => tab.active = false);
+					documentView.tabs.push({
+						uuid: uuidv4(),
+						value: action.payload.file.metadata.title,
+						active: true,
+						content: action.payload.file.uuid,
+						metadata: {
+
+						}
+					});
+					var viewCopy = [ ...globalState.views ];
+					viewCopy[viewIndex] = documentView;
+					return {
+						...globalState,
+						openFiles: [ ...globalState.openFiles, action.payload.file ],
+						views: viewCopy
+					}
 				}
 			}
 		case "closeFile":

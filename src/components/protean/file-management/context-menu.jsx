@@ -43,7 +43,7 @@ export function ContextMenu({ itemRef, children }) {
 
   if (isOpen) {
     return (
-      <div className="fixed flex flex-none flex-col min-w-48 -mx-4 shadow-xl bg-white divide-y divide-gray-300 dark:bg-gray-700 dark:divide-gray-600" style={style}>
+      <div className="fixed flex flex-none flex-col min-w-48 -mx-4 rounded shadow-xl bg-white border border-gray-300 dark:border dark:border-gray-700 divide-y divide-gray-300 dark:bg-gray-700 dark:divide-gray-600" style={style}>
         {children}
       </div>
     );

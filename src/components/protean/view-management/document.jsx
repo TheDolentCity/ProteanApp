@@ -26,7 +26,7 @@ export default function Document({ uuid }) {
 
 function WritingDocument({ documentId }) {
   const { globalState, dispatch } = useGlobalStore();
-  const [document, setDocument] = useState(globalState.openFiles.filter((file) => { return file.uuid === documentId }));
+  const [document, setDocument] = useState(globalState.openFiles.find(file => file.uuid === documentId));
 
   // Update document when active file changes
   useEffect(() => {
@@ -80,8 +80,7 @@ function WritingDocument({ documentId }) {
 
 function ReadingDocument({ documentId }) {
   const { globalState, dispatch } = useGlobalStore();
-	const file = globalState.openFiles.filter((file) => { return file.uuid === documentId })[0];
-	console.log("File:\n" + JSON.stringify(file, null, 2));
+	const file = globalState.openFiles.find(file => file.uuid === documentId);
 
   if (file) {
 		switch (file?.metadata?.type) {
@@ -105,21 +104,22 @@ function ReadingDocument({ documentId }) {
 
 function PlayingDocument({ documentId }) {
   const { globalState, dispatch } = useGlobalStore();
+	const file = globalState.openFiles.find(file => file.uuid === documentId);
 
-  if (globalState?.activeFile) {
-		switch (globalState.activeFile?.metadata?.type) {
+  if (file) {
+		switch (file.metadata.type) {
 			case "SHEET":
 				return (
 					<SheetDocument
-						title={globalState?.activeFile.metadata.title}
-						icon={globalState.fileIcons[globalState.activeFile.metadata.type]}>
+						title={file.metadata.title}
+						icon={globalState.fileIcons[file.metadata.type]}>
 					</SheetDocument>
 				);
 			default:
 				return (
 					<MdxDocument
-						title={globalState?.activeFile?.metadata?.title}>
-						{globalState?.activeFile?.content}
+						title={file.metadata.title}>
+						{file.content}
 					</MdxDocument>
 				);
 		}
