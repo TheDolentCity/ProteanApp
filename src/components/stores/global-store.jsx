@@ -1134,14 +1134,7 @@ function isNotBuiltInFile(uuid) {
 }
 
 function isOpenFile(openFiles, uuid) {
-	for (var i = 0; i < openFiles.length; i++) {
-		if (openFiles[i].uuid === uuid) {
-			return true;
-		}
-	}
-
-	// Default return
-	return false;
+	return openFiles.find(file => file.uuid === uuid) !== undefined;
 }
 
 function saveNonBuiltInFiles(files) {
@@ -1166,6 +1159,44 @@ function updateTreeFile(treeFiles, newFile) {
 
 	// Default return
 	return treeFiles;
+}
+
+function getDocumentViewIndex(views) {
+	return views.map(view => view.title).indexOf("Document View");
+}
+
+function createDocumentView(file) {
+	return {
+		uuid: uuidv4(),
+		title: "Document View",
+		tabs: [
+			{
+				uuid: uuidv4(),
+				value: file.metadata.title,
+				active: true,
+				content: file.uuid,
+				metadata: {
+
+				}
+			}
+		]
+	}
+}
+
+function createDocumentTab(file) {
+	return {
+		uuid: uuidv4(),
+		value: file.metadata.title,
+		active: false,
+		content: file.uuid,
+		metadata: {
+
+		}
+	}
+}
+
+function isOpenTab(view, value) {
+	return view.tabs.find(tab => tab.value === value) !== undefined;
 }
 
 // Gets all of the files needed for the application to run.
@@ -1194,11 +1225,11 @@ const initialGlobalState = {
   darkMode: loadLocalStorage("darkMode", false),
 	views: [
 		{
-			'uuid': '0123',
+			'uuid': uuidv4(),
 			'title': 'File Explorer',
 			'tabs': [
 				{
-					'uuid': '4567',
+					'uuid': uuidv4(),
 					'value': 'File Explorer',
 					'active': true,
 					'metadata': {
@@ -1245,7 +1276,7 @@ const reducer = (globalState, action) => {
 									uuid: uuidv4(),
 									value: action.payload.file.metadata.title,
 									active: true,
-									content: action.payload.file.uui,
+									content: action.payload.file.uuid,
 									metadata: {
 		
 									}
@@ -1280,6 +1311,7 @@ const reducer = (globalState, action) => {
 			var view = viewsCopy.find(view => view.uuid === action.payload.view.uuid);
 			console.log("ViewCopy:\n" + JSON.stringify(viewsCopy, null, 2));
 			console.log("action.payload.view:\n" + JSON.stringify(action.payload.view, null, 2));
+			console.log("OpenFiles:" + JSON.stringify(globalState.openFiles.map(file => file.metadata.title), null, 2));
 
 			switch (view.tabs.length) {
 				// Cannot close a tab that doesn't exist
@@ -1309,54 +1341,44 @@ const reducer = (globalState, action) => {
 				}
 			}
 		case "openFile":
+			console.log("globalStore:openFile:payload" + JSON.stringify(action.payload, null, 2));
 			if (isOpenFile(globalState.openFiles, action.payload.file.uuid)) {
 				console.log("FileAlreadyOpen");
-				console.log("OpenFiles:" + JSON.stringify(globalState.openFiles));
+				console.log("OpenFiles:" + JSON.stringify(globalState.openFiles.map(file => file.metadata.title), null, 2));
 				return {
 					...globalState
 				}
 			}
 			else {
-				var viewIndex = globalState.views.map(view => view.title).indexOf("Document View");
+				var viewIndex = getDocumentViewIndex(globalState.views);
 				if (viewIndex === -1) {
+					console.log("OpenFiles:" + JSON.stringify(globalState.openFiles.map(file => file.metadata.title), null, 2));
+					console.log("openFilesCopy:" + JSON.stringify([ ...globalState.openFiles, action.payload.file ].map(file => file.metadata.title), null, 2));
 					return {
 						...globalState,
 						openFiles: [ ...globalState.openFiles, action.payload.file ],
-						views: [ ...globalState.views, {
-							uuid: uuidv4(),
-							title: "Document View",
-							tabs: [
-								{
-									uuid: uuidv4(),
-									value: action.payload.file.metadata.title,
-									active: true,
-									content: action.payload.file.uuid,
-									metadata: {
-		
-									}
-								}
-							]
-						} ]
+						views: [ ...globalState.views, createDocumentView(action.payload.file)]
 					}
 				}
 				else {
 					var documentView = globalState.views[viewIndex];
-					documentView.tabs.forEach(tab => tab.active = false);
-					documentView.tabs.push({
-						uuid: uuidv4(),
-						value: action.payload.file.metadata.title,
-						active: true,
-						content: action.payload.file.uuid,
-						metadata: {
-
+					if (isOpenTab(documentView, action.payload.file.metadata.title)) {
+						console.log("TabAlreadyOpen");
+						console.log("OpenFiles:" + JSON.stringify(globalState.openFiles.map(file => file.metadata.title), null, 2));
+						return {
+							...globalState
 						}
-					});
-					var viewCopy = [ ...globalState.views ];
-					viewCopy[viewIndex] = documentView;
-					return {
-						...globalState,
-						openFiles: [ ...globalState.openFiles, action.payload.file ],
-						views: viewCopy
+					}
+					else {
+						console.log("openFilesCopy:" + JSON.stringify([ ...globalState.openFiles, action.payload.file ].map(file => file.metadata.title), null, 2));
+						documentView.tabs.push(createDocumentTab(action.payload.file));
+						var updatedViews = [ ...globalState.views ];
+						updatedViews[viewIndex] = documentView;
+						return {
+							...globalState,
+							openFiles: [ ...globalState.openFiles, action.payload.file ],
+							views: updatedViews
+						}
 					}
 				}
 			}

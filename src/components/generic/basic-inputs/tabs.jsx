@@ -24,7 +24,7 @@ export default function Tabs({ className, tabs, group, onSelect, onClose }) {
 		case 0: return <span></span>;
 		case 1:
 			return (
-				<div className={`${className} flex flex-wrap w-full max-w-full items-center border-b border-gray-500 dark:border-gray-600`}>
+				<div className={`${className} flex flex-wrap w-full max-w-full items-center shadow-md`}>
 					<div className="flex w-full h-8 max-h-8 px-2 py-1 truncate items-center">
 						<h5 className="flex-shrink px-2 pr-1 truncate text-sm">
 							{tabs[0].value}
@@ -40,7 +40,7 @@ export default function Tabs({ className, tabs, group, onSelect, onClose }) {
 				<RadioGroup
 					value={selected}
 					onChange={selectTab}
-					className={`${className} flex flex-wrap w-full max-w-full items-center border-b border-gray-500 dark:border-gray-600`}>
+					className={`${className} flex flex-wrap w-full max-w-full items-center shadow-md`}>
 					<RadioGroup.Label className="sr-only">{group}</RadioGroup.Label>
 					{
 						internalTabs.map((tab) => (

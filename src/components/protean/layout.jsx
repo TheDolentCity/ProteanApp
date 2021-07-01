@@ -33,7 +33,7 @@ export function AppContainer({ children }) {
 
 export function ColorContainer({ className, children }) {
   return (
-    <div className={"antialiased text-gray-700 bg-gray-100 dark:text-gray-300 dark:bg-gray-900 transition-colors duration-75 ease-in-out " + className}>
+    <div className={"antialiased text-gray-700 bg-gray-100 dark:text-gray-400 dark:bg-gray-900 transition-colors duration-100 ease-in-out " + className}>
       {children}
     </div>
   );

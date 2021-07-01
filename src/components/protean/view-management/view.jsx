@@ -41,7 +41,7 @@ export function ViewController() {
 		<div className="flex-grow flex h-full">
 			{
 				globalState.views.map((view) => (
-					<div key={view.uuid} className="flex-auto flex flex-col max-w-md border-r border-gray-500 dark:border-gray-600">
+					<div key={view.uuid} className="flex-auto flex flex-col max-w-md overflow-x-hidden border-gray-500 dark:border-gray-600">
 						<Tabs
 							tabs={view.tabs}
 							group={view.title}

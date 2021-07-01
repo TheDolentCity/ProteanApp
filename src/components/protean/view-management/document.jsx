@@ -27,6 +27,7 @@ export default function Document({ uuid }) {
 function WritingDocument({ documentId }) {
   const { globalState, dispatch } = useGlobalStore();
   const [document, setDocument] = useState(globalState.openFiles.find(file => file.uuid === documentId));
+	console.log("OpenFiles:" + JSON.stringify(globalState.openFiles.map(file => file.metadata.title), null, 2));
 
   // Update document when active file changes
   useEffect(() => {
@@ -81,6 +82,7 @@ function WritingDocument({ documentId }) {
 function ReadingDocument({ documentId }) {
   const { globalState, dispatch } = useGlobalStore();
 	const file = globalState.openFiles.find(file => file.uuid === documentId);
+	console.log("OpenFiles:" + JSON.stringify(globalState.openFiles.map(file => file.metadata.title), null, 2));
 
   if (file) {
 		switch (file?.metadata?.type) {
@@ -105,6 +107,7 @@ function ReadingDocument({ documentId }) {
 function PlayingDocument({ documentId }) {
   const { globalState, dispatch } = useGlobalStore();
 	const file = globalState.openFiles.find(file => file.uuid === documentId);
+	console.log("OpenFiles:" + JSON.stringify(globalState.openFiles.map(file => file.metadata.title), null, 2));
 
   if (file) {
 		switch (file.metadata.type) {
