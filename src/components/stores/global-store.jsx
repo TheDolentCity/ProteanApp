@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { ViewTypes } from './constants';
 
 const CharacterSheets = {
   uuid: "character-sheets.json",
@@ -1194,24 +1195,15 @@ const initialGlobalState = {
   darkMode: loadLocalStorage("darkMode", false),
 	views: [
 		{
-			'uuid': '0123',
+			'uuid': uuidv4(),
+			'type': ViewTypes.EXPLORER,
 			'title': 'File Explorer',
-			'tabs': [
-				{
-					'uuid': '4567',
-					'value': 'File Explorer',
-					'active': true,
-					'metadata': {
-						
-					}
-				}
-			]
+			'contents': {
+
+			}
 		}
 	],
   files: getFiles(),
-	openFiles: [
-		
-	],
   fileIcons: {
     "BOOK": "ReadingMode",
     "SHEET": "TextDocumentShared",
@@ -1233,144 +1225,46 @@ const reducer = (globalState, action) => {
         darkMode: action?.payload.darkMode
       }
 		case "openView":
-			switch (action.payload.title) {
-				case 'Document View':
-					return {
-						...globalState,
-						views: [ ...globalState.views, {
-							uuid: uuidv4(),
-							title: action.payload.title,
-							tabs: [
-								{
-									uuid: uuidv4(),
-									value: action.payload.file.metadata.title,
-									active: true,
-									content: action.payload.file.uui,
-									metadata: {
-		
-									}
-								}
-							]
-						} ]
-					}
-				default: return { ...globalState };
+			if (ViewTypes[action.payload.type] === undefined) {
+				throw new Error("View type " + action.payload.type + " does not exist.");
+			}
+			return {
+				...globalState,
+				views: [ ...globalState.views, {
+					uuid: uuidv4(),
+					type: action.payload.type,
+					title: action.payload.title,
+					contents: action.payload.contents
+				} ]
 			}
 		case "closeView":
 			return {
 				...globalState,
-				views: [ ...globalState.views.filter(view => view.uuid !== action.payload.view.uuid) ]
-			}
-		case "selectTab":
-			var viewsCopy = [ ...globalState.views ];
-			var view = viewsCopy.find(view => view.uuid === action.payload.view.uuid);
-			view.tabs.forEach(tab => tab.active = false);
-			var selected = view.tabs.find(tab => tab.uuid === action.payload.tab.uuid);
-			if (selected === undefined) {
-				console.log("View:\n" + JSON.stringify(view, null, 2));
-				console.log("PayloadTab:\n" + JSON.stringify(action.payload, null, 2));
-				throw new Error("Selected tab cannot be found.");
-			}
-			else selected.active = true;
-			return {
-				...globalState,
-				views: viewsCopy
-			}
-		case "closeTab":
-			var viewsCopy = [ ...globalState.views ];
-			var view = viewsCopy.find(view => view.uuid === action.payload.view.uuid);
-			console.log("ViewCopy:\n" + JSON.stringify(viewsCopy, null, 2));
-			console.log("action.payload.view:\n" + JSON.stringify(action.payload.view, null, 2));
-
-			switch (view.tabs.length) {
-				// Cannot close a tab that doesn't exist
-				case 0: throw new Error("Cannot close tab since none exist.");
-				// Delete the entire view if there is only one tab
-				case 1:
-					viewsCopy.filter(view => view.uuid !== action.payload.view.uuid);
-					break;
-				// Delete the tab from the view
-				default:
-					view.tabs.filter(tab => tab.uuid !== action.payload.tab.uuid);
-					break;
-			}
-
-			// Handle the case where the tab was a file
-			if (view.title === "Document View") {
-				return {
-					...globalState,
-					views: viewsCopy,
-					openFiles: [ ...globalState.openFiles.filter(file => file.uuid !== action.payload.tab.content) ]
-				}
-			}
-			else {
-				return {
-					...globalState,
-					views: viewsCopy
-				}
+				views: [ ...globalState.views.filter(view => view.uuid !== action.payload.uuid) ]
 			}
 		case "openFile":
-			if (isOpenFile(globalState.openFiles, action.payload.file.uuid)) {
-				console.log("FileAlreadyOpen");
-				console.log("OpenFiles:" + JSON.stringify(globalState.openFiles));
-				return {
-					...globalState
-				}
-			}
-			else {
-				var viewIndex = globalState.views.map(view => view.title).indexOf("Document View");
-				if (viewIndex === -1) {
-					return {
-						...globalState,
-						openFiles: [ ...globalState.openFiles, action.payload.file ],
-						views: [ ...globalState.views, {
-							uuid: uuidv4(),
-							title: "Document View",
-							tabs: [
-								{
-									uuid: uuidv4(),
-									value: action.payload.file.metadata.title,
-									active: true,
-									content: action.payload.file.uuid,
-									metadata: {
-		
-									}
-								}
-							]
-						} ]
-					}
-				}
-				else {
-					var documentView = globalState.views[viewIndex];
-					documentView.tabs.forEach(tab => tab.active = false);
-					documentView.tabs.push({
-						uuid: uuidv4(),
-						value: action.payload.file.metadata.title,
-						active: true,
-						content: action.payload.file.uuid,
-						metadata: {
-
-						}
-					});
-					var viewCopy = [ ...globalState.views ];
-					viewCopy[viewIndex] = documentView;
-					return {
-						...globalState,
-						openFiles: [ ...globalState.openFiles, action.payload.file ],
-						views: viewCopy
-					}
-				}
-			}
-		case "closeFile":
-			if (isOpenFile(globalState.openFiles, action.payload.file.uuid)) {
+			var viewIndex = globalState.views.map(view => view.title).indexOf(ViewTypes.DOCUMENT);
+			if (viewIndex === -1) {
 				return {
 					...globalState,
-					openFiles: [ ...globalState.openFiles.filter((file) => { return file.uuid !== action.payload.file.uuid }) ]
+					views: [ 
+						...globalState.views, {
+							uuid: uuidv4(),
+							type: ViewTypes.DOCUMENT,
+							title: action.payload.file.metadata.title,
+							contents: action.payload.file
+						} 
+					]
 				}
 			}
 			else {
-				console.log("Cannot close file that is not open!");
+				var documentView = globalState.views[viewIndex];
+				documentView.contents = action.payload.file.uuid;
+				var viewCopy = [ ...globalState.views ];
+				viewCopy[viewIndex] = documentView;
 				return {
-					...globalState
+					...globalState,
+					views: viewCopy
 				}
 			}
     case "uploadFile":

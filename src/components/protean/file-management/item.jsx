@@ -66,30 +66,15 @@ function ItemContainer({ active, indent, className, children }) {
 			}
 		}
 		return {
-			"paddingLeft": (1.5 + (indent * 1.5)) + "rem"
-		};
-	}
-
-	const createMargin = () => {
-		if (indent === 0) {
-			return {
-				"paddingLeft": "1rem",
-				"marginLeft": "-2rem",
-				"border-width": "0px"
-			}
-		}
-		return {
-			"paddingLeft": "-1rem"
+			"paddingLeft": (1.25 + (indent * 1.5)) + "rem"
 		};
 	}
 
 	return (
-    <div className={
-			(active ? "font-semibold raise-10 text-black dark:text-white" : "hover:raise-5")
-			+ " acc-focus flex w-full pr-3 py-1 items-center text-left overflow-hidden " 
-			+ className}
+    <div 
+			className={(active ? "font-semibold raise-10 text-black dark:text-white" : "hover:raise-5")
+			+ " acc-focus flex w-full pr-3 py-1 items-center text-left overflow-hidden " + className}
 			style={createPadding()}>
-			{/* <div className="border-l border-theme" style={createMargin()}>&#8203;</div> */}
 			{children}
     </div>
   );
@@ -98,7 +83,7 @@ function ItemContainer({ active, indent, className, children }) {
 function ItemIcon({ icon, className }) {
   return (
     <div className={"flex mr-2 items-center  " + className}>
-      <FabricIcon name={icon} className="text-black dark:text-white"></FabricIcon>
+      <FabricIcon name={icon} className=""></FabricIcon>
     </div>
   );
 }

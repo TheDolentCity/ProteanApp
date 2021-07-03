@@ -45,6 +45,12 @@
 		.text-theme {
 			@apply text-primary-600 dark:text-primary-600;
 		}
+		.text-important {
+			@apply text-gray-900 dark:text-gray-50;
+		}
+		.text-default {
+			@apply text-gray-600 dark:text-gray-400;
+		}
   }
   @variants dark, hover {
     .glass-0 {
@@ -247,12 +253,64 @@
   .input-text-visible {
     @apply appearance-none focus:outline-none focus-visible:raise-10 px-1 whitespace-nowrap justify-center raise-5 placeholder-black placeholder-opacity-25 dark:placeholder-gray-100 dark:placeholder-opacity-25;
   }
+
+	/* Scrollbars */
   .scroll {
     @apply scrollbar scrollbar-thumb-gray-400 scrollbar-track-gray-300 dark:scrollbar-thumb-gray-500 dark:scrollbar-track-gray-700;
   }
   .scroll-thin {
     @apply scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300 dark:scrollbar-thumb-gray-500 dark:scrollbar-track-gray-700;
   }
+	.scrollbar-round {
+		--scrollbar-track: initial;
+		--scrollbar-thumb: initial;
+		scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+		overflow: overlay;
+	}
+	.scrollbar-round::-webkit-scrollbar-track {
+		background-color: var(--scrollbar-track);
+	}
+	.scrollbar-round::-webkit-scrollbar-thumb {
+		background-color: var(--scrollbar-thumb);
+		border-radius: 0.25rem;
+	}
+	.scrollbar-round {
+		scrollbar-width: thin;
+	}
+	.scrollbar-round::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
+	}
+	.protean-scrollbar {
+		@apply scrollbar-round scrollbar-thumb-gray-400 scrollbar-track-transparent dark:scrollbar-thumb-gray-500 dark:scrollbar-track-transparent;
+	}
+	.scroll-box-shadows {
+		background:
+			/* Shadow covers */
+			linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0)),
+			linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0)) 0 100%,
+			
+			/* Shadows */
+			/* radial-gradient(50% 0, farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)),
+			radial-gradient(50% 100%,farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%; */
+			linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,0)),
+			linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
+		background:
+			/* Shadow covers */
+			linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0)),
+			linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0)) 0 100%,
+			
+			/* Shadows */
+			/* radial-gradient(farthest-side at 50% 0, rgba(0,0,0,.2), rgba(0,0,0,0)),
+			radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%; */,
+			linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,0)),
+			linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
+		background-repeat: no-repeat;
+		background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+		
+		/* Opera doesn't support this in the shorthand */
+		background-attachment: local, local, scroll, scroll;
+	}
 
   /* COLUMN COMPONENTS */
   .col-count-1 {

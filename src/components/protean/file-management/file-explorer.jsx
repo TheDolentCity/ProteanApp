@@ -20,10 +20,10 @@ export default function FileExplorer() {
       {/* <h1 className="flex-none w-full sm:px-4 md:px-8 sm:pt-4 md:pt-8 pb-2 text-2xl font-semibold text-gray-900 dark:text-gray-100">
         Explorer
       </h1> */}
-      <div className="flex-shrink sm:mt-2 md:mt-4">
+      <div className="flex-shrink">
         <FileExplorerTree files={globalState?.files} iteration={0}></FileExplorerTree>
       </div>
-      <div ref={itemRef} className="flex-grow pb-12">
+      {/* <div ref={itemRef} className="flex-grow pb-12">
 				<ContextMenu itemRef={itemRef}>
 					<ContextMenuSection>
 						<ContextMenuNewPage file={null}></ContextMenuNewPage>
@@ -32,7 +32,7 @@ export default function FileExplorer() {
 						<ContextMenuNewBook file={null}></ContextMenuNewBook>
 					</ContextMenuSection>
 				</ContextMenu>
-      </div>
+      </div> */}
     </div>
   );
 }

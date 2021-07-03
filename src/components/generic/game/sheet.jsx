@@ -255,7 +255,7 @@ function SheetWidget({ widget, onChange }) {
 				<TextLine
 					data={widget}
 					onChange={onChange}
-					className="py-4 leading-none text-7xl tracking-tighter font-bold text-gray-900 dark:text-gray-100">
+					className="py-4 leading-none text-7xl tracking-tighter font-bold text-important">
 				</TextLine>
 			);
 		case "Header2":
@@ -263,7 +263,7 @@ function SheetWidget({ widget, onChange }) {
 				<TextLine
 					data={widget}
 					onChange={onChange}
-					className="py-4 leading-none text-3xl font-semibold text-gray-900 dark:text-gray-100">
+					className="py-4 leading-none text-3xl font-semibold text-important">
 				</TextLine>
 			);
 		case "Header3":
@@ -271,7 +271,7 @@ function SheetWidget({ widget, onChange }) {
 				<TextLine
 					data={widget}
 					onChange={onChange}
-					className="py-4 leading-normal text-xl font-semibold text-gray-900 dark:text-gray-100">
+					className="py-4 leading-normal text-xl font-semibold text-important">
 				</TextLine>
 			);
 		case "Header4":

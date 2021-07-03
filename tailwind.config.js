@@ -15,6 +15,7 @@ module.exports = {
       cyan: colors.cyan,
       magenta: colors.fuchsia,
       yellow: colors.yellow,
+			// gray: colors.gray,
 			'gray': {
 				'50': '#FAFAFA', 
 				'100': '#F4F4F5', 

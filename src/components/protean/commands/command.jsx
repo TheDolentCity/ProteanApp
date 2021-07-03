@@ -6,7 +6,7 @@ import SettingsCommand from './settings-command';
 import UploadCommand from './upload-command';
 
 export function CommandBar() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);

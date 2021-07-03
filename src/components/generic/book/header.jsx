@@ -57,29 +57,29 @@ export function Subtitle({ css, children }) {
 }
 
 Header1.defaultProps = {
-  css: "col-span mb-5 leading-none text-7xl tracking-tighter font-bold text-gray-900 dark:text-gray-100",
+  css: "col-span mb-5 leading-none text-7xl tracking-tighter font-bold text-important",
 }
 
 Header2.defaultProps = {
-  css: "col-span mt-8 mb-5 leading-none text-3xl font-semibold text-gray-900 dark:text-gray-100",
+  css: "col-span mt-8 mb-5 leading-none text-3xl font-semibold text-important",
 }
 
 Header3.defaultProps = {
-  css: "col-span mt-8 mb-3 leading-normal text-xl font-semibold text-gray-900 dark:text-gray-100",
+  css: "col-span mt-8 mb-3 leading-normal text-xl font-semibold text-important",
 }
 
 Header4.defaultProps = {
-  css: "mb-5 leading-normal text-base font-semibold text-gray-900 dark:text-gray-100",
+  css: "mb-5 leading-normal text-base font-semibold text-important",
 }
 
 Header5.defaultProps = {
-  css: "mb-5 leading-normal text-sm font-medium text-gray-900 dark:text-gray-100",
+  css: "mb-5 leading-normal text-sm font-medium text-important",
 }
 
 Header6.defaultProps = {
-  css: "mb-5 leading-normal text-xs font-medium text-gray-900 dark:text-gray-100",
+  css: "mb-5 leading-normal text-xs font-medium text-important",
 }
 
 Subtitle.defaultProps = {
-  css: "-mb-8 text-base font-extrabold uppercase mono text-gray-900 dark:text-gray-100",
+  css: "-mb-8 text-base font-extrabold uppercase mono text-important",
 }
