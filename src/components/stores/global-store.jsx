@@ -1232,7 +1232,7 @@ const reducer = (globalState, action) => {
 				...globalState,
 				views: [ ...globalState.views, {
 					uuid: uuidv4(),
-					type: action.payload.type,
+					type: ViewTypes[action.payload.type],
 					title: action.payload.title,
 					contents: action.payload.contents
 				} ]
@@ -1243,7 +1243,7 @@ const reducer = (globalState, action) => {
 				views: [ ...globalState.views.filter(view => view.uuid !== action.payload.uuid) ]
 			}
 		case "openFile":
-			var viewIndex = globalState.views.map(view => view.title).indexOf(ViewTypes.DOCUMENT);
+			var viewIndex = globalState.views.map(view => view.type).indexOf(ViewTypes.DOCUMENT);
 			if (viewIndex === -1) {
 				return {
 					...globalState,
@@ -1259,7 +1259,8 @@ const reducer = (globalState, action) => {
 			}
 			else {
 				var documentView = globalState.views[viewIndex];
-				documentView.contents = action.payload.file.uuid;
+				documentView.title = action.payload.file.metadata.title;
+				documentView.contents = action.payload.file;
 				var viewCopy = [ ...globalState.views ];
 				viewCopy[viewIndex] = documentView;
 				return {

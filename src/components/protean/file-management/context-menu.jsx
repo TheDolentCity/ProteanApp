@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useGlobalStore } from '../../stores/global-store';
 import Item from './item';
+import { ViewTypes } from './../../stores/constants';
 
 export function ContextMenu({ itemRef, children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -220,8 +221,9 @@ export function ContextMenuOpenToTheSide({ file }) {
     dispatch({
       type: 'openView',
       payload: {
-				title: 'Document View',
-				file: file
+				type: "DOCUMENT",
+				title: file.metadata.title,
+				contents: file
       }
     });
   }

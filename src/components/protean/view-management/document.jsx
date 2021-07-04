@@ -80,7 +80,7 @@ function WritingDocument({ documentId }) {
 
 function ReadingDocument({ documentId }) {
   const { globalState, dispatch } = useGlobalStore();
-	const file = globalState.views.find(view => view.contents?.uuid === documentId).contents;
+	var file = globalState.views.find(view => view.contents?.uuid === documentId).contents;
 
   if (file) {
 		switch (file?.metadata?.type) {
@@ -104,7 +104,7 @@ function ReadingDocument({ documentId }) {
 
 function PlayingDocument({ documentId }) {
   const { globalState, dispatch } = useGlobalStore();
-	const file = globalState.views.find(view => view.contents?.uuid === documentId).contents;
+	var file = globalState.views.find(view => view.contents?.uuid === documentId).contents;
 
   if (file) {
 		switch (file.metadata.type) {
