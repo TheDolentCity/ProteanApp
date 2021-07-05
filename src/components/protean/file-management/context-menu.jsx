@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { useGlobalStore } from '../../stores/global-store';
+import { useGlobalStore } from '../../storage/global-store';
 import Item from './item';
-import { ViewTypes } from './../../stores/constants';
+import { ViewTypes } from '../../storage/constants';
 
 export function ContextMenu({ itemRef, children }) {
   const [isOpen, setIsOpen] = useState(false);

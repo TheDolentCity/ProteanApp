@@ -1,15 +1,14 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { ViewTypes } from './constants';
+import { FileTypes, ViewTypes } from './constants';
+import { VirtualFileSystem, VirtualFile } from './virtual-file-system';
 
-const CharacterSheets = {
-  uuid: "character-sheets.json",
-  metadata: {
-    type: "PAGE",
-    title: "Character Sheets",
-  },
-  content:
-`
+const CharacterSheets = new VirtualFile(
+	{
+		type: "PAGE",
+		title: "Character Sheets",
+	},
+	`
 # Character Sheets
 This is an overview of how character sheets function in the Protean App so that you understand how to use them to play Protean RPG.
 
@@ -68,16 +67,14 @@ A block with a title and one or more fields. Each field has a title and a value.
   ]}}>
 </NumberBlock>
 `
-}
+);
 
-const TestPage = {
-  uuid: "test-page.json",
-  metadata: {
-    type: "PAGE",
-    title: "Test Page",
-  },
-  content:
-  `
+const TestPage = new VirtualFile(
+	{
+		type: "PAGE",
+		title: "Test Page",
+	},
+	`
   # Header 1
   This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph. This is a test page to test out what the default markdown elements look like. This is a paragraph.
 
@@ -98,16 +95,16 @@ const TestPage = {
 
   </Columns>
   `
-}
+);
 
 const ProteanIs = {
-  uuid: "ProteanIs.json",
-  metadata: {
-    type: "PAGE",
-    title: "Protean Is...",
-  },
-  content:
-`# Protean Is...
+	uuid: "ProteanIs.json",
+	metadata: {
+		type: "PAGE",
+		title: "Protean Is...",
+	},
+	content:
+		`# Protean Is...
 
 ---
 
@@ -132,13 +129,13 @@ There are three kinds of stories told by Protean players:
 }
 
 const ThePlayers = {
-  uuid: "ThePlayers.json",
-  metadata: {
-    type: "PAGE",
-    title: "The Players",
-  },
-  content:
-`# The Players
+	uuid: "ThePlayers.json",
+	metadata: {
+		type: "PAGE",
+		title: "The Players",
+	},
+	content:
+		`# The Players
 Everyone reading this right now is a player, no matter what you do while playing. However, there are two primary ways to play Protean: as an Advocate, or as an Actor.
 
 ## The Advocate
@@ -173,7 +170,8 @@ To ensure even distribution of labor, facilitate ease of play, and simply not pl
 - Records the events of a game session.
 - Notes what transpires from a high level.
 - Notes the names of important characters and their purpose in the story.
-- **Do not** write too detailed; these should be used to remind any other player what happened last session or who a specific character is, but it does not need to be an autobiography.
+- **Do not** write toimport { FileSystem } from './file-system';
+o detailed; these should be used to remind any other player what happened last session or who a specific character is, but it does not need to be an autobiography.
 - **Do not** spend time writing when you should be paying attention.
 
 ### Quartermaster
@@ -193,13 +191,13 @@ To ensure even distribution of labor, facilitate ease of play, and simply not pl
 }
 
 const ActionBlocksAndTags = {
-  uuid: "action-blocks-and-tags.json",
-  metadata: {
-    type: "PAGE",
-    title: "Action Blocks And Tags",
-  },
-  content:
-`
+	uuid: "action-blocks-and-tags.json",
+	metadata: {
+		type: "PAGE",
+		title: "Action Blocks And Tags",
+	},
+	content:
+		`
 # Action Blocks and Tags
 Action blocks and tags are the core metrics for what a character is capable of. Anything from a weapon to a lockpicking skill falls under the realm of action blocks.
 
@@ -220,13 +218,13 @@ A tag is a heuristic or shortcut used to make action blocks less unwieldy. Most 
 }
 
 const DefensesAndConditions = {
-  uuid: "defenses-and-conditions.json",
-  metadata: {
-    type: "PAGE",
-    title: "Defenses",
-  },
-  content:
-    `
+	uuid: "defenses-and-conditions.json",
+	metadata: {
+		type: "PAGE",
+		title: "Defenses",
+	},
+	content:
+		`
 # Defenses & Conditions
 Defenses communicate to the player what state their character is in at any point in time. They're designed to be abstract to support all sorts of content, from hydration to mutation mechanics. Conditions are permanent or temporary modifications to your character in the form of negative tags.
 
@@ -257,13 +255,13 @@ This is always negative, or at least mostly negative, for your character. TODO. 
 }
 
 const MakingChecks = {
-  uuid: "MakingChecks.json",
-  metadata: {
-    type: "PAGE",
-    title: "Making Checks",
-  },
-  content:
-`# Making Checks
+	uuid: "MakingChecks.json",
+	metadata: {
+		type: "PAGE",
+		title: "Making Checks",
+	},
+	content:
+		`# Making Checks
 
 ## 1. Determine Starting Dice Pool
 If you're making a check with a specific action block you will start with the associated dice as your pool. If you don't have any action block that would apply to the check, then you start with 1d20.
@@ -430,13 +428,13 @@ Every die in Protean is unique. This means interpreting a 4 on a d4 is very diff
 }
 
 const ExampleOfPlay = {
-  uuid: 'example-of-play.json',
-  metadata: {
-    type: 'PAGE',
-    title: 'Example of Play'
-  },
-  content:
-    `
+	uuid: 'example-of-play.json',
+	metadata: {
+		type: 'PAGE',
+		title: 'Example of Play'
+	},
+	content:
+		`
 # Example of Play
 Zero and Feather are two mech pilots whose mission has gone horribly wrong. Zero is attempting to tear an entrance into a derelict starship before a legion of drones destroy her and Feather. Feather is currently fighting the drones off with their mech's plasma sword. The Advocate says that this will be a hard check and that Zero's Size action block makes the most sense for ripping a hole in the side of the starship. But Zero suggests that she use her Grapple Cable action block instead and explains how she would fire the grappling hooks into weaknesses in the metal and pull to create a hole. The Advocate agrees that makes sense (and is way cooler) so Zero rolls 2d8.
 
@@ -523,13 +521,13 @@ Feather climbs aboard Zero's mech and pulls out a flashlight. They slap the side
 }
 
 const CombatModule = {
-  uuid: 'combat-module.json',
-  metadata: {
-    type: 'PAGE',
-    title: 'Module: Combat'
-  },
-  content:
-`
+	uuid: 'combat-module.json',
+	metadata: {
+		type: 'PAGE',
+		title: 'Module: Combat'
+	},
+	content:
+		`
 # Module: Combat
 This module provides more detailed rules for combat. This is useful for any game with a heavy combat focus, such as a mech combat game.
 
@@ -545,14 +543,14 @@ This module introduces turn-based actions for combat. This applies to PCs and NP
 }
 
 const ProteanModuleBasicFrames = {
-  uuid: "ProteanModuleBasicFrames",
-  type: "PAGE",
-  title: "MODULE: Basic Frames",
-  format: {
+	uuid: "ProteanModuleBasicFrames",
+	type: "PAGE",
+	title: "MODULE: Basic Frames",
+	format: {
 
-  },
-  content:
-`
+	},
+	content:
+		`
 # Basic Frames
 These frames are suggestions but they function as a good starting point for any game. Use these as a baseline and add or subtract to fit your game's setting and themes.
 
@@ -624,13 +622,13 @@ TODO
 }
 
 const LancerSettingPrimer = {
-  uuid: "lancer-setting-primer.json",
-  metadata: {
-    type: "PAGE",
-    title: "Lancer Setting Primer"
-  },
-  content:
-`
+	uuid: "lancer-setting-primer.json",
+	metadata: {
+		type: "PAGE",
+		title: "Lancer Setting Primer"
+	},
+	content:
+		`
 # Lancer Setting Primer
 
 Freedom is not a bargaining chip.
@@ -675,13 +673,13 @@ Additionally, they did have a scorched earth policy of aggression towards all me
 }
 
 const LancerCampaignPrimer = {
-  uuid: "lancer-campaign-primer.json",
-  metadata: {
-    type: "PAGE",
-    title: "Lancer Campaign Primer"
-  },
-  content:
-`
+	uuid: "lancer-campaign-primer.json",
+	metadata: {
+		type: "PAGE",
+		title: "Lancer Campaign Primer"
+	},
+	content:
+		`
 # Campaign: Midnight at Termis
 The year is 8192u.
 
@@ -694,13 +692,13 @@ You just took your last test to become an official member of the active Union Na
 }
 
 const LancerCharacterCreation = {
-  uuid: "lancer-character-creation.json",
-  metadata: {
-    type: "PAGE",
-    title: "Lancer Character Creation"
-  },
-  content:
-    `
+	uuid: "lancer-character-creation.json",
+	metadata: {
+		type: "PAGE",
+		title: "Lancer Character Creation"
+	},
+	content:
+		`
 # Character Creation Steps
 Follow these steps to create your pilot and lancer character sheets.
 
@@ -792,13 +790,13 @@ For this game we will be using the "standard distribution" of dice sizes. This m
 }
 
 const LancerGMSWeapons = {
-  uuid: "lancer-gms-weapons.json",
-  metadata: {
-    type: "PAGE",
-    title: "GMS Weapons",
-  },
-  content:
-`
+	uuid: "lancer-gms-weapons.json",
+	metadata: {
+		type: "PAGE",
+		title: "GMS Weapons",
+	},
+	content:
+		`
 # GMS Weapons
 Much like GMS mechs, GMS weapons are reliable galactic standards, made using interchangeable parts and built to withstand almost any conditions. There are three lines currently in production. 
 
@@ -892,14 +890,14 @@ The Type-III (T-3) line is made up of heavy weapons, ordnance, and other exotic,
 }
 
 const TitanfallExpansionTitanGear = {
-  uuid: "TitanfallExpansionTitanGear",
-  type: "PAGE",
-  title: "Titan Gear",
-  format: {
+	uuid: "TitanfallExpansionTitanGear",
+	type: "PAGE",
+	title: "Titan Gear",
+	format: {
 
-  },
-  content:
-`
+	},
+	content:
+		`
 # Titan Gear
 This is a collection of weapons, armor, and modifications that titans can equip.
 
@@ -953,13 +951,13 @@ TODO
 }
 
 const PilotWeapons = {
-  uuid: "pilot-weapons.json",
-  metadata: {
-    type: "PAGE",
-    title: "Pilot Weapons",
-  },
-  content:
-`
+	uuid: "pilot-weapons.json",
+	metadata: {
+		type: "PAGE",
+		title: "Pilot Weapons",
+	},
+	content:
+		`
 # Pilot Weapons
 
 ## Assault Rifles
@@ -1041,97 +1039,95 @@ const PilotWeapons = {
 }
 
 const ProteanRPGChapterOne = {
-  uuid: "protean-rpg-chapter-one.json",
-  metadata: {
-    type: "FOLDER",
-    title: "Chapter One: What Is Protean?"
-  },
-  content: [
-    ProteanIs,
-    ThePlayers
-  ]
+	uuid: "protean-rpg-chapter-one.json",
+	metadata: {
+		type: "FOLDER",
+		title: "Chapter One: What Is Protean?"
+	},
+	content: [
+		ProteanIs,
+		ThePlayers
+	]
 }
 
 const ProteanRPGChapterTwo = {
-  uuid: "protean-rpg-chapter-two.json",
-  metadata: {
-    type: "FOLDER",
-    title: "Chapter Two: Playing The Game"
-  },
-  content: [
-    ActionBlocksAndTags,
-    DefensesAndConditions,
-    MakingChecks,
-    ExampleOfPlay
-  ]
+	uuid: "protean-rpg-chapter-two.json",
+	metadata: {
+		type: "FOLDER",
+		title: "Chapter Two: Playing The Game"
+	},
+	content: [
+		ActionBlocksAndTags,
+		DefensesAndConditions,
+		MakingChecks,
+		ExampleOfPlay
+	]
 }
 
 const ProteanRPGChapterThree = {
-  uuid: "protean-rpg-chapter-three.json",
-  metadata: {
-    type: "FOLDER",
-    title: "Chapter Three: Rule Modules"
-  },
-  content: [
-    CombatModule
-  ]
+	uuid: "protean-rpg-chapter-three.json",
+	metadata: {
+		type: "FOLDER",
+		title: "Chapter Three: Rule Modules"
+	},
+	content: [
+		CombatModule
+	]
 }
 
-const ProteanApp = {
-  uuid: "protean-app.json",
-  metadata: {
-    type: "BOOK",
-    title: "Protean App",
-    activePage: 0
-  },
-  content: [
-    CharacterSheets,
-    TestPage
-  ]
-}
+const ProteanApp = new VirtualFile(
+	{
+		type: "BOOK",
+		title: "Protean App"
+	},
+	`
+  # Protean App
+	This is a file
+  `
+);
 
 const ProteanRPG = {
-  uuid: "protean-rpg.json",
-  metadata: {
-    type: "BOOK",
-    title: "Protean RPG",
-    activePage: 0
-  },
-  content: [
-    ProteanRPGChapterOne,
-    ProteanRPGChapterTwo,
-    ProteanRPGChapterThree
-  ]
+	uuid: "protean-rpg.json",
+	metadata: {
+		type: "BOOK",
+		title: "Protean RPG",
+		activePage: 0
+	},
+	content: [
+		ProteanRPGChapterOne,
+		ProteanRPGChapterTwo,
+		ProteanRPGChapterThree
+	]
 }
 
 const LancerSupplement = {
-  uuid: "lancer-supplement.json",
-  metadata: {
-    type: "BOOK",
-    title: "Lancer Supplement",
-    activePage: 0
-  },
-  content: [
-    LancerSettingPrimer,
-    LancerCampaignPrimer,
-    LancerCharacterCreation, 
+	uuid: "lancer-supplement.json",
+	metadata: {
+		type: "BOOK",
+		title: "Lancer Supplement",
+		activePage: 0
+	},
+	content: [
+		LancerSettingPrimer,
+		LancerCampaignPrimer,
+		LancerCharacterCreation,
 		PilotWeapons
-  ]
+	]
 }
 
 const BuiltInFiles = {
-  [ProteanApp.uuid]: ProteanApp,
-  [ProteanRPG.uuid]: ProteanRPG,
-  [LancerSupplement.uuid]: LancerSupplement
+	[ProteanApp.uuid]: ProteanApp,
+	[ProteanRPG.uuid]: ProteanRPG,
+	[LancerSupplement.uuid]: LancerSupplement
 }
 
 function loadLocalStorage(key, defaultValue) {
-  return localStorage.getItem(key) === null ? defaultValue : JSON.parse(localStorage.getItem(key));
+	return localStorage.getItem(key) === null ? defaultValue : JSON.parse(localStorage.getItem(key));
 }
 
 function isNotBuiltInFile(uuid) {
-  // console.log(`isNotBuiltInFile:${uuid}:${BuiltInFiles[uuid]}:${BuiltInFiles[uuid] === undefined}`);
-  return BuiltInFiles[uuid] === undefined;
+	// console.log(`isNotBuiltInFile:${uuid}:${BuiltInFiles[uuid]}:${BuiltInFiles[uuid] === undefined}`);
+	return BuiltInFiles[uuid] === undefined;
 }
 
 function isOpenFile(openFiles, uuid) {
@@ -1146,11 +1142,11 @@ function isOpenFile(openFiles, uuid) {
 }
 
 function saveNonBuiltInFiles(files) {
-  // console.log("saveNonBuiltInFiles:FileNames:\n" + JSON.stringify(files.map(file => file.uuid)));
-  var nonBuiltInFiles = files.filter(file => isNotBuiltInFile(file?.uuid));
-  // console.log("saveNonBuiltInFiles:NonBuiltInFileNames:\n" + JSON.stringify(nonBuiltInFiles.map(file => file.uuid)));
-  console.log("saveNonBuiltInFiles:\n" + JSON.stringify(nonBuiltInFiles, null, 2));
-  localStorage.setItem("files", JSON.stringify(nonBuiltInFiles));
+	// console.log("saveNonBuiltInFiles:FileNames:\n" + JSON.stringify(files.map(file => file.uuid)));
+	var nonBuiltInFiles = files.filter(file => isNotBuiltInFile(file?.uuid));
+	// console.log("saveNonBuiltInFiles:NonBuiltInFileNames:\n" + JSON.stringify(nonBuiltInFiles.map(file => file.uuid)));
+	console.log("saveNonBuiltInFiles:\n" + JSON.stringify(nonBuiltInFiles, null, 2));
+	localStorage.setItem("files", JSON.stringify(nonBuiltInFiles));
 }
 
 function updateTreeFile(treeFiles, newFile) {
@@ -1171,28 +1167,33 @@ function updateTreeFile(treeFiles, newFile) {
 
 // Gets all of the files needed for the application to run.
 // This returns the built in files, local files, or the combination of the two.
-function getFiles() {
-  // Get all files that have been saved to local storage
-  var localFiles = loadLocalStorage("files", null);
-  console.log("getFiles:LocalFilesNames:\n" + JSON.stringify(localFiles?.map(file => file.uuid)));
+function getFileSystem() {
+	// // Get all files that have been saved to local storage
+	// var localFiles = loadLocalStorage("files", null);
+	// console.log("getFiles:LocalFilesNames:\n" + JSON.stringify(localFiles?.map(file => file.uuid)));
 
-  // Return the built in files if there are none in local storage
-  if (localFiles === null) {
-    console.log("getFiles:BuiltInFilesNames:" + JSON.stringify([...Object.values(BuiltInFiles)]?.map(file => file.uuid)));
-    return [...Object.values(BuiltInFiles)];
-  }
-  // Return built in files and local storage files
-  else {
-    console.log("getFiles:BuiltInFilesNames+LocalFilesNames:" + JSON.stringify([...Object.values(BuiltInFiles), ...localFiles]?.map(file => file.uuid)));
-    // console.log("getFiles:LocalFilesNames:" + JSON.stringify([...localFiles]));
-    return [...Object.values(BuiltInFiles), ...localFiles];
-  }
+	// // Return the built in files if there are none in local storage
+	// if (localFiles === null) {
+	//   console.log("getFiles:BuiltInFilesNames:" + JSON.stringify([...Object.values(BuiltInFiles)]?.map(file => file.uuid)));
+	//   return [...Object.values(BuiltInFiles)];
+	// }
+	// // Return built in files and local storage files
+	// else {
+	//   console.log("getFiles:BuiltInFilesNames+LocalFilesNames:" + JSON.stringify([...Object.values(BuiltInFiles), ...localFiles]?.map(file => file.uuid)));
+	//   // console.log("getFiles:LocalFilesNames:" + JSON.stringify([...localFiles]));
+	//   return [...Object.values(BuiltInFiles), ...localFiles];
+	// }
+	var fileSystem = new VirtualFileSystem();
+	fileSystem.addFile(ProteanApp);
+	fileSystem.addFile(CharacterSheets, ProteanApp.uuid);
+	fileSystem.addFile(TestPage, ProteanApp.uuid);
+	fileSystem.print();
+	return fileSystem;
 }
 
 const GlobalStoreContext = createContext();
 const initialGlobalState = {
-	mode: "ReadingMode",
-  darkMode: loadLocalStorage("darkMode", false),
+	darkMode: loadLocalStorage("darkMode", false),
 	views: [
 		{
 			'uuid': uuidv4(),
@@ -1203,196 +1204,138 @@ const initialGlobalState = {
 			}
 		}
 	],
-  files: getFiles(),
-  fileIcons: {
-    "BOOK": "ReadingMode",
-    "SHEET": "TextDocumentShared",
-    "PAGE": "TextDocument",
-  }
+	fileSystem: getFileSystem()
 };
 
 const reducer = (globalState, action) => {
-  switch (action.type) {
-    case "setMode":
-      return {
-        ...globalState,
-        mode: action?.payload.mode
-      }
-    case "setDarkMode":
-      localStorage.setItem("darkMode", action?.payload.darkMode);
-      return {
-        ...globalState,
-        darkMode: action?.payload.darkMode
-      }
+	switch (action.type) {
+		case "setMode":
+			return {
+				...globalState,
+				mode: action?.payload.mode
+			}
+		case "setDarkMode":
+			localStorage.setItem("darkMode", action?.payload.darkMode);
+			return {
+				...globalState,
+				darkMode: action?.payload.darkMode
+			}
 		case "openView":
 			if (ViewTypes[action.payload.type] === undefined) {
 				throw new Error("View type " + action.payload.type + " does not exist.");
 			}
 			return {
 				...globalState,
-				views: [ ...globalState.views, {
+				views: [...globalState.views, {
 					uuid: uuidv4(),
 					type: ViewTypes[action.payload.type],
 					title: action.payload.title,
 					contents: action.payload.contents
-				} ]
+				}]
 			}
 		case "closeView":
 			return {
 				...globalState,
-				views: [ ...globalState.views.filter(view => view.uuid !== action.payload.uuid) ]
+				views: [...globalState.views.filter(view => view.uuid !== action.payload.uuid)]
 			}
 		case "openFile":
 			var viewIndex = globalState.views.map(view => view.type).indexOf(ViewTypes.DOCUMENT);
 			if (viewIndex === -1) {
 				return {
 					...globalState,
-					views: [ 
+					views: [
 						...globalState.views, {
 							uuid: uuidv4(),
 							type: ViewTypes.DOCUMENT,
 							title: action.payload.file.metadata.title,
-							contents: action.payload.file
-						} 
+							contents: action.payload.file.uuid
+						}
 					]
 				}
 			}
 			else {
 				var documentView = globalState.views[viewIndex];
 				documentView.title = action.payload.file.metadata.title;
-				documentView.contents = action.payload.file;
-				var viewCopy = [ ...globalState.views ];
+				documentView.contents = action.payload.file.uuid;
+				var viewCopy = [...globalState.views];
 				viewCopy[viewIndex] = documentView;
 				return {
 					...globalState,
 					views: viewCopy
 				}
 			}
-    case "uploadFile":
-      const uploadFile = { ...action?.payload.file };
-      const existingFileUuids = globalState.files.map(file => file.uuid);
-      while (existingFileUuids.includes(uploadFile?.uuid)) {
-        console.log(`Existing file with uuid '${uploadFile?.uuid}' exists.`);
-        console.log(`Renaming new file...`);
-        uploadFile.uuid = uuidv4();
-        console.log(`Renamed new file to '${uploadFile.uuid}'`);
-      }
-      saveNonBuiltInFiles([...globalState.files, uploadFile]);
-      return {
-        ...globalState,
-        files: [...globalState.files, uploadFile]
-      }
-		case "newFile":
-			var newFile = {};
-			switch (action?.payload.documentType) {
-				case "BOOK":
-					newFile = {
-						uuid: uuidv4(),
-						metadata: {
-							type: "BOOK",
-							title: "untitled"
-						},
-						content: []
-					};
-					break;
-				case "FOLDER":
-					newFile = {
-						uuid: uuidv4(),
-						metadata: {
-							type: "FOLDER",
-							title: "untitled"
-						},
-						content: []
-					};
-					break;
-				case "PAGE":
-					newFile = {
-						uuid: uuidv4(),
-						metadata: {
-							type: "PAGE",
-							title: "untitled"
-						},
-						content: ``
-					};
-					break;
-				case "SHEET":
-					newFile = {
-						uuid: uuidv4(),
-						metadata: {
-							type: "SHEET",
-							title: "untitled"
-						},
-						content: []
-					};
-					break;
+		case "uploadFile":
+			const uploadFile = { ...action?.payload.file };
+			const existingFileUuids = globalState.fileSystem.containsFile(uploadFile);
+			while (existingFileUuids.includes(uploadFile?.uuid)) {
+				console.log(`Existing file with uuid '${uploadFile?.uuid}' exists.`);
+				console.log(`Renaming new file...`);
+				uploadFile.uuid = uuidv4();
+				console.log(`Renamed new file to '${uploadFile.uuid}'`);
 			}
-			switch (action?.payload.parentFile?.metadata.type) {
-				case "BOOK":
-					action?.payload.parentFile?.content.push(newFile);
-					saveNonBuiltInFiles(globalState.files);
-					break;
-				case "FOLDER":
-					action?.payload.parentFile?.content.push(newFile);
-					saveNonBuiltInFiles(globalState.files);
-					break;
-				default:
-					globalState.files.push(newFile);
-					saveNonBuiltInFiles(globalState.files);
-					break;
+			globalState.fileSystem.addFile(uploadFile);
+			return {
+				...globalState
+			}
+		case "newFile":
+			var newFile = new VirtualFile(
+				{
+					type: action?.payload.documentType,
+					title: 'untitled'
+				},
+				''
+			);
+			// Add file to the system taking parent into account
+			if (action.payload.parentFile) {
+				globalState.fileSystem.addFile(newFile, action.payload.parentFile.uuid);
+			}
+			else {
+				globalState.fileSystem.addFile(newFile);
 			}
 			return {
 				...globalState
 			}
 		case "updateFile":
-			var filesCopy = [...globalState.files];
-			updateTreeFile(filesCopy, action.payload.file);
-      saveNonBuiltInFiles(filesCopy);
-      return {
-        ...globalState,
-				files: filesCopy
-      }
-    case "deleteFile":
-      // Don't delete built in files
-      if (isNotBuiltInFile(action?.payload.file?.uuid) == false) {
-        console.log("Error: Cannot delete built in file.");
-        return { ...globalState };
-      }
-
-      // Remove the file from the arrays
-      console.log("deleteFile:originals:\n" + JSON.stringify(globalState?.files.map(f => f.uuid)));
-      const files = globalState?.files.filter((file) => action?.payload.file?.uuid !== file.uuid);
-      console.log("deleteFile:afterDelete:\n" + JSON.stringify(files.map(f => f.uuid)));
-
-      // Save the new list of files in local storage
-      saveNonBuiltInFiles(files);
-
-			// If the file is open clear it from open files when you return
-			if (isOpenFile(globalState.openFiles, action.payload.file.uuid)) {
-				return {
-					...globalState,
-					files: files,
-					openFiles: [ ...globalState.openFiles.filter((file) => { return file.uuid !== action.payload.file.uuid }) ]
-				}
+			globalState.fileSystem.setFile(action.payload.file);
+			return {
+				...globalState
 			}
+		case "deleteFile":
+			// Don't delete built in files
+			// if (isNotBuiltInFile(action?.payload.file?.uuid) == false) {
+			// 	console.log("Error: Cannot delete built in file.");
+			// 	return { ...globalState };
+			// }
 
-      // Return the new in-memory global state
-      return {
-        ...globalState,
-        files: files
-      }
-    default:
-      throw new Error(`Unhandled action type: ${action.type}`);
-  }
+			// // Remove the file from the arrays
+			// console.log("deleteFile:originals:\n" + JSON.stringify(globalState?.files.map(f => f.uuid)));
+			// const files = globalState?.files.filter((file) => action?.payload.file?.uuid !== file.uuid);
+			// console.log("deleteFile:afterDelete:\n" + JSON.stringify(files.map(f => f.uuid)));
+
+			// Save the new list of files in local storage
+			// saveNonBuiltInFiles(files);
+
+			globalState.fileSystem.deleteFile(action.payload.file);
+
+			// If the file is in an open view close the view
+			globalState.views.filter(view => view.contents !== action.payload.file.uuid);
+
+			return {
+				...globalState
+			}
+		default:
+			throw new Error(`Unhandled action type: ${action.type}`);
+	}
 }
 
 export const GlobalStoreProvider = ({ children }) => {
-  const [globalState, dispatch] = useReducer(reducer, initialGlobalState);
-  
-  return (
-    <GlobalStoreContext.Provider value={{ globalState, dispatch }}>
-      {children}
-    </GlobalStoreContext.Provider>
-  )
+	const [globalState, dispatch] = useReducer(reducer, initialGlobalState);
+
+	return (
+		<GlobalStoreContext.Provider value={{ globalState, dispatch }}>
+			{children}
+		</GlobalStoreContext.Provider>
+	)
 }
 
 export const useGlobalStore = () => useContext(GlobalStoreContext);

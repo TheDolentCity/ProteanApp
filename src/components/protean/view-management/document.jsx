@@ -1,25 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useGlobalStore } from '../../stores/global-store';
-import WritingMode from '../app-modes/writing-mode';
-import ReadingMode from '../app-modes/reading-mode';
-import PlayingMode from '../app-modes/playing-mode';
+import { useGlobalStore } from '../../storage/global-store';
 import Page from '../../generic/book/page';
 import MdxRender from '../../generic/book/mdx-render';
 import Sheet from '../../generic/game/sheet';
 import TextareaAutosize from 'react-textarea-autosize';
+import { FileIcons } from '../../storage/constants';
 
 export default function Document({ uuid }) {
 	return (
     <div className="w-full h-full">
-			<WritingMode>
-				<WritingDocument documentId={uuid}></WritingDocument>
-			</WritingMode>
-			<ReadingMode className="">
-				<ReadingDocument documentId={uuid}></ReadingDocument>
-			</ReadingMode>
-			<PlayingMode>
-				<PlayingDocument documentId={uuid}></PlayingDocument>
-			</PlayingMode>
+			<ReadingDocument documentId={uuid}></ReadingDocument>
 		</div>
 	);
 }
@@ -60,7 +50,7 @@ function WritingDocument({ documentId }) {
 			return (
 				<SheetDocument
 					title={document.metadata.title}
-					icon={globalState.fileIcons[document.metadata.type]}>
+					icon={FileIcons[document.metadata.type]}>
 				</SheetDocument>
 			);
 		default:
@@ -80,7 +70,7 @@ function WritingDocument({ documentId }) {
 
 function ReadingDocument({ documentId }) {
   const { globalState, dispatch } = useGlobalStore();
-	var file = globalState.views.find(view => view.contents?.uuid === documentId).contents;
+	var file = globalState.fileSystem.getFile(documentId);
 
   if (file) {
 		switch (file?.metadata?.type) {
@@ -88,7 +78,7 @@ function ReadingDocument({ documentId }) {
 				return (
 					<SheetDocument
 						title={file?.metadata?.title}
-						icon={globalState.fileIcons[file?.metadata?.type]}>
+						icon={FileIcons[file?.metadata?.type]}>
 					</SheetDocument>
 				);
 			default:
@@ -104,7 +94,7 @@ function ReadingDocument({ documentId }) {
 
 function PlayingDocument({ documentId }) {
   const { globalState, dispatch } = useGlobalStore();
-	var file = globalState.views.find(view => view.contents?.uuid === documentId).contents;
+	var file = globalState.fileSystem.getFile(documentId);
 
   if (file) {
 		switch (file.metadata.type) {
@@ -112,7 +102,7 @@ function PlayingDocument({ documentId }) {
 				return (
 					<SheetDocument
 						title={file.metadata.title}
-						icon={globalState.fileIcons[file.metadata.type]}>
+						icon={FileIcons[file.metadata.type]}>
 					</SheetDocument>
 				);
 			default:

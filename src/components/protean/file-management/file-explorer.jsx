@@ -1,38 +1,17 @@
-import React, { useRef } from 'react';
-import { useGlobalStore } from '../../stores/global-store';
-import { 
-	ContextMenu, 
-	ContextMenuSection, 
-	ContextMenuNewBook, 
-	ContextMenuNewFolder, 
-	ContextMenuNewPage,
-	ContextMenuNewSheet
-} from './context-menu';
+import React from 'react';
+import { useGlobalStore } from '../../storage/global-store';
 import { Book, Folder } from './container';
 import File from './file';
+import { FileTypes } from './../../storage/constants';
 
 export default function FileExplorer() {
   const { globalState, dispatch } = useGlobalStore();
-  const itemRef = useRef(null);
 
   return (
     <div className="flex flex-col w-full h-full mx-auto">
-      {/* <h1 className="flex-none w-full sm:px-4 md:px-8 sm:pt-4 md:pt-8 pb-2 text-2xl font-semibold text-gray-900 dark:text-gray-100">
-        Explorer
-      </h1> */}
       <div className="flex-shrink">
-        <FileExplorerTree files={globalState?.files} iteration={0}></FileExplorerTree>
+        <FileExplorerTree files={globalState.fileSystem.getFiles()} iteration={0}></FileExplorerTree>
       </div>
-      {/* <div ref={itemRef} className="flex-grow pb-12">
-				<ContextMenu itemRef={itemRef}>
-					<ContextMenuSection>
-						<ContextMenuNewPage file={null}></ContextMenuNewPage>
-						<ContextMenuNewSheet file={null}></ContextMenuNewSheet>
-						<ContextMenuNewFolder file={null}></ContextMenuNewFolder>
-						<ContextMenuNewBook file={null}></ContextMenuNewBook>
-					</ContextMenuSection>
-				</ContextMenu>
-      </div> */}
     </div>
   );
 }
@@ -46,25 +25,25 @@ function FileExplorerTree({ files, iteration }) {
     <div>
       {
         files.map(item => {
-          switch (item?.metadata?.type) {
-            case "BOOK":
+          switch (item.data?.metadata?.type) {
+            case FileTypes.BOOK:
               return (
-                <Book key={item.uuid} file={item} indent={iteration}>
-                  <FileExplorerTree files={item?.content} iteration={iteration+1}></FileExplorerTree>
+                <Book key={item.data.uuid} file={item.data} indent={iteration}>
+                  <FileExplorerTree files={item.children} iteration={iteration+1}></FileExplorerTree>
                 </Book> 
               );
-            case "FOLDER":
+            case FileTypes.FOLDER:
               return (
-                <Folder key={item.uuid} file={item} indent={iteration}>
-                  <FileExplorerTree files={item?.content} iteration={iteration+1}></FileExplorerTree>
+                <Folder key={item.data.uuid} file={item.data} indent={iteration}>
+                  <FileExplorerTree files={item.children} iteration={iteration+1}></FileExplorerTree>
                 </Folder>
               );
-            case "SHEET":
-              return <File key={item.uuid} file={item} indent={iteration}></File>;
-            case "PAGE":
-              return <File key={item.uuid} file={item} indent={iteration}></File>;
+            case FileTypes.SHEET:
+              return <File key={item.data.uuid} file={item.data} indent={iteration}></File>;
+            case FileTypes.PAGE:
+              return <File key={item.data.uuid} file={item.data} indent={iteration}></File>;
             default:
-              return <span key={item.uuid} className="hidden"></span>;
+              return <span key={item.data.uuid} className="hidden"></span>;
           }
         })
       }

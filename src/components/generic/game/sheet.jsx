@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Popover } from '@headlessui/react';
-import { useGlobalStore } from '../../stores/global-store';
+import { useGlobalStore } from '../../storage/global-store';
 import FabricIcon from '../basic-inputs/fabric-icon';
 import WritingMode from '../../protean/app-modes/writing-mode';
 import { Widget, WidgetContainer } from './widget';

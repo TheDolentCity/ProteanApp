@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { useGlobalStore } from '../../stores/global-store';
+import { useGlobalStore } from '../../storage/global-store';
 import { 
 	ContextMenu, 
 	ContextMenuDelete, 
@@ -10,6 +10,7 @@ import {
 } from './context-menu';
 import Item from './item';
 import Rename from './rename';
+import { FileIcons } from '../../storage/constants';
 
 export default function File({ file, indent }) {
   const itemRef = useRef(null);
@@ -32,14 +33,14 @@ export default function File({ file, indent }) {
 					renaming && (file?.metadata?.title !== null || file?.metadata?.title !== undefined) ?
 					<Rename 
 						file={file} 
-						icon={globalState.fileIcons[file.metadata.type]} 
+						icon={FileIcons[file.metadata.type]} 
 						indent={indent} 
 						endRename={() => setRenaming(false)}>
 					</Rename>
 					:
 					<Item
 						active={globalState?.activeFile?.uuid === file.uuid}
-						icon={globalState.fileIcons[file.metadata.type]}
+						icon={FileIcons[file.metadata.type]}
 						indent={indent}
 						itemRef={itemRef}
 						onClick={openFileDispatch}>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Listbox } from '@headlessui/react'
-import { useGlobalStore } from "../../stores/global-store";
+import { useGlobalStore } from "../../storage/global-store";
 import CircleIcon from './../../generic/basic-inputs/circle-icon';
 
 const modes = [

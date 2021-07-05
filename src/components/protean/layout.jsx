@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGlobalStore } from "../stores/global-store";
+import { useGlobalStore } from "../storage/global-store";
 
 export default function AppLayout(props) {
   return (
@@ -33,7 +33,7 @@ export function AppContainer({ children }) {
 
 export function ColorContainer({ className, children }) {
   return (
-    <div className={"antialiased text-default bg-gray-100 dark:bg-gray-900 transition-colors duration-75 ease-in-out " + className}>
+    <div className={"antialiased text-default bg-gray-100 dark:bg-gray-800 transition-colors duration-75 ease-in-out " + className}>
       {children}
     </div>
   );

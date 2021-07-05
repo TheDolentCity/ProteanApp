@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGlobalStore } from "../../stores/global-store";
+import { useGlobalStore } from "../../storage/global-store";
 
 export default function ReadingMode({ className, children }) {
   const { globalState, dispatch } = useGlobalStore();

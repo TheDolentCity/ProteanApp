@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useGlobalStore } from '../../stores/global-store';
+import { useGlobalStore } from '../../storage/global-store';
 import FabricIcon from '../../generic/basic-inputs/fabric-icon';
 
 export default function Rename({ file, icon, indent, endRename }) {

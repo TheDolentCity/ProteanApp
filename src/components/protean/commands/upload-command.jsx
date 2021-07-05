@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGlobalStore } from "../../stores/global-store";
+import { useGlobalStore } from "../../storage/global-store";
 import { Command } from './command';
 
 export default function UploadCommand({ isOpen }) {
