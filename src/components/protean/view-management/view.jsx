@@ -61,6 +61,7 @@ function View({ view }) {
 						<ViewButton>
 							<FabricIcon name="Game"></FabricIcon>
 						</ViewButton>
+						<ViewDivider></ViewDivider>
 						<ViewButton>
 							<FabricIcon name="MoreVertical"></FabricIcon>
 						</ViewButton>
@@ -86,7 +87,7 @@ function View({ view }) {
 
 function ViewHeader({ children }) {
 	return (
-		<div className="flex w-full px-3 py-1 space-x-2 items-center">
+		<div className="flex w-full px-3 py-1 items-center text-sm">
 			{children}
 		</div>
 	);
@@ -100,9 +101,17 @@ function ViewContent({ children }) {
 	);
 }
 
+function ViewDivider() {
+	return (
+		<div className="flex h-8 max-h-8 px-2 items-center text-gray-500">
+			|
+		</div>
+	);
+}
+
 function ViewItem({ className, children }) {
 	return (
-		<div className={"flex h-8 max-h-8 px-2 py-1 truncate items-center text-sm " + className}>
+		<div className={"flex h-8 max-h-8 px-2 py-1 truncate items-center " + className}>
 			{children}
 		</div>
 	);

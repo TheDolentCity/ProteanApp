@@ -1296,7 +1296,15 @@ const reducer = (globalState, action) => {
 				...globalState
 			}
 		case "updateFile":
+			// Update file
 			globalState.fileSystem.setFile(action.payload.file);
+			
+			// Update view title if necessary
+			var view = globalState.views.find(view => view.contents === action.payload.file.uuid);
+			if (view) {
+				view.title = action.payload.file.metadata?.title;
+			}
+			
 			return {
 				...globalState
 			}

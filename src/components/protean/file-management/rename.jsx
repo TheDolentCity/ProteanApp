@@ -74,7 +74,7 @@ export default function Rename({ file, icon, indent, endRename }) {
 	}
 
 	return (
-		<RenameContainer indent={indent} className="text-base">
+		<RenameContainer indent={indent} className="text-sm text-important">
 			<Icon icon={icon}></Icon>
 			<RenameInput inputRef={renameInput} fileName={fileName} onChange={setFileName}></RenameInput>
 			<RenameButton onClick={onAccept} icon="Accept"></RenameButton>
@@ -84,21 +84,21 @@ export default function Rename({ file, icon, indent, endRename }) {
 }
 
 function RenameContainer({ indent, className, children }) {
-	const createIndentation = () => {
+	const createPadding = () => {
 		if (indent === -1) {
 			return {
 				"paddingLeft": "0.75rem"
 			}
 		}
 		return {
-			"paddingLeft": (1.5 + (indent * 1.5)) + "rem"
+			"paddingLeft": (1.25 + (indent * 1.5)) + "rem"
 		};
 	}
 
 	return (
 		<div
 			className={"acc-focus flex w-full px-3 items-center text-left overflow-hidden " + className}
-			style={createIndentation()}>
+			style={createPadding()}>
 			{children}
 		</div>
 	);

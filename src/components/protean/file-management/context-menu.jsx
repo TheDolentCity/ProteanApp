@@ -223,7 +223,7 @@ export function ContextMenuOpenToTheSide({ file }) {
       payload: {
 				type: "DOCUMENT",
 				title: file.metadata.title,
-				contents: file
+				contents: file.uuid
       }
     });
   }

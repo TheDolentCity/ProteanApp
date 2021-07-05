@@ -144,7 +144,7 @@ export class VirtualFileSystem {
 	}
 
 	getFile(uuid) {
-		return this.getFileNode(uuid).data;
+		return this.getFileNode(uuid)?.data;
 	}
 
 	containsFile(file) {
