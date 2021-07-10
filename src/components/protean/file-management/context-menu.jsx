@@ -75,7 +75,8 @@ export function ContextMenuDelete({ file }) {
   return (
     <Item
       onClick={deleteFile}
-      icon="Cancel">
+      icon="Cancel"
+			important={true}>
       Delete
     </Item>
   );
@@ -112,7 +113,8 @@ export function ContextMenuDownload({ file }) {
     <div className="w-full">
       <Item
         onClick={downloadFile}
-        icon="Download">
+        icon="Download"
+				important={true}>
         Download
       </Item>
       <a
@@ -133,7 +135,7 @@ export function ContextMenuNewBook({ file }) {
     dispatch({
       type: "newFile",
       payload: {
-				documentType: "BOOK",
+				fileType: "BOOK",
         parentFile: file
       }
     });
@@ -142,7 +144,8 @@ export function ContextMenuNewBook({ file }) {
   return (
     <Item
       onClick={createBook}
-      icon="Add">
+      icon="Add"
+			important={true}>
       New Book
     </Item>
   );
@@ -155,7 +158,7 @@ export function ContextMenuNewFolder({ file }) {
     dispatch({
       type: "newFile",
       payload: {
-				documentType: "FOLDER",
+				fileType: "FOLDER",
         parentFile: file
       }
     });
@@ -164,7 +167,8 @@ export function ContextMenuNewFolder({ file }) {
   return (
     <Item
       onClick={createFolder}
-      icon="Add">
+      icon="Add"
+			important={true}>
       New Folder
     </Item>
   );
@@ -177,7 +181,7 @@ export function ContextMenuNewPage({ file }) {
     dispatch({
       type: "newFile",
       payload: {
-				documentType: "PAGE",
+				fileType: "PAGE",
         parentFile: file
       }
     });
@@ -186,7 +190,8 @@ export function ContextMenuNewPage({ file }) {
   return (
     <Item
       onClick={createPage}
-      icon="Add">
+      icon="Add"
+			important={true}>
       New Page
     </Item>
   );
@@ -199,7 +204,7 @@ export function ContextMenuNewSheet({ file }) {
     dispatch({
       type: "newFile",
       payload: {
-				documentType: "SHEET",
+				fileType: "SHEET",
         parentFile: file
       }
     });
@@ -208,7 +213,8 @@ export function ContextMenuNewSheet({ file }) {
   return (
     <Item
       onClick={createSheet}
-      icon="Add">
+      icon="Add"
+			important={true}>
       New Sheet
     </Item>
   );
@@ -231,7 +237,8 @@ export function ContextMenuOpenToTheSide({ file }) {
   return (
     <Item
       onClick={openToTheSide}
-      icon="OpenInNewWindow">
+      icon="OpenInNewWindow"
+			important={true}>
       Open to the side
     </Item>
   );
@@ -239,7 +246,10 @@ export function ContextMenuOpenToTheSide({ file }) {
 
 export function ContextMenuRename({ onClick }) {
 	return (
-		<Item icon="Rename" onClick={onClick}>
+		<Item 
+			icon="Rename"
+			onClick={onClick}
+			important={true}>
 			Rename
 		</Item>
 	);

@@ -4,26 +4,11 @@ import Page from '../../generic/book/page';
 import MdxRender from '../../generic/book/mdx-render';
 import Sheet from '../../generic/game/sheet';
 import TextareaAutosize from 'react-textarea-autosize';
-import { FileIcons } from '../../storage/constants';
+import { DocumentModes, FileIcons, FileTypes } from '../../storage/constants';
 
-export default function Document({ uuid }) {
-	return (
-    <div className="w-full h-full">
-			<ReadingDocument documentId={uuid}></ReadingDocument>
-		</div>
-	);
-}
-
-function WritingDocument({ documentId }) {
+export function WritingDocument({ documentId }) {
   const { globalState, dispatch } = useGlobalStore();
-  const [document, setDocument] = useState(globalState.openFiles.find(file => file.uuid === documentId));
-
-  // Update document when active file changes
-  useEffect(() => {
-    if (globalState.openFiles !== null && globalState.openFiles !== undefined) {
-      setDocument(globalState.openFiles.filter((file) => { return file.uuid === documentId }));
-    }
-  }, [globalState.openFiles]);
+  const [document, setDocument] = useState(globalState.fileSystem.getFile(documentId));
 
   // Sends the local document data to global storage
   const updateDocument = (value) => {
@@ -46,11 +31,10 @@ function WritingDocument({ documentId }) {
   }
 
 	switch (document?.metadata?.type) {
-		case "SHEET":
+		case FileTypes.SHEET:
 			return (
 				<SheetDocument
-					title={document.metadata.title}
-					icon={FileIcons[document.metadata.type]}>
+					sheetId={documentId}>
 				</SheetDocument>
 			);
 		default:
@@ -68,17 +52,16 @@ function WritingDocument({ documentId }) {
 	}
 }
 
-function ReadingDocument({ documentId }) {
+export function ReadingDocument({ documentId }) {
   const { globalState, dispatch } = useGlobalStore();
 	var file = globalState.fileSystem.getFile(documentId);
 
   if (file) {
 		switch (file?.metadata?.type) {
-			case "SHEET":
+			case FileTypes.SHEET:
 				return (
 					<SheetDocument
-						title={file?.metadata?.title}
-						icon={FileIcons[file?.metadata?.type]}>
+						sheetId={documentId}>
 					</SheetDocument>
 				);
 			default:
@@ -92,17 +75,16 @@ function ReadingDocument({ documentId }) {
 	else return <Page></Page>;
 }
 
-function PlayingDocument({ documentId }) {
+export function PlayingDocument({ documentId }) {
   const { globalState, dispatch } = useGlobalStore();
 	var file = globalState.fileSystem.getFile(documentId);
 
   if (file) {
 		switch (file.metadata.type) {
-			case "SHEET":
+			case FileTypes.SHEET:
 				return (
 					<SheetDocument
-						title={file.metadata.title}
-						icon={FileIcons[file.metadata.type]}>
+						sheetId={documentId}>
 					</SheetDocument>
 				);
 			default:
@@ -127,10 +109,10 @@ function MdxDocument({ children }) {
   );
 }
 
-function SheetDocument({ file, children }) {
+function SheetDocument({ sheetId, children }) {
   return (
 		<div className="w-full h-full text-left">
-			<Sheet fileData={file}>
+			<Sheet sheetId={sheetId}>
 				{children}
 			</Sheet>
 		</div>

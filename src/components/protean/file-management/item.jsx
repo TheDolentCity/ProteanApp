@@ -1,10 +1,10 @@
 import React from 'react';
 import FabricIcon from '../../generic/basic-inputs/fabric-icon';
 
-export default function Item({ itemRef, active, icon, onClick, indent, children}) {
+export default function Item({ itemRef, active, icon, onClick, indent, important, children}) {
   if (onClick === null || onClick === undefined) {
     return (
-			<ItemContainer itemRef={itemRef} active={active} className="text-sm" indent={indent}>
+			<ItemContainer itemRef={itemRef} active={active} className="text-sm" indent={indent} important={important}>
 				<ItemIcon icon={icon} className="text-sm"></ItemIcon>
 				<ItemContent>
 					{children}
@@ -14,31 +14,8 @@ export default function Item({ itemRef, active, icon, onClick, indent, children}
   }
   else return (
 		<ButtonContainer itemRef={itemRef} onClick={onClick}>
-			<ItemContainer active={active} className="text-sm" indent={indent}>
+			<ItemContainer active={active} className="text-sm" indent={indent} important={important}>
 				<ItemIcon icon={icon} className="text-sm"></ItemIcon>
-				<ItemContent>
-					{children}
-				</ItemContent>
-			</ItemContainer>
-		</ButtonContainer>
-  );
-}
-
-export function SmallItem({ itemRef, active, icon, onClick, indent, children}) {
-  if (onClick === null || onClick === undefined) {
-    return (
-			<ItemContainer ref={itemRef} active={active} className="text-xs" indent={indent}>
-				<ItemIcon icon={icon} className="text-xs"></ItemIcon>
-				<ItemContent>
-					{children}
-				</ItemContent>
-			</ItemContainer>
-    );
-  }
-  else return (
-		<ButtonContainer ref={itemRef} onClick={onClick}>
-			<ItemContainer active={active} className="text-xs" indent={indent}>
-				<ItemIcon icon={icon} className="text-xs"></ItemIcon>
 				<ItemContent>
 					{children}
 				</ItemContent>
@@ -58,7 +35,7 @@ export function ButtonContainer({ itemRef, onClick, children }) {
 	);
 }
 
-function ItemContainer({ active, indent, className, children }) {
+function ItemContainer({ active, indent, important, className, children }) {
 	const createPadding = () => {
 		if (indent === -1) {
 			return {
@@ -72,8 +49,9 @@ function ItemContainer({ active, indent, className, children }) {
 
 	return (
     <div 
-			className={(active ? "font-semibold raise-10 text-black dark:text-white" : "hover:raise-5")
-			+ " acc-focus flex w-full pr-3 py-1 items-center text-left overflow-hidden " + className}
+			className={(active ? "font-semibold raise-10 text-black dark:text-white " : "hover:raise-5 ")
+			+ (important ? "text-important " : "text-default ")
+			+ "acc-focus flex w-full pr-3 py-1 items-center text-left overflow-hidden " + className}
 			style={createPadding()}>
 			{children}
     </div>

@@ -2,9 +2,8 @@ import React from 'react'
 import { useGlobalStore } from '../../storage/global-store';
 import { ViewIcons, ViewTypes } from '../../storage/constants';
 import FabricIcon from '../../generic/basic-inputs/fabric-icon';
-import ErrorBoundary from '../error-boundary';
-import Document from './document';
-import FileExplorer from '../file-management/file-explorer';
+import DocumentView from './view-document';
+import FileExplorerView from './view-file-explorer';
 
 export function ViewController() {
 	const { globalState, dispatch } = useGlobalStore();
@@ -24,76 +23,34 @@ function View({ view }) {
 	switch (view.type) {
 		case ViewTypes.EXPLORER:
 			return (
-				<div className="flex-shrink flex flex-col max-w-md border-r border-gray-500 dark:border-gray-600">
-					<ViewHeader>
-						<ViewItem className="flex-grow">
-							<ViewIcon viewType={view.type}></ViewIcon>
-							<ViewLabel>
-								{view.title}
-							</ViewLabel>
-						</ViewItem>
-						<ViewButton>
-							<FabricIcon name="MoreVertical"></FabricIcon>
-						</ViewButton>
-						<CloseViewButton view={view}></CloseViewButton>
-					</ViewHeader>
-					<ViewContent>
-						<FileExplorer></FileExplorer>
-					</ViewContent>
-				</div>
+				<FileExplorerView view={view}></FileExplorerView>
 			);
 		case ViewTypes.DOCUMENT:
 			return (
-				<div className="flex-1 flex flex-col max-w-md border-r border-gray-500 dark:border-gray-600">
-					<ViewHeader>
-						<ViewItem className="flex-grow">
-							<ViewIcon viewType={view.type}></ViewIcon>
-							<ViewLabel>
-								{view.title}
-							</ViewLabel>
-						</ViewItem>
-						<ViewButton>
-							<FabricIcon name="View"></FabricIcon>
-						</ViewButton>
-						<ViewButton>
-							<FabricIcon name="Edit"></FabricIcon>
-						</ViewButton>
-						<ViewButton>
-							<FabricIcon name="Game"></FabricIcon>
-						</ViewButton>
-						<ViewDivider></ViewDivider>
-						<ViewButton>
-							<FabricIcon name="MoreVertical"></FabricIcon>
-						</ViewButton>
-						<CloseViewButton view={view}></CloseViewButton>
-					</ViewHeader>
-					<ViewContent>
-						<ErrorBoundary
-							fallbackUI={
-								<div className="p-12">
-									<h2>Critical Error</h2>
-									<p>Cannot render {view.contents}</p>
-								</div>
-							}>
-							<Document uuid={view.contents}></Document>
-						</ErrorBoundary>
-					</ViewContent>
-				</div>
+				<DocumentView view={view}></DocumentView>
 			);
 		default:
 			return <span></span>;
 	}
 }
 
-function ViewHeader({ children }) {
+export function ViewContainer({ className, children }) {
 	return (
-		<div className="flex w-full px-3 py-1 items-center text-sm">
+		<div className={"flex flex-col max-w-md border-r border-gray-500 dark:border-gray-600 " + className}>
 			{children}
 		</div>
 	);
 }
 
-function ViewContent({ children }) {
+export function ViewHeader({ children }) {
+	return (
+		<div className="flex w-full px-2 py-1 items-center text-sm">
+			{children}
+		</div>
+	);
+}
+
+export function ViewContent({ children }) {
 	return (
 		<div className="flex-grow overflow-x-hidden overflow-y-auto protean-scrollbar">
 			{children}
@@ -101,31 +58,39 @@ function ViewContent({ children }) {
 	);
 }
 
-function ViewDivider() {
+export function ViewDivider() {
 	return (
-		<div className="flex h-8 max-h-8 px-2 items-center text-gray-500">
-			|
-		</div>
+		<span className="h-6 mx-1 border-r border-gray-500"></span>
 	);
 }
 
-function ViewItem({ className, children }) {
+export function ViewItem({ className, children }) {
 	return (
-		<div className={"flex h-8 max-h-8 px-2 py-1 truncate items-center " + className}>
+		<div className={"flex h-8 max-h-8 px-3 py-2 truncate items-center " + className}>
 			{children}
 		</div>
 	);
 }
 
-function ViewButton({ onClick, children }) {
+export function ViewButton({ onClick, children }) {
 	return (
-		<button onClick={onClick} className="acc-focus px-1 hover:raise-10">
-			{children}
+		<button onClick={onClick} className="acc-focus">
+			<ViewButtonLabel>
+				{children}
+			</ViewButtonLabel>
 		</button>
 	);
 }
 
-function ViewLabel({ children }) {
+export function ViewButtonLabel({ children }) {
+	return (
+		<span className="flex w-8 h-8 justify-center items-center rounded hover:raise-10">
+			{children}
+		</span>
+	);
+}
+
+export function ViewLabel({ children }) {
 	return (
 		<div className="flex-shrink px-2 truncate font-mono text-important">
 			{children}
@@ -133,7 +98,7 @@ function ViewLabel({ children }) {
 	);
 }
 
-function ViewIcon({ viewType }) {
+export function ViewIcon({ viewType }) {
 	switch (viewType) {
 		case ViewTypes.EXPLORER:
 			return (
@@ -148,7 +113,7 @@ function ViewIcon({ viewType }) {
 	}
 }
 
-function CloseViewButton({ view }) {
+export function CloseViewButton({ view }) {
 	const { globalState, dispatch } = useGlobalStore();
 
 	const closeView = (view) => {

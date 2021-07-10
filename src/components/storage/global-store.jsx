@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { FileTypes, ViewTypes } from './constants';
+import { FileTypes, ViewTypes, WidgetTypes } from './constants';
 import { VirtualFileSystem, VirtualFile } from './virtual-file-system';
 
 const CharacterSheets = new VirtualFile(
@@ -1200,7 +1200,7 @@ const initialGlobalState = {
 			'type': ViewTypes.EXPLORER,
 			'title': 'File Explorer',
 			'contents': {
-
+				
 			}
 		}
 	],
@@ -1280,14 +1280,39 @@ const reducer = (globalState, action) => {
 		case "newFile":
 			var newFile = new VirtualFile(
 				{
-					type: action?.payload.documentType,
+					type: action?.payload.fileType,
 					title: 'untitled'
 				},
-				''
+				null
 			);
+			
+			// Update content based on document type
+			switch (action?.payload.fileType) {
+				case FileTypes.BOOK:
+					newFile.content = '';
+					break;
+				case FileTypes.FOLDER:
+					newFile.content = '';
+					break;
+				case FileTypes.PAGE:
+					newFile.content = '';
+					break;
+				case FileTypes.SHEET:
+					newFile.content = [];
+					// newFile.content = [{
+					// 	"uuid": uuidv4(),
+					// 	"type": WidgetTypes.SheetWidgetContainerFull,
+					// 	"content": []
+					// }];
+					break;
+			}
+
+			console.log("NewFile:\n" + JSON.stringify(newFile, null, 2));
+
 			// Add file to the system taking parent into account
 			if (action.payload.parentFile) {
 				globalState.fileSystem.addFile(newFile, action.payload.parentFile.uuid);
+				globalState.fileSystem.print();
 			}
 			else {
 				globalState.fileSystem.addFile(newFile);
@@ -1323,13 +1348,12 @@ const reducer = (globalState, action) => {
 			// Save the new list of files in local storage
 			// saveNonBuiltInFiles(files);
 
+			// Delete the file from the system
 			globalState.fileSystem.deleteFile(action.payload.file);
 
-			// If the file is in an open view close the view
-			globalState.views.filter(view => view.contents !== action.payload.file.uuid);
-
 			return {
-				...globalState
+				...globalState,
+				views: globalState.views.filter(view => view.type !== ViewTypes.DOCUMENT || globalState.fileSystem.getFileNode(view.contents))
 			}
 		default:
 			throw new Error(`Unhandled action type: ${action.type}`);

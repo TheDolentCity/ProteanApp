@@ -17,6 +17,25 @@ export const FileTypes = Object.freeze({
 
 export const FileIcons = Object.freeze({
 	BOOK: 'ReadingMode',
-	SHEET: 'TextDocumentShared',
+	FOLDER: 'FabricFolder',
+	SHEET: 'UserOptional',
 	PAGE: 'TextDocument'
 });
+
+export const DocumentModes = Object.freeze({
+	PLAYING: 'Playing Mode',
+	READING: 'Reading Mode',
+	WRITING: 'Writing Mode'
+})
+
+export const WidgetTypes = Object.freeze({
+	SheetWidgetContainerFull: 'Container (Full Width)',
+	SheetWidgetContainerDynamic: 'Container (Dynamic Size)',
+	DiceHeader: 'Dice Header',
+	DiceParagraph: 'Dice Paragraph',
+	Header1: 'Header 1',
+	Header2: 'Header 2',
+	Header3: 'Header 3',
+	Header4: 'Header 4',
+	Paragraph: 'Paragraph',
+})

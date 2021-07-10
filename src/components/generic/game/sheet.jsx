@@ -1,67 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Popover } from '@headlessui/react';
+import { Menu } from '@headlessui/react';
 import { useGlobalStore } from '../../storage/global-store';
-import FabricIcon from '../basic-inputs/fabric-icon';
-import WritingMode from '../../protean/app-modes/writing-mode';
+import CircleIcon from '../basic-inputs/circle-icon';
+import { DocumentModes, WidgetTypes } from './../../storage/constants';
+import { useDocumentModeContext } from '../../protean/view-management/view-document';
 import { Widget, WidgetContainer } from './widget';
-import NumberBlock from './blocks/number-block';
-import DiceBlock from './blocks/dice-block';
-import NoteBlock from './blocks/note-block';
-import StatBlock from './stat-block';
-import TextBlock from './blocks/text-block';
+import { MenuContainer, MenuSection } from '../basic-inputs/menu';
+import Item from '../../protean/file-management/item';
 import DiceLine from './blocks/dice-line';
 import TextLine from './blocks/text-line';
 
-const WidgetTypes = [
-	{
-		"type": "SheetWidgetContainerFull",
-		"title": "Container (Full Width)"
-	},
-	{
-		"type": "SheetWidgetContainerDynamic",
-		"title": "Container (Dynamic Size)"
-	},
-	{
-		"type": "DiceHeader",
-		"title": "Dice Header"
-	},
-	{
-		"type": "DiceParagraph",
-		"title": "Dice Paragraph"
-	},
-	{
-		"type": "Header1",
-		"title": "Header 1"
-	},
-	{
-		"type": "Header2",
-		"title": "Header 2"
-	},
-	{
-		"type": "Header3",
-		"title": "Header 3"
-	},
-	{
-		"type": "Header4",
-		"title": "Header 4"
-	},
-	{
-		"type": "Paragraph",
-		"title": "Paragraph"
-	}
+const WidgetTypeList = [
+	WidgetTypes.SheetWidgetContainerFull,
+	WidgetTypes.SheetWidgetContainerDynamic,
+	WidgetTypes.DiceHeader,
+	WidgetTypes.DiceParagraph,
+	WidgetTypes.Header1,
+	WidgetTypes.Header2,
+	WidgetTypes.Header3,
+	WidgetTypes.Header4,
+	WidgetTypes.Paragraph,
 ];
 
-export default function Sheet({ fileData }) {
+export default function Sheet({ sheetId }) {
   const { globalState, dispatch } = useGlobalStore();
-  const [sheet, setSheet] = useState(fileData);
-
-  // Update sheet when fileData changes
-  useEffect(() => {
-    if (fileData !== null && fileData !== undefined) {
-      setSheet(fileData);
-    }
-  }, [fileData]);
+  const [sheet, setSheet] = useState(globalState.fileSystem.getFile(sheetId));
+	globalState.fileSystem.print();
+	console.log(`Uuid:${sheetId}\nSheet:${JSON.stringify(globalState.fileSystem.getFile(sheetId), null, 2)}\nContent:${JSON.stringify(globalState.fileSystem.getFile(sheetId)?.content, null, 2)}`);
 
   // Sends the local sheet data to global storage
   const updateSheet = (value) => {
@@ -74,9 +40,9 @@ export default function Sheet({ fileData }) {
       setSheet(newSheet);
 			console.log("Dispatch Sheet:\n" + JSON.stringify(newSheet, null, 2));
       dispatch({
-        type: "updateActiveFile",
+        type: "updateFile",
         payload: {
-          activeFile: newSheet
+          file: newSheet
         }
       });
     }
@@ -92,6 +58,7 @@ export default function Sheet({ fileData }) {
 
 function SheetWidgetContainer({ widgetContainer, onChange }) {
   const [widgets, setWidgets] = useState(widgetContainer);
+	const mode = useDocumentModeContext();
 
   // Update sheet when widget container changes
   useEffect(() => {
@@ -134,9 +101,15 @@ function SheetWidgetContainer({ widgetContainer, onChange }) {
 						onChange={(newWidget) => updateWidgets(newWidget, index)}>
 					</SheetWidget>
 				))}
-				<WritingMode className="col-span-full">
-					<WidgetCreator onAddWidget={addWidget}></WidgetCreator>
-				</WritingMode>
+				{
+					mode === DocumentModes.WRITING
+					?
+					<div className="col-span-full">
+						<WidgetCreator onAddWidget={addWidget}></WidgetCreator>
+					</div>
+					:
+					<span></span>
+				}
       </WidgetContainer>
     );
   }
@@ -146,21 +119,21 @@ function SheetWidgetContainer({ widgetContainer, onChange }) {
 function WidgetCreator({ onAddWidget }) {
 	const addWidget = (widgetType) => {
 		switch (widgetType) {
-			case "SheetWidgetContainerFull":
+			case WidgetTypes.SheetWidgetContainerFull:
 				onAddWidget({
 					"uuid": uuidv4(),
 					"type": widgetType,
 					"content": []
 				})
 				break;
-			case "SheetWidgetContainerDynamic":
+			case WidgetTypes.SheetWidgetContainerDynamic:
 				onAddWidget({
 					"uuid": uuidv4(),
 					"type": widgetType,
 					"content": []
 				})
 				break;
-			case "DiceHeader":
+			case WidgetTypes.DiceHeader:
 				onAddWidget({
 					"uuid": uuidv4(),
 					"type": widgetType,
@@ -168,7 +141,7 @@ function WidgetCreator({ onAddWidget }) {
 					"dice": ""
 				})
 				break;
-			case "DiceParagraph":
+			case WidgetTypes.DiceParagraph:
 				onAddWidget({
 					"uuid": uuidv4(),
 					"type": widgetType,
@@ -187,36 +160,39 @@ function WidgetCreator({ onAddWidget }) {
 	}
 
 	return (
-		<Popover className="relative">
-			<Popover.Button className="acc-focus w-full mt-2 xl:mt-4">
-				<Widget className="p-2 xl:p-4 bg-theme">
-					<FabricIcon name="Add" className=""></FabricIcon>
+		<Menu as="div" className="relative w-full text-left">
+			<Menu.Button className="acc-focus w-full mt-2 xl:mt-4 hover:raise-10">
+				<Widget className="p-2 xl:p-4 text-center">
+					<CircleIcon name="Add" size="sm" className="text-white dark:text-black bg-black dark:bg-white"></CircleIcon>
 				</Widget>
-			</Popover.Button>
-			<Popover.Panel className="absolute z-10">
-				<div className="flex flex-col max-w-72 shadow-xl bg-white dark:bg-gray-700">
-					{
-						WidgetTypes.map((widgetType) => (
-							<button 
-								key={widgetType.type}
-								onClick={() => addWidget(widgetType.type)} 
-								className="acc-focus flex w-full px-3 py-1 items-center text-left overflow-hidden hover:raise-5">
-      					<FabricIcon name="Add" className="mr-2 text-theme"></FabricIcon>
-								<div className="w-full truncate">
-									{widgetType.title}
-								</div>
-							</button>
-						))
-					}
-				</div>
-			</Popover.Panel>
-		</Popover>
+			</Menu.Button>
+			<Menu.Items className="mx-1 xl:mx-3">
+				<MenuContainer>
+					<MenuSection>
+						{
+							WidgetTypeList.map((widgetType) => (
+								<Menu.Item key={widgetType}>
+									{({ active }) => (
+										<Item
+											onClick={() => addWidget(widgetType)}
+											icon="Add"
+											important={true}>
+											{widgetType}
+										</Item>
+									)}
+								</Menu.Item>
+							))
+						}
+					</MenuSection>
+				</MenuContainer>
+			</Menu.Items>
+		</Menu>
 	);
 }
 
 function SheetWidget({ widget, onChange }) {
   switch (widget?.type) {
-    case "SheetWidgetContainerFull":
+    case WidgetTypes.SheetWidgetContainerFull:
       return (
 				<Widget className="col-span-12">
 					<SheetWidgetContainer
@@ -225,7 +201,7 @@ function SheetWidget({ widget, onChange }) {
 					</SheetWidgetContainer>
 				</Widget>
       );
-		case "SheetWidgetContainerDynamic":
+		case WidgetTypes.SheetWidgetContainerDynamic:
 			return (
 				<Widget className="col-span-12 xl:col-span-6">
 					<SheetWidgetContainer
@@ -234,7 +210,7 @@ function SheetWidget({ widget, onChange }) {
 					</SheetWidgetContainer>
 				</Widget>
 			);
-    case "DiceHeader":
+    case WidgetTypes.DiceHeader:
       return (
         <DiceLine
           data={widget}
@@ -242,7 +218,7 @@ function SheetWidget({ widget, onChange }) {
 					className="text-base font-bold">
         </DiceLine>
       );
-		case "DiceParagraph":
+		case WidgetTypes.DiceParagraph:
 			return (
 				<DiceLine
 					data={widget}
@@ -250,7 +226,7 @@ function SheetWidget({ widget, onChange }) {
 					className="text-base">
 				</DiceLine>
 			);
-		case "Header1":
+		case WidgetTypes.Header1:
 			return (
 				<TextLine
 					data={widget}
@@ -258,7 +234,7 @@ function SheetWidget({ widget, onChange }) {
 					className="py-4 leading-none text-7xl tracking-tighter font-bold text-important">
 				</TextLine>
 			);
-		case "Header2":
+		case WidgetTypes.Header2:
 			return (
 				<TextLine
 					data={widget}
@@ -266,7 +242,7 @@ function SheetWidget({ widget, onChange }) {
 					className="py-4 leading-none text-3xl font-semibold text-important">
 				</TextLine>
 			);
-		case "Header3":
+		case WidgetTypes.Header3:
 			return (
 				<TextLine
 					data={widget}
@@ -274,7 +250,7 @@ function SheetWidget({ widget, onChange }) {
 					className="py-4 leading-normal text-xl font-semibold text-important">
 				</TextLine>
 			);
-		case "Header4":
+		case WidgetTypes.Header4:
 			return (
 				<TextLine
 					data={widget}
@@ -282,7 +258,7 @@ function SheetWidget({ widget, onChange }) {
 					className="text-base font-bold">
 				</TextLine>
 			);
-		case "Paragraph":
+		case WidgetTypes.Paragraph:
 			return (
 				<TextLine
 					data={widget}
@@ -290,46 +266,46 @@ function SheetWidget({ widget, onChange }) {
 					className="text-base">
 				</TextLine>
 			);
-    case "DiceBlock":
-      return (
-        <DiceBlock
-          static={false}
-          diceBlock={widget}
-          onChange={onChange}>
-        </DiceBlock>
-      );
-    case "NoteBlock":
-      return (
-        <NoteBlock
-          static={false}
-          noteBlock={widget}
-          onChange={onChange}>
-        </NoteBlock>
-      );
-    case "NumberBlock":
-      return (
-        <NumberBlock
-          static={false}
-          numberBlock={widget}
-          onChange={onChange}>
-        </NumberBlock>
-      );
-    case "StatBlock":
-      return (
-        <StatBlock
-          static={false}
-          statBlock={widget}
-          onChange={onChange}>
-        </StatBlock>
-      );
-    case "TextBlock":
-      return (
-        <TextBlock
-          static={false}
-          textBlock={widget}
-          onChange={onChange}>
-        </TextBlock>
-      );
+    // case "DiceBlock":
+    //   return (
+    //     <DiceBlock
+    //       static={false}
+    //       diceBlock={widget}
+    //       onChange={onChange}>
+    //     </DiceBlock>
+    //   );
+    // case "NoteBlock":
+    //   return (
+    //     <NoteBlock
+    //       static={false}
+    //       noteBlock={widget}
+    //       onChange={onChange}>
+    //     </NoteBlock>
+    //   );
+    // case "NumberBlock":
+    //   return (
+    //     <NumberBlock
+    //       static={false}
+    //       numberBlock={widget}
+    //       onChange={onChange}>
+    //     </NumberBlock>
+    //   );
+    // case "StatBlock":
+    //   return (
+    //     <StatBlock
+    //       static={false}
+    //       statBlock={widget}
+    //       onChange={onChange}>
+    //     </StatBlock>
+    //   );
+    // case "TextBlock":
+    //   return (
+    //     <TextBlock
+    //       static={false}
+    //       textBlock={widget}
+    //       onChange={onChange}>
+    //     </TextBlock>
+    //   );
     default:
       console.log(`Widget type '${widget?.type}' is not handled by SheetWidget component.`);
   }

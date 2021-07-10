@@ -13,7 +13,7 @@ export function CommandBar() {
   };
 
   return (
-    <div className={(isOpen ? "w-48" : "") + " flex-none flex flex-col py-4 items-center border-r border-gray-500 dark:border-gray-600"}>
+    <div className={(isOpen ? "w-48" : "") + " flex-none flex flex-col py-1 items-center border-r border-gray-500 dark:border-gray-600"}>
       <Command 
         onClick={toggleOpen} 
         isOpen={isOpen}
