@@ -3,9 +3,15 @@ import FabricIcon from './fabric-icon';
 
 export default function CircleIcon({ name, size, className }) {
 	switch (size) {
-		case "xs":
+		case "2xs":
 			return (
 				<div className={"flex w-4 h-4 min-w-4 min-h-4 rounded-full items-center justify-center text-xs " + className}>
+					<FabricIcon name={name}></FabricIcon>
+				</div>
+			);
+		case "xs":
+			return (
+				<div className={"flex w-6 h-6 min-w-6 min-h-6 rounded-full items-center justify-center text-xs " + className}>
 					<FabricIcon name={name}></FabricIcon>
 				</div>
 			);

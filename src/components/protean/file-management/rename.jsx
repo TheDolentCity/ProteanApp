@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useGlobalStore } from '../../storage/global-store';
 import FabricIcon from '../../generic/basic-inputs/fabric-icon';
+import CircleIcon from '../../generic/basic-inputs/circle-icon';
 
 export default function Rename({ file, icon, indent, endRename }) {
 	const { globalState, dispatch } = useGlobalStore();
@@ -97,7 +98,7 @@ function RenameContainer({ indent, className, children }) {
 
 	return (
 		<div
-			className={"acc-focus flex w-full px-3 items-center text-left overflow-hidden " + className}
+			className={"acc-focus flex px-3 items-center text-left overflow-hidden " + className}
 			style={createPadding()}>
 			{children}
 		</div>
@@ -107,7 +108,7 @@ function RenameContainer({ indent, className, children }) {
 function Icon({ icon, className }) {
 	return (
 		<div className={"flex pr-1 items-center " + className}>
-			<FabricIcon name={icon} className="text-theme"></FabricIcon>
+			<FabricIcon name={icon}></FabricIcon>
 		</div>
 	);
 }
@@ -117,7 +118,7 @@ function RenameInput({ inputRef, fileName, onChange }) {
 		<input
 			ref={inputRef}
 			type="text"
-			className="input-text-visible flex-grow py-1"
+			className="input-text-visible flex-shrink py-1"
 			placeholder=""
 			value={fileName}
 			onChange={e => onChange(e.target.value)} />
@@ -126,8 +127,8 @@ function RenameInput({ inputRef, fileName, onChange }) {
 
 function RenameButton({ onClick, icon, className }) {
 	return (
-		<button onClick={onClick} className={"acc-input flex flex-none px-2 py-1 items-center hover:raise-5 " + className}>
-			<FabricIcon name={icon} className="text-theme"></FabricIcon>
+		<button onClick={onClick} className={"acc-input flex flex-none pl-2 items-center " + className}>
+			<CircleIcon name={icon} size="xs" className="text-contrast hover:bg-theme"></CircleIcon>
 		</button>
 	);
 }

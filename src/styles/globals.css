@@ -35,15 +35,15 @@
 }
 
 @layer utilities {
-  @variants hover, focus, focus-visible {
+  @variants group-hover, hover, focus, focus-visible {
     .bg-theme {
-      @apply bg-primary-600 dark:bg-primary-700 text-gray-100 hover:bg-primary-700 dark:hover:bg-primary-800;
+      @apply bg-primary-500 dark:bg-primary-600 text-gray-100 hover:bg-primary-600 dark:hover:bg-primary-700;
     }
     .border-theme {
-      @apply border-primary-600 dark:border-primary-700;
+      @apply border-primary-500 dark:border-primary-600;
     }
 		.text-theme {
-			@apply text-primary-600 dark:text-primary-600;
+			@apply text-primary-500 dark:text-primary-500;
 		}
 		.text-important {
 			@apply text-gray-900 dark:text-gray-50;

@@ -30,8 +30,8 @@ export function Command({ onClick, isOpen, icon, text, children }) {
 	switch (isOpen) {
 		case true:
 			return (
-				<button onClick={onClick} className="w-full acc-focus flex px-3 py-2 items-center rounded-none text-left text-base overflow-hidden hover:raise-5">
-					<CircleIcon name={icon} size="sm" className="text-white dark:text-black bg-black dark:bg-white"></CircleIcon>
+				<button onClick={onClick} className="group w-full acc-focus flex px-3 py-2 items-center rounded-none text-left text-base overflow-hidden">
+					<CircleIcon name={icon} size="sm" className="text-white dark:text-black bg-black dark:bg-white group-hover:bg-theme"></CircleIcon>
 					<div className="w-full pl-2 truncate">
 						{text}
 					</div>
@@ -40,8 +40,8 @@ export function Command({ onClick, isOpen, icon, text, children }) {
 			);
 		case false:
 			return (
-				<button onClick={onClick} className="acc-focus flex px-3 py-2 items-center rounded-none text-left text-base overflow-hidden hover:raise-5">
-					<CircleIcon name={icon} size="sm" className="text-white dark:text-black bg-black dark:bg-white"></CircleIcon>
+				<button onClick={onClick} className="group acc-focus flex px-3 py-2 items-center rounded-none text-left text-base overflow-hidden">
+					<CircleIcon name={icon} size="sm" className="text-white dark:text-black bg-black dark:bg-white group-hover:bg-theme"></CircleIcon>
 					{children}
 				</button>
 			);
