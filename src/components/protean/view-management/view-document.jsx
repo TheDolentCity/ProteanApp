@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import FabricIcon from '../../generic/basic-inputs/fabric-icon';
 import ErrorBoundary from '../error-boundary';
 import { DocumentModes } from './../../storage/constants';
@@ -31,13 +31,19 @@ export default function DocumentView({ view }) {
 						{view.title}
 					</ViewLabel>
 				</ViewItem>
-				<ViewButton onClick={() => setMode(DocumentModes.READING)}>
+				<ViewButton 
+					className={mode === DocumentModes.READING ? "text-contrast" : ""}
+					onClick={() => setMode(DocumentModes.READING)}>
 					<FabricIcon name="View"></FabricIcon>
 				</ViewButton>
-				<ViewButton onClick={() => setMode(DocumentModes.WRITING)}>
+				<ViewButton
+					className={mode === DocumentModes.WRITING ? "text-contrast" : ""}
+					onClick={() => setMode(DocumentModes.WRITING)}>
 					<FabricIcon name="Edit"></FabricIcon>
 				</ViewButton>
-				<ViewButton onClick={() => setMode(DocumentModes.PLAYING)}>
+				<ViewButton
+					className={mode === DocumentModes.PLAYING ? "text-contrast" : ""}
+					onClick={() => setMode(DocumentModes.PLAYING)}>
 					<FabricIcon name="Game"></FabricIcon>
 				</ViewButton>
 				<ViewDivider></ViewDivider>

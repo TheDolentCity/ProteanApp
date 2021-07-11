@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
-import PlayingMode from '../../../protean/app-modes/playing-mode';
-import ReadingMode from '../../../protean/app-modes/reading-mode';
-import WritingMode from '../../../protean/app-modes/writing-mode';
+import { useDocumentModeContext } from './../../../protean/view-management/view-document';
+import { DocumentModes } from './../../../storage/constants';
 
 export default function TextLine({ data, className, onChange }) {
   const [textLine, setTextLine] = useState(data);
+	const mode = useDocumentModeContext();
 
   const setTextLineData = (value, property) => {
     if (textLine[property] === undefined) {
@@ -19,37 +19,44 @@ export default function TextLine({ data, className, onChange }) {
     }
   }
 
-  return (
-		<div className="col-span-full w-full">
-			<ReadingMode>
-				<TextareaAutosize
-					rows={1}
-					maxRows={100}
-					className={"input-text-area w-full " + className}
-					placeholder="title"
-					value={textLine?.text}
-					disabled={true} />
-			</ReadingMode>
-			<WritingMode>
-				<TextareaAutosize
-					rows={1}
-					maxRows={100}
-					className={"input-text-area w-full " + className}
-					placeholder="title"
-					value={textLine?.text}
-					disabled={true} />
-			</WritingMode>
-			<PlayingMode>
-				<TextareaAutosize
-					rows={1}
-					maxRows={100}
-					className={"input-text-area w-full " + className}
-					placeholder="title"
-					value={textLine?.text}
-					onChange={(e) => setTextLineData(e.target.value, 'text')} />
-			</PlayingMode>
-		</div>
-  );
+	switch (mode) {
+		case DocumentModes.READING:
+			return (
+				<div className="col-span-full w-full">
+					<TextareaAutosize
+						rows={1}
+						maxRows={100}
+						className={"input-text-area w-full " + className}
+						placeholder="title"
+						value={textLine?.text}
+						disabled={true} />
+				</div>
+			);
+		case DocumentModes.WRITING:
+			return (
+				<div className="col-span-full w-full">
+					<TextareaAutosize
+						rows={1}
+						maxRows={100}
+						className={"input-text-area w-full " + className}
+						placeholder="title"
+						value={textLine?.text}
+						disabled={true} />
+				</div>
+			);
+		case DocumentModes.PLAYING:
+			return (
+				<div className="col-span-full w-full">
+					<TextareaAutosize
+						rows={1}
+						maxRows={100}
+						className={"input-text-area w-full " + className}
+						placeholder="title"
+						value={textLine?.text}
+						onChange={(e) => setTextLineData(e.target.value, 'text')} />
+				</div>
+			);
+	}
 }
 
 TextLine.defaultProps = {

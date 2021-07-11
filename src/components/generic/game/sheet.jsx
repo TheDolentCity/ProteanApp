@@ -59,6 +59,7 @@ export default function Sheet({ sheetId }) {
 function SheetWidgetContainer({ widgetContainer, onChange }) {
   const [widgets, setWidgets] = useState(widgetContainer);
 	const mode = useDocumentModeContext();
+	console.log("SheetWidgetContainer\n" + JSON.stringify(widgetContainer, null, 2));
 
   // Update sheet when widget container changes
   useEffect(() => {
@@ -162,7 +163,7 @@ function WidgetCreator({ onAddWidget }) {
 	return (
 		<Menu as="div" className="relative w-full text-left">
 			<Menu.Button className="acc-focus w-full mt-2 xl:mt-4 hover:raise-10">
-				<Widget className="p-2 xl:p-4 text-center">
+				<Widget className="p-2 xl:p-4">
 					<CircleIcon name="Add" size="sm" className="text-white dark:text-black bg-black dark:bg-white"></CircleIcon>
 				</Widget>
 			</Menu.Button>
@@ -215,7 +216,7 @@ function SheetWidget({ widget, onChange }) {
         <DiceLine
           data={widget}
           onChange={onChange}
-					className="text-base font-bold">
+					className="text-base font-bold text-important">
         </DiceLine>
       );
 		case WidgetTypes.DiceParagraph:

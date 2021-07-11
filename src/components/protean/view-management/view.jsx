@@ -72,9 +72,9 @@ export function ViewItem({ className, children }) {
 	);
 }
 
-export function ViewButton({ onClick, children }) {
+export function ViewButton({ className, onClick, children }) {
 	return (
-		<button onClick={onClick} className="acc-focus">
+		<button onClick={onClick} className={"acc-focus rounded-full " + className}>
 			<ViewButtonLabel>
 				{children}
 			</ViewButtonLabel>
@@ -84,7 +84,7 @@ export function ViewButton({ onClick, children }) {
 
 export function ViewButtonLabel({ children }) {
 	return (
-		<span className="flex w-8 h-8 justify-center items-center rounded hover:raise-10">
+		<span className="flex w-8 h-8 justify-center items-center rounded-full hover:raise-10">
 			{children}
 		</span>
 	);

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
-import PlayingMode from '../../../protean/app-modes/playing-mode';
-import ReadingMode from '../../../protean/app-modes/reading-mode';
-import WritingMode from '../../../protean/app-modes/writing-mode';
+import { useDocumentModeContext } from './../../../protean/view-management/view-document';
+import { DocumentModes } from './../../../storage/constants';
 
 export default function DiceLine({ data, className, onChange }) {
   const [diceLine, setDiceLine] = useState(data);
+	const mode = useDocumentModeContext();
 
   const setDiceLineData = (value, property) => {
     if (diceLine[property] === undefined) {
@@ -19,64 +19,72 @@ export default function DiceLine({ data, className, onChange }) {
     }
   }
 
-  return (
-		<div className="col-span-full w-full">
-			<ReadingMode>
-				<div className="flex w-full items-center">
+	switch (mode) {
+		case DocumentModes.READING:
+			return (
+				<div className="col-span-full w-full">
+					<div className="flex w-full items-center">
+						<TextareaAutosize
+							rows={1}
+							maxRows={100}
+							className={"input-text-area flex flex-grow " + className}
+							placeholder="title"
+							value={diceLine?.title}
+							disabled={true} />
+						<TextareaAutosize
+							rows={1}
+							maxRows={100}
+							className={"input-text-area flex-shrink min-w-16 max-w-16 " + className}
+							placeholder="dice"
+							value={diceLine?.dice}
+							disabled={true} />
+					</div>
+				</div>
+			);
+		case DocumentModes.WRITING:
+			return (
+				<div className="col-span-full w-full">
+					<div className="flex w-full items-center">
+						<TextareaAutosize
+							rows={1}
+							maxRows={100}
+							className={"input-text-area flex flex-grow " + className}
+							placeholder="title"
+							value={diceLine?.title}
+							disabled={true} />
+						<TextareaAutosize
+							rows={1}
+							maxRows={100}
+							className={"input-text-area flex-shrink min-w-16 max-w-16 " + className}
+							placeholder="dice"
+							value={diceLine?.dice}
+							disabled={true} />
+					</div>
+				</div>
+			);
+		case DocumentModes.PLAYING:
+			return (
+				<div className="col-span-full w-full">
+					<div className="flex w-full items-center">
 					<TextareaAutosize
 						rows={1}
 						maxRows={100}
-						className={"input-text-area flex flex-grow " + className}
+							className={"input-text-area flex flex-grow " + className}
 						placeholder="title"
 						value={diceLine?.title}
-						disabled={true} />
+						onChange={(e) => setDiceLineData(e.target.value, 'title')} />
 					<TextareaAutosize
 						rows={1}
 						maxRows={100}
 						className={"input-text-area flex-shrink min-w-16 max-w-16 " + className}
 						placeholder="dice"
 						value={diceLine?.dice}
-						disabled={true} />
+						onChange={(e) => setDiceLineData(e.target.value, 'dice')} />
+					</div>
 				</div>
-			</ReadingMode>
-			<WritingMode>
-    		<div className="flex w-full items-center">
-					<TextareaAutosize
-						rows={1}
-						maxRows={100}
-						className={"input-text-area flex flex-grow " + className}
-						placeholder="title"
-						value={diceLine?.title}
-						disabled={true} />
-					<TextareaAutosize
-						rows={1}
-						maxRows={100}
-						className={"input-text-area flex-shrink min-w-16 max-w-16 " + className}
-						placeholder="dice"
-						value={diceLine?.dice}
-						disabled={true} />
-				</div>
-			</WritingMode>
-			<PlayingMode>
-    		<div className="flex w-full items-center">
-				<TextareaAutosize
-					rows={1}
-					maxRows={100}
-						className={"input-text-area flex flex-grow " + className}
-					placeholder="title"
-					value={diceLine?.title}
-					onChange={(e) => setDiceLineData(e.target.value, 'title')} />
-				<TextareaAutosize
-					rows={1}
-					maxRows={100}
-					className={"input-text-area flex-shrink min-w-16 max-w-16 " + className}
-					placeholder="dice"
-					value={diceLine?.dice}
-					onChange={(e) => setDiceLineData(e.target.value, 'dice')} />
-				</div>
-			</PlayingMode>
-		</div>
-  );
+			);
+		default: return <span></span>;
+	}
 }
 
 DiceLine.defaultProps = {

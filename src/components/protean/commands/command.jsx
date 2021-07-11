@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import CircleIcon from '../../generic/basic-inputs/circle-icon';
-import ModeSwitcher from '../app-modes/mode-switcher';
 import DarkModeCommand from './dark-mode-command';
 import SettingsCommand from './settings-command';
 import UploadCommand from './upload-command';
@@ -22,7 +21,6 @@ export function CommandBar() {
       </Command>
       <SettingsCommand isOpen={isOpen}></SettingsCommand>
       <DarkModeCommand isOpen={isOpen}></DarkModeCommand>
-			<ModeSwitcher isOpen={isOpen}></ModeSwitcher>
       <UploadCommand isOpen={isOpen}></UploadCommand>
     </div>
   );

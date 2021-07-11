@@ -51,6 +51,9 @@
 		.text-default {
 			@apply text-gray-500 dark:text-gray-400;
 		}
+		.text-contrast {
+			@apply text-white dark:text-black bg-black dark:bg-white;
+		}
   }
   @variants dark, hover {
     .glass-0 {
