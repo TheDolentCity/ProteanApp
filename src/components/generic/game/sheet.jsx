@@ -161,14 +161,14 @@ function WidgetCreator({ onAddWidget }) {
 	}
 
 	return (
-		<Menu as="div" className="relative w-full text-left">
+		<Menu as="div" className="w-full text-left">
 			<Menu.Button className="acc-focus w-full mt-2 xl:mt-4 hover:raise-10">
 				<Widget className="p-2 xl:p-4">
 					<CircleIcon name="Add" size="sm" className="text-white dark:text-black bg-black dark:bg-white"></CircleIcon>
 				</Widget>
 			</Menu.Button>
 			<Menu.Items className="mx-1 xl:mx-3">
-				<MenuContainer>
+				<MenuContainer className="max-w-84">
 					<MenuSection>
 						{
 							WidgetTypeList.map((widgetType) => (
@@ -176,7 +176,7 @@ function WidgetCreator({ onAddWidget }) {
 									{({ active }) => (
 										<Item
 											onClick={() => addWidget(widgetType)}
-											icon="Add"
+											icon="Childof"
 											important={true}>
 											{widgetType}
 										</Item>
