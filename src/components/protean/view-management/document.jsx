@@ -1,25 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { FileTypes } from '../../storage/constants';
 import { useGlobalStore } from '../../storage/global-store';
-import Page from '../../generic/book/page';
 import MdxRender from '../../generic/book/mdx-render';
+import Page from '../../generic/book/page';
 import Sheet from '../../generic/game/sheet';
 import TextareaAutosize from 'react-textarea-autosize';
-import { DocumentModes, FileIcons, FileTypes } from '../../storage/constants';
 
 export function WritingDocument({ documentId }) {
   const { globalState, dispatch } = useGlobalStore();
-  const [document, setDocument] = useState(globalState.fileSystem.getFile(documentId));
+	var file = globalState.fileSystem.getFile(documentId);
 
   // Sends the local document data to global storage
   const updateDocument = (value) => {
-		console.log(`Sending Document To Global Storage\nContent:${document?.content}\nValue:${value}`);
-    if (document === undefined) {
-      console.log(`document is undefined on Document object.`);
+		console.log(`Sending File To Global Storage\nContent:${file?.content}\nValue:${value}`);
+    if (file === undefined) {
+      console.log(`file is undefined on WritingDocument object.`);
     }
     else {
-      let newDocument = { ...document };
+      let newDocument = { ...file };
 			newDocument.content = value;
-      setDocument(newDocument);
 			console.log("Dispatch Document:\n" + JSON.stringify(newDocument, null, 2));
       dispatch({
         type: "updateFile",
@@ -30,7 +29,7 @@ export function WritingDocument({ documentId }) {
     }
   }
 
-	switch (document?.metadata?.type) {
+	switch (file?.metadata?.type) {
 		case FileTypes.SHEET:
 			return (
 				<SheetDocument
@@ -45,7 +44,7 @@ export function WritingDocument({ documentId }) {
 						maxRows={10000}
 						className="input-text-area w-full h-full text-base"
 						placeholder="enter file contents"
-						value={document?.content}
+						value={file?.content}
 						onChange={(e) => updateDocument(e.target.value)}/>
 				</div>
 			);
