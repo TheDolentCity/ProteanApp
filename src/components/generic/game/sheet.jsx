@@ -7,7 +7,7 @@ import { DocumentModes, WidgetTypes } from './../../storage/constants';
 import { useDocumentModeContext } from '../../protean/view-management/view-document';
 import { Widget, WidgetContainer } from './widget';
 import { MenuContainer, MenuSection } from '../basic-inputs/menu';
-import Item from '../../protean/file-management/item';
+import Item, { ItemContent, ItemIcon } from '../../protean/file-management/item';
 import DiceLine from './blocks/dice-line';
 import TextLine from './blocks/text-line';
 
@@ -176,9 +176,11 @@ function WidgetCreator({ onAddWidget }) {
 									{({ active }) => (
 										<Item
 											onClick={() => addWidget(widgetType)}
-											icon="Childof"
-											important={true}>
-											{widgetType}
+											className="text-important">
+											<ItemIcon name="ChildOf" />
+											<ItemContent>
+												{widgetType}
+											</ItemContent>
 										</Item>
 									)}
 								</Menu.Item>

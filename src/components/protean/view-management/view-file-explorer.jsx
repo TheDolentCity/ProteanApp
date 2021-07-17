@@ -5,7 +5,7 @@ import { useGlobalStore } from '../../storage/global-store';
 import { FileIcons, FileTypes } from './../../storage/constants';
 import { MenuContainer, MenuSection } from '../../generic/basic-inputs/menu';
 import FileExplorer from '../file-management/file-explorer';
-import Item from '../file-management/item';
+import Item, { ItemContent, ItemIcon } from '../file-management/item';
 import {
 	CloseViewButton,
 	ViewButtonLabel,
@@ -67,21 +67,21 @@ function CreatePageDropdown() {
 					<MenuSection>
 						<Menu.Item>
 							{({ active }) => (
-								<Item
-									onClick={() => createNewFile(FileTypes.PAGE)}
-									icon={FileIcons[FileTypes.PAGE]}
-									important={true}>
-									New Page
+								<Item onClick={() => createNewFile(FileTypes.PAGE)} className="text-important">
+									<ItemIcon icon={FileIcons[FileTypes.PAGE]} />
+									<ItemContent>
+										New Page
+									</ItemContent>
 								</Item>
 							)}
 						</Menu.Item>
 						<Menu.Item>
 							{({ active }) => (
-								<Item
-									onClick={() => createNewFile(FileTypes.SHEET)}
-									icon={FileIcons[FileTypes.SHEET]}
-									important={true}>
+								<Item onClick={() => createNewFile(FileTypes.SHEET)} className="text-important">
+									<ItemIcon icon={FileIcons[FileTypes.SHEET]} />
+									<ItemContent>
 									New Sheet
+									</ItemContent>
 								</Item>
 							)}
 						</Menu.Item>
@@ -117,21 +117,21 @@ function CreateContainerDropdown() {
 					<MenuSection>
 						<Menu.Item>
 							{({ active }) => (
-								<Item
-									onClick={() => createNewFile(FileTypes.BOOK)}
-									icon={FileIcons[FileTypes.BOOK]}
-									important={true}>
+								<Item onClick={() => createNewFile(FileTypes.BOOK)} className="text-important">
+									<ItemIcon icon={FileIcons[FileTypes.BOOK]} />
+									<ItemContent>
 									New Book
+									</ItemContent>
 								</Item>
 							)}
 						</Menu.Item>
 						<Menu.Item>
 							{({ active }) => (
-								<Item
-									onClick={() => createNewFile(FileTypes.FOLDER)}
-									icon={FileIcons[FileTypes.FOLDER]}
-									important={true}>
+								<Item onClick={() => createNewFile(FileTypes.FOLDER)} className="text-important">
+									<ItemIcon icon={FileIcons[FileTypes.FOLDER]} />
+									<ItemContent>
 									New Folder
+									</ItemContent>
 								</Item>
 							)}
 						</Menu.Item>
