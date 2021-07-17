@@ -6,7 +6,7 @@ import FabricIcon from '../../generic/basic-inputs/fabric-icon';
 import DocumentView from './view-document';
 import FileExplorerView from './view-file-explorer';
 import { MenuContainer, MenuSection } from '../../generic/basic-inputs/menu';
-import Item from '../file-management/item';
+import Item, { ItemIcon, ItemContent } from '../file-management/item';
 
 export function ViewController() {
 	const { globalState, dispatch } = useGlobalStore();
@@ -160,22 +160,21 @@ export function ViewOptionsDropdown({ view }) {
 					<MenuSection>
 						<Menu.Item>
 							{({ active }) => (
-								<Item
-									onClick={() => moveView(Directions.LEFT)}
-									icon="DockLeft"
-									className="text-important">
-									Move View Left
+								<Item onClick={() => moveView(Directions.LEFT)} className="text-important">
+									<ItemIcon icon="DockLeft" />
+									<ItemContent>
+										Move View Left
+									</ItemContent>
 								</Item>
 							)}
 						</Menu.Item>
 						<Menu.Item>
 							{({ active }) => (
-								<Item
-									disabled={true}
-									onClick={() => moveView(Directions.RIGHT)}
-									icon="DockRight"
-									className="text-important">
-									Move View Right
+								<Item onClick={() => moveView(Directions.RIGHT)} className="text-important">
+									<ItemIcon icon="DockRight" />
+									<ItemContent>
+										Move View RIGHT
+									</ItemContent>
 								</Item>
 							)}
 						</Menu.Item>
