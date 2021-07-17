@@ -49,9 +49,9 @@ function ItemContainer({ active, indent, important, className, children }) {
 
 	return (
     <div 
-			className={(active ? "font-semibold raise-10 text-black dark:text-white " : "hover:raise-5 ")
+			className={(active ? "font-semibold raise-10 text-black dark:text-white " : "hover:raise-5 disabled:hover:raise-0 ")
 			+ (important ? "text-important " : "text-default ")
-			+ "acc-focus flex w-full pr-3 py-1 items-center text-left overflow-hidden " + className}
+			+ "acc-focus flex w-full pr-3 py-1 items-center text-left overflow-hidden disabled:text-opacity-50 " + className}
 			style={createPadding()}>
 			{children}
     </div>

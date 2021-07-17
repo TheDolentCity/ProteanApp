@@ -285,7 +285,7 @@
 		height: 8px;
 	}
 	.protean-scrollbar {
-		@apply scrollbar-round scrollbar-thumb-gray-400 scrollbar-track-transparent dark:scrollbar-thumb-gray-500 dark:scrollbar-track-transparent;
+		@apply scrollbar-round scrollbar-thumb-gray-400 scrollbar-track-transparent dark:scrollbar-thumb-gray-600 dark:scrollbar-track-transparent;
 	}
 	.scroll-box-shadows {
 		background:
