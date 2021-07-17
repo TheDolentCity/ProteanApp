@@ -1,30 +1,24 @@
 import React from 'react';
 import FabricIcon from '../../generic/basic-inputs/fabric-icon';
 
-export default function Item({ itemRef, active, icon, onClick, indent, important, children}) {
+export default function Item({ itemRef, active, onClick, indent, className, children}) {
   if (onClick === null || onClick === undefined) {
     return (
-			<ItemContainer itemRef={itemRef} active={active} className="text-sm" indent={indent} important={important}>
-				<ItemIcon icon={icon} className="text-sm"></ItemIcon>
-				<ItemContent>
-					{children}
-				</ItemContent>
+			<ItemContainer itemRef={itemRef} active={active} className={className} indent={indent}>
+				{children}
 			</ItemContainer>
     );
   }
   else return (
 		<ButtonContainer itemRef={itemRef} onClick={onClick}>
-			<ItemContainer active={active} className="text-sm" indent={indent} important={important}>
-				<ItemIcon icon={icon} className="text-sm"></ItemIcon>
-				<ItemContent>
-					{children}
-				</ItemContent>
+			<ItemContainer active={active} className={className} indent={indent}>
+				{children}
 			</ItemContainer>
 		</ButtonContainer>
   );
 }
 
-export function ButtonContainer({ itemRef, onClick, children }) {
+function ButtonContainer({ itemRef, onClick, children }) {
 	return (
 		<button
 			ref={itemRef}
@@ -35,7 +29,7 @@ export function ButtonContainer({ itemRef, onClick, children }) {
 	);
 }
 
-function ItemContainer({ active, indent, important, className, children }) {
+function ItemContainer({ active, indent, className, children }) {
 	const createPadding = () => {
 		if (indent === -1) {
 			return {
@@ -49,41 +43,51 @@ function ItemContainer({ active, indent, important, className, children }) {
 
 	return (
     <div 
-			className={(active ? "font-semibold raise-10 text-black dark:text-white " : "hover:raise-5 disabled:hover:raise-0 ")
-			+ (important ? "text-important " : "text-default ")
-			+ "acc-focus flex w-full pr-3 py-1 items-center text-left overflow-hidden disabled:text-opacity-50 " + className}
+			className={(active ? "font-semibold raise-5 hover:raise-10 text-black dark:text-white " : "hover:raise-5 disabled:hover:raise-0 ")
+			+ "acc-focus flex w-full pr-3 py-1 items-center text-left text-sm overflow-hidden disabled:text-opacity-50 " + className}
 			style={createPadding()}>
 			{children}
     </div>
   );
 }
 
-function ItemIcon({ icon, className }) {
+export function ItemIcon({ icon, indent, className }) {
+	const createPadding = () => {
+		if (indent === -1) {
+			return {
+				"paddingLeft": "0.75rem"
+			}
+		}
+		return {
+			"paddingLeft": (1.25 + (indent * 1.5)) + "rem"
+		};
+	}
+
   return (
-    <div className={"flex mr-2 items-center  " + className}>
-      <FabricIcon name={icon} className=""></FabricIcon>
+    <div className={"flex mr-2 items-center " + className} style={createPadding()}>
+      <FabricIcon name={icon}></FabricIcon>
     </div>
   );
 }
 
-function ItemContent({ children }) {
-	if (typeof children === 'object') {
-		console.log("Objects Offender:" + JSON.stringify(children));
-		return (
-			<span></span>
-		);
-	}
-	else {
-		return (
-			<div className="w-full truncate">
-				{children}
-			</div>
-		);
-	} 
+export function ItemContent({ children }) {
+	return (
+		<div className="w-full truncate">
+			{children}
+		</div>
+	);
 }
+
+Item.defaultProps = {
+	className: "text-sm"
+};
 
 ItemContainer.defaultProps = {
 	active: false,
 	indent: -1,
+	className: "text-sm"
+};
+
+ItemIcon.defaultProps = {
 	className: "text-sm"
 };

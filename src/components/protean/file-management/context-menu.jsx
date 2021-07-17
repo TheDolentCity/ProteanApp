@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { useGlobalStore } from '../../storage/global-store';
-import Item from './item';
-import { ViewTypes } from '../../storage/constants';
+import Item, { ItemIcon, ItemContent } from './item';
 
 export function ContextMenu({ itemRef, children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -73,11 +71,11 @@ export function ContextMenuDelete({ file }) {
   }
 
   return (
-    <Item
-      onClick={deleteFile}
-      icon="Cancel"
-			important={true}>
-      Delete
+    <Item onClick={deleteFile} className="text-important">
+			<ItemIcon icon="Cancel"></ItemIcon>
+			<ItemContent>
+      	Delete
+			</ItemContent>
     </Item>
   );
 }
@@ -111,12 +109,12 @@ export function ContextMenuDownload({ file }) {
 
   return (
     <div className="w-full">
-      <Item
-        onClick={downloadFile}
-        icon="Download"
-				important={true}>
-        Download
-      </Item>
+			<Item onClick={downloadFile} className="text-important">
+				<ItemIcon icon="Download"></ItemIcon>
+				<ItemContent>
+					Download
+				</ItemContent>
+			</Item>
       <a
         className="hidden"
         href=""
@@ -142,12 +140,12 @@ export function ContextMenuNewBook({ file }) {
   }
 
   return (
-    <Item
-      onClick={createBook}
-      icon="Add"
-			important={true}>
-      New Book
-    </Item>
+		<Item onClick={createBook} className="text-important">
+			<ItemIcon icon="Add"></ItemIcon>
+			<ItemContent>
+				New Book
+			</ItemContent>
+		</Item>
   );
 }
 
@@ -165,12 +163,12 @@ export function ContextMenuNewFolder({ file }) {
   }
 
   return (
-    <Item
-      onClick={createFolder}
-      icon="Add"
-			important={true}>
-      New Folder
-    </Item>
+		<Item onClick={createFolder} className="text-important">
+			<ItemIcon icon="Add"></ItemIcon>
+			<ItemContent>
+				New Folder
+			</ItemContent>
+		</Item>
   );
 }
 
@@ -188,12 +186,12 @@ export function ContextMenuNewPage({ file }) {
   }
 
   return (
-    <Item
-      onClick={createPage}
-      icon="Add"
-			important={true}>
-      New Page
-    </Item>
+		<Item onClick={createPage} className="text-important">
+			<ItemIcon icon="Add"></ItemIcon>
+			<ItemContent>
+				New Page
+			</ItemContent>
+		</Item>
   );
 }
 
@@ -211,12 +209,12 @@ export function ContextMenuNewSheet({ file }) {
   }
 
   return (
-    <Item
-      onClick={createSheet}
-      icon="Add"
-			important={true}>
-      New Sheet
-    </Item>
+		<Item onClick={createSheet} className="text-important">
+			<ItemIcon icon="Add"></ItemIcon>
+			<ItemContent>
+			New Sheet
+			</ItemContent>
+		</Item>
   );
 }
 
@@ -235,22 +233,22 @@ export function ContextMenuOpenToTheSide({ file }) {
   }
 
   return (
-    <Item
-      onClick={openToTheSide}
-      icon="OpenInNewWindow"
-			important={true}>
-      Open to the side
-    </Item>
+		<Item onClick={openToTheSide} className="text-important">
+			<ItemIcon icon="OpenInNewWindow"></ItemIcon>
+			<ItemContent>
+			Open to the side
+			</ItemContent>
+		</Item>
   );
 }
 
 export function ContextMenuRename({ onClick }) {
 	return (
-		<Item 
-			icon="Rename"
-			onClick={onClick}
-			important={true}>
+		<Item onClick={onClick} className="text-important">
+			<ItemIcon icon="Rename"></ItemIcon>
+			<ItemContent>
 			Rename
+			</ItemContent>
 		</Item>
 	);
 }
