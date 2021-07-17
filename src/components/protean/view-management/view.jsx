@@ -1,9 +1,12 @@
 import React from 'react'
+import { Menu } from '@headlessui/react';
 import { useGlobalStore } from '../../storage/global-store';
-import { ViewIcons, ViewTypes } from '../../storage/constants';
+import { Directions, ViewIcons, ViewTypes } from '../../storage/constants';
 import FabricIcon from '../../generic/basic-inputs/fabric-icon';
 import DocumentView from './view-document';
 import FileExplorerView from './view-file-explorer';
+import { MenuContainer, MenuSection } from '../../generic/basic-inputs/menu';
+import Item from '../file-management/item';
 
 export function ViewController() {
 	const { globalState, dispatch } = useGlobalStore();
@@ -129,5 +132,56 @@ export function CloseViewButton({ view }) {
 		<ViewButton onClick={() => closeView(view)}>
 			<FabricIcon name="Cancel"></FabricIcon>
 		</ViewButton>
+	);
+}
+
+export function ViewOptionsDropdown({ view }) {
+	const { globalState, dispatch } = useGlobalStore();
+
+	const moveView = (direction) => {
+		dispatch({
+			type: "moveView",
+			payload: {
+				view: view,
+				direction: direction,
+			}
+		})
+	}
+
+	return (
+		<Menu as="div" className="relative text-left">
+			<Menu.Button className="acc-focus">
+				<ViewButtonLabel>
+					<FabricIcon name="MoreVertical"></FabricIcon>
+				</ViewButtonLabel>
+			</Menu.Button>
+			<Menu.Items>
+				<MenuContainer>
+					<MenuSection>
+						<Menu.Item>
+							{({ active }) => (
+								<Item
+									onClick={() => moveView(Directions.LEFT)}
+									icon="DockLeft"
+									className="text-important">
+									Move View Left
+								</Item>
+							)}
+						</Menu.Item>
+						<Menu.Item>
+							{({ active }) => (
+								<Item
+									disabled={true}
+									onClick={() => moveView(Directions.RIGHT)}
+									icon="DockRight"
+									className="text-important">
+									Move View Right
+								</Item>
+							)}
+						</Menu.Item>
+					</MenuSection>
+				</MenuContainer>
+			</Menu.Items>
+		</Menu>
 	);
 }

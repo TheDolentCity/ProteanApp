@@ -6,11 +6,12 @@ import {
 	ContextMenuDelete, 
 	ContextMenuDownload, 
 	ContextMenuNewFolder, 
-	ContextMenuNewPage, 
+	ContextMenuNewPage,
+	ContextMenuOpenToTheSide, 
 	ContextMenuRename, 
 	ContextMenuSection 
 } from './context-menu';
-import Item from './item';
+import Item, { ItemIcon, ItemContent } from './item';
 import Rename from './rename';
 import { FileIcons } from '../../storage/constants';
 
@@ -42,6 +43,15 @@ function Container({ file, openIcon, closedIcon, indent, children }) {
   const itemRef = useRef(null);
   const { globalState, dispatch } = useGlobalStore();
 	const [ renaming, setRenaming ] = useState(false);
+
+  const openFileDispatch = () => {
+    dispatch({
+      type: "openFile",
+      payload: {
+        file: file
+      }
+    });
+  }
 	
 	if (file !== null && file !== undefined) {
 		return (
@@ -50,7 +60,8 @@ function Container({ file, openIcon, closedIcon, indent, children }) {
 					{({ open }) => (
 						<>
 						{
-							renaming && (file?.metadata?.title !== null || file?.metadata?.title !== undefined) ?
+							renaming && (file?.metadata?.title !== null || file?.metadata?.title !== undefined) 
+							?
 							<Rename 
 								file={file} 
 								icon={FileIcons[file.metadata.type]} 
@@ -58,11 +69,17 @@ function Container({ file, openIcon, closedIcon, indent, children }) {
 								endRename={() => setRenaming(false)}>
 							</Rename>
 							:
-							<Disclosure.Button ref={itemRef} className="acc-focus w-full">
-								<Item icon={open ? openIcon : closedIcon} indent={indent}>
-									{file?.metadata?.title}
+							<>
+								<Disclosure.Button className="acc-focus absolute align-middle h-7">
+									<ItemIcon icon={open ? "ChevronDown" : "ChevronRight"} indent={indent}></ItemIcon>
+								</Disclosure.Button>
+								<Item active={globalState.views.find(v => v.contents === file.uuid)} indent={indent} itemRef={itemRef} onClick={openFileDispatch}>
+									<ItemIcon icon={open ? openIcon : closedIcon} className="ml-6"></ItemIcon>
+									<ItemContent>
+										{file?.metadata?.title}
+									</ItemContent>
 								</Item>
-							</Disclosure.Button>
+							</>
 						}
 						<Disclosure.Panel>
 							{children}
@@ -72,13 +89,16 @@ function Container({ file, openIcon, closedIcon, indent, children }) {
 				</Disclosure>
 				<ContextMenu itemRef={itemRef}>
 					<ContextMenuSection>
-						<ContextMenuNewPage file={file}></ContextMenuNewPage>
-						<ContextMenuNewFolder file={file}></ContextMenuNewFolder>
+						<ContextMenuNewPage file={file} />
+						<ContextMenuNewFolder file={file} />
 					</ContextMenuSection>
 					<ContextMenuSection>
-						<ContextMenuRename onClick={() => setRenaming(true)}></ContextMenuRename>
-						<ContextMenuDownload file={file}></ContextMenuDownload>
-						<ContextMenuDelete file={file}></ContextMenuDelete>
+						<ContextMenuOpenToTheSide file={file} />
+					</ContextMenuSection>
+					<ContextMenuSection>
+						<ContextMenuRename onClick={() => setRenaming(true)} />
+						<ContextMenuDownload file={file} />
+						<ContextMenuDelete file={file} />
 					</ContextMenuSection>
 				</ContextMenu>
 			</div>

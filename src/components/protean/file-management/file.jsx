@@ -8,7 +8,7 @@ import {
 	ContextMenuRename, 
 	ContextMenuSection 
 } from './context-menu';
-import Item from './item';
+import Item, { ItemIcon, ItemContent } from './item';
 import Rename from './rename';
 import { FileIcons } from '../../storage/constants';
 
@@ -39,12 +39,14 @@ export default function File({ file, indent }) {
 					</Rename>
 					:
 					<Item
-						active={globalState?.activeFile?.uuid === file.uuid}
-						icon={FileIcons[file.metadata.type]}
+						active={globalState.views.find(v => v.contents === file.uuid)}
 						indent={indent}
 						itemRef={itemRef}
 						onClick={openFileDispatch}>
-						{file.metadata.title}
+						<ItemIcon icon={FileIcons[file.metadata.type]}></ItemIcon>
+						<ItemContent>
+							{file.metadata.title}
+						</ItemContent>
 					</Item>
 				}
 				<ContextMenu itemRef={itemRef}>
