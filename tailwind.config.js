@@ -277,6 +277,7 @@ module.exports = {
       outline: ['focus-visible'],
       ringColor: ['focus-visible'],
       ringWidth: ['focus-visible'],
+			textOpacity: ['disabled']
     }
   },
   plugins: [

@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
+import { Menu } from '@headlessui/react';
 import FabricIcon from '../../generic/basic-inputs/fabric-icon';
+import { useGlobalStore } from '../../storage/global-store';
 import ErrorBoundary from '../error-boundary';
-import { DocumentModes } from './../../storage/constants';
+import { Directions, DocumentModes } from './../../storage/constants';
+import { MenuContainer, MenuSection } from '../../generic/basic-inputs/menu';
+import Item from '../file-management/item';
 import { ReadingDocument, WritingDocument, PlayingDocument } from './document';
 import {
 	CloseViewButton,
 	ViewButton,
+	ViewButtonLabel,
 	ViewContainer,
 	ViewContent,
 	ViewDivider,
@@ -46,11 +51,9 @@ export default function DocumentView({ view }) {
 					onClick={() => setMode(DocumentModes.PLAYING)}>
 					<FabricIcon name="Game"></FabricIcon>
 				</ViewButton>
-				<ViewDivider></ViewDivider>
-				<ViewButton>
-					<FabricIcon name="MoreVertical"></FabricIcon>
-				</ViewButton>
-				<CloseViewButton view={view}></CloseViewButton>
+				<ViewDivider />
+				<MoreOptionsDropdown view={view} />
+				<CloseViewButton view={view} />
 			</ViewHeader>
 			<ViewContent>
 				<DocumentModeContext.Provider value={mode}>
@@ -58,6 +61,57 @@ export default function DocumentView({ view }) {
 				</DocumentModeContext.Provider>
 			</ViewContent>
 		</ViewContainer>
+	);
+}
+
+function MoreOptionsDropdown({ view }) {
+	const { globalState, dispatch } = useGlobalStore();
+
+	const moveView = (direction) => {
+		dispatch({
+			type: "moveView",
+			payload: {
+				view: view,
+				direction: direction,
+			}
+		})
+	}
+
+	return (
+		<Menu as="div" className="relative text-left">
+			<Menu.Button className="acc-focus">
+				<ViewButtonLabel>
+					<FabricIcon name="MoreVertical"></FabricIcon>
+				</ViewButtonLabel>
+			</Menu.Button>
+			<Menu.Items>
+				<MenuContainer>
+					<MenuSection>
+						<Menu.Item>
+							{({ active }) => (
+								<Item
+									onClick={() => moveView(Directions.LEFT)}
+									icon="DockLeft"
+									important={true}>
+									Move View Left
+								</Item>
+							)}
+						</Menu.Item>
+						<Menu.Item>
+							{({ active }) => (
+								<Item
+									disabled={true}
+									onClick={() => moveView(Directions.RIGHT)}
+									icon="DockRight"
+									important={true}>
+									Move View Right
+								</Item>
+							)}
+						</Menu.Item>
+					</MenuSection>
+				</MenuContainer>
+			</Menu.Items>
+		</Menu>
 	);
 }
 

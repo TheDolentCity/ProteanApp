@@ -26,7 +26,7 @@ export const DocumentModes = Object.freeze({
 	PLAYING: 'Playing Mode',
 	READING: 'Reading Mode',
 	WRITING: 'Writing Mode'
-})
+});
 
 export const WidgetTypes = Object.freeze({
 	SheetWidgetContainerFull: 'Container (Full Width)',
@@ -38,4 +38,9 @@ export const WidgetTypes = Object.freeze({
 	Header3: 'Header 3',
 	Header4: 'Header 4',
 	Paragraph: 'Paragraph',
-})
+});
+
+export const Directions = Object.freeze({
+	LEFT: 'Left',
+	RIGHT: 'Right'
+});

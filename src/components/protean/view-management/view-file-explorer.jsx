@@ -2,7 +2,7 @@ import { Menu } from '@headlessui/react';
 import React from 'react';
 import FabricIcon from '../../generic/basic-inputs/fabric-icon';
 import { useGlobalStore } from '../../storage/global-store';
-import { FileIcons, FileTypes } from './../../storage/constants';
+import { Directions, FileIcons, FileTypes } from './../../storage/constants';
 import FileExplorer from '../file-management/file-explorer';
 import { MenuContainer, MenuSection } from '../../generic/basic-inputs/menu';
 import Item from '../file-management/item';
@@ -28,18 +28,67 @@ export default function FileExplorerView({ view }) {
 						{view.title}
 					</ViewLabel>
 				</ViewItem>
-				<CreatePageDropdown></CreatePageDropdown>
-				<CreateContainerDropdown></CreateContainerDropdown>
-				<ViewDivider></ViewDivider>
+				<CreatePageDropdown />
+				<CreateContainerDropdown />
+				<ViewDivider />
+				<MoreOptionsDropdown view={view} />
+				<CloseViewButton view={view} />
+			</ViewHeader>
+			<ViewContent>
+				<FileExplorer />
+			</ViewContent>
+		</ViewContainer>
+	);
+}
+
+function MoreOptionsDropdown({ view }) {
+	const { globalState, dispatch } = useGlobalStore();
+
+	const moveView = (direction) => {
+		dispatch({
+			type: "moveView",
+			payload: {
+				view: view,
+				direction: direction,
+			}
+		})
+	}
+
+	return (
+		<Menu as="div" className="relative text-left">
+			<Menu.Button className="acc-focus">
 				<ViewButtonLabel>
 					<FabricIcon name="MoreVertical"></FabricIcon>
 				</ViewButtonLabel>
-				<CloseViewButton view={view}></CloseViewButton>
-			</ViewHeader>
-			<ViewContent>
-				<FileExplorer></FileExplorer>
-			</ViewContent>
-		</ViewContainer>
+			</Menu.Button>
+			<Menu.Items>
+				<MenuContainer>
+					<MenuSection>
+						<Menu.Item>
+							{({ active }) => (
+								<Item
+									onClick={() => moveView(Directions.LEFT)}
+									icon="DockLeft"
+									important={true}>
+									Move View Left
+								</Item>
+							)}
+						</Menu.Item>
+						<Menu.Item>
+							{({ active }) => (
+								<Item
+									disabled={true}
+									onClick={() => moveView(Directions.RIGHT)}
+									icon="DockRight"
+									important={true}>
+									Move View Right
+								</Item>
+							)}
+						</Menu.Item>
+					</MenuSection>
+				</MenuContainer>
+			</Menu.Items>
+		</Menu>
 	);
 }
 

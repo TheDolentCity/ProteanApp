@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { FileTypes, ViewTypes, WidgetTypes } from './constants';
+import { FileTypes, ViewTypes, WidgetTypes, Directions } from './constants';
 import { VirtualFileSystem, VirtualFile } from './virtual-file-system';
 
 const CharacterSheets = new VirtualFile(
@@ -1237,6 +1237,45 @@ const reducer = (globalState, action) => {
 			return {
 				...globalState,
 				views: [...globalState.views.filter(view => view.uuid !== action.payload.uuid)]
+			}
+		case "moveView":
+			var viewsCopy = [ ...globalState.views ];
+			var index = viewsCopy.findIndex(v => v.uuid === action.payload.view.uuid);
+			switch (action.payload.direction) {
+				case Directions.LEFT:
+					switch (index) {
+						case -1: throw new Error("Cannot find view to move.");
+						case 0:
+							var temp = viewsCopy.shift();
+							viewsCopy.push(temp);
+							break;
+						default:
+							var temp = viewsCopy[index-1];
+							viewsCopy[index-1] = viewsCopy[index];
+							viewsCopy[index] = temp;
+							break;
+					}
+					break;
+				case Directions.RIGHT:
+					switch (index) {
+						case -1: throw new Error("Cannot find view to move.");
+						case viewsCopy.length-1:
+							var temp = viewsCopy.pop();
+							viewsCopy.unshift(temp);
+							break;
+						default:
+							var temp = viewsCopy[index+1];
+							viewsCopy[index+1] = viewsCopy[index];
+							viewsCopy[index] = temp;
+							break;
+					}
+					break;
+				default: 
+					throw new Error("Cannot move view in the given direction: " + action.payload.direction);
+			}
+			return {
+				...globalState,
+				views: viewsCopy
 			}
 		case "openFile":
 			var viewIndex = globalState.views.map(view => view.type).indexOf(ViewTypes.DOCUMENT);
