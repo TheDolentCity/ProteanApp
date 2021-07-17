@@ -173,7 +173,7 @@ export function ViewOptionsDropdown({ view }) {
 								<Item onClick={() => moveView(Directions.RIGHT)} className="text-important">
 									<ItemIcon icon="DockRight" />
 									<ItemContent>
-										Move View RIGHT
+										Move View Right
 									</ItemContent>
 								</Item>
 							)}
