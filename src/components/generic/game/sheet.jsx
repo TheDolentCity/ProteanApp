@@ -174,10 +174,8 @@ function WidgetCreator({ onAddWidget }) {
 							WidgetTypeList.map((widgetType) => (
 								<Menu.Item key={widgetType}>
 									{({ active }) => (
-										<Item
-											onClick={() => addWidget(widgetType)}
-											className="text-important">
-											<ItemIcon name="ChildOf" />
+										<Item onClick={() => addWidget(widgetType)} className="text-important">
+											<ItemIcon icon="Childof"></ItemIcon>
 											<ItemContent>
 												{widgetType}
 											</ItemContent>
