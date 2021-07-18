@@ -30,7 +30,7 @@ export default function DieTable(props) {
 
 export function DieTableRow(props) {
   return (
-    <tr className={(props.index) % 2 == 0 ? "raise-5" : ""}>
+    <tr className={(props.index) % 2 === 0 ? "raise-5" : ""}>
       <th className="w-2/12 px-4 font-mono font-medium text-base text-center">{props.index}</th>
       {/* <th className="w-1/2 px-4 font-mono font-medium text-base text-center">{props.fracture}</th> */}
       <th className="w-10/12 px-4 font-normal">{props.result}</th>

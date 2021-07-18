@@ -52,7 +52,7 @@ class Tree {
 	};
 
 	contains(data) {
-		return this.findBFS(n => n.data === data) ? true : false;
+		return this.findBFS(n => n.data?.uuid === data.uuid) ? true : false;
 	};
 
 	findBFS(fn) {

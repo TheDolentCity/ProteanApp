@@ -14,7 +14,7 @@ export default function AppLayout(props) {
 }
 
 export function DarkContainer({ children }) {
-  const { globalState, dispatch } = useGlobalStore();
+  const { globalState } = useGlobalStore();
 
   return (
     <div className={globalState.darkMode ? "dark" : ""}>

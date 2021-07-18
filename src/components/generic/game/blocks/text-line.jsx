@@ -56,6 +56,7 @@ export default function TextLine({ data, className, onChange }) {
 						onChange={(e) => setTextLineData(e.target.value, 'text')} />
 				</div>
 			);
+		default: throw new Error("Cannot handle rendering for given mode: " + mode);
 	}
 }
 

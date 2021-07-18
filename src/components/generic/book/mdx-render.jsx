@@ -8,11 +8,7 @@ import { ListBulleted, ListNumbered } from './lists';
 import Columns from './columns';
 import DieTable, { DieTableRow } from '../game/die-table';
 import { WidgetContainer, Widget } from '../game/widget';
-import DiceBlock from '../game/blocks/dice-block';
-import NoteBlock from '../game/blocks/note-block';
-import NumberBlock from '../game/blocks/number-block';
-import StatBlock from '../game/stat-block';
-import TextBlock from '../game/blocks/text-block';
+import { SheetWidget } from '../game/sheet';
 import { ThematicBreak } from './thematic-break';
 import Spacer from './spacer';
 
@@ -21,11 +17,6 @@ const mdxComponents = {
   wrapper: props => <MdxWrapper>{props.children}</MdxWrapper>,
 
   // Base Components
-  a: (props) => <a className="">{props.children}</a>,
-  blockquote: (props) => <blockquote className="">{props.children}</blockquote>,
-  code: (props) => <code className="">{props.children}</code>,
-  del: (props) => <del className="">{props.children}</del>,
-  em: (props) => <em className="">{props.children}</em>,
   h1: Header1,
   h2: Header2,
   h3: Header3,
@@ -34,18 +25,9 @@ const mdxComponents = {
   h6: Header6,
   hr: ThematicBreak,
   blockquote: Blockquote,
-  img: (props) => <img className="">{props.children}</img>,
-  li: (props) => <li className="">{props.children}</li>,
-  ol: (props) => <ol className="">{props.children}</ol>,
   p: Paragraph,
-  pre: (props) => <pre className="">{props.children}</pre>,
-  strong: (props) => <strong className="">{props.children}</strong>,
-  sup: (props) => <sup className="">{props.children}</sup>,
-  table: (props) => <table className="">{props.children}</table>,
-  td: (props) => <td className="">{props.children}</td>,
-  thematicBreak: (props) => <thematicBreak className="">{props.children}</thematicBreak>,
-  tr: (props) => <tr className="">{props.children}</tr>,
   ul: ListBulleted,
+	ol: ListNumbered,
 
   // Customizable Base Components
   H1: (props) => <Header1 css={props.css}>{props.children}</Header1>,
@@ -62,13 +44,9 @@ const mdxComponents = {
   // Protean RPG Components
   WidgetContainer: WidgetContainer,
   Widget: Widget,
+	SheetWidget: SheetWidget,
   DieTable: DieTable,
   DieTableRow: DieTableRow,
-  DiceBlock: DiceBlock,
-  NoteBlock: NoteBlock,
-  NumberBlock: NumberBlock,
-  StatBlock: StatBlock,
-  TextBlock: TextBlock
 };
 
 // Customize Document:

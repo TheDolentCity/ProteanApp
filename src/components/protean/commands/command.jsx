@@ -45,27 +45,6 @@ export function Command({ onClick, isOpen, icon, text, children }) {
 					{children}
 				</button>
 			);
+		default: throw new Error("Open should only ever be true or false. Something is really wrong.");
 	}
 }
-
-// export function NewViewCommand() {
-// 	const [isOpenModal, setIsOpenModal] = useState(false);
-
-//   const toggleSettings = () => {
-//     setIsOpenModal(!isOpenModal);
-//   }
-
-//   const closeModal = () => {
-//     setIsOpenModal(false);
-//   }
-
-//   return (
-//     <Command
-//       onClick={newView}
-//       icon="Settings" 
-//       isOpen={isOpen} 
-//       text="Settings">
-//       <SettingsModal isOpen={isOpenModal} onClose={closeModal}></SettingsModal>
-//     </Command>
-//   );
-// }

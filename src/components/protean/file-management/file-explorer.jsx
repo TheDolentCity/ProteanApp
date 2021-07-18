@@ -5,7 +5,7 @@ import File from './file';
 import { FileTypes } from './../../storage/constants';
 
 export default function FileExplorer() {
-  const { globalState, dispatch } = useGlobalStore();
+  const { globalState } = useGlobalStore();
 
   return (
     <div className="flex flex-col w-full h-full mx-auto">

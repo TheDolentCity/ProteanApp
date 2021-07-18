@@ -191,7 +191,7 @@ function WidgetCreator({ onAddWidget }) {
 	);
 }
 
-function SheetWidget({ widget, onChange }) {
+export function SheetWidget({ widget, onChange }) {
   switch (widget?.type) {
     case WidgetTypes.SheetWidgetContainerFull:
       return (
@@ -267,46 +267,6 @@ function SheetWidget({ widget, onChange }) {
 					className="text-base">
 				</TextLine>
 			);
-    // case "DiceBlock":
-    //   return (
-    //     <DiceBlock
-    //       static={false}
-    //       diceBlock={widget}
-    //       onChange={onChange}>
-    //     </DiceBlock>
-    //   );
-    // case "NoteBlock":
-    //   return (
-    //     <NoteBlock
-    //       static={false}
-    //       noteBlock={widget}
-    //       onChange={onChange}>
-    //     </NoteBlock>
-    //   );
-    // case "NumberBlock":
-    //   return (
-    //     <NumberBlock
-    //       static={false}
-    //       numberBlock={widget}
-    //       onChange={onChange}>
-    //     </NumberBlock>
-    //   );
-    // case "StatBlock":
-    //   return (
-    //     <StatBlock
-    //       static={false}
-    //       statBlock={widget}
-    //       onChange={onChange}>
-    //     </StatBlock>
-    //   );
-    // case "TextBlock":
-    //   return (
-    //     <TextBlock
-    //       static={false}
-    //       textBlock={widget}
-    //       onChange={onChange}>
-    //     </TextBlock>
-    //   );
     default:
       console.log(`Widget type '${widget?.type}' is not handled by SheetWidget component.`);
   }

@@ -52,7 +52,7 @@ export function WritingDocument({ documentId }) {
 }
 
 export function ReadingDocument({ documentId }) {
-  const { globalState, dispatch } = useGlobalStore();
+  const { globalState } = useGlobalStore();
 	var file = globalState.fileSystem.getFile(documentId);
 
   if (file) {
@@ -75,7 +75,7 @@ export function ReadingDocument({ documentId }) {
 }
 
 export function PlayingDocument({ documentId }) {
-  const { globalState, dispatch } = useGlobalStore();
+  const { globalState } = useGlobalStore();
 	var file = globalState.fileSystem.getFile(documentId);
 
   if (file) {

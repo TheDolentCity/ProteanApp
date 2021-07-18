@@ -3,7 +3,7 @@ import { useGlobalStore } from "../../storage/global-store";
 import { Command } from './command';
 
 export default function UploadCommand({ isOpen }) {
-  const { globalState, dispatch } = useGlobalStore();
+  const { dispatch } = useGlobalStore();
   const fileInputRef = React.useRef(null);
 
   function uploadFileDispatch(newFile) {

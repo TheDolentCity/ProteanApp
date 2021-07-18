@@ -9,7 +9,7 @@ import { MenuContainer, MenuSection } from '../../generic/basic-inputs/menu';
 import Item, { ItemIcon, ItemContent } from '../file-management/item';
 
 export function ViewController() {
-	const { globalState, dispatch } = useGlobalStore();
+	const { globalState } = useGlobalStore();
 
 	return (
 		<div className="flex-grow flex h-full">
@@ -117,7 +117,7 @@ export function ViewIcon({ viewType }) {
 }
 
 export function CloseViewButton({ view }) {
-	const { globalState, dispatch } = useGlobalStore();
+	const { dispatch } = useGlobalStore();
 
 	const closeView = (view) => {
 		dispatch({
@@ -136,7 +136,7 @@ export function CloseViewButton({ view }) {
 }
 
 export function ViewOptionsDropdown({ view }) {
-	const { globalState, dispatch } = useGlobalStore();
+	const { dispatch } = useGlobalStore();
 
 	const moveView = (direction) => {
 		dispatch({

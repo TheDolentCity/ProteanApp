@@ -4,14 +4,17 @@ import FabricIcon from '../../generic/basic-inputs/fabric-icon';
 import CircleIcon from '../../generic/basic-inputs/circle-icon';
 
 export default function Rename({ file, icon, indent, endRename }) {
-	const { globalState, dispatch } = useGlobalStore();
+	const { dispatch } = useGlobalStore();
 	const [fileName, setFileName] = useState(file.metadata.title);
 	const renameInput = useRef(null);
 
 	// Constructor
 	useEffect(() => {
+		// Idky but React recommends to do this
+		var rename = renameInput.current;
+
 		// Focus input when the Rename component is created
-		renameInput.current.focus();
+		rename.focus();
 
 		// Define methods for submitting rename
 		const submitRename = ({ key }) => {
@@ -37,10 +40,10 @@ export default function Rename({ file, icon, indent, endRename }) {
 		}
 
 		// Set up event listeners for 
-		renameInput.current.addEventListener('keyup', submitRename);
+		rename.addEventListener('keyup', submitRename);
 
     return function cleanup() {
-			renameInput.current.removeEventListener('keyup', submitRename);
+			rename.removeEventListener('keyup', submitRename);
     }
 	});
 

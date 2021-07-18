@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './styles/globals.css';
 
 import React from 'react';

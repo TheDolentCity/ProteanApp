@@ -43,7 +43,7 @@ export default function FileExplorerView({ view }) {
 }
 
 function CreatePageDropdown() {
-	const { globalState, dispatch } = useGlobalStore();
+	const { dispatch } = useGlobalStore();
 
 	const createNewFile = (fileType) => {
 		dispatch({
@@ -93,7 +93,7 @@ function CreatePageDropdown() {
 }
 
 function CreateContainerDropdown() {
-	const { globalState, dispatch } = useGlobalStore();
+	const { dispatch } = useGlobalStore();
 
 	const createNewFile = (fileType) => {
 		dispatch({

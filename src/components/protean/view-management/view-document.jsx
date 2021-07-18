@@ -6,7 +6,6 @@ import { ReadingDocument, WritingDocument, PlayingDocument } from './document';
 import {
 	CloseViewButton,
 	ViewButton,
-	ViewButtonLabel,
 	ViewContainer,
 	ViewContent,
 	ViewDivider,

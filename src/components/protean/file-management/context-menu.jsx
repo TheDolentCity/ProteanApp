@@ -21,7 +21,7 @@ export function ContextMenu({ itemRef, children }) {
     }
 
     const closeMenu = (event) => {
-      if (event.target != ref) {
+      if (event.target !== ref) {
         setIsOpen(false);
       }
     }
@@ -59,7 +59,7 @@ export function ContextMenuSection({ children }) {
 }
 
 export function ContextMenuDelete({ file }) {
-  const { globalState, dispatch } = useGlobalStore();
+  const { dispatch } = useGlobalStore();
 
   const deleteFile = () => {
     dispatch({
@@ -117,7 +117,7 @@ export function ContextMenuDownload({ file }) {
 			</Item>
       <a
         className="hidden"
-        href=""
+				href="/"
         download={getFileName(file)}
         ref={fileOutputRef}>
         DOWNLOAD
@@ -127,7 +127,7 @@ export function ContextMenuDownload({ file }) {
 }
 
 export function ContextMenuNewBook({ file }) {
-  const { globalState, dispatch } = useGlobalStore();
+  const { dispatch } = useGlobalStore();
 
   const createBook = () => {
     dispatch({
@@ -150,7 +150,7 @@ export function ContextMenuNewBook({ file }) {
 }
 
 export function ContextMenuNewFolder({ file }) {
-  const { globalState, dispatch } = useGlobalStore();
+  const { dispatch } = useGlobalStore();
 
   const createFolder = () => {
     dispatch({
@@ -173,7 +173,7 @@ export function ContextMenuNewFolder({ file }) {
 }
 
 export function ContextMenuNewPage({ file }) {
-  const { globalState, dispatch } = useGlobalStore();
+  const { dispatch } = useGlobalStore();
 
   const createPage = () => {
     dispatch({
@@ -196,7 +196,7 @@ export function ContextMenuNewPage({ file }) {
 }
 
 export function ContextMenuNewSheet({ file }) {
-  const { globalState, dispatch } = useGlobalStore();
+  const { dispatch } = useGlobalStore();
 
   const createSheet = () => {
     dispatch({
@@ -219,7 +219,7 @@ export function ContextMenuNewSheet({ file }) {
 }
 
 export function ContextMenuOpenToTheSide({ file }) {
-  const { globalState, dispatch } = useGlobalStore();
+  const { dispatch } = useGlobalStore();
 
   const openToTheSide = () => {
     dispatch({
