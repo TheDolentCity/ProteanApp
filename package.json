@@ -12,7 +12,6 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.1",
-    "babel-loader": "^8.1.0",
     "focus-visible": "^5.2.0",
     "react": "16.13",
     "react-contexify": "^5.0.0",
